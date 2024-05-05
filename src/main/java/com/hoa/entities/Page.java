@@ -18,6 +18,7 @@ public class Page implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="pageId", nullable=false)
     private Integer    pageid ;
 

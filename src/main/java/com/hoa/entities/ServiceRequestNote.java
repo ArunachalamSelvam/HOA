@@ -18,6 +18,7 @@ public class ServiceRequestNote implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="serviceRequestNoteId", nullable=false)
     private Integer    servicerequestnoteid ;
 

@@ -9,7 +9,7 @@ public class RoleDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer roleid;
+//    private Integer roleid;
     private String name;
     private Boolean activestatus;
 
@@ -18,20 +18,20 @@ public class RoleDTO implements Serializable {
     }
 
     // Constructor with fields
-    public RoleDTO(Integer roleid, String name, Boolean activestatus) {
-        this.roleid = roleid;
+    public RoleDTO(String name, Boolean activestatus) {
+//        this.roleid = roleid;
         this.name = name;
         this.activestatus = activestatus;
     }
 
     // Getters and Setters
-    public Integer getRoleid() {
-        return roleid;
-    }
-
-    public void setRoleid(Integer roleid) {
-        this.roleid = roleid;
-    }
+//    public Integer getRoleid() {
+//        return roleid;
+//    }
+//
+//    public void setRoleid(Integer roleid) {
+//        this.roleid = roleid;
+//    }
 
     public String getName() {
         return name;
@@ -53,7 +53,6 @@ public class RoleDTO implements Serializable {
     @Override
     public String toString() {
         return "RoleDTO{" +
-                "roleid=" + roleid +
                 ", name='" + name + '\'' +
                 ", activestatus=" + activestatus +
                 '}';

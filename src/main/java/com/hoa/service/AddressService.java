@@ -5,6 +5,8 @@
 */
 package com.hoa.service;
 import com.hoa.entities.Address;
+import com.hoa.exception.AddressNotFoundException;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -39,8 +41,9 @@ public interface AddressService  {
      *
      * @param id the id of the entity.
      * @return Address
+     * @throws AddressNotFoundException 
      */
-    Address getOne(Integer id) ;
+    Address getOne(Integer id) throws AddressNotFoundException ;
 
     /**
      * Get all entities

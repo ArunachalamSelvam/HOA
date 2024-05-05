@@ -32,7 +32,7 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/hoafee")
+@RequestMapping("/api/public/hoafee")
 public class HoafeeController {
 
     private final Logger log = LoggerFactory.getLogger(HoafeeController.class);

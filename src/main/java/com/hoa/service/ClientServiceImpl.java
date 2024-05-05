@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.hoa.repositories.ClientRepository;
 import com.hoa.entities.Client;
+import com.hoa.exception.ClientIdNotFoundException;
 import com.hoa.service.ClientService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -50,15 +51,25 @@ public class ClientServiceImpl implements ClientService {
 
     /**
      * {@inheritDoc}
+     * @throws ClientIdNotFoundException 
      */
     @Override
-    public Client update(Client d) {
-        try {
-            return repository.saveAndFlush(d);
+    public Client update(Integer id ,Client d) throws ClientIdNotFoundException {
+    	Client result = null;
+    	try {
+        	if(repository.existsById(id)) {
+        		d.setClientid(id);
+        		 result =  repository.saveAndFlush(d);
+        	} 
+        		
+        	
+           
 
         } catch (Exception ex) {
-            return null;
+        	throw new ClientIdNotFoundException("Client Id : " +id+ " not Exists.");
+           
         }
+		return result;
     }
 
     /**

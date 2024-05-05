@@ -8,9 +8,9 @@ public class ClientAddressDTO {
 	    private Integer tenantid;
 	    private Boolean activestatus;
 	    private Integer clientid;
-	    private AddressDTO address;
-	    private ClientDTO client;
-	    private UserDTO user;
+//	    private AddressDTO address;
+//	    private ClientDTO client;
+//	    private UserDTO user;
 
 	    // Getter and Setter for clientaddressid
 	    public Integer getClientaddressid() {
@@ -67,37 +67,37 @@ public class ClientAddressDTO {
 	    }
 
 	    // Getter and Setter for address
-	    public AddressDTO getAddress() {
-	        return address;
-	    }
-
-	    public void setAddress(AddressDTO address) {
-	        this.address = address;
-	    }
-
-	    // Getter and Setter for client
-	    public ClientDTO getClient() {
-	        return client;
-	    }
-
-	    public void setClient(ClientDTO client) {
-	        this.client = client;
-	    }
-
-	    // Getter and Setter for user
-	    public UserDTO getUser() {
-	        return user;
-	    }
-
-	    public void setUser(UserDTO user) {
-	        this.user = user;
-	    }
+//	    public AddressDTO getAddress() {
+//	        return address;
+//	    }
+//
+//	    public void setAddress(AddressDTO address) {
+//	        this.address = address;
+//	    }
+//
+//	    // Getter and Setter for client
+//	    public ClientDTO getClient() {
+//	        return client;
+//	    }
+//
+//	    public void setClient(ClientDTO client) {
+//	        this.client = client;
+//	    }
+//
+//	    // Getter and Setter for user
+//	    public UserDTO getUser() {
+//	        return user;
+//	    }
+//
+//	    public void setUser(UserDTO user) {
+//	        this.user = user;
+//	    }
 
 		@Override
 		public String toString() {
 			return "ClientaddressDto [clientaddressid=" + clientaddressid + ", addressid=" + addressid + ", isrented="
 					+ isrented + ", tenantid=" + tenantid + ", activestatus=" + activestatus + ", clientid=" + clientid
-					+ ", address=" + address + ", client=" + client + ", user=" + user + "]";
+					+  "]";
 		}
 
 		public ClientAddressDTO(Integer clientaddressid, Integer addressid, Boolean isrented, Integer tenantid,
@@ -109,9 +109,9 @@ public class ClientAddressDTO {
 			this.tenantid = tenantid;
 			this.activestatus = activestatus;
 			this.clientid = clientid;
-			this.address = address;
-			this.client = client;
-			this.user = user;
+//			this.address = address;
+//			this.client = client;
+//			this.user = user;
 		}
 
 		public ClientAddressDTO() {

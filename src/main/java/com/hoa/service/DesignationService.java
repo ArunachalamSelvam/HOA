@@ -5,6 +5,8 @@
 */
 package com.hoa.service;
 import com.hoa.entities.Designation;
+import com.hoa.exception.DesignationIdNotFoundException;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -31,8 +33,9 @@ public interface DesignationService  {
      * @param entity domain
      * @param id of entity
      * @return Designation
+     * @throws DesignationIdNotFoundException 
      */
-    Designation update(Designation d);
+    Designation update(int id,Designation d) throws DesignationIdNotFoundException;
 
     /**
      * get Designation by id. Can be return empty

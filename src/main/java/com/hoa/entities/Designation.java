@@ -18,7 +18,9 @@ public class Designation implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "designation_seq")
+//    @SequenceGenerator(name = "designation_seq", sequenceName = "designation_seq", allocationSize = 1, initialValue = 1) // Set initialValue to the desired starting number
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="designationId", nullable=false)
     private Integer    designationid ;
 
@@ -29,10 +31,10 @@ public class Designation implements Serializable {
     @Column(name="activeStatus", nullable=false)
     private Boolean    activestatus ;
 
-
     //--- ENTITY LINKS ( RELATIONSHIP )
-    @OneToMany(mappedBy="designation")
-    private List<Employee> listOfEmployee ; 
+//    @OneToMany(mappedBy="designation")
+//    private List<Employee> listOfEmployee ; 
+
 
 
     /**
@@ -65,9 +67,9 @@ public class Designation implements Serializable {
     }
 
     //--- GETTERS FOR LINKS
-    public List<Employee> getListOfEmployee() {
-        return this.listOfEmployee;
-    } 
+//    public List<Employee> getListOfEmployee() {
+//        return this.listOfEmployee;
+//    } 
 
     //--- toString specific method
 	@Override

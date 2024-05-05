@@ -5,12 +5,15 @@
 */
 package com.hoa.controller;
 
+import com.hoa.dto.DesignationDTO;
 import com.hoa.entities.Designation;
+import com.hoa.exception.DesignationIdNotFoundException;
 import com.hoa.service.DesignationService;
-
+import com.hoa.utils.EntityDTOMapper;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,15 +35,18 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/designation")
+@RequestMapping("/api/public/designation")
 public class DesignationController {
 
     private final Logger log = LoggerFactory.getLogger(DesignationController.class);
 	
     private final DesignationService entityService;
+    
+    private final EntityDTOMapper entityDtoMapper;
 
- 	public DesignationController (DesignationService entityService) {
+ 	public DesignationController (DesignationService entityService, EntityDTOMapper entityDtoMapper) {
 		this.entityService = entityService;
+		this.entityDtoMapper = entityDtoMapper;
 	}
 
     /**
@@ -49,8 +55,13 @@ public class DesignationController {
      * @param designation the designation to create.
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new designation.
      */
+ 	
+ 	@CrossOrigin(origins = "https://hoa-app.netlify.app")
 	@PostMapping("/add")
-	public ResponseEntity<Designation> createDesignation(@RequestBody @Valid Designation designation) {
+	public ResponseEntity<Designation> createDesignation(@RequestBody @Valid DesignationDTO designationDto) {
+		
+		Designation designation = entityDtoMapper.toEntity(designationDto);
+		
          log.debug("REST request to save Designation : {}", designation);
          return new ResponseEntity<>(entityService.create(designation), HttpStatus.CREATED);
     }
@@ -62,11 +73,15 @@ public class DesignationController {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated designation,
      * or with status {@code 400 (Bad Request)} if the designation is not valid,
      * or with status {@code 500 (Internal Server Error)} if the designation couldn't be updated.
+ * @throws DesignationIdNotFoundException 
      */
-    @PutMapping("/update")
-    public ResponseEntity<Designation> updateDesignation(@Valid @RequestBody Designation designation) {
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Designation> updateDesignation(@PathVariable (value = "id") int id,@Valid @RequestBody DesignationDTO designationDto) throws DesignationIdNotFoundException {
+    	
+		Designation designation = entityDtoMapper.toEntity(designationDto);
+
         log.debug("REST request to update Designation : {}", designation);
-        Designation result = entityService.update(designation);
+        Designation result = entityService.update(id,designation);
         return ResponseEntity.ok().body(result);
     }
 

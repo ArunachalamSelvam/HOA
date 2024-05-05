@@ -19,6 +19,7 @@ public class EmailDetail implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="emailDetailId", nullable=false)
     private Integer    emaildetailid ;
 

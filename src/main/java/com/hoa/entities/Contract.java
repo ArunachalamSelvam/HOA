@@ -19,6 +19,7 @@ public class Contract implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="contractId", nullable=false)
     private Integer    contractid ;
 
@@ -32,8 +33,8 @@ public class Contract implements Serializable {
     @Column(name="contractCode", length=2147483647)
     private String     contractcode ;
 
-    @Column(name="buisnessName", length=2147483647)
-    private String     buisnessname ;
+    @Column(name="businessName", length=2147483647)
+    private String     businessname ;
 
     @Column(name="businessAddressId")
     private Integer    businessaddressid ;
@@ -140,10 +141,10 @@ public class Contract implements Serializable {
     }
 
     public void setBuisnessname( String buisnessname ) {
-        this.buisnessname = buisnessname ;
+        this.businessname = buisnessname ;
     }
     public String getBuisnessname() {
-        return this.buisnessname;
+        return this.businessname;
     }
 
     public void setBusinessaddressid( Integer businessaddressid ) {
@@ -271,7 +272,7 @@ public class Contract implements Serializable {
         sb.append("|");
         sb.append(contractcode);
         sb.append("|");
-        sb.append(buisnessname);
+        sb.append(businessname);
         sb.append("|");
         sb.append(businessaddressid);
         sb.append("|");

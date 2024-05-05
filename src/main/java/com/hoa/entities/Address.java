@@ -20,11 +20,13 @@ public class Address implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="addressId", nullable=false)
     private Integer    addressid ;
 
     //--- ENTITY DATA FIELDS 
 
+   
     @Column(name="address", nullable=false, length=256)
     private String     address ;
 
@@ -78,8 +80,8 @@ public class Address implements Serializable {
     @JoinColumn(name="stateId", referencedColumnName="stateId", insertable=false, updatable=false)
     private State      state ; 
 
-//    @OneToMany(mappedBy="address")
-//    private List<Contract> listOfContract ; 
+    @OneToMany(mappedBy="address")
+    private List<Contract> listOfContract ; 
 
 
     /**
@@ -185,9 +187,9 @@ public class Address implements Serializable {
         return this.state;
     } 
 
-//    public List<Contract> getListOfContract() {
-//        return this.listOfContract;
-//    } 
+    public List<Contract> getListOfContract() {
+        return this.listOfContract;
+    } 
 
     //--- toString specific method
 	@Override

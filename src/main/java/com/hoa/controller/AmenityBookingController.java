@@ -5,9 +5,10 @@
 */
 package com.hoa.controller;
 
+import com.hoa.dto.AmenityBookingDTO;
 import com.hoa.entities.AmenityBooking;
 import com.hoa.service.AmenitybookingService;
-
+import com.hoa.utils.EntityDTOMapper;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,15 +33,18 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/amenitybooking")
-public class AmenitybookingController {
+@RequestMapping("/api/public/amenitybooking")
+public class AmenityBookingController {
 
-    private final Logger log = LoggerFactory.getLogger(AmenitybookingController.class);
+    private final Logger log = LoggerFactory.getLogger(AmenityBookingController.class);
+    
+    private final EntityDTOMapper entityDtoMapper;
 	
     private final AmenitybookingService entityService;
 
- 	public AmenitybookingController (AmenitybookingService entityService) {
+ 	public AmenityBookingController (AmenitybookingService entityService, EntityDTOMapper entityDtoMapper) {
 		this.entityService = entityService;
+		this.entityDtoMapper = entityDtoMapper;
 	}
 
     /**
@@ -50,7 +54,10 @@ public class AmenitybookingController {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new amenitybooking.
      */
 	@PostMapping("/add")
-	public ResponseEntity<AmenityBooking> createAmenitybooking(@RequestBody @Valid AmenityBooking amenitybooking) {
+	public ResponseEntity<AmenityBooking> createAmenitybooking(@RequestBody @Valid AmenityBookingDTO amenityBookingDto) {
+		
+		 AmenityBooking amenitybooking = entityDtoMapper.toEntity(amenityBookingDto);
+		
          log.debug("REST request to save Amenitybooking : {}", amenitybooking);
          return new ResponseEntity<>(entityService.create(amenitybooking), HttpStatus.CREATED);
     }
@@ -64,7 +71,10 @@ public class AmenitybookingController {
      * or with status {@code 500 (Internal Server Error)} if the amenitybooking couldn't be updated.
      */
     @PutMapping("/update")
-    public ResponseEntity<AmenityBooking> updateAmenitybooking(@Valid @RequestBody AmenityBooking amenitybooking) {
+    public ResponseEntity<AmenityBooking> updateAmenitybooking(@Valid @RequestBody AmenityBookingDTO amenityBookingDto) {
+    	
+    	AmenityBooking amenitybooking = entityDtoMapper.toEntity(amenityBookingDto);
+		
         log.debug("REST request to update Amenitybooking : {}", amenitybooking);
         AmenityBooking result = entityService.update(amenitybooking);
         return ResponseEntity.ok().body(result);

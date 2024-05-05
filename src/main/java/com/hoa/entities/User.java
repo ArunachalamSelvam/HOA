@@ -40,7 +40,7 @@ public class User implements Serializable {
     private Boolean    mobileisverified ;
 
     @Column(name="emailID", nullable=false, length=128)
-    private String     emailid ;
+    private String     emailId ;
 
     @Column(name="emailIdIsVerified")
     private Boolean    emailidisverified ;
@@ -227,10 +227,10 @@ public class User implements Serializable {
     }
 
     public void setEmailid( String emailid ) {
-        this.emailid = emailid ;
+        this.emailId = emailid ;
     }
     public String getEmailid() {
-        return this.emailid;
+        return this.emailId;
     }
 
     public void setEmailidisverified( Boolean emailidisverified ) {
@@ -366,6 +366,10 @@ public class User implements Serializable {
     public Role getRole() {
         return this.role;
     } 
+    
+    public void setRole(Role role) {
+    	this.role = role;
+    }
 
 //    public List<Servicerequest> getListOfServicerequest() {
 //        return this.listOfServicerequest;
@@ -443,7 +447,7 @@ public class User implements Serializable {
         sb.append("|");
         sb.append(mobileisverified);
         sb.append("|");
-        sb.append(emailid);
+        sb.append(emailId);
         sb.append("|");
         sb.append(emailidisverified);
         sb.append("|");

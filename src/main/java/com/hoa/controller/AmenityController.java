@@ -5,9 +5,10 @@
 */
 package com.hoa.controller;
 
+import com.hoa.dto.AmenityDTO;
 import com.hoa.entities.Amenity;
 import com.hoa.service.AmenityService;
-
+import com.hoa.utils.EntityDTOMapper;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,15 +33,18 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/amenity")
+@RequestMapping("/api/public/amenity")
 public class AmenityController {
 
     private final Logger log = LoggerFactory.getLogger(AmenityController.class);
 	
     private final AmenityService entityService;
+    
+    private final EntityDTOMapper entityDtoMapper;
 
- 	public AmenityController (AmenityService entityService) {
+ 	public AmenityController (AmenityService entityService, EntityDTOMapper entityDtoMapper) {
 		this.entityService = entityService;
+		this.entityDtoMapper = entityDtoMapper;
 	}
 
     /**
@@ -50,7 +54,9 @@ public class AmenityController {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new amenity.
      */
 	@PostMapping("/add")
-	public ResponseEntity<Amenity> createAmenity(@RequestBody @Valid Amenity amenity) {
+	public ResponseEntity<Amenity> createAmenity(@RequestBody @Valid AmenityDTO amenityDto) {
+		
+		Amenity amenity = entityDtoMapper.toEntity(amenityDto);
          log.debug("REST request to save Amenity : {}", amenity);
          return new ResponseEntity<>(entityService.create(amenity), HttpStatus.CREATED);
     }
@@ -63,10 +69,12 @@ public class AmenityController {
      * or with status {@code 400 (Bad Request)} if the amenity is not valid,
      * or with status {@code 500 (Internal Server Error)} if the amenity couldn't be updated.
      */
-    @PutMapping("/update")
-    public ResponseEntity<Amenity> updateAmenity(@Valid @RequestBody Amenity amenity) {
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Amenity> updateAmenity(@PathVariable (value = "id") Integer id,@Valid @RequestBody AmenityDTO amenityDto) {
+		Amenity amenity = entityDtoMapper.toEntity(amenityDto);
+
         log.debug("REST request to update Amenity : {}", amenity);
-        Amenity result = entityService.update(amenity);
+        Amenity result = entityService.update(id,amenity);
         return ResponseEntity.ok().body(result);
     }
 

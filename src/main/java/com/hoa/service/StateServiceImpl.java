@@ -9,8 +9,11 @@ package com.hoa.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.hoa.repositories.StateRepository;
+import com.hoa.dto.StateDTO;
 import com.hoa.entities.State;
 import com.hoa.service.StateService;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -18,6 +21,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link State}.
@@ -123,5 +127,19 @@ public class StateServiceImpl implements StateService {
 	public Page<State> findAllSpecification(Specification<State> specs, Pageable pageable) {
 		return repository.findAll(specs, pageable);
 	}
+    
+    @Override
+    public void addStates(List<StateDTO> stateDTOList) {
+        List<State> states = stateDTOList.stream()
+                .map(this::convertToEntity)
+                .collect(Collectors.toList());
+        repository.saveAll(states);
+    }
+
+    private State convertToEntity(StateDTO stateDTO) {
+        State state = new State();
+        BeanUtils.copyProperties(stateDTO, state);
+        return state;
+    }
 
 }

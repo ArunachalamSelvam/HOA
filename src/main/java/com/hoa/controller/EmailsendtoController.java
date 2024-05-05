@@ -32,7 +32,7 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/emailsendto")
+@RequestMapping("/api/public/emailsendto")
 public class EmailsendtoController {
 
     private final Logger log = LoggerFactory.getLogger(EmailsendtoController.class);

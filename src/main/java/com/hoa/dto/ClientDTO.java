@@ -8,8 +8,8 @@ public class ClientDTO {
 	    private String displayname;
 	    private Integer numberofhouses;
 	    private Boolean activestatus;
-	    private UserDTO user;
-	    private CommunityDTO community;
+//	    private UserDTO user;
+//	    private CommunityDTO community;
 	    // Add DTOs for other related entities if needed
 
 	    // Getter and Setter for clientid
@@ -67,42 +67,41 @@ public class ClientDTO {
 	    }
 
 	    // Getter and Setter for user
-	    public UserDTO getUser() {
-	        return user;
-	    }
-
-	    public void setUser(UserDTO user) {
-	        this.user = user;
-	    }
-
-	    // Getter and Setter for community
-	    public CommunityDTO getCommunity() {
-	        return community;
-	    }
-
-	    public void setCommunity(CommunityDTO community) {
-	        this.community = community;
-	    }
+//	    public UserDTO getUser() {
+//	        return user;
+//	    }
+//
+//	    public void setUser(UserDTO user) {
+//	        this.user = user;
+//	    }
+//
+//	    // Getter and Setter for community
+//	    public CommunityDTO getCommunity() {
+//	        return community;
+//	    }
+//
+//	    public void setCommunity(CommunityDTO community) {
+//	        this.community = community;
+//	    }
 
 		@Override
 		public String toString() {
 			return "ClientDto [clientid=" + clientid + ", userid=" + userid + ", communityid=" + communityid
 					+ ", displayname=" + displayname + ", numberofhouses=" + numberofhouses + ", activestatus="
-					+ activestatus + ", user=" + user + ", community=" + community + "]";
+					+ activestatus+ "]";
 		}
 
-		public ClientDTO(Integer clientid, Integer userid, Integer communityid, String displayname,
-				Integer numberofhouses, Boolean activestatus, UserDTO user, CommunityDTO community) {
-			super();
-			this.clientid = clientid;
+		public ClientDTO(Integer userid, Integer communityid, String displayname,
+				Integer numberofhouses) {
 			this.userid = userid;
 			this.communityid = communityid;
 			this.displayname = displayname;
 			this.numberofhouses = numberofhouses;
-			this.activestatus = activestatus;
-			this.user = user;
-			this.community = community;
+			this.activestatus = true;
+			
 		}
+		
+	
 
 		public ClientDTO() {
 			super();

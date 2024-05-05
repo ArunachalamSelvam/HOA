@@ -31,24 +31,24 @@ public class CommunityDTO {
 	    private Date modifieddate;
 	    private String timezone;
 	    private Integer contractid;
-	    private List<HoaFeeDTO> listOfHoafee;
-	    private List<FaqDTO> listOfFaq;
-	    private List<ServiceRequestDTO> listOfServicerequest;
-	    private List<ViolationDTO> listOfViolation;
-	    private List<CommunityDocumentDTO> listOfCommunitydocument;
-	    private List<NewsDTO> listOfNews;
-	    private List<AuditLogDTO> listOfAuditlog;
-	    private List<EmailDetailDTO> listOfEmaildetail;
-	    private List<AmenityBookingDTO> listOfAmenitybooking;
-	    private List<VendorDTO> listOfVendor;
-	    private PlanDTO plan;
-	    private List<ClientDTO> listOfClient;
-	    private ContractDTO contract;
-	    private List<PaymentDetailDTO> listOfPaymentdetail;
-	    private List<BankDetailDTO> listOfBankdetail;
-	    private List<AmenityDTO> listOfAmenity;
-	    private List<ViolationDetailDTO> listOfViolationdetail;
-	    private AddressDTO address;
+//	    private List<HoaFeeDTO> listOfHoafee;
+//	    private List<FaqDTO> listOfFaq;
+//	    private List<ServiceRequestDTO> listOfServicerequest;
+//	    private List<ViolationDTO> listOfViolation;
+//	    private List<CommunityDocumentDTO> listOfCommunitydocument;
+//	    private List<NewsDTO> listOfNews;
+//	    private List<AuditLogDTO> listOfAuditlog;
+//	    private List<EmailDetailDTO> listOfEmaildetail;
+//	    private List<AmenityBookingDTO> listOfAmenitybooking;
+//	    private List<VendorDTO> listOfVendor;
+//	    private PlanDTO plan;
+//	    private List<ClientDTO> listOfClient;
+//	    private ContractDTO contract;
+//	    private List<PaymentDetailDTO> listOfPaymentdetail;
+//	    private List<BankDetailDTO> listOfBankdetail;
+//	    private List<AmenityDTO> listOfAmenity;
+//	    private List<ViolationDetailDTO> listOfViolationdetail;
+//	    private AddressDTO address;
 	    
 		public Integer getCommunityid() {
 			return communityid;
@@ -206,114 +206,114 @@ public class CommunityDTO {
 		public void setContractid(Integer contractid) {
 			this.contractid = contractid;
 		}
-		public List<HoaFeeDTO> getListOfHoafee() {
-			return listOfHoafee;
-		}
-		public void setListOfHoafee(List<HoaFeeDTO> listOfHoafee) {
-			this.listOfHoafee = listOfHoafee;
-		}
-		public List<FaqDTO> getListOfFaq() {
-			return listOfFaq;
-		}
-		public void setListOfFaq(List<FaqDTO> listOfFaq) {
-			this.listOfFaq = listOfFaq;
-		}
-		public List<ServiceRequestDTO> getListOfServicerequest() {
-			return listOfServicerequest;
-		}
-		public void setListOfServicerequest(List<ServiceRequestDTO> listOfServicerequest) {
-			this.listOfServicerequest = listOfServicerequest;
-		}
-		public List<ViolationDTO> getListOfViolation() {
-			return listOfViolation;
-		}
-		public void setListOfViolation(List<ViolationDTO> listOfViolation) {
-			this.listOfViolation = listOfViolation;
-		}
-		public List<CommunityDocumentDTO> getListOfCommunitydocument() {
-			return listOfCommunitydocument;
-		}
-		public void setListOfCommunitydocument(List<CommunityDocumentDTO> listOfCommunitydocument) {
-			this.listOfCommunitydocument = listOfCommunitydocument;
-		}
-		public List<NewsDTO> getListOfNews() {
-			return listOfNews;
-		}
-		public void setListOfNews(List<NewsDTO> listOfNews) {
-			this.listOfNews = listOfNews;
-		}
-		public List<AuditLogDTO> getListOfAuditlog() {
-			return listOfAuditlog;
-		}
-		public void setListOfAuditlog(List<AuditLogDTO> listOfAuditlog) {
-			this.listOfAuditlog = listOfAuditlog;
-		}
-		public List<EmailDetailDTO> getListOfEmaildetail() {
-			return listOfEmaildetail;
-		}
-		public void setListOfEmaildetail(List<EmailDetailDTO> listOfEmaildetail) {
-			this.listOfEmaildetail = listOfEmaildetail;
-		}
-		public List<AmenityBookingDTO> getListOfAmenitybooking() {
-			return listOfAmenitybooking;
-		}
-		public void setListOfAmenitybooking(List<AmenityBookingDTO> listOfAmenitybooking) {
-			this.listOfAmenitybooking = listOfAmenitybooking;
-		}
-		public List<VendorDTO> getListOfVendor() {
-			return listOfVendor;
-		}
-		public void setListOfVendor(List<VendorDTO> listOfVendor) {
-			this.listOfVendor = listOfVendor;
-		}
-		public PlanDTO getPlan() {
-			return plan;
-		}
-		public void setPlan(PlanDTO plan) {
-			this.plan = plan;
-		}
-		public List<ClientDTO> getListOfClient() {
-			return listOfClient;
-		}
-		public void setListOfClient(List<ClientDTO> listOfClient) {
-			this.listOfClient = listOfClient;
-		}
-		public ContractDTO getContract() {
-			return contract;
-		}
-		public void setContract(ContractDTO contract) {
-			this.contract = contract;
-		}
-		public List<PaymentDetailDTO> getListOfPaymentdetail() {
-			return listOfPaymentdetail;
-		}
-		public void setListOfPaymentdetail(List<PaymentDetailDTO> listOfPaymentdetail) {
-			this.listOfPaymentdetail = listOfPaymentdetail;
-		}
-		public List<BankDetailDTO> getListOfBankdetail() {
-			return listOfBankdetail;
-		}
-		public void setListOfBankdetail(List<BankDetailDTO> listOfBankdetail) {
-			this.listOfBankdetail = listOfBankdetail;
-		}
-		public List<AmenityDTO> getListOfAmenity() {
-			return listOfAmenity;
-		}
-		public void setListOfAmenity(List<AmenityDTO> listOfAmenity) {
-			this.listOfAmenity = listOfAmenity;
-		}
-		public List<ViolationDetailDTO> getListOfViolationdetail() {
-			return listOfViolationdetail;
-		}
-		public void setListOfViolationdetail(List<ViolationDetailDTO> listOfViolationdetail) {
-			this.listOfViolationdetail = listOfViolationdetail;
-		}
-		public AddressDTO getAddress() {
-			return address;
-		}
-		public void setAddress(AddressDTO address) {
-			this.address = address;
-		}
+//		public List<HoaFeeDTO> getListOfHoafee() {
+//			return listOfHoafee;
+//		}
+//		public void setListOfHoafee(List<HoaFeeDTO> listOfHoafee) {
+//			this.listOfHoafee = listOfHoafee;
+//		}
+//		public List<FaqDTO> getListOfFaq() {
+//			return listOfFaq;
+//		}
+//		public void setListOfFaq(List<FaqDTO> listOfFaq) {
+//			this.listOfFaq = listOfFaq;
+//		}
+//		public List<ServiceRequestDTO> getListOfServicerequest() {
+//			return listOfServicerequest;
+//		}
+//		public void setListOfServicerequest(List<ServiceRequestDTO> listOfServicerequest) {
+//			this.listOfServicerequest = listOfServicerequest;
+//		}
+//		public List<ViolationDTO> getListOfViolation() {
+//			return listOfViolation;
+//		}
+//		public void setListOfViolation(List<ViolationDTO> listOfViolation) {
+//			this.listOfViolation = listOfViolation;
+//		}
+//		public List<CommunityDocumentDTO> getListOfCommunitydocument() {
+//			return listOfCommunitydocument;
+//		}
+//		public void setListOfCommunitydocument(List<CommunityDocumentDTO> listOfCommunitydocument) {
+//			this.listOfCommunitydocument = listOfCommunitydocument;
+//		}
+//		public List<NewsDTO> getListOfNews() {
+//			return listOfNews;
+//		}
+//		public void setListOfNews(List<NewsDTO> listOfNews) {
+//			this.listOfNews = listOfNews;
+//		}
+//		public List<AuditLogDTO> getListOfAuditlog() {
+//			return listOfAuditlog;
+//		}
+//		public void setListOfAuditlog(List<AuditLogDTO> listOfAuditlog) {
+//			this.listOfAuditlog = listOfAuditlog;
+//		}
+//		public List<EmailDetailDTO> getListOfEmaildetail() {
+//			return listOfEmaildetail;
+//		}
+//		public void setListOfEmaildetail(List<EmailDetailDTO> listOfEmaildetail) {
+//			this.listOfEmaildetail = listOfEmaildetail;
+//		}
+//		public List<AmenityBookingDTO> getListOfAmenitybooking() {
+//			return listOfAmenitybooking;
+//		}
+//		public void setListOfAmenitybooking(List<AmenityBookingDTO> listOfAmenitybooking) {
+//			this.listOfAmenitybooking = listOfAmenitybooking;
+//		}
+//		public List<VendorDTO> getListOfVendor() {
+//			return listOfVendor;
+//		}
+//		public void setListOfVendor(List<VendorDTO> listOfVendor) {
+//			this.listOfVendor = listOfVendor;
+//		}
+//		public PlanDTO getPlan() {
+//			return plan;
+//		}
+//		public void setPlan(PlanDTO plan) {
+//			this.plan = plan;
+//		}
+//		public List<ClientDTO> getListOfClient() {
+//			return listOfClient;
+//		}
+//		public void setListOfClient(List<ClientDTO> listOfClient) {
+//			this.listOfClient = listOfClient;
+//		}
+//		public ContractDTO getContract() {
+//			return contract;
+//		}
+//		public void setContract(ContractDTO contract) {
+//			this.contract = contract;
+//		}
+//		public List<PaymentDetailDTO> getListOfPaymentdetail() {
+//			return listOfPaymentdetail;
+//		}
+//		public void setListOfPaymentdetail(List<PaymentDetailDTO> listOfPaymentdetail) {
+//			this.listOfPaymentdetail = listOfPaymentdetail;
+//		}
+//		public List<BankDetailDTO> getListOfBankdetail() {
+//			return listOfBankdetail;
+//		}
+//		public void setListOfBankdetail(List<BankDetailDTO> listOfBankdetail) {
+//			this.listOfBankdetail = listOfBankdetail;
+//		}
+//		public List<AmenityDTO> getListOfAmenity() {
+//			return listOfAmenity;
+//		}
+//		public void setListOfAmenity(List<AmenityDTO> listOfAmenity) {
+//			this.listOfAmenity = listOfAmenity;
+//		}
+//		public List<ViolationDetailDTO> getListOfViolationdetail() {
+//			return listOfViolationdetail;
+//		}
+//		public void setListOfViolationdetail(List<ViolationDetailDTO> listOfViolationdetail) {
+//			this.listOfViolationdetail = listOfViolationdetail;
+//		}
+//		public AddressDTO getAddress() {
+//			return address;
+//		}
+//		public void setAddress(AddressDTO address) {
+//			this.address = address;
+//		}
 		
 		@Override
 		public String toString() {
@@ -327,9 +327,7 @@ public class CommunityDTO {
 					+ planexpiredate + ", contactperson=" + contactperson + ", totalowners=" + totalowners
 					+ ", activestatus=" + activestatus + ", createdbyid=" + createdbyid + ", createddate=" + createddate
 					+ ", modifiedbyid=" + modifiedbyid + ", modifieddate=" + modifieddate + ", timezone=" + timezone
-					+ ", contractid=" + contractid + ", listOfAuditlog=" + listOfAuditlog + ", listOfAmenitybooking="
-					+ listOfAmenitybooking + ", listOfClient=" + listOfClient + ", listOfBankdetail=" + listOfBankdetail
-					+ ", listOfAmenity=" + listOfAmenity + ", address=" + address + "]";
+					+ ", contractid=" + contractid +  "]";
 		}
 		
 		public CommunityDTO(Integer communityid, String name, String communitycode, Integer addressid,
@@ -338,14 +336,7 @@ public class CommunityDTO {
 				String treasurerinvitestatus, Integer treasureruserid, Integer planid, String licensestatus,
 				Integer communitysize, Date planexpiredate, String contactperson, Integer totalowners,
 				Boolean activestatus, Integer createdbyid, Date createddate, Integer modifiedbyid, Date modifieddate,
-				String timezone, Integer contractid, List<HoaFeeDTO> listOfHoafee, List<FaqDTO> listOfFaq,
-				List<ServiceRequestDTO> listOfServicerequest, List<ViolationDTO> listOfViolation,
-				List<CommunityDocumentDTO> listOfCommunitydocument, List<NewsDTO> listOfNews,
-				List<AuditLogDTO> listOfAuditlog, List<EmailDetailDTO> listOfEmaildetail,
-				List<AmenityBookingDTO> listOfAmenitybooking, List<VendorDTO> listOfVendor, PlanDTO plan,
-				List<ClientDTO> listOfClient, ContractDTO contract, List<PaymentDetailDTO> listOfPaymentdetail,
-				List<BankDetailDTO> listOfBankdetail, List<AmenityDTO> listOfAmenity,
-				List<ViolationDetailDTO> listOfViolationdetail, AddressDTO address) {
+				String timezone, Integer contractid) {
 			super();
 			this.communityid = communityid;
 			this.name = name;
@@ -373,24 +364,24 @@ public class CommunityDTO {
 			this.modifieddate = modifieddate;
 			this.timezone = timezone;
 			this.contractid = contractid;
-			this.listOfHoafee = listOfHoafee;
-			this.listOfFaq = listOfFaq;
-			this.listOfServicerequest = listOfServicerequest;
-			this.listOfViolation = listOfViolation;
-			this.listOfCommunitydocument = listOfCommunitydocument;
-			this.listOfNews = listOfNews;
-			this.listOfAuditlog = listOfAuditlog;
-			this.listOfEmaildetail = listOfEmaildetail;
-			this.listOfAmenitybooking = listOfAmenitybooking;
-			this.listOfVendor = listOfVendor;
-			this.plan = plan;
-			this.listOfClient = listOfClient;
-			this.contract = contract;
-			this.listOfPaymentdetail = listOfPaymentdetail;
-			this.listOfBankdetail = listOfBankdetail;
-			this.listOfAmenity = listOfAmenity;
-			this.listOfViolationdetail = listOfViolationdetail;
-			this.address = address;
+//			this.listOfHoafee = listOfHoafee;
+//			this.listOfFaq = listOfFaq;
+//			this.listOfServicerequest = listOfServicerequest;
+//			this.listOfViolation = listOfViolation;
+//			this.listOfCommunitydocument = listOfCommunitydocument;
+//			this.listOfNews = listOfNews;
+//			this.listOfAuditlog = listOfAuditlog;
+//			this.listOfEmaildetail = listOfEmaildetail;
+//			this.listOfAmenitybooking = listOfAmenitybooking;
+//			this.listOfVendor = listOfVendor;
+//			this.plan = plan;
+//			this.listOfClient = listOfClient;
+//			this.contract = contract;
+//			this.listOfPaymentdetail = listOfPaymentdetail;
+//			this.listOfBankdetail = listOfBankdetail;
+//			this.listOfAmenity = listOfAmenity;
+//			this.listOfViolationdetail = listOfViolationdetail;
+//			this.address = address;
 		}
 		
 		public CommunityDTO() {

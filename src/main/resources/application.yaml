@@ -14,10 +14,28 @@ spring:
     username: postgres
     password: Arun@1103
     url: jdbc:postgresql://localhost:5432/HOA_Project
-   
+  
+  main:
+    allow-circular-references: true 
+    
+  mail:
+    host: smtp.gmail.com        # SMTP server host
+    port: 587                     # Port number (587 for TLS, 465 for SSL)
+    username: arunachalamselvam6599@gmail.com       # SMTP username
+    password: qbff igpu dtqk mmua       # SMTP password
+    properties:
+      mail:
+        smtp:
+          auth: true               # Enable authentication
+          starttls:
+            enable: true           # Enable STARTTLS encryption
+          ssl:
+            trust: '*'  
      
 server:
   port: 8081 # Change this to your desired port number
   servlet : 
     context-path : /hoa
+    
+    
   

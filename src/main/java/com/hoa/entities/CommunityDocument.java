@@ -18,6 +18,7 @@ public class CommunityDocument implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="communityDocumentId", nullable=false)
     private Integer    communitydocumentid ;
 

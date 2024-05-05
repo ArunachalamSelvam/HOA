@@ -19,6 +19,7 @@ public class Employee implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="employeeId", nullable=false)
     private Integer    employeeid ;
 
@@ -52,15 +53,15 @@ public class Employee implements Serializable {
     @JoinColumn(name="designationId", referencedColumnName="designationId", insertable=false, updatable=false)
     private Designation designation ; 
 
-    @OneToMany(mappedBy="employee")
-    private List<Employee> listOfEmployee ; 
+//    @OneToMany(mappedBy="employee")
+//    private List<Employee> listOfEmployee ; 
 
     @ManyToOne
     @JoinColumn(name="managerId", referencedColumnName="employeeId", insertable=false, updatable=false)
     private Employee   employee ; 
 
-    @OneToMany(mappedBy="employee")
-    private List<Contract> listOfContract ; 
+//    @OneToMany(mappedBy="employee")
+//    private List<Contract> listOfContract ; 
 
 
     /**
@@ -129,17 +130,17 @@ public class Employee implements Serializable {
         return this.designation;
     } 
 
-    public List<Employee> getListOfEmployee() {
-        return this.listOfEmployee;
-    } 
+//    public List<Employee> getListOfEmployee() {
+//        return this.listOfEmployee;
+//    } 
 
     public Employee getEmployee() {
         return this.employee;
     } 
 
-    public List<Contract> getListOfContract() {
-        return this.listOfContract;
-    } 
+//    public List<Contract> getListOfContract() {
+//        return this.listOfContract;
+//    } 
 
     //--- toString specific method
 	@Override

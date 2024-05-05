@@ -7,6 +7,7 @@ package com.hoa.controller;
 
 import com.hoa.dto.AddressDTO;
 import com.hoa.entities.Address;
+import com.hoa.exception.AddressNotFoundException;
 import com.hoa.service.AddressService;
 import com.hoa.utils.EntityDTOMapper;
 
@@ -33,7 +34,7 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/address")
+@RequestMapping("/api/public/address")
 public class AddressController {
 
     private final Logger log = LoggerFactory.getLogger(AddressController.class);
@@ -100,9 +101,10 @@ public class AddressController {
      *
      * @param id the id of the address to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the address, or with status {@code 404 (Not Found)}.
+     * @throws AddressNotFoundException 
      */
     @GetMapping( "/getOne/{id}")
-    public ResponseEntity<Address> getOneAddress(@PathVariable(value ="id") Integer id) {
+    public ResponseEntity<Address> getOneAddress(@PathVariable(value ="id") Integer id) throws AddressNotFoundException {
         log.debug("REST request to get Address : {}", id);
         Address e = entityService.getOne(id);
 

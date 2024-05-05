@@ -33,7 +33,7 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/country")
+@RequestMapping("/api/public/country")
 public class CountryController {
 
     private final Logger log = LoggerFactory.getLogger(CountryController.class);

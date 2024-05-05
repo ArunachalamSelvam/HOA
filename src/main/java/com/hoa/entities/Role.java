@@ -18,7 +18,8 @@ public class Role implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_seq")
+    @SequenceGenerator(name = "role_seq", sequenceName = "role_seq", allocationSize = 1, initialValue = 1000) // Set initialValue to the desired starting number
     @Column(name="roleId",nullable = false)
     private Integer    roleid ;
 

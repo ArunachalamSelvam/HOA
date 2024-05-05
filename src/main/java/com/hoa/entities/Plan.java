@@ -19,21 +19,22 @@ public class Plan implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="planId", nullable=false)
     private Integer    planid ;
 
     //--- ENTITY DATA FIELDS 
-    @Column(name="planRangeFrom")
-    private Integer    planrangefrom ;
+//    @Column(name="planRangeFrom")
+//    private Integer    planrangefrom ;
 
-    @Column(name="planRangeTo")
-    private Integer    planrangeto ;
+    @Column(name="planRangeId")
+    private Integer    planrangeId ;
 
-    @Column(name="planPeriod", length=128)
-    private String     planperiod ;
+    @Column(name="planPeriodId")
+    private Integer     planperiodId ;
 
-    @Column(name="planType", length=128)
-    private String     plantype ;
+    @Column(name="planTypeId")
+    private Integer     plantypeId ;
 
     @Column(name="price")
     private Double     price ;
@@ -59,6 +60,17 @@ public class Plan implements Serializable {
     @OneToMany(mappedBy="plan")
     private List<Contract> listOfContract ; 
 
+    @ManyToOne
+    @JoinColumn(name="planRangeId", referencedColumnName="id", insertable=false, updatable=false)
+    private PlanRange       planRange ; 
+    
+    @ManyToOne
+    @JoinColumn(name="planPeriodId", referencedColumnName="id", insertable=false, updatable=false)
+    private PlanPeriod       planPeriod ; 
+    
+    @ManyToOne
+    @JoinColumn(name="planTypeId", referencedColumnName="id", insertable=false, updatable=false)
+    private PlanType       planType ; 
 
     /**
      * Constructor
@@ -75,32 +87,20 @@ public class Plan implements Serializable {
         return this.planid;
     }
 
-    public void setPlanrangefrom( Integer planrangefrom ) {
-        this.planrangefrom = planrangefrom ;
-    }
-    public Integer getPlanrangefrom() {
-        return this.planrangefrom;
-    }
+//    public void setPlanrangefrom( Integer planrangefrom ) {
+//        this.planrangefrom = planrangefrom ;
+//    }
+//    public Integer getPlanrangefrom() {
+//        return this.planrangefrom;
+//    }
 
-    public void setPlanrangeto( Integer planrangeto ) {
-        this.planrangeto = planrangeto ;
-    }
-    public Integer getPlanrangeto() {
-        return this.planrangeto;
-    }
+    
 
-    public void setPlanperiod( String planperiod ) {
-        this.planperiod = planperiod ;
+    public void setPlantype( Integer plantypeId ) {
+        this.plantypeId = plantypeId ;
     }
-    public String getPlanperiod() {
-        return this.planperiod;
-    }
-
-    public void setPlantype( String plantype ) {
-        this.plantype = plantype ;
-    }
-    public String getPlantype() {
-        return this.plantype;
+    public Integer getPlantype() {
+        return this.plantypeId;
     }
 
     public void setPrice( Double price ) {
@@ -147,13 +147,12 @@ public class Plan implements Serializable {
         StringBuilder sb = new StringBuilder(); 
         sb.append(planid);
         sb.append("|");
-        sb.append(planrangefrom);
         sb.append("|");
-        sb.append(planrangeto);
+        sb.append(planrangeId);
         sb.append("|");
-        sb.append(planperiod);
+        sb.append(planperiodId);
         sb.append("|");
-        sb.append(plantype);
+        sb.append(plantypeId);
         sb.append("|");
         sb.append(price);
         sb.append("|");

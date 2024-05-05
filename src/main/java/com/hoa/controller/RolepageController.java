@@ -32,7 +32,7 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/rolepage")
+@RequestMapping("/api/public/rolepage")
 public class RolepageController {
 
     private final Logger log = LoggerFactory.getLogger(RolepageController.class);

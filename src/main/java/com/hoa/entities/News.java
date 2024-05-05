@@ -18,6 +18,7 @@ public class News implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="newsId", nullable=false)
     private Integer    newsid ;
 

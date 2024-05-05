@@ -32,7 +32,7 @@ public interface AmenityService  {
      * @param id of entity
      * @return Amenity
      */
-    Amenity update(Amenity d);
+    Amenity update(Integer id, Amenity d);
 
     /**
      * get Amenity by id. Can be return empty

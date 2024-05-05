@@ -18,6 +18,7 @@ public class BankDetail implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="bankId", nullable=false)
     private Integer    bankid ;
 

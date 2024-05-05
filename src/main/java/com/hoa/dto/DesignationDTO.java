@@ -7,7 +7,7 @@ public class DesignationDTO {
 	    private Integer designationid;
 	    private String name;
 	    private Boolean activestatus;
-	    private List<EmployeeDTO> listOfEmployee;
+//	    private List<EmployeeDTO> listOfEmployee;
 
 	    // Getters and Setters for all fields
 
@@ -35,27 +35,26 @@ public class DesignationDTO {
 	        this.activestatus = activestatus;
 	    }
 
-	    public List<EmployeeDTO> getListOfEmployee() {
-	        return listOfEmployee;
-	    }
-
-	    public void setListOfEmployee(List<EmployeeDTO> listOfEmployee) {
-	        this.listOfEmployee = listOfEmployee;
-	    }
+//	    public List<EmployeeDTO> getListOfEmployee() {
+//	        return listOfEmployee;
+//	    }
+//
+//	    public void setListOfEmployee(List<EmployeeDTO> listOfEmployee) {
+//	        this.listOfEmployee = listOfEmployee;
+//	    }
 
 		@Override
 		public String toString() {
 			return "DesignationDto [designationid=" + designationid + ", name=" + name + ", activestatus="
-					+ activestatus + ", listOfEmployee=" + listOfEmployee + "]";
+					+ activestatus  + "]";
 		}
 
-		public DesignationDTO(Integer designationid, String name, Boolean activestatus,
-				List<EmployeeDTO> listOfEmployee) {
+		public DesignationDTO(Integer designationid, String name, Boolean activestatus) {
 			super();
 			this.designationid = designationid;
 			this.name = name;
 			this.activestatus = activestatus;
-			this.listOfEmployee = listOfEmployee;
+//			this.listOfEmployee = listOfEmployee;
 		}
 
 		public DesignationDTO() {

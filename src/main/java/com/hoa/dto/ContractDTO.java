@@ -8,7 +8,7 @@ public class ContractDTO {
 	    private Integer salespersonid;
 	    private Integer clientid;
 	    private String contractcode;
-	    private String buisnessname;
+	    private String businessname;
 	    private Integer businessaddressid;
 	    private String communicationchannel;
 	    private Integer planid;
@@ -57,11 +57,11 @@ public class ContractDTO {
 	    }
 
 	    public String getBuisnessname() {
-	        return buisnessname;
+	        return businessname;
 	    }
 
 	    public void setBuisnessname(String buisnessname) {
-	        this.buisnessname = buisnessname;
+	        this.businessname = buisnessname;
 	    }
 
 	    public Integer getBusinessaddressid() {
@@ -163,7 +163,7 @@ public class ContractDTO {
 		@Override
 		public String toString() {
 			return "ContractDto [contractid=" + contractid + ", salespersonid=" + salespersonid + ", clientid="
-					+ clientid + ", contractcode=" + contractcode + ", buisnessname=" + buisnessname
+					+ clientid + ", contractcode=" + contractcode + ", buisnessname=" + businessname
 					+ ", businessaddressid=" + businessaddressid + ", communicationchannel=" + communicationchannel
 					+ ", planid=" + planid + ", annualrenewalfee=" + annualrenewalfee + ", onetimesetup=" + onetimesetup
 					+ ", sizeofthecommunity=" + sizeofthecommunity + ", renewalcycles=" + renewalcycles
@@ -181,7 +181,7 @@ public class ContractDTO {
 			this.salespersonid = salespersonid;
 			this.clientid = clientid;
 			this.contractcode = contractcode;
-			this.buisnessname = buisnessname;
+			this.businessname = buisnessname;
 			this.businessaddressid = businessaddressid;
 			this.communicationchannel = communicationchannel;
 			this.planid = planid;

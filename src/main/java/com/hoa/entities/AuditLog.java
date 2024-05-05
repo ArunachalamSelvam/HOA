@@ -18,6 +18,7 @@ public class AuditLog implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="auditLogId", nullable=false)
     private Integer    auditlogid ;
 

@@ -18,6 +18,7 @@ public class Country implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="countryId", nullable=false)
     private Integer    countryid ;
 

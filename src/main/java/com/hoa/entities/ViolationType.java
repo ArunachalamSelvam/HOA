@@ -18,6 +18,7 @@ public class ViolationType implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="violationTypeId", nullable=false)
     private Integer    violationtypeid ;
 

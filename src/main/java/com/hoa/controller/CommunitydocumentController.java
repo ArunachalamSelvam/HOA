@@ -32,7 +32,7 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/communitydocument")
+@RequestMapping("/api/public/communitydocument")
 public class CommunitydocumentController {
 
     private final Logger log = LoggerFactory.getLogger(CommunitydocumentController.class);

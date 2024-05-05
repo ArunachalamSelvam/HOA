@@ -17,6 +17,7 @@ public class ClientAddress implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="clientAddressId", nullable=false)
     private Integer    clientaddressid ;
 

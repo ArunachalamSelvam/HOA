@@ -5,9 +5,10 @@
 */
 package com.hoa.controller;
 
+import com.hoa.dto.EmployeeDTO;
 import com.hoa.entities.Employee;
 import com.hoa.service.EmployeeService;
-
+import com.hoa.utils.EntityDTOMapper;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,9 +39,12 @@ public class EmployeeController {
     private final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 	
     private final EmployeeService entityService;
+    
+    private final EntityDTOMapper entityDtoMapper;
 
- 	public EmployeeController (EmployeeService entityService) {
+ 	public EmployeeController (EmployeeService entityService, EntityDTOMapper entityDTOMapper) {
 		this.entityService = entityService;
+		this.entityDtoMapper = entityDTOMapper;
 	}
 
     /**
@@ -50,7 +54,10 @@ public class EmployeeController {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new employee.
      */
 	@PostMapping("/add")
-	public ResponseEntity<Employee> createEmployee(@RequestBody @Valid Employee employee) {
+	public ResponseEntity<Employee> createEmployee(@RequestBody @Valid EmployeeDTO employeeDto) {
+		
+		Employee employee = entityDtoMapper.toEntity(employeeDto);
+		
          log.debug("REST request to save Employee : {}", employee);
          return new ResponseEntity<>(entityService.create(employee), HttpStatus.CREATED);
     }
@@ -64,7 +71,9 @@ public class EmployeeController {
      * or with status {@code 500 (Internal Server Error)} if the employee couldn't be updated.
      */
     @PutMapping("/update")
-    public ResponseEntity<Employee> updateEmployee(@Valid @RequestBody Employee employee) {
+    public ResponseEntity<Employee> updateEmployee(@Valid @RequestBody EmployeeDTO employeeDto) {
+    	
+    	Employee employee = entityDtoMapper.toEntity(employeeDto);
         log.debug("REST request to update Employee : {}", employee);
         Employee result = entityService.update(employee);
         return ResponseEntity.ok().body(result);

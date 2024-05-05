@@ -17,6 +17,7 @@ public class EmailSendTo implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="emailSendToId", nullable=false)
     private Integer    emailsendtoid ;
 

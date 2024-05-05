@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.hoa.repositories.AddressRepository;
 import com.hoa.entities.Address;
+import com.hoa.exception.AddressNotFoundException;
+import com.hoa.exception.UserNotFoundException;
 import com.hoa.service.AddressService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -63,15 +65,17 @@ public class AddressServiceImpl implements AddressService {
 
     /**
      * {@inheritDoc}
+     * @throws AddressNotFoundException 
      */
     @Override
-    public Address getOne(Integer id) {
+    public Address getOne(Integer id) throws AddressNotFoundException {
         try {
-            return repository.findById(id).orElse(null);
+            return repository.findById(id).get();
 
         } catch (Exception ex) {
-            return null;
+        	 throw new AddressNotFoundException("Address with id " + id + "does not exist." );
         }
+       
     }
 
     /**

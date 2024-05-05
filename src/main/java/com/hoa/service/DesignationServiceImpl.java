@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.hoa.repositories.DesignationRepository;
 import com.hoa.entities.Designation;
+import com.hoa.exception.DesignationIdNotFoundException;
 import com.hoa.service.DesignationService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -50,15 +51,23 @@ public class DesignationServiceImpl implements DesignationService {
 
     /**
      * {@inheritDoc}
+     * @throws DesignationIdNotFoundException 
      */
     @Override
-    public Designation update(Designation d) {
+    public Designation update(int id,Designation d) throws DesignationIdNotFoundException {
+    	Designation result = null;
         try {
-            return repository.saveAndFlush(d);
+        	if(repository.existsById(id)) {
+        		d.setDesignationid(id);
+        		result=repository.saveAndFlush(d);
+        	}
+          
 
         } catch (Exception ex) {
-            return null;
+            throw new DesignationIdNotFoundException("Designation Id : " + id + " does not exist.");
         }
+        
+        return result;
     }
 
     /**

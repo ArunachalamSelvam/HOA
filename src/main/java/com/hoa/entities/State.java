@@ -18,6 +18,7 @@ public class State implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="stateId", nullable=false)
     private Integer    stateid ;
 

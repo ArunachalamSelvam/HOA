@@ -6,7 +6,10 @@
 package com.hoa.controller;
 
 import com.hoa.dto.UserDTO;
+import com.hoa.entities.Role;
 import com.hoa.entities.User;
+import com.hoa.requestEntities.LoginRequest;
+import com.hoa.service.RoleService;
 import com.hoa.service.UserService;
 import com.hoa.utils.EntityDTOMapper;
 
@@ -26,7 +29,6 @@ import org.slf4j.LoggerFactory;
 import javax.validation.Valid;
 import java.util.List;
 
-
 /**
  * REST controller for managing {@link User}.
  *
@@ -36,85 +38,112 @@ import java.util.List;
 @RequestMapping("/api/user")
 public class UserController {
 
-    private final Logger log = LoggerFactory.getLogger(UserController.class);
-	
-    private final UserService entityService;
-    private final EntityDTOMapper entityDtoMapper;
+	private final Logger log = LoggerFactory.getLogger(UserController.class);
 
- 	public UserController (UserService entityService, EntityDTOMapper entityDtoMapper) {
+	private final UserService entityService;
+	
+	private final RoleService roleService;
+
+	private final EntityDTOMapper entityDtoMapper;
+
+	public UserController(UserService entityService, EntityDTOMapper entityDtoMapper, RoleService roleService) {
 		this.entityService = entityService;
-		this.entityDtoMapper=entityDtoMapper;
+		this.entityDtoMapper = entityDtoMapper;
+		this.roleService = roleService;
 	}
 
-    /**
-     * {@code POST  /user} : Create a new user.
-     *
-     * @param user the user to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new user.
-     */
+	/**
+	 * {@code POST  /user} : Create a new user.
+	 *
+	 * @param user the user to create.
+	 * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with
+	 *         body the new user.
+	 */
 	@PostMapping("/add")
 	public ResponseEntity<User> createUser(@RequestBody @Valid UserDTO userDTO) {
-		
+
 		User user = entityDtoMapper.toEntity(userDTO);
-         log.debug("REST request to save User : {}", user);
-         return new ResponseEntity<>(entityService.create(user), HttpStatus.CREATED);
-    }
+		log.debug("REST request to save User : {}", user);
+		return new ResponseEntity<>(entityService.create(user), HttpStatus.CREATED);
+	}
 
-   /**
-     * {@code PUT  /user} : Updates an existing user.
-     *
-     * @param user the user to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated user,
-     * or with status {@code 400 (Bad Request)} if the user is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the user couldn't be updated.
-     */
-    @PutMapping("/update")
-    public ResponseEntity<User> updateUser(@Valid @RequestBody UserDTO userDTO) {
-    	User user = entityDtoMapper.toEntity(userDTO);
-        log.debug("REST request to update User : {}", user);
-        User result = entityService.update(user);
-        return ResponseEntity.ok().body(result);
-    }
+	/**
+	 * {@code PUT  /user} : Updates an existing user.
+	 *
+	 * @param user the user to update.
+	 * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+	 *         the updated user, or with status {@code 400 (Bad Request)} if the
+	 *         user is not valid, or with status {@code 500 (Internal Server Error)}
+	 *         if the user couldn't be updated.
+	 */
+	@PutMapping("/update")
+	public ResponseEntity<User> updateUser(@Valid @RequestBody UserDTO userDTO) {
+		User user = entityDtoMapper.toEntity(userDTO);
+		log.debug("REST request to update User : {}", user);
+		User result = entityService.update(user);
+		return ResponseEntity.ok().body(result);
+	}
 
-    /**
-     * {@code GET  /user} : get all the users.
-     *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of user in body.
-     */
+	/**
+	 * {@code GET  /user} : get all the users.
+	 *
+	 * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list
+	 *         of user in body.
+	 */
 
-    @GetMapping("/getAll")
-    public ResponseEntity<List<User>> getAllUser() {
-	    log.debug("REST request to get all users");
-        List<User> lst = entityService.getAll();
+	@GetMapping("/getAll")
+	public ResponseEntity<List<User>> getAllUser() {
+		log.debug("REST request to get all users");
+		List<User> lst = entityService.getAll();
 
-        return new ResponseEntity<>(lst,HttpStatus.OK);
-    }
+		return new ResponseEntity<>(lst, HttpStatus.OK);
+	}
 
-    /**
-     * {@code GET  /user/:id} : get the "id" user.
-     *
-     * @param id the id of the user to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the user, or with status {@code 404 (Not Found)}.
-     */
-    @GetMapping("/getById/{id}")
-    public ResponseEntity<User> getOneUser(@PathVariable(value = "id") Integer id) {
-        log.debug("REST request to get User : {}", id);
-        User e = entityService.getOne(id);
+	/**
+	 * {@code GET  /user/:id} : get the "id" user.
+	 *
+	 * @param id the id of the user to retrieve.
+	 * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+	 *         the user, or with status {@code 404 (Not Found)}.
+	 */
+	@GetMapping("/getById/{id}")
+	public ResponseEntity<User> getOneUser(@PathVariable(value = "id") Integer id) {
+		log.debug("REST request to get User : {}", id);
+		User e = entityService.getOne(id);
 
-        return new ResponseEntity<>(e, HttpStatus.OK);
-    }
+		return new ResponseEntity<>(e, HttpStatus.OK);
+	}
 
-  /**
-     * {@code DELETE  /user/:id} : delete the "id" user.
-     *
-     * @param id the id of the user to delete.
-     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
-     */
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable(value = "id") Integer id) {
-        log.debug("REST request to delete User : {}", id);
-        entityService.delete(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+	/**
+	 * {@code DELETE  /user/:id} : delete the "id" user.
+	 *
+	 * @param id the id of the user to delete.
+	 * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+	 */
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Void> deleteUser(@PathVariable(value = "id") Integer id) {
+		log.debug("REST request to delete User : {}", id);
+		entityService.delete(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+
+	@PostMapping("/addUserAndRole")
+	public ResponseEntity<User> createUserAndRole(@RequestBody @Valid User user) {
+		
+		return new ResponseEntity<>(entityService.createUserWithRole(user), HttpStatus.CREATED);
+		
+		
+		
+	}
+	
+	 @PostMapping("/login")
+	    public ResponseEntity<User> login(@RequestBody LoginRequest loginRequest) {
+	        User user = entityService.login(loginRequest.getEmailId(), loginRequest.getPassword());
+	        if (user != null) {
+	            return ResponseEntity.ok(user);
+	        } else {
+	            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+	        }
+	    }
 
 }

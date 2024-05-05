@@ -5,9 +5,11 @@
 */
 package com.hoa.controller;
 
+import com.hoa.dto.ClientDTO;
 import com.hoa.entities.Client;
+import com.hoa.exception.ClientIdNotFoundException;
 import com.hoa.service.ClientService;
-
+import com.hoa.utils.EntityDTOMapper;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,15 +34,18 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/client")
+@RequestMapping("/api/public/client")
 public class ClientController {
 
     private final Logger log = LoggerFactory.getLogger(ClientController.class);
 	
     private final ClientService entityService;
+    
+    private final EntityDTOMapper entityDtoMapper;
 
- 	public ClientController (ClientService entityService) {
+ 	public ClientController (ClientService entityService, EntityDTOMapper entityDtoMapper) {
 		this.entityService = entityService;
+		this.entityDtoMapper = entityDtoMapper;
 	}
 
     /**
@@ -50,7 +55,8 @@ public class ClientController {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new client.
      */
 	@PostMapping("/add")
-	public ResponseEntity<Client> createClient(@RequestBody @Valid Client client) {
+	public ResponseEntity<Client> createClient(@RequestBody @Valid ClientDTO clientDto) {
+		Client client = entityDtoMapper.toEntity(clientDto);
          log.debug("REST request to save Client : {}", client);
          return new ResponseEntity<>(entityService.create(client), HttpStatus.CREATED);
     }
@@ -62,11 +68,15 @@ public class ClientController {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated client,
      * or with status {@code 400 (Bad Request)} if the client is not valid,
      * or with status {@code 500 (Internal Server Error)} if the client couldn't be updated.
+ * @throws ClientIdNotFoundException 
      */
-    @PutMapping("/update")
-    public ResponseEntity<Client> updateClient(@Valid @RequestBody Client client) {
-        log.debug("REST request to update Client : {}", client);
-        Client result = entityService.update(client);
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Client> updateClient(@PathVariable(value = "id") Integer id,@Valid @RequestBody ClientDTO clientDto) throws ClientIdNotFoundException {
+        
+		Client client = entityDtoMapper.toEntity(clientDto);
+    	
+    	log.debug("REST request to update Client : {}", client);
+        Client result = entityService.update(id,client);
         return ResponseEntity.ok().body(result);
     }
 

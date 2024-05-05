@@ -52,8 +52,11 @@ public class AmenityServiceImpl implements AmenityService {
      * {@inheritDoc}
      */
     @Override
-    public Amenity update(Amenity d) {
+    public Amenity update(Integer id,Amenity d) {
         try {
+        	if(repository.existsById(id)) {
+        		d.setAmenityid(id);
+        	}
             return repository.saveAndFlush(d);
 
         } catch (Exception ex) {

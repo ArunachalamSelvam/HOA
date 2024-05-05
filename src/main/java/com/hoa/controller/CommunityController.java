@@ -5,9 +5,10 @@
 */
 package com.hoa.controller;
 
+import com.hoa.dto.CommunityDTO;
 import com.hoa.entities.Community;
 import com.hoa.service.CommunityService;
-
+import com.hoa.utils.EntityDTOMapper;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,15 +33,18 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/community")
+@RequestMapping("/api/public/community")
 public class CommunityController {
 
     private final Logger log = LoggerFactory.getLogger(CommunityController.class);
 	
     private final CommunityService entityService;
+    
+    private final EntityDTOMapper entityDtoMapper;
 
- 	public CommunityController (CommunityService entityService) {
+ 	public CommunityController (CommunityService entityService, EntityDTOMapper entityDtoMapper) {
 		this.entityService = entityService;
+		this.entityDtoMapper = entityDtoMapper;
 	}
 
     /**
@@ -50,7 +54,8 @@ public class CommunityController {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new community.
      */
 	@PostMapping("/add")
-	public ResponseEntity<Community> createCommunity(@RequestBody @Valid Community community) {
+	public ResponseEntity<Community> createCommunity(@RequestBody @Valid CommunityDTO communityDto) {
+		Community community = entityDtoMapper.toEntity(communityDto);
          log.debug("REST request to save Community : {}", community);
          return new ResponseEntity<>(entityService.create(community), HttpStatus.CREATED);
     }
@@ -64,7 +69,9 @@ public class CommunityController {
      * or with status {@code 500 (Internal Server Error)} if the community couldn't be updated.
      */
     @PutMapping("/update")
-    public ResponseEntity<Community> updateCommunity(@Valid @RequestBody Community community) {
+    public ResponseEntity<Community> updateCommunity(@Valid @RequestBody CommunityDTO communityDto) {
+		Community community = entityDtoMapper.toEntity(communityDto);
+
         log.debug("REST request to update Community : {}", community);
         Community result = entityService.update(community);
         return ResponseEntity.ok().body(result);
@@ -97,6 +104,15 @@ public class CommunityController {
 
         return new ResponseEntity<>(e, HttpStatus.OK);
     }
+    
+    @GetMapping( "/getByCommunityCode/{communityCode}")
+    public ResponseEntity<Community> getOneCommunityByCommunityCode(@PathVariable(value ="communityCode") String communityCode) {
+        log.debug("REST request to get Community : {}", communityCode);
+        Community e = entityService.getOneByCommunityCode(communityCode);
+
+        return new ResponseEntity<>(e, HttpStatus.OK);
+    }
+    
 
   /**
      * {@code DELETE  /community/:id} : delete the "id" community.

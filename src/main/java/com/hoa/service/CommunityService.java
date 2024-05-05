@@ -41,6 +41,8 @@ public interface CommunityService  {
      * @return Community
      */
     Community getOne(Integer id) ;
+    
+    Community getOneByCommunityCode(String communitycode) ;
 
     /**
      * Get all entities

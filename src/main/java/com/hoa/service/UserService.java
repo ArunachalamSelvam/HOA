@@ -75,5 +75,9 @@ public interface UserService  {
      * @return Page<User>  
      */
 	Page<User> findAllSpecification(Specification<User> specs, Pageable pageable);
+	
+	User createUserWithRole(User user);
+	
+	User login(String emailId, String password);
 
 }

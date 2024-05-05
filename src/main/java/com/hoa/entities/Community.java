@@ -19,17 +19,18 @@ public class Community implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="communityID", nullable=false)
     private Integer    communityid ;
 
     //--- ENTITY DATA FIELDS 
-    @Column(name="name", nullable=false, length=128)
+    @Column(name="name", length=128)
     private String     name ;
 
     @Column(name="communityCode", length=255)
-    private String     communitycode ;
+    private String     communityCode ;
 
-    @Column(name="addressID", nullable=false)
+    @Column(name="addressID")
     private Integer    addressid ;
 
     @Column(name="presidentEmailID", length=128)
@@ -98,63 +99,63 @@ public class Community implements Serializable {
     @Column(name="timeZone", length=2147483647)
     private String     timezone ;
 
-    @Column(name="contractId", nullable=false)
+    @Column(name="contractId")
     private Integer    contractid ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
-    @OneToMany(mappedBy="community")
-    private List<HoaFee> listOfHoafee ; 
-
-    @OneToMany(mappedBy="community")
-    private List<Faq>  listOfFaq ; 
-
-    @OneToMany(mappedBy="community")
-    private List<ServiceRequest> listOfServicerequest ; 
-
-    @OneToMany(mappedBy="community")
-    private List<Violation> listOfViolation ; 
-
-    @OneToMany(mappedBy="community")
-    private List<CommunityDocument> listOfCommunitydocument ; 
-
-    @OneToMany(mappedBy="community")
-    private List<News> listOfNews ; 
-
-    @OneToMany(mappedBy="community")
-    private List<AuditLog> listOfAuditlog ; 
-
-    @OneToMany(mappedBy="community")
-    private List<EmailDetail> listOfEmaildetail ; 
-
-    @OneToMany(mappedBy="community")
-    private List<AmenityBooking> listOfAmenitybooking ; 
-
-    @OneToMany(mappedBy="community")
-    private List<Vendor> listOfVendor ; 
+//    @OneToMany(mappedBy="community")
+//    private List<HoaFee> listOfHoafee ; 
+//
+//    @OneToMany(mappedBy="community")
+//    private List<Faq>  listOfFaq ; 
+//
+//    @OneToMany(mappedBy="community")
+//    private List<ServiceRequest> listOfServicerequest ; 
+//
+//    @OneToMany(mappedBy="community")
+//    private List<Violation> listOfViolation ; 
+//
+//    @OneToMany(mappedBy="community")
+//    private List<CommunityDocument> listOfCommunitydocument ; 
+//
+//    @OneToMany(mappedBy="community")
+//    private List<News> listOfNews ; 
+//
+//    @OneToMany(mappedBy="community")
+//    private List<AuditLog> listOfAuditlog ; 
+//
+//    @OneToMany(mappedBy="community")
+//    private List<EmailDetail> listOfEmaildetail ; 
+//
+//    @OneToMany(mappedBy="community")
+//    private List<AmenityBooking> listOfAmenitybooking ; 
+//
+//    @OneToMany(mappedBy="community")
+//    private List<Vendor> listOfVendor ; 
 
     @ManyToOne
     @JoinColumn(name="planId", referencedColumnName="planId", insertable=false, updatable=false)
     private Plan       plan ; 
 
-    @OneToMany(mappedBy="community")
-    private List<Client> listOfClient ; 
+//    @OneToMany(mappedBy="community")
+//    private List<Client> listOfClient ; 
 
     @ManyToOne
     @JoinColumn(name="contractId", referencedColumnName="contractId", insertable=false, updatable=false)
     private Contract   contract ; 
 
-    @OneToMany(mappedBy="community")
-    private List<PaymentDetail> listOfPaymentdetail ; 
-
-    @OneToMany(mappedBy="community")
-    private List<BankDetail> listOfBankdetail ; 
-
-    @OneToMany(mappedBy="community")
-    private List<Amenity> listOfAmenity ; 
-
-    @OneToMany(mappedBy="community")
-    private List<ViolationDetail> listOfViolationdetail ; 
+//    @OneToMany(mappedBy="community")
+//    private List<PaymentDetail> listOfPaymentdetail ; 
+//
+//    @OneToMany(mappedBy="community")
+//    private List<BankDetail> listOfBankdetail ; 
+//
+//    @OneToMany(mappedBy="community")
+//    private List<Amenity> listOfAmenity ; 
+//
+//    @OneToMany(mappedBy="community")
+//    private List<ViolationDetail> listOfViolationdetail ; 
 
     @ManyToOne
     @JoinColumn(name="addressID", referencedColumnName="addressId", insertable=false, updatable=false)
@@ -184,10 +185,10 @@ public class Community implements Serializable {
     }
 
     public void setCommunitycode( String communitycode ) {
-        this.communitycode = communitycode ;
+        this.communityCode = communitycode ;
     }
     public String getCommunitycode() {
-        return this.communitycode;
+        return this.communityCode;
     }
 
     public void setAddressid( Integer addressid ) {
@@ -352,73 +353,73 @@ public class Community implements Serializable {
     }
 
     //--- GETTERS FOR LINKS
-    public List<HoaFee> getListOfHoafee() {
-        return this.listOfHoafee;
-    } 
-
-    public List<Faq> getListOfFaq() {
-        return this.listOfFaq;
-    } 
-
-    public List<ServiceRequest> getListOfServicerequest() {
-        return this.listOfServicerequest;
-    } 
-
-    public List<Violation> getListOfViolation() {
-        return this.listOfViolation;
-    } 
-
-    public List<CommunityDocument> getListOfCommunitydocument() {
-        return this.listOfCommunitydocument;
-    } 
-
-    public List<News> getListOfNews() {
-        return this.listOfNews;
-    } 
-
-    public List<AuditLog> getListOfAuditlog() {
-        return this.listOfAuditlog;
-    } 
-
-    public List<EmailDetail> getListOfEmaildetail() {
-        return this.listOfEmaildetail;
-    } 
-
-    public List<AmenityBooking> getListOfAmenitybooking() {
-        return this.listOfAmenitybooking;
-    } 
-
-    public List<Vendor> getListOfVendor() {
-        return this.listOfVendor;
-    } 
-
-    public Plan getPlan() {
-        return this.plan;
-    } 
-
-    public List<Client> getListOfClient() {
-        return this.listOfClient;
-    } 
-
-    public Contract getContract() {
-        return this.contract;
-    } 
-
-    public List<PaymentDetail> getListOfPaymentdetail() {
-        return this.listOfPaymentdetail;
-    } 
-
-    public List<BankDetail> getListOfBankdetail() {
-        return this.listOfBankdetail;
-    } 
-
-    public List<Amenity> getListOfAmenity() {
-        return this.listOfAmenity;
-    } 
-
-    public List<ViolationDetail> getListOfViolationdetail() {
-        return this.listOfViolationdetail;
-    } 
+//    public List<HoaFee> getListOfHoafee() {
+//        return this.listOfHoafee;
+//    } 
+//
+//    public List<Faq> getListOfFaq() {
+//        return this.listOfFaq;
+//    } 
+//
+//    public List<ServiceRequest> getListOfServicerequest() {
+//        return this.listOfServicerequest;
+//    } 
+//
+//    public List<Violation> getListOfViolation() {
+//        return this.listOfViolation;
+//    } 
+//
+//    public List<CommunityDocument> getListOfCommunitydocument() {
+//        return this.listOfCommunitydocument;
+//    } 
+//
+//    public List<News> getListOfNews() {
+//        return this.listOfNews;
+//    } 
+//
+//    public List<AuditLog> getListOfAuditlog() {
+//        return this.listOfAuditlog;
+//    } 
+//
+//    public List<EmailDetail> getListOfEmaildetail() {
+//        return this.listOfEmaildetail;
+//    } 
+//
+//    public List<AmenityBooking> getListOfAmenitybooking() {
+//        return this.listOfAmenitybooking;
+//    } 
+//
+//    public List<Vendor> getListOfVendor() {
+//        return this.listOfVendor;
+//    } 
+//
+//    public Plan getPlan() {
+//        return this.plan;
+//    } 
+//
+//    public List<Client> getListOfClient() {
+//        return this.listOfClient;
+//    } 
+//
+//    public Contract getContract() {
+//        return this.contract;
+//    } 
+//
+//    public List<PaymentDetail> getListOfPaymentdetail() {
+//        return this.listOfPaymentdetail;
+//    } 
+//
+//    public List<BankDetail> getListOfBankdetail() {
+//        return this.listOfBankdetail;
+//    } 
+//
+//    public List<Amenity> getListOfAmenity() {
+//        return this.listOfAmenity;
+//    } 
+//
+//    public List<ViolationDetail> getListOfViolationdetail() {
+//        return this.listOfViolationdetail;
+//    } 
 
     public Address getAddress() {
         return this.address;
@@ -432,7 +433,7 @@ public class Community implements Serializable {
         sb.append("|");
         sb.append(name);
         sb.append("|");
-        sb.append(communitycode);
+        sb.append(communityCode);
         sb.append("|");
         sb.append(addressid);
         sb.append("|");

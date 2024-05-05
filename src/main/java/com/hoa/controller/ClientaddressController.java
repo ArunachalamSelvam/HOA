@@ -5,9 +5,10 @@
 */
 package com.hoa.controller;
 
+import com.hoa.dto.ClientAddressDTO;
 import com.hoa.entities.ClientAddress;
 import com.hoa.service.ClientaddressService;
-
+import com.hoa.utils.EntityDTOMapper;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,15 +33,18 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/clientaddress")
+@RequestMapping("/api/public/clientaddress")
 public class ClientaddressController {
 
     private final Logger log = LoggerFactory.getLogger(ClientaddressController.class);
 	
     private final ClientaddressService entityService;
+    
+    private final EntityDTOMapper entityDTOMapper;
 
- 	public ClientaddressController (ClientaddressService entityService) {
+ 	public ClientaddressController (ClientaddressService entityService, EntityDTOMapper entityDTOMapper) {
 		this.entityService = entityService;
+		this.entityDTOMapper = entityDTOMapper;
 	}
 
     /**
@@ -50,7 +54,9 @@ public class ClientaddressController {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new clientaddress.
      */
 	@PostMapping("/add")
-	public ResponseEntity<ClientAddress> createClientaddress(@RequestBody @Valid ClientAddress clientaddress) {
+	public ResponseEntity<ClientAddress> createClientaddress(@RequestBody @Valid ClientAddressDTO clientaddressDto) {
+		
+		ClientAddress clientaddress= entityDTOMapper.toEntity(clientaddressDto);
          log.debug("REST request to save Clientaddress : {}", clientaddress);
          return new ResponseEntity<>(entityService.create(clientaddress), HttpStatus.CREATED);
     }
@@ -64,7 +70,9 @@ public class ClientaddressController {
      * or with status {@code 500 (Internal Server Error)} if the clientaddress couldn't be updated.
      */
     @PutMapping("/update")
-    public ResponseEntity<ClientAddress> updateClientaddress(@Valid @RequestBody ClientAddress clientaddress) {
+    public ResponseEntity<ClientAddress> updateClientaddress(@Valid @RequestBody ClientAddressDTO clientaddressDto) {
+    	
+    	ClientAddress clientaddress= entityDTOMapper.toEntity(clientaddressDto);
         log.debug("REST request to update Clientaddress : {}", clientaddress);
         ClientAddress result = entityService.update(clientaddress);
         return ResponseEntity.ok().body(result);

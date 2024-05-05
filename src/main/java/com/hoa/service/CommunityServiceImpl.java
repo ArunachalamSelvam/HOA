@@ -124,4 +124,10 @@ public class CommunityServiceImpl implements CommunityService {
 		return repository.findAll(specs, pageable);
 	}
 
+
+	@Override
+	public Community getOneByCommunityCode(String communitycode) {
+		return repository.findByCommunityCode(communitycode);
+	}
+
 }

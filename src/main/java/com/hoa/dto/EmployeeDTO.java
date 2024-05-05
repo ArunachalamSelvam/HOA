@@ -12,11 +12,11 @@ public class EmployeeDTO {
 	    private Integer managerid;
 	    private Integer designationid;
 	    private Boolean activestatus;
-	    private UserDTO user;
-	    private List<EmployeeDTO> listOfEmployee;
-	    private DesignationDTO designation;
-	    private EmployeeDTO manager;
-	    private List<ContractDTO> listOfContract;
+//	    private UserDTO user;
+//	    private List<EmployeeDTO> listOfEmployee;
+//	    private DesignationDTO designation;
+//	    private EmployeeDTO manager;
+//	    private List<ContractDTO> listOfContract;
 
 	    // Getters and Setters for all fields
 
@@ -76,58 +76,55 @@ public class EmployeeDTO {
 	        this.activestatus = activestatus;
 	    }
 
-	    public UserDTO getUser() {
-	        return user;
-	    }
-
-	    public void setUser(UserDTO user) {
-	        this.user = user;
-	    }
-
-	    public List<EmployeeDTO> getListOfEmployee() {
-	        return listOfEmployee;
-	    }
-
-	    public void setListOfEmployee(List<EmployeeDTO> listOfEmployee) {
-	        this.listOfEmployee = listOfEmployee;
-	    }
-
-	    public DesignationDTO getDesignation() {
-	        return designation;
-	    }
-
-	    public void setDesignation(DesignationDTO designation) {
-	        this.designation = designation;
-	    }
-
-	    public EmployeeDTO getManager() {
-	        return manager;
-	    }
-
-	    public void setManager(EmployeeDTO manager) {
-	        this.manager = manager;
-	    }
-
-	    public List<ContractDTO> getListOfContract() {
-	        return listOfContract;
-	    }
-
-	    public void setListOfContract(List<ContractDTO> listOfContract) {
-	        this.listOfContract = listOfContract;
-	    }
+//	    public UserDTO getUser() {
+//	        return user;
+//	    }
+//
+//	    public void setUser(UserDTO user) {
+//	        this.user = user;
+//	    }
+//
+//	    public List<EmployeeDTO> getListOfEmployee() {
+//	        return listOfEmployee;
+//	    }
+//
+//	    public void setListOfEmployee(List<EmployeeDTO> listOfEmployee) {
+//	        this.listOfEmployee = listOfEmployee;
+//	    }
+//
+//	    public DesignationDTO getDesignation() {
+//	        return designation;
+//	    }
+//
+//	    public void setDesignation(DesignationDTO designation) {
+//	        this.designation = designation;
+//	    }
+//
+//	    public EmployeeDTO getManager() {
+//	        return manager;
+//	    }
+//
+//	    public void setManager(EmployeeDTO manager) {
+//	        this.manager = manager;
+//	    }
+//
+//	    public List<ContractDTO> getListOfContract() {
+//	        return listOfContract;
+//	    }
+//
+//	    public void setListOfContract(List<ContractDTO> listOfContract) {
+//	        this.listOfContract = listOfContract;
+//	    }
 
 		@Override
 		public String toString() {
 			return "EmployeeDto [employeeid=" + employeeid + ", userid=" + userid + ", employeeno=" + employeeno
 					+ ", dateofjoining=" + dateofjoining + ", managerid=" + managerid + ", designationid="
-					+ designationid + ", activestatus=" + activestatus + ", user=" + user + ", listOfEmployee="
-					+ listOfEmployee + ", designation=" + designation + ", manager=" + manager + ", listOfContract="
-					+ listOfContract + "]";
+					+ designationid + ", activestatus=" + activestatus + "]";
 		}
 
 		public EmployeeDTO(Integer employeeid, Integer userid, String employeeno, Date dateofjoining, Integer managerid,
-				Integer designationid, Boolean activestatus, UserDTO user, List<EmployeeDTO> listOfEmployee,
-				DesignationDTO designation, EmployeeDTO manager, List<ContractDTO> listOfContract) {
+				Integer designationid, Boolean activestatus) {
 			super();
 			this.employeeid = employeeid;
 			this.userid = userid;
@@ -136,11 +133,7 @@ public class EmployeeDTO {
 			this.managerid = managerid;
 			this.designationid = designationid;
 			this.activestatus = activestatus;
-			this.user = user;
-			this.listOfEmployee = listOfEmployee;
-			this.designation = designation;
-			this.manager = manager;
-			this.listOfContract = listOfContract;
+			
 		}
 
 		public EmployeeDTO() {

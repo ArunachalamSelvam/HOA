@@ -5,9 +5,28 @@
 */
 package com.hoa.controller;
 
+import com.hoa.dto.AddressDTO;
+import com.hoa.dto.ClientDTO;
+import com.hoa.dto.CommunityDTO;
 import com.hoa.dto.ContractDTO;
+import com.hoa.dto.UserDTO;
+import com.hoa.entities.Address;
+import com.hoa.entities.Client;
+import com.hoa.entities.ClientAddress;
+import com.hoa.entities.Community;
 import com.hoa.entities.Contract;
+import com.hoa.entities.User;
+import com.hoa.exception.ClientIdNotFoundException;
+import com.hoa.requestEntities.ClientRequest;
+import com.hoa.requestEntities.ContractRequest;
+import com.hoa.requestEntities.ContractRequest2;
+import com.hoa.requestEntities.Contractrequest3;
+import com.hoa.service.AddressService;
+import com.hoa.service.ClientService;
+import com.hoa.service.ClientaddressService;
+import com.hoa.service.CommunityService;
 import com.hoa.service.ContractService;
+import com.hoa.service.UserService;
 import com.hoa.utils.EntityDTOMapper;
 
 import org.springframework.http.HttpStatus;
@@ -35,7 +54,7 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/contract")
+@RequestMapping("/api/public/contract")
 public class ContractController {
 
     private final Logger log = LoggerFactory.getLogger(ContractController.class);
@@ -43,22 +62,44 @@ public class ContractController {
     private final EntityDTOMapper entityDtoMapper;
 	
     private final ContractService entityService;
+    
+    private final UserService userService;
+    
+    private final CommunityService communityService;
+    
+    private final ClientService clientService;
+    
+  private final AddressService addressService;
+    
+    private final ClientaddressService clientAddressService;
 
- 	public ContractController (ContractService entityService, EntityDTOMapper entityDtoMapper) {
-		this.entityService = entityService;
+ 	
+
+    public ContractController(EntityDTOMapper entityDtoMapper, ContractService entityService, UserService userService,
+			CommunityService communityService, ClientService clientService,AddressService addressService, ClientaddressService clientAddressService) {
+		super();
 		this.entityDtoMapper = entityDtoMapper;
+		this.entityService = entityService;
+		this.userService = userService;
+		this.communityService = communityService;
+		this.clientService = clientService;
+		this.addressService = addressService;
+		this.clientAddressService = clientAddressService;
 	}
 
-    /**
+	/**
      * {@code POST  /contract} : Create a new contract.
      *
      * @param contract the contract to create.
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new contract.
+	 * @throws ClientIdNotFoundException 
      */
-	@PostMapping("/add")
-	public ResponseEntity<Contract> createContract(@RequestBody @Valid ContractDTO contractDTO) {
+	
+/*    
+    @PostMapping("/add")
+	public ResponseEntity<Contract> createContract(@RequestBody @Valid ContractRequest contractRequest) {
 		
-		Contract contract = entityDtoMapper.toEntity(contractDTO);
+//		Contract contract = entityDtoMapper.toEntity(contractDTO);
 //		Contract contract = new Contract();
 //    	contract.setContractid(contractDTO.getContractid());
 //    	contract.setAnnualrenewalfee(contractDTO.getAnnualrenewalfee());
@@ -78,10 +119,123 @@ public class ContractController {
 //    	contract.setModifiedbyid(contractDTO.getModifiedbyid());
 //    	contract.setModifieddate(contractDTO.getModifieddate());
 		
-         log.debug("REST request to save Contract : {}", contract);
-         return new ResponseEntity<>(entityService.create(contract), HttpStatus.CREATED);
+//         log.debug("REST request to save Contract : {}", contract);
+//         return new ResponseEntity<>(entityService.create(contract), HttpStatus.CREATED);
+		
+		ContractDTO contractDto = contractRequest.getContractDto();
+		UserDTO userDto = contractRequest.getUserDto();
+		CommunityDTO communityDto = contractRequest.getCommunityDto();
+		
+		User user = entityDtoMapper.toEntity(userDto);
+		
+		User savedUser = userService.create(user);
+		
+		communityDto.setPresidentuserid(savedUser.getUserid());
+		Community community = entityDtoMapper.toEntity(communityDto);
+		Community savedCommunity = communityService.create(community);
+		
+		ClientDTO clientDto = new ClientDTO(savedUser.getUserid(),savedCommunity.getCommunityid(),savedUser.getFirstname(),1);
+		
+		Client client = entityDtoMapper.toEntity(clientDto);
+		Client savedClient = clientService.create(client);
+		
+		contractDto.setClientid(savedClient.getClientid());
+		Contract contract = entityDtoMapper.toEntity(contractDto);
+		Contract savedContract = entityService.create(contract);
+		
+
+      log.debug("REST request to save Contract : {}", contract);
+      return new ResponseEntity<>(entityService.create(savedContract), HttpStatus.CREATED);
+		
+		
+		
+    }
+*/
+
+
+//	@PostMapping("/add")
+//	public ResponseEntity<Contract> createContract(@RequestBody @Valid ContractRequest2 contractRequest) {
+//		
+//		ContractDTO contractDto = contractRequest.getContractDto();
+//	
+//		CommunityDTO communityDto = contractRequest.getCommunityDto();
+//	
+//		
+//		
+//		Community community = entityDtoMapper.toEntity(communityDto);
+//		
+//		
+//		Contract contract = entityDtoMapper.toEntity(contractDto);
+//		Contract savedContract = entityService.create(contract);
+//		
+//		community.setContractid(savedContract.getContractid());
+//		
+//		Community savedCommunity = communityService.create(community);
+//
+//      log.debug("REST request to save Contract : {}", contract);
+//      return new ResponseEntity<>(entityService.create(savedContract), HttpStatus.CREATED);
+//		
+//		
+//		
+//    }
+    
+    @PostMapping("/add")
+	public ResponseEntity<Contract> createContract(@RequestBody @Valid Contractrequest3 contractRequest) throws ClientIdNotFoundException {
+		
+		ContractDTO contractDto = contractRequest.getContractDto();
+	
+		
+		ClientRequest clientRequest = contractRequest.getClientRequest();
+		User user = entityDtoMapper.toEntity(clientRequest.getUserDto());
+		User savedUser = userService.create(user);
+		
+		ClientDTO clientDto = clientRequest.getClientDto();
+		
+		clientDto.setUserid(savedUser.getUserid());
+		Client client = entityDtoMapper.toEntity(clientRequest.getClientDto());
+		Client savedClient = clientService.create(client);
+		
+		AddressDTO addressDTO = clientRequest.getAddressDto();
+		Address address = entityDtoMapper.toEntity(addressDTO);
+		Address savedAddress = addressService.create(address);
+		
+		ClientAddress clientAddress = new ClientAddress();
+		clientAddress.setAddressid(savedAddress.getAddressid());
+		clientAddress.setClientid(savedClient.getClientid());
+		
+		ClientAddress savedClientAddress = clientAddressService.create(clientAddress);
+	
+		contractDto.setClientid(savedClient.getClientid());
+		
+		
+		CommunityDTO communityDto = new CommunityDTO();
+		communityDto.setAddressid(contractDto.getBusinessaddressid());
+		communityDto.setCommunitysize(contractDto.getSizeofthecommunity());
+		communityDto.setPlanid(contractDto.getPlanid());
+		communityDto.setCreatedbyid(contractDto.getSalespersonid());
+		communityDto.setCreateddate(contractDto.getCreateddate());
+		
+		Community community = entityDtoMapper.toEntity(communityDto);
+		
+		
+		Contract contract = entityDtoMapper.toEntity(contractDto);
+		Contract savedContract = entityService.create(contract);
+		
+		community.setContractid(savedContract.getContractid());
+		
+		Community savedCommunity = communityService.create(community);
+		savedClient.setCommunityid(savedCommunity.getCommunityid());
+		
+		clientService.update(savedClient.getClientid(), savedClient);
+
+      log.debug("REST request to save Contract : {}", contract);
+      return ResponseEntity.ok(savedContract);
+		
+		
+		
     }
 
+	
    /**
      * {@code PUT  /contract} : Updates an existing contract.
      *

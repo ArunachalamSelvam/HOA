@@ -18,6 +18,7 @@ public class Client implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="clientId", nullable=false)
     private Integer    clientid ;
 
@@ -25,7 +26,7 @@ public class Client implements Serializable {
     @Column(name="userId", nullable=false)
     private Integer    userid ;
 
-    @Column(name="communityId", nullable=false)
+    @Column(name="communityId")
     private Integer    communityid ;
 
     @Column(name="displayName", length=150)
@@ -43,29 +44,29 @@ public class Client implements Serializable {
     @JoinColumn(name="userId", referencedColumnName="userId", insertable=false, updatable=false)
     private User       user ; 
 
-    @OneToMany(mappedBy="client")
-    private List<ViolationDetail> listOfViolationdetail ; 
-
-    @OneToMany(mappedBy="client")
-    private List<News> listOfNews ; 
-
-    @OneToMany(mappedBy="client")
-    private List<PaymentDetail> listOfPaymentdetail ; 
-
-    @OneToMany(mappedBy="client")
-    private List<EmailSendTo> listOfEmailsendto ; 
-
-    @OneToMany(mappedBy="client")
-    private List<Contract> listOfContract ; 
-
-    @OneToMany(mappedBy="client")
-    private List<ClientAddress> listOfClientaddress ; 
-
-    @OneToMany(mappedBy="client")
-    private List<HoaFee> listOfHoafee ; 
-
-    @OneToMany(mappedBy="client")
-    private List<ServiceRequest> listOfServicerequest ; 
+//    @OneToMany(mappedBy="client")
+//    private List<ViolationDetail> listOfViolationdetail ; 
+//
+//    @OneToMany(mappedBy="client")
+//    private List<News> listOfNews ; 
+//
+//    @OneToMany(mappedBy="client")
+//    private List<PaymentDetail> listOfPaymentdetail ; 
+//
+//    @OneToMany(mappedBy="client")
+//    private List<EmailSendTo> listOfEmailsendto ; 
+//
+//    @OneToMany(mappedBy="client")
+//    private List<Contract> listOfContract ; 
+//
+//    @OneToMany(mappedBy="client")
+//    private List<ClientAddress> listOfClientaddress ; 
+//
+//    @OneToMany(mappedBy="client")
+//    private List<HoaFee> listOfHoafee ; 
+//
+//    @OneToMany(mappedBy="client")
+//    private List<ServiceRequest> listOfServicerequest ; 
 
     @ManyToOne
     @JoinColumn(name="communityId", referencedColumnName="communityID", insertable=false, updatable=false)
@@ -127,37 +128,37 @@ public class Client implements Serializable {
         return this.user;
     } 
 
-    public List<ViolationDetail> getListOfViolationdetail() {
-        return this.listOfViolationdetail;
-    } 
-
-    public List<News> getListOfNews() {
-        return this.listOfNews;
-    } 
-
-    public List<PaymentDetail> getListOfPaymentdetail() {
-        return this.listOfPaymentdetail;
-    } 
-
-    public List<EmailSendTo> getListOfEmailsendto() {
-        return this.listOfEmailsendto;
-    } 
-
-    public List<Contract> getListOfContract() {
-        return this.listOfContract;
-    } 
-
-    public List<ClientAddress> getListOfClientaddress() {
-        return this.listOfClientaddress;
-    } 
-
-    public List<HoaFee> getListOfHoafee() {
-        return this.listOfHoafee;
-    } 
-
-    public List<ServiceRequest> getListOfServicerequest() {
-        return this.listOfServicerequest;
-    } 
+//    public List<ViolationDetail> getListOfViolationdetail() {
+//        return this.listOfViolationdetail;
+//    } 
+//
+//    public List<News> getListOfNews() {
+//        return this.listOfNews;
+//    } 
+//
+//    public List<PaymentDetail> getListOfPaymentdetail() {
+//        return this.listOfPaymentdetail;
+//    } 
+//
+//    public List<EmailSendTo> getListOfEmailsendto() {
+//        return this.listOfEmailsendto;
+//    } 
+//
+//    public List<Contract> getListOfContract() {
+//        return this.listOfContract;
+//    } 
+//
+//    public List<ClientAddress> getListOfClientaddress() {
+//        return this.listOfClientaddress;
+//    } 
+//
+//    public List<HoaFee> getListOfHoafee() {
+//        return this.listOfHoafee;
+//    } 
+//
+//    public List<ServiceRequest> getListOfServicerequest() {
+//        return this.listOfServicerequest;
+//    } 
 
     public Community getCommunity() {
         return this.community;

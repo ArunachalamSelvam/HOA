@@ -32,7 +32,7 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/news")
+@RequestMapping("/api/public/news")
 public class NewsController {
 
     private final Logger log = LoggerFactory.getLogger(NewsController.class);

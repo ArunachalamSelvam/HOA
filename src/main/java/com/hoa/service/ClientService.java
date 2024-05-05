@@ -5,6 +5,8 @@
 */
 package com.hoa.service;
 import com.hoa.entities.Client;
+import com.hoa.exception.ClientIdNotFoundException;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -31,8 +33,9 @@ public interface ClientService  {
      * @param entity domain
      * @param id of entity
      * @return Client
+     * @throws ClientIdNotFoundException 
      */
-    Client update(Client d);
+    Client update(Integer clientId,Client d) throws ClientIdNotFoundException;
 
     /**
      * get Client by id. Can be return empty

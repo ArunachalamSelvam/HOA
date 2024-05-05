@@ -19,6 +19,7 @@ public class ServiceRequest implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="serviceRequestId", nullable=false)
     private Integer    servicerequestid ;
 

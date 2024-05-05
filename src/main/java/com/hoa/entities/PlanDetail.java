@@ -17,6 +17,7 @@ public class PlanDetail implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="planDetailId", nullable=false)
     private Integer    plandetailid ;
 

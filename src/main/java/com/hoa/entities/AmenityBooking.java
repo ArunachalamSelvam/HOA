@@ -18,6 +18,7 @@ public class AmenityBooking implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="amenityBookingId", nullable=false)
     private Integer    amenityBookingId ;
 

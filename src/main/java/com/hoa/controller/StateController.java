@@ -33,7 +33,7 @@ import java.util.List;
  * @author @aek
  */
 @RestController
-@RequestMapping("/api/state")
+@RequestMapping("/api/public/state")
 public class StateController {
 
     private final Logger log = LoggerFactory.getLogger(StateController.class);
@@ -62,6 +62,11 @@ public class StateController {
          log.debug("REST request to save State : {}", state);
          return new ResponseEntity<>(entityService.create(state), HttpStatus.CREATED);
     }
+	
+	 @PostMapping("/addStateList")
+	    public void addStates(@RequestBody List<StateDTO> stateDTOList) {
+	        entityService.addStates(stateDTOList);
+	    }
 
    /**
      * {@code PUT  /state} : Updates an existing state.

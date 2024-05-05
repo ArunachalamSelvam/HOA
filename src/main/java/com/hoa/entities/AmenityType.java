@@ -18,6 +18,7 @@ public class AmenityType implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="id", nullable=false)
     private Integer    id ;
 

@@ -8,7 +8,10 @@ package com.hoa.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.hoa.repositories.RoleRepository;
 import com.hoa.repositories.UserRepository;
+import com.hoa.entities.Role;
 import com.hoa.entities.User;
 import com.hoa.service.UserService;
 import org.springframework.data.domain.Page;
@@ -24,14 +27,15 @@ import java.util.List;
  * @author aek
  */
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
 
 
     private final UserRepository repository;
 
-    public UserServiceImpl(UserRepository repo) {
+    private final RoleRepository roleRepository;
+    public UserServiceImpl(UserRepository repo, RoleRepository roleRepository) {
          this.repository = repo;
+         this.roleRepository = roleRepository;
     }
 
 
@@ -123,5 +127,37 @@ public class UserServiceImpl implements UserService {
 	public Page<User> findAllSpecification(Specification<User> specs, Pageable pageable) {
 		return repository.findAll(specs, pageable);
 	}
+    
+    @Override
+    @Transactional
+    public User createUserWithRole(User user) {
+    	
+    	Role role = user.getRole();
+        
+        if (role == null) {
+            throw new IllegalArgumentException("Role cannot be null");
+        }
+
+        // Save the role first if it doesn't exist
+        if (role.getRoleid() == null) {
+            role = roleRepository.save(role);
+        }
+
+        // Assign the role to the user
+        user.setRole(role);
+
+        return repository.save(user);
+    }
+
+
+	@Override
+	public User login(String emailId, String password) {
+		User user = repository.findUserByEmailId(emailId);
+		if(user!=null && user.getPassword().equals(password)) {
+			return user;
+		}
+		return null;
+	}
+
 
 }

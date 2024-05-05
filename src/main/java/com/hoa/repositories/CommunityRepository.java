@@ -20,5 +20,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CommunityRepository  extends JpaRepository<Community, Integer> , JpaSpecificationExecutor<Community> {
-
+	
+	Community findByCommunityCode(String communitycode);
+	
+	
 }
