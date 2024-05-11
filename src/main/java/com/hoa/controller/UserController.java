@@ -76,11 +76,11 @@ public class UserController {
 	 *         user is not valid, or with status {@code 500 (Internal Server Error)}
 	 *         if the user couldn't be updated.
 	 */
-	@PutMapping("/update")
-	public ResponseEntity<User> updateUser(@Valid @RequestBody UserDTO userDTO) {
+	@PutMapping("/update{id}")
+	public ResponseEntity<User> updateUser(@PathVariable (value = "id") Integer id,@Valid @RequestBody UserDTO userDTO) {
 		User user = entityDtoMapper.toEntity(userDTO);
 		log.debug("REST request to update User : {}", user);
-		User result = entityService.update(user);
+		User result = entityService.update(id,user);
 		return ResponseEntity.ok().body(result);
 	}
 
@@ -136,14 +136,14 @@ public class UserController {
 		
 	}
 	
-	 @PostMapping("/login")
-	    public ResponseEntity<User> login(@RequestBody LoginRequest loginRequest) {
-	        User user = entityService.login(loginRequest.getEmailId(), loginRequest.getPassword());
-	        if (user != null) {
-	            return ResponseEntity.ok(user);
-	        } else {
-	            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
-	        }
-	    }
+//	 @PostMapping("/login")
+//	    public ResponseEntity<User> login(@RequestBody LoginRequest loginRequest) {
+//	        User user = entityService.login(loginRequest.getEmailId(), loginRequest.getPassword());
+//	        if (user != null) {
+//	            return ResponseEntity.ok(user);
+//	        } else {
+//	            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+//	        }
+//	    }
 
 }

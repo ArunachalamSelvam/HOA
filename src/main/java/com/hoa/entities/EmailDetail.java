@@ -21,20 +21,20 @@ public class EmailDetail implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="emailDetailId", nullable=false)
-    private Integer    emaildetailid ;
+    private Integer    emailDetailId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="communityId")
-    private Integer    communityid ;
+    private Integer    communityId ;
 
     @Column(name="emailType", length=128)
-    private String     emailtype ;
+    private String     emailType ;
 
     @Column(name="emailFrom", length=256)
-    private String     emailfrom ;
+    private String     emailFrom ;
 
     @Column(name="emailTo", length=256)
-    private String     emailto ;
+    private String     emailTo ;
 
     @Column(name="subject", length=128)
     private String     subject ;
@@ -43,15 +43,15 @@ public class EmailDetail implements Serializable {
     private String     content ;
 
     @Column(name="emailStatus", length=128)
-    private String     emailstatus ;
+    private String     emailStatus ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="createdDate", nullable=false)
-    private Date       createddate ;
+    private Date       createdDate ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="sendDate")
-    private Date       senddate ;
+    private Date       sendDate ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -72,38 +72,38 @@ public class EmailDetail implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setEmaildetailid( Integer emaildetailid ) {
-        this.emaildetailid = emaildetailid ;
+        this.emailDetailId = emaildetailid ;
     }
     public Integer getEmaildetailid() {
-        return this.emaildetailid;
+        return this.emailDetailId;
     }
 
     public void setCommunityid( Integer communityid ) {
-        this.communityid = communityid ;
+        this.communityId = communityid ;
     }
     public Integer getCommunityid() {
-        return this.communityid;
+        return this.communityId;
     }
 
     public void setEmailtype( String emailtype ) {
-        this.emailtype = emailtype ;
+        this.emailType = emailtype ;
     }
     public String getEmailtype() {
-        return this.emailtype;
+        return this.emailType;
     }
 
     public void setEmailfrom( String emailfrom ) {
-        this.emailfrom = emailfrom ;
+        this.emailFrom = emailfrom ;
     }
     public String getEmailfrom() {
-        return this.emailfrom;
+        return this.emailFrom;
     }
 
     public void setEmailto( String emailto ) {
-        this.emailto = emailto ;
+        this.emailTo = emailto ;
     }
     public String getEmailto() {
-        return this.emailto;
+        return this.emailTo;
     }
 
     public void setSubject( String subject ) {
@@ -121,24 +121,24 @@ public class EmailDetail implements Serializable {
     }
 
     public void setEmailstatus( String emailstatus ) {
-        this.emailstatus = emailstatus ;
+        this.emailStatus = emailstatus ;
     }
     public String getEmailstatus() {
-        return this.emailstatus;
+        return this.emailStatus;
     }
 
     public void setCreateddate( Date createddate ) {
-        this.createddate = createddate ;
+        this.createdDate = createddate ;
     }
     public Date getCreateddate() {
-        return this.createddate;
+        return this.createdDate;
     }
 
     public void setSenddate( Date senddate ) {
-        this.senddate = senddate ;
+        this.sendDate = senddate ;
     }
     public Date getSenddate() {
-        return this.senddate;
+        return this.sendDate;
     }
 
     //--- GETTERS FOR LINKS
@@ -154,25 +154,25 @@ public class EmailDetail implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(emaildetailid);
+        sb.append(emailDetailId);
         sb.append("|");
-        sb.append(communityid);
+        sb.append(communityId);
         sb.append("|");
-        sb.append(emailtype);
+        sb.append(emailType);
         sb.append("|");
-        sb.append(emailfrom);
+        sb.append(emailFrom);
         sb.append("|");
-        sb.append(emailto);
+        sb.append(emailTo);
         sb.append("|");
         sb.append(subject);
         sb.append("|");
         sb.append(content);
         sb.append("|");
-        sb.append(emailstatus);
+        sb.append(emailStatus);
         sb.append("|");
-        sb.append(createddate);
+        sb.append(createdDate);
         sb.append("|");
-        sb.append(senddate);
+        sb.append(sendDate);
         return sb.toString(); 
     } 
 

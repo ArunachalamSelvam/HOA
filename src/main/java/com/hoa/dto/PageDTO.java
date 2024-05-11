@@ -10,7 +10,7 @@ public class PageDTO {
 	    private String componenturl;
 	    private Integer displayorder;
 	    private Boolean activestatus;
-	    private List<RolePageDTO> listOfRolepage;
+//	    private List<RolePageDTO> listOfRolepage;
 
 	    // Getters and Setters for all fields
 
@@ -62,23 +62,23 @@ public class PageDTO {
 	        this.activestatus = activestatus;
 	    }
 
-	    public List<RolePageDTO> getListOfRolepage() {
-	        return listOfRolepage;
-	    }
-
-	    public void setListOfRolepage(List<RolePageDTO> listOfRolepage) {
-	        this.listOfRolepage = listOfRolepage;
-	    }
+//	    public List<RolePageDTO> getListOfRolepage() {
+//	        return listOfRolepage;
+//	    }
+//
+//	    public void setListOfRolepage(List<RolePageDTO> listOfRolepage) {
+//	        this.listOfRolepage = listOfRolepage;
+//	    }
 
 		@Override
 		public String toString() {
 			return "PageDto [pageid=" + pageid + ", name=" + name + ", pageicon=" + pageicon + ", componenturl="
 					+ componenturl + ", displayorder=" + displayorder + ", activestatus=" + activestatus
-					+ ", listOfRolepage=" + listOfRolepage + "]";
+					+ ", listOfRolepage=" +  "]";
 		}
 
 		public PageDTO(Integer pageid, String name, String pageicon, String componenturl, Integer displayorder,
-				Boolean activestatus, List<RolePageDTO> listOfRolepage) {
+				Boolean activestatus) {
 			super();
 			this.pageid = pageid;
 			this.name = name;
@@ -86,7 +86,7 @@ public class PageDTO {
 			this.componenturl = componenturl;
 			this.displayorder = displayorder;
 			this.activestatus = activestatus;
-			this.listOfRolepage = listOfRolepage;
+//			this.listOfRolepage = listOfRolepage;
 		}
 
 		public PageDTO() {

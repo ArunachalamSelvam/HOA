@@ -12,8 +12,8 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     username: postgres
-    password: Arun@1103
-    url: jdbc:postgresql://localhost:5432/HOA_Project
+    password: Uye39%2wlrLp
+    url: jdbc:postgresql://vhoasdb.c1muummy818d.us-east-1.rds.amazonaws.com:5432/Initialvhoasdb
   
   main:
     allow-circular-references: true 

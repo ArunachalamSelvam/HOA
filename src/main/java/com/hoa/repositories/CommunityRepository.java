@@ -7,6 +7,8 @@ package com.hoa.repositories;
 import com.hoa.entities.Community;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -20,8 +22,12 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CommunityRepository  extends JpaRepository<Community, Integer> , JpaSpecificationExecutor<Community> {
-	
+	Community findByCommunityId(Integer communityId);
 	Community findByCommunityCode(String communitycode);
+	
+	@Query("SELECT c.communityId FROM Community c WHERE c.contractId = :contractId")
+	Integer findCommunityIdByContractId(@Param("contractId") Integer contractId);
+
 	
 	
 }

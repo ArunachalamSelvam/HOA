@@ -68,14 +68,23 @@ public class CommunityController {
      * or with status {@code 400 (Bad Request)} if the community is not valid,
      * or with status {@code 500 (Internal Server Error)} if the community couldn't be updated.
      */
-    @PutMapping("/update")
-    public ResponseEntity<Community> updateCommunity(@Valid @RequestBody CommunityDTO communityDto) {
-		Community community = entityDtoMapper.toEntity(communityDto);
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Community> updateCommunity(@PathVariable Integer id, @Valid @RequestBody CommunityDTO communityDto) {
+	    Community existingCommunity = entityService.getOne(id);
 
-        log.debug("REST request to update Community : {}", community);
-        Community result = entityService.update(community);
-        return ResponseEntity.ok().body(result);
-    }
+	    if (existingCommunity == null) {
+	        return ResponseEntity.notFound().build();
+	    }
+
+	    Community updatedCommunity = entityDtoMapper.toEntity(communityDto);
+	    updatedCommunity.setCommunityid(existingCommunity.getCommunityid()); // Set the ID of the existing community to the updated community
+
+	    log.debug("REST request to update Community with ID {}: {}", id, updatedCommunity);
+	    Community result = entityService.update(updatedCommunity);
+	    
+	    return ResponseEntity.ok().body(result);
+	}
+
 
     /**
      * {@code GET  /community} : get all the communitys.

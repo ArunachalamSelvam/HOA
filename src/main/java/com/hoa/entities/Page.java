@@ -40,8 +40,8 @@ public class Page implements Serializable {
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
-    @OneToMany(mappedBy="page")
-    private List<RolePage> listOfRolepage ; 
+//    @OneToMany(mappedBy="page")
+//    private List<RolePage> listOfRolepage ; 
 
 
     /**
@@ -93,11 +93,24 @@ public class Page implements Serializable {
     public Boolean getActivestatus() {
         return this.activestatus;
     }
+    
+    
 
-    //--- GETTERS FOR LINKS
-    public List<RolePage> getListOfRolepage() {
-        return this.listOfRolepage;
-    } 
+    public Page(Integer pageid, String name, String pageicon, String componenturl, Integer displayorder,
+			Boolean activestatus) {
+		super();
+		this.pageid = pageid;
+		this.name = name;
+		this.pageicon = pageicon;
+		this.componenturl = componenturl;
+		this.displayorder = displayorder;
+		this.activestatus = activestatus;
+	}
+
+	//--- GETTERS FOR LINKS
+//    public List<RolePage> getListOfRolepage() {
+//        return this.listOfRolepage;
+//    } 
 
     //--- toString specific method
 	@Override

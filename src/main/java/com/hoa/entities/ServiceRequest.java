@@ -21,49 +21,49 @@ public class ServiceRequest implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="serviceRequestId", nullable=false)
-    private Integer    servicerequestid ;
+    private Integer    serviceRequestId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="serviceTypeId", nullable=false)
-    private Integer    servicetypeid ;
+    private Integer    serviceTypeId ;
 
     @Column(name="requestedClientID", nullable=false)
-    private Integer    requestedclientid ;
+    private Integer    requestedClientID ;
 
     @Column(name="description", length=500)
     private String     description ;
 
     @Column(name="communityID", nullable=false)
-    private Integer    communityid ;
+    private Integer    communityId ;
 
     @Column(name="vendorID")
-    private Integer    vendorid ;
+    private Integer    vendorId ;
 
     @Column(name="createdByID", nullable=false)
-    private Integer    createdbyid ;
+    private Integer    createdByID ;
 
     @Column(name="modifiedByID")
-    private Integer    modifiedbyid ;
+    private Integer    modifiedByID ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="createdDate", nullable=false)
-    private Date       createddate ;
+    private Date       createdDate ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="modifiedDate")
-    private Date       modifieddate ;
+    private Date       modifiedDate ;
 
     @Column(name="serviceCharge")
-    private Double     servicecharge ;
+    private Double     serviceCharge ;
 
     @Column(name="serviceStatus", length=2147483647)
-    private String     servicestatus ;
+    private String     serviceStatus ;
 
     @Column(name="paymentStatus", length=2147483647)
-    private String     paymentstatus ;
+    private String     paymentStatus ;
 
     @Column(name="paymentDetailId")
-    private Integer    paymentdetailid ;
+    private Integer    paymentDetailId ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -81,7 +81,7 @@ public class ServiceRequest implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="serviceTypeId", referencedColumnName="id", insertable=false, updatable=false)
-    private ServiceType servicetype ; 
+    private ServiceType serviceType ; 
 
     @ManyToOne
     @JoinColumn(name="communityID", referencedColumnName="communityID", insertable=false, updatable=false)
@@ -93,7 +93,7 @@ public class ServiceRequest implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="paymentDetailId", referencedColumnName="paymentDetailId", insertable=false, updatable=false)
-    private PaymentDetail paymentdetail ; 
+    private PaymentDetail paymentDetail ; 
 
     @OneToMany(mappedBy="servicerequest")
     private List<ServiceRequestNote> listOfServicerequestnote ; 
@@ -108,24 +108,24 @@ public class ServiceRequest implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setServicerequestid( Integer servicerequestid ) {
-        this.servicerequestid = servicerequestid ;
+        this.serviceRequestId = servicerequestid ;
     }
     public Integer getServicerequestid() {
-        return this.servicerequestid;
+        return this.serviceRequestId;
     }
 
     public void setServicetypeid( Integer servicetypeid ) {
-        this.servicetypeid = servicetypeid ;
+        this.serviceTypeId = servicetypeid ;
     }
     public Integer getServicetypeid() {
-        return this.servicetypeid;
+        return this.serviceTypeId;
     }
 
     public void setRequestedclientid( Integer requestedclientid ) {
-        this.requestedclientid = requestedclientid ;
+        this.requestedClientID = requestedclientid ;
     }
     public Integer getRequestedclientid() {
-        return this.requestedclientid;
+        return this.requestedClientID;
     }
 
     public void setDescription( String description ) {
@@ -136,73 +136,73 @@ public class ServiceRequest implements Serializable {
     }
 
     public void setCommunityid( Integer communityid ) {
-        this.communityid = communityid ;
+        this.communityId = communityid ;
     }
     public Integer getCommunityid() {
-        return this.communityid;
+        return this.communityId;
     }
 
     public void setVendorid( Integer vendorid ) {
-        this.vendorid = vendorid ;
+        this.vendorId = vendorid ;
     }
     public Integer getVendorid() {
-        return this.vendorid;
+        return this.vendorId;
     }
 
     public void setCreatedbyid( Integer createdbyid ) {
-        this.createdbyid = createdbyid ;
+        this.createdByID = createdbyid ;
     }
     public Integer getCreatedbyid() {
-        return this.createdbyid;
+        return this.createdByID;
     }
 
     public void setModifiedbyid( Integer modifiedbyid ) {
-        this.modifiedbyid = modifiedbyid ;
+        this.modifiedByID = modifiedbyid ;
     }
     public Integer getModifiedbyid() {
-        return this.modifiedbyid;
+        return this.modifiedByID;
     }
 
     public void setCreateddate( Date createddate ) {
-        this.createddate = createddate ;
+        this.createdDate = createddate ;
     }
     public Date getCreateddate() {
-        return this.createddate;
+        return this.createdDate;
     }
 
     public void setModifieddate( Date modifieddate ) {
-        this.modifieddate = modifieddate ;
+        this.modifiedDate = modifieddate ;
     }
     public Date getModifieddate() {
-        return this.modifieddate;
+        return this.modifiedDate;
     }
 
     public void setServicecharge( Double servicecharge ) {
-        this.servicecharge = servicecharge ;
+        this.serviceCharge = servicecharge ;
     }
     public Double getServicecharge() {
-        return this.servicecharge;
+        return this.serviceCharge;
     }
 
     public void setServicestatus( String servicestatus ) {
-        this.servicestatus = servicestatus ;
+        this.serviceStatus = servicestatus ;
     }
     public String getServicestatus() {
-        return this.servicestatus;
+        return this.serviceStatus;
     }
 
     public void setPaymentstatus( String paymentstatus ) {
-        this.paymentstatus = paymentstatus ;
+        this.paymentStatus = paymentstatus ;
     }
     public String getPaymentstatus() {
-        return this.paymentstatus;
+        return this.paymentStatus;
     }
 
     public void setPaymentdetailid( Integer paymentdetailid ) {
-        this.paymentdetailid = paymentdetailid ;
+        this.paymentDetailId = paymentdetailid ;
     }
     public Integer getPaymentdetailid() {
-        return this.paymentdetailid;
+        return this.paymentDetailId;
     }
 
     //--- GETTERS FOR LINKS
@@ -219,7 +219,7 @@ public class ServiceRequest implements Serializable {
     } 
 
     public ServiceType getServicetype() {
-        return this.servicetype;
+        return this.serviceType;
     } 
 
     public Community getCommunity() {
@@ -231,7 +231,7 @@ public class ServiceRequest implements Serializable {
     } 
 
     public PaymentDetail getPaymentdetail() {
-        return this.paymentdetail;
+        return this.paymentDetail;
     } 
 
     public List<ServiceRequestNote> getListOfServicerequestnote() {
@@ -242,33 +242,33 @@ public class ServiceRequest implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(servicerequestid);
+        sb.append(serviceRequestId);
         sb.append("|");
-        sb.append(servicetypeid);
+        sb.append(serviceTypeId);
         sb.append("|");
-        sb.append(requestedclientid);
+        sb.append(requestedClientID);
         sb.append("|");
         sb.append(description);
         sb.append("|");
-        sb.append(communityid);
+        sb.append(communityId);
         sb.append("|");
-        sb.append(vendorid);
+        sb.append(vendorId);
         sb.append("|");
-        sb.append(createdbyid);
+        sb.append(createdByID);
         sb.append("|");
-        sb.append(modifiedbyid);
+        sb.append(modifiedByID);
         sb.append("|");
-        sb.append(createddate);
+        sb.append(createdDate);
         sb.append("|");
-        sb.append(modifieddate);
+        sb.append(modifiedDate);
         sb.append("|");
-        sb.append(servicecharge);
+        sb.append(serviceCharge);
         sb.append("|");
-        sb.append(servicestatus);
+        sb.append(serviceStatus);
         sb.append("|");
-        sb.append(paymentstatus);
+        sb.append(paymentStatus);
         sb.append("|");
-        sb.append(paymentdetailid);
+        sb.append(paymentDetailId);
         return sb.toString(); 
     } 
 

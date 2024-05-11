@@ -10,20 +10,20 @@ public class ServiceRequestDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer servicerequestid;
-    private Integer servicetypeid;
-    private Integer requestedclientid;
+    private Integer serviceRequestId;
+    private Integer serviceTypeId;
+    private Integer requestedClientId;
     private String description;
-    private Integer communityid;
-    private Integer vendorid;
-    private Integer createdbyid;
-    private Integer modifiedbyid;
-    private Date createddate;
-    private Date modifieddate;
-    private Double servicecharge;
-    private String servicestatus;
-    private String paymentstatus;
-    private Integer paymentdetailid;
+    private Integer communityId;
+    private Integer vendorId;
+    private Integer createdById;
+    private Integer modifiedById;
+    private Date createdDate;
+    private Date modifiedDate;
+    private Double serviceCharge;
+    private String serviceStatus;
+    private String paymentStatus;
+    private Integer paymentDetailId;
 
     // Constructor
     public ServiceRequestDTO() {
@@ -34,45 +34,45 @@ public class ServiceRequestDTO implements Serializable {
                              String description, Integer communityid, Integer vendorid, Integer createdbyid,
                              Integer modifiedbyid, Date createddate, Date modifieddate, Double servicecharge,
                              String servicestatus, String paymentstatus, Integer paymentdetailid) {
-        this.servicerequestid = servicerequestid;
-        this.servicetypeid = servicetypeid;
-        this.requestedclientid = requestedclientid;
+        this.serviceRequestId = servicerequestid;
+        this.serviceTypeId = servicetypeid;
+        this.requestedClientId = requestedclientid;
         this.description = description;
-        this.communityid = communityid;
-        this.vendorid = vendorid;
-        this.createdbyid = createdbyid;
-        this.modifiedbyid = modifiedbyid;
-        this.createddate = createddate;
-        this.modifieddate = modifieddate;
-        this.servicecharge = servicecharge;
-        this.servicestatus = servicestatus;
-        this.paymentstatus = paymentstatus;
-        this.paymentdetailid = paymentdetailid;
+        this.communityId = communityid;
+        this.vendorId = vendorid;
+        this.createdById = createdbyid;
+        this.modifiedById = modifiedbyid;
+        this.createdDate = createddate;
+        this.modifiedDate = modifieddate;
+        this.serviceCharge = servicecharge;
+        this.serviceStatus = servicestatus;
+        this.paymentStatus = paymentstatus;
+        this.paymentDetailId = paymentdetailid;
     }
 
     // Getters and Setters
     public Integer getServicerequestid() {
-        return servicerequestid;
+        return serviceRequestId;
     }
 
     public void setServicerequestid(Integer servicerequestid) {
-        this.servicerequestid = servicerequestid;
+        this.serviceRequestId = servicerequestid;
     }
 
     public Integer getServicetypeid() {
-        return servicetypeid;
+        return serviceTypeId;
     }
 
     public void setServicetypeid(Integer servicetypeid) {
-        this.servicetypeid = servicetypeid;
+        this.serviceTypeId = servicetypeid;
     }
 
     public Integer getRequestedclientid() {
-        return requestedclientid;
+        return requestedClientId;
     }
 
     public void setRequestedclientid(Integer requestedclientid) {
-        this.requestedclientid = requestedclientid;
+        this.requestedClientId = requestedclientid;
     }
 
     public String getDescription() {
@@ -84,103 +84,103 @@ public class ServiceRequestDTO implements Serializable {
     }
 
     public Integer getCommunityid() {
-        return communityid;
+        return communityId;
     }
 
     public void setCommunityid(Integer communityid) {
-        this.communityid = communityid;
+        this.communityId = communityid;
     }
 
     public Integer getVendorid() {
-        return vendorid;
+        return vendorId;
     }
 
     public void setVendorid(Integer vendorid) {
-        this.vendorid = vendorid;
+        this.vendorId = vendorid;
     }
 
     public Integer getCreatedbyid() {
-        return createdbyid;
+        return createdById;
     }
 
     public void setCreatedbyid(Integer createdbyid) {
-        this.createdbyid = createdbyid;
+        this.createdById = createdbyid;
     }
 
     public Integer getModifiedbyid() {
-        return modifiedbyid;
+        return modifiedById;
     }
 
     public void setModifiedbyid(Integer modifiedbyid) {
-        this.modifiedbyid = modifiedbyid;
+        this.modifiedById = modifiedbyid;
     }
 
     public Date getCreateddate() {
-        return createddate;
+        return createdDate;
     }
 
     public void setCreateddate(Date createddate) {
-        this.createddate = createddate;
+        this.createdDate = createddate;
     }
 
     public Date getModifieddate() {
-        return modifieddate;
+        return modifiedDate;
     }
 
     public void setModifieddate(Date modifieddate) {
-        this.modifieddate = modifieddate;
+        this.modifiedDate = modifieddate;
     }
 
     public Double getServicecharge() {
-        return servicecharge;
+        return serviceCharge;
     }
 
     public void setServicecharge(Double servicecharge) {
-        this.servicecharge = servicecharge;
+        this.serviceCharge = servicecharge;
     }
 
     public String getServicestatus() {
-        return servicestatus;
+        return serviceStatus;
     }
 
     public void setServicestatus(String servicestatus) {
-        this.servicestatus = servicestatus;
+        this.serviceStatus = servicestatus;
     }
 
     public String getPaymentstatus() {
-        return paymentstatus;
+        return paymentStatus;
     }
 
     public void setPaymentstatus(String paymentstatus) {
-        this.paymentstatus = paymentstatus;
+        this.paymentStatus = paymentstatus;
     }
 
     public Integer getPaymentdetailid() {
-        return paymentdetailid;
+        return paymentDetailId;
     }
 
     public void setPaymentdetailid(Integer paymentdetailid) {
-        this.paymentdetailid = paymentdetailid;
+        this.paymentDetailId = paymentdetailid;
     }
 
     // toString method
     @Override
     public String toString() {
         return "ServicerequestDTO{" +
-                "servicerequestid=" + servicerequestid +
-                ", servicetypeid=" + servicetypeid +
-                ", requestedclientid=" + requestedclientid +
+                "servicerequestid=" + serviceRequestId +
+                ", servicetypeid=" + serviceTypeId +
+                ", requestedclientid=" + requestedClientId +
                 ", description='" + description + '\'' +
-                ", communityid=" + communityid +
-                ", vendorid=" + vendorid +
-                ", createdbyid=" + createdbyid +
-                ", modifiedbyid=" + modifiedbyid +
-                ", createddate=" + createddate +
-                ", modifieddate=" + modifieddate +
-                ", servicecharge=" + servicecharge +
-                ", servicestatus='" + servicestatus + '\'' +
-                ", paymentstatus='" + paymentstatus + '\'' +
-                ", paymentdetailid=" + paymentdetailid +
+                ", communityid=" + communityId +
+                ", vendorid=" + vendorId +
+                ", createdbyid=" + createdById +
+                ", modifiedbyid=" + modifiedById +
+                ", createddate=" + createdDate +
+                ", modifieddate=" + modifiedDate +
+                ", servicecharge=" + serviceCharge +
+                ", servicestatus='" + serviceStatus + '\'' +
+                ", paymentstatus='" + paymentStatus + '\'' +
+                ", paymentdetailid=" + paymentDetailId +
                 '}';
     }
 }

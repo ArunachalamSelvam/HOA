@@ -78,5 +78,7 @@ public interface ClientService  {
      * @return Page<Client>  
      */
 	Page<Client> findAllSpecification(Specification<Client> specs, Pageable pageable);
+	
+	 Client updateClientCommunityId(Integer clientId, Integer communityId);
 
 }

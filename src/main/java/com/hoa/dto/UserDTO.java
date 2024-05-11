@@ -14,20 +14,20 @@ public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
 //    private Integer userid;
-    private String firstname;
-    private String middlename;
-    private String lastname;
-    private String mobilenumber;
-    private Boolean mobileisverified;
-    private String emailid;
-    private Boolean emailidisverified;
+    private String firstName;
+    private String middleName;
+    private String lastName;
+    private String mobileNumber;
+    private Boolean mobileIsVerified;
+    private String emailId;
+    private Boolean emailIdIsVerified;
     @ApiModelProperty(value = "Specifies if the user is a client", example = "false")
-    private Boolean isclient;
+    private Boolean isClient;
     private Integer otp;
-    private Integer roleid;
+    private Integer roleId;
     private String password;
-    private Boolean activestatus;
-    private Date lastlogin;
+    private Boolean activeStatus;
+    private Date lastLogin;
 //    private List<ClientDTO> listOfClient;
 //    private List<HoaFeeDTO> listOfHoafee2;
 //    private List<AddressDTO> listOfAddress;
@@ -73,68 +73,68 @@ public class UserDTO implements Serializable {
 //		this.userid = userid;
 //	}
 
-	public String getFirstname() {
-		return firstname;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getMiddlename() {
-		return middlename;
+	public String getMiddleName() {
+		return middleName;
 	}
 
-	public void setMiddlename(String middlename) {
-		this.middlename = middlename;
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public String getMobilenumber() {
-		return mobilenumber;
+	public String getMobileNumber() {
+		return mobileNumber;
 	}
 
-	public void setMobilenumber(String mobilenumber) {
-		this.mobilenumber = mobilenumber;
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
 	}
 
-	public Boolean getMobileisverified() {
-		return mobileisverified;
+	public Boolean getMobileIsVerified() {
+		return mobileIsVerified;
 	}
 
-	public void setMobileisverified(Boolean mobileisverified) {
-		this.mobileisverified = mobileisverified;
+	public void setMobileIsVerified(Boolean mobileisverified) {
+		this.mobileIsVerified = mobileisverified;
 	}
 
-	public String getEmailid() {
-		return emailid;
+	public String getEmailId() {
+		return emailId;
 	}
 
-	public void setEmailid(String emailid) {
-		this.emailid = emailid;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 
 	public Boolean getEmailidisverified() {
-		return emailidisverified;
+		return emailIdIsVerified;
 	}
 
-	public void setEmailidisverified(Boolean emailidisverified) {
-		this.emailidisverified = emailidisverified;
+	public void setEmailidisverified(Boolean emailIdIsVerified) {
+		this.emailIdIsVerified = emailIdIsVerified;
 	}
 
 	public Boolean getIsclient() {
-		return isclient;
+		return isClient;
 	}
 
-	public void setIsclient(Boolean isclient) {
-		this.isclient = isclient;
+	public void setIsclient(Boolean isClient) {
+		this.isClient = isClient;
 	}
 
 	public Integer getOtp() {
@@ -146,11 +146,11 @@ public class UserDTO implements Serializable {
 	}
 
 	public Integer getRoleid() {
-		return roleid;
+		return roleId;
 	}
 
-	public void setRoleid(Integer roleid) {
-		this.roleid = roleid;
+	public void setRoleid(Integer roleId) {
+		this.roleId = roleId;
 	}
 
 	public String getPassword() {
@@ -162,19 +162,19 @@ public class UserDTO implements Serializable {
 	}
 
 	public Boolean getActivestatus() {
-		return activestatus;
+		return activeStatus;
 	}
 
-	public void setActivestatus(Boolean activestatus) {
-		this.activestatus = activestatus;
+	public void setActivestatus(Boolean activeStatus) {
+		this.activeStatus = activeStatus;
 	}
 
 	public Date getLastlogin() {
-		return lastlogin;
+		return lastLogin;
 	}
 
-	public void setLastlogin(Date lastlogin) {
-		this.lastlogin = lastlogin;
+	public void setLastlogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
 	}
 
 //	public List<ClientDTO> getListOfClient() {
@@ -472,19 +472,19 @@ public class UserDTO implements Serializable {
 	@Override
     public String toString() {
         return "UserDTO{" +
-                ", firstname='" + firstname + '\'' +
-                ", middlename='" + middlename + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", mobilenumber='" + mobilenumber + '\'' +
-                ", mobileisverified=" + mobileisverified +
-                ", emailid='" + emailid + '\'' +
-                ", emailidisverified=" + emailidisverified +
-                ", isclient=" + isclient +
+                ", firstname='" + firstName + '\'' +
+                ", middlename='" + middleName + '\'' +
+                ", lastname='" + lastName + '\'' +
+                ", mobilenumber='" + mobileNumber + '\'' +
+                ", mobileisverified=" + mobileIsVerified +
+                ", emailid='" + emailId + '\'' +
+                ", emailidisverified=" + emailIdIsVerified +
+                ", isclient=" + isClient +
                 ", otp=" + otp +
-                ", roleid=" + roleid +
+                ", roleid=" + roleId +
                 ", password='" + password + '\'' +
-                ", activestatus=" + activestatus +
-                ", lastlogin=" + lastlogin +
+                ", activestatus=" + activeStatus +
+                ", lastlogin=" + lastLogin +
                 '}';
     }
 
@@ -495,19 +495,19 @@ public class UserDTO implements Serializable {
 			Integer roleid, String password, Boolean activestatus, Date lastlogin ) {
 		super();
 //		this.userid = userid;
-		this.firstname = firstname;
-		this.middlename = middlename;
-		this.lastname = lastname;
-		this.mobilenumber = mobilenumber;
-		this.mobileisverified = mobileisverified;
-		this.emailid = emailid;
-		this.emailidisverified = emailidisverified;
-		this.isclient = false;
+		this.firstName = firstname;
+		this.middleName = middlename;
+		this.lastName = lastname;
+		this.mobileNumber = mobilenumber;
+		this.mobileIsVerified = mobileisverified;
+		this.emailId = emailid;
+		this.emailIdIsVerified = emailidisverified;
+		this.isClient = false;
 		this.otp = otp;
-		this.roleid = roleid;
+		this.roleId = roleid;
 		this.password = password;
-		this.activestatus = activestatus;
-		this.lastlogin = lastlogin;
+		this.activeStatus = activestatus;
+		this.lastLogin = lastlogin;
 //		this.listOfClient = listOfClient;
 //		this.listOfHoafee2 = listOfHoafee2;
 //		this.listOfAddress = listOfAddress;
@@ -548,7 +548,7 @@ public class UserDTO implements Serializable {
 
 	public UserDTO() {
 		super();
-		this.isclient = false; // Set isClient to false by default	
+		this.isClient = false; // Set isClient to false by default	
 	}
 
 }

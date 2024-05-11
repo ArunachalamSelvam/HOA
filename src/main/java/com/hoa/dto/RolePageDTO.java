@@ -9,9 +9,9 @@ public class RolePageDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer rolepageid;
-    private Integer roleid;
-    private Integer pageid;
+    private Integer rolePageId;
+    private Integer roleId;
+    private Integer pageId;
     private Boolean create;
     private Boolean read;
     private Boolean update;
@@ -23,9 +23,9 @@ public class RolePageDTO implements Serializable {
 
     // Constructor with fields
     public RolePageDTO(Integer rolepageid, Integer roleid, Integer pageid, Boolean create, Boolean read, Boolean update, Boolean delete) {
-        this.rolepageid = rolepageid;
-        this.roleid = roleid;
-        this.pageid = pageid;
+        this.rolePageId = rolepageid;
+        this.roleId = roleid;
+        this.pageId = pageid;
         this.create = create;
         this.read = read;
         this.update = update;
@@ -34,27 +34,27 @@ public class RolePageDTO implements Serializable {
 
     // Getters and Setters
     public Integer getRolepageid() {
-        return rolepageid;
+        return rolePageId;
     }
 
     public void setRolepageid(Integer rolepageid) {
-        this.rolepageid = rolepageid;
+        this.rolePageId = rolepageid;
     }
 
     public Integer getRoleid() {
-        return roleid;
+        return roleId;
     }
 
     public void setRoleid(Integer roleid) {
-        this.roleid = roleid;
+        this.roleId = roleid;
     }
 
     public Integer getPageid() {
-        return pageid;
+        return pageId;
     }
 
     public void setPageid(Integer pageid) {
-        this.pageid = pageid;
+        this.pageId = pageid;
     }
 
     public Boolean getCreate() {
@@ -93,9 +93,9 @@ public class RolePageDTO implements Serializable {
     @Override
     public String toString() {
         return "RolepageDTO{" +
-                "rolepageid=" + rolepageid +
-                ", roleid=" + roleid +
-                ", pageid=" + pageid +
+                "rolepageid=" + rolePageId +
+                ", roleid=" + roleId +
+                ", pageid=" + pageId +
                 ", create=" + create +
                 ", read=" + read +
                 ", update=" + update +

@@ -11,36 +11,36 @@ public class ViolationDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer violationid;
-    private Integer violationtypeid;
+    private Integer violationId;
+    private Integer violationTypeId;
     private String name;
     private Double amount;
-    private Double latecharge;
-    private Integer communityid;
-    private Integer createdbyid;
-    private Integer modifiedbyid;
-    private Date createddate;
-    private Date modifieddate;
-    private ViolationTypeDTO violationtype;
-    private List<ViolationDetailDTO> listOfViolationdetail;
-    private UserDTO user;
-    private UserDTO user2;
-    private CommunityDTO community;
+    private Double lateCharge;
+    private Integer communityId;
+    private Integer createdById;
+    private Integer modifiedById;
+    private Date createdDate;
+    private Date modifiedDate;
+//    private ViolationTypeDTO violationtype;
+//    private List<ViolationDetailDTO> listOfViolationdetail;
+//    private UserDTO user;
+//    private UserDTO user2;
+//    private CommunityDTO community;
     
     public Integer getViolationid() {
-		return violationid;
+		return violationId;
 	}
 
 	public void setViolationid(Integer violationid) {
-		this.violationid = violationid;
+		this.violationId = violationid;
 	}
 
 	public Integer getViolationtypeid() {
-		return violationtypeid;
+		return violationTypeId;
 	}
 
 	public void setViolationtypeid(Integer violationtypeid) {
-		this.violationtypeid = violationtypeid;
+		this.violationTypeId = violationtypeid;
 	}
 
 	public String getName() {
@@ -60,92 +60,92 @@ public class ViolationDTO implements Serializable {
 	}
 
 	public Double getLatecharge() {
-		return latecharge;
+		return lateCharge;
 	}
 
 	public void setLatecharge(Double latecharge) {
-		this.latecharge = latecharge;
+		this.lateCharge = latecharge;
 	}
 
 	public Integer getCommunityid() {
-		return communityid;
+		return communityId;
 	}
 
 	public void setCommunityid(Integer communityid) {
-		this.communityid = communityid;
+		this.communityId = communityid;
 	}
 
 	public Integer getCreatedbyid() {
-		return createdbyid;
+		return createdById;
 	}
 
 	public void setCreatedbyid(Integer createdbyid) {
-		this.createdbyid = createdbyid;
+		this.createdById = createdbyid;
 	}
 
 	public Integer getModifiedbyid() {
-		return modifiedbyid;
+		return modifiedById;
 	}
 
 	public void setModifiedbyid(Integer modifiedbyid) {
-		this.modifiedbyid = modifiedbyid;
+		this.modifiedById = modifiedbyid;
 	}
 
 	public Date getCreateddate() {
-		return createddate;
+		return createdDate;
 	}
 
 	public void setCreateddate(Date createddate) {
-		this.createddate = createddate;
+		this.createdDate = createddate;
 	}
 
 	public Date getModifieddate() {
-		return modifieddate;
+		return modifiedDate;
 	}
 
 	public void setModifieddate(Date modifieddate) {
-		this.modifieddate = modifieddate;
+		this.modifiedDate = modifieddate;
 	}
 
-	public ViolationTypeDTO getViolationtype() {
-		return violationtype;
-	}
-
-	public void setViolationtype(ViolationTypeDTO violationtype) {
-		this.violationtype = violationtype;
-	}
-
-	public List<ViolationDetailDTO> getListOfViolationdetail() {
-		return listOfViolationdetail;
-	}
-
-	public void setListOfViolationdetail(List<ViolationDetailDTO> listOfViolationdetail) {
-		this.listOfViolationdetail = listOfViolationdetail;
-	}
-
-	public UserDTO getUser() {
-		return user;
-	}
-
-	public void setUser(UserDTO user) {
-		this.user = user;
-	}
-
-	public UserDTO getUser2() {
-		return user2;
-	}
-
-	public void setUser2(UserDTO user2) {
-		this.user2 = user2;
-	}
-
-	public CommunityDTO getCommunity() {
-		return community;
-	}
-
-	public void setCommunity(CommunityDTO community) {
-		this.community = community;
-	}
+//	public ViolationTypeDTO getViolationtype() {
+//		return violationtype;
+//	}
+//
+//	public void setViolationtype(ViolationTypeDTO violationtype) {
+//		this.violationtype = violationtype;
+//	}
+//
+//	public List<ViolationDetailDTO> getListOfViolationdetail() {
+//		return listOfViolationdetail;
+//	}
+//
+//	public void setListOfViolationdetail(List<ViolationDetailDTO> listOfViolationdetail) {
+//		this.listOfViolationdetail = listOfViolationdetail;
+//	}
+//
+//	public UserDTO getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(UserDTO user) {
+//		this.user = user;
+//	}
+//
+//	public UserDTO getUser2() {
+//		return user2;
+//	}
+//
+//	public void setUser2(UserDTO user2) {
+//		this.user2 = user2;
+//	}
+//
+//	public CommunityDTO getCommunity() {
+//		return community;
+//	}
+//
+//	public void setCommunity(CommunityDTO community) {
+//		this.community = community;
+//	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -154,39 +154,37 @@ public class ViolationDTO implements Serializable {
 	@Override
     public String toString() {
         return "ViolationDTO{" +
-                "violationid=" + violationid +
-                ", violationtypeid=" + violationtypeid +
+                "violationid=" + violationId +
+                ", violationtypeid=" + violationTypeId +
                 ", name='" + name + '\'' +
                 ", amount=" + amount +
-                ", latecharge=" + latecharge +
-                ", communityid=" + communityid +
-                ", createdbyid=" + createdbyid +
-                ", modifiedbyid=" + modifiedbyid +
-                ", createddate=" + createddate +
-                ", modifieddate=" + modifieddate +
+                ", latecharge=" + lateCharge +
+                ", communityid=" + communityId +
+                ", createdbyid=" + createdById +
+                ", modifiedbyid=" + modifiedById +
+                ", createddate=" + createdDate +
+                ", modifieddate=" + modifiedDate +
                 '}';
     }
 
 	public ViolationDTO(Integer violationid, Integer violationtypeid, String name, Double amount, Double latecharge,
-			Integer communityid, Integer createdbyid, Integer modifiedbyid, Date createddate, Date modifieddate,
-			ViolationTypeDTO violationtype, List<ViolationDetailDTO> listOfViolationdetail, UserDTO user, UserDTO user2,
-			CommunityDTO community) {
+			Integer communityid, Integer createdbyid, Integer modifiedbyid, Date createddate, Date modifieddate) {
 		super();
-		this.violationid = violationid;
-		this.violationtypeid = violationtypeid;
+		this.violationId = violationid;
+		this.violationTypeId = violationtypeid;
 		this.name = name;
 		this.amount = amount;
-		this.latecharge = latecharge;
-		this.communityid = communityid;
-		this.createdbyid = createdbyid;
-		this.modifiedbyid = modifiedbyid;
-		this.createddate = createddate;
-		this.modifieddate = modifieddate;
-		this.violationtype = violationtype;
-		this.listOfViolationdetail = listOfViolationdetail;
-		this.user = user;
-		this.user2 = user2;
-		this.community = community;
+		this.lateCharge = latecharge;
+		this.communityId = communityid;
+		this.createdById = createdbyid;
+		this.modifiedById = modifiedbyid;
+		this.createdDate = createddate;
+		this.modifiedDate = modifieddate;
+//		this.violationtype = violationtype;
+//		this.listOfViolationdetail = listOfViolationdetail;
+//		this.user = user;
+//		this.user2 = user2;
+//		this.community = community;
 	}
 
 	public ViolationDTO() {

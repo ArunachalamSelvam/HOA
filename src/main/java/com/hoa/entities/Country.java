@@ -20,14 +20,14 @@ public class Country implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="countryId", nullable=false)
-    private Integer    countryid ;
+    private Integer    countryId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="countryName", nullable=false, length=128)
-    private String     countryname ;
+    private String     countryName ;
 
     @Column(name="activeStatus")
-    private Boolean    activestatus ;
+    private Boolean    activeStatus ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -50,24 +50,24 @@ public class Country implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setCountryid( Integer countryid ) {
-        this.countryid = countryid ;
+        this.countryId = countryid ;
     }
     public Integer getCountryid() {
-        return this.countryid;
+        return this.countryId;
     }
 
     public void setCountryname( String countryname ) {
-        this.countryname = countryname ;
+        this.countryName = countryname ;
     }
     public String getCountryname() {
-        return this.countryname;
+        return this.countryName;
     }
 
     public void setActivestatus( Boolean activestatus ) {
-        this.activestatus = activestatus ;
+        this.activeStatus = activestatus ;
     }
     public Boolean getActivestatus() {
-        return this.activestatus;
+        return this.activeStatus;
     }
 
     //--- GETTERS FOR LINKS
@@ -87,11 +87,11 @@ public class Country implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(countryid);
+        sb.append(countryId);
         sb.append("|");
-        sb.append(countryname);
+        sb.append(countryName);
         sb.append("|");
-        sb.append(activestatus);
+        sb.append(activeStatus);
         return sb.toString(); 
     } 
 

@@ -21,44 +21,44 @@ public class Plan implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="planId", nullable=false)
-    private Integer    planid ;
+    private Integer    planId ;
 
     //--- ENTITY DATA FIELDS 
 //    @Column(name="planRangeFrom")
 //    private Integer    planrangefrom ;
 
     @Column(name="planRangeId")
-    private Integer    planrangeId ;
+    private Integer    planRangeId ;
 
     @Column(name="planPeriodId")
-    private Integer     planperiodId ;
+    private Integer     planPeriodId ;
 
     @Column(name="planTypeId")
-    private Integer     plantypeId ;
+    private Integer     planTypeId ;
 
     @Column(name="price")
     private Double     price ;
 
     @Column(name="activeStatus")
-    private Boolean    activestatus ;
+    private Boolean    activeStatus ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="createdDate")
-    private Date       createddate ;
+    private Date       createdDate ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
-    @OneToMany(mappedBy="plan")
-    private List<PlanDetail> listOfPlandetail ; 
-
-    @OneToMany(mappedBy="plan")
-    private List<Community> listOfCommunity ; 
-
-    @OneToMany(mappedBy="plan")
-    private List<Enquiry> listOfEnquiry ; 
-
-    @OneToMany(mappedBy="plan")
-    private List<Contract> listOfContract ; 
+//    @OneToMany(mappedBy="plan")
+//    private List<PlanDetail> listOfPlandetail ; 
+//
+//    @OneToMany(mappedBy="plan")
+//    private List<Community> listOfCommunity ; 
+//
+//    @OneToMany(mappedBy="plan")
+//    private List<Enquiry> listOfEnquiry ; 
+//
+//    @OneToMany(mappedBy="plan")
+//    private List<Contract> listOfContract ; 
 
     @ManyToOne
     @JoinColumn(name="planRangeId", referencedColumnName="id", insertable=false, updatable=false)
@@ -81,10 +81,10 @@ public class Plan implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setPlanid( Integer planid ) {
-        this.planid = planid ;
+        this.planId = planid ;
     }
     public Integer getPlanid() {
-        return this.planid;
+        return this.planId;
     }
 
 //    public void setPlanrangefrom( Integer planrangefrom ) {
@@ -96,13 +96,6 @@ public class Plan implements Serializable {
 
     
 
-    public void setPlantype( Integer plantypeId ) {
-        this.plantypeId = plantypeId ;
-    }
-    public Integer getPlantype() {
-        return this.plantypeId;
-    }
-
     public void setPrice( Double price ) {
         this.price = price ;
     }
@@ -111,55 +104,105 @@ public class Plan implements Serializable {
     }
 
     public void setActivestatus( Boolean activestatus ) {
-        this.activestatus = activestatus ;
+        this.activeStatus = activestatus ;
     }
     public Boolean getActivestatus() {
-        return this.activestatus;
+        return this.activeStatus;
     }
 
     public void setCreateddate( Date createddate ) {
-        this.createddate = createddate ;
+        this.createdDate = createddate ;
     }
     public Date getCreateddate() {
-        return this.createddate;
+        return this.createdDate;
     }
 
     //--- GETTERS FOR LINKS
-    public List<PlanDetail> getListOfPlandetail() {
-        return this.listOfPlandetail;
-    } 
+//    public List<PlanDetail> getListOfPlandetail() {
+//        return this.listOfPlandetail;
+//    } 
+//
+//    public List<Community> getListOfCommunity() {
+//        return this.listOfCommunity;
+//    } 
+//
+//    public List<Enquiry> getListOfEnquiry() {
+//        return this.listOfEnquiry;
+//    } 
+//
+//    public List<Contract> getListOfContract() {
+//        return this.listOfContract;
+//    } 
 
-    public List<Community> getListOfCommunity() {
-        return this.listOfCommunity;
-    } 
-
-    public List<Enquiry> getListOfEnquiry() {
-        return this.listOfEnquiry;
-    } 
-
-    public List<Contract> getListOfContract() {
-        return this.listOfContract;
-    } 
-
+    
+    
     //--- toString specific method
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(planid);
+        sb.append(planId);
         sb.append("|");
         sb.append("|");
-        sb.append(planrangeId);
+        sb.append(planRangeId);
         sb.append("|");
-        sb.append(planperiodId);
+        sb.append(planPeriodId);
         sb.append("|");
-        sb.append(plantypeId);
+        sb.append(planTypeId);
         sb.append("|");
         sb.append(price);
         sb.append("|");
-        sb.append(activestatus);
+        sb.append(activeStatus);
         sb.append("|");
-        sb.append(createddate);
+        sb.append(createdDate);
         return sb.toString(); 
-    } 
+    }
+
+	public Integer getPlanrangeId() {
+		return planRangeId;
+	}
+
+	public void setPlanrangeId(Integer planrangeId) {
+		this.planRangeId = planrangeId;
+	}
+
+	public Integer getPlanperiodId() {
+		return planPeriodId;
+	}
+
+	public void setPlanperiodId(Integer planperiodId) {
+		this.planPeriodId = planperiodId;
+	}
+
+	public Integer getPlantypeId() {
+		return planTypeId;
+	}
+
+	public void setPlantypeId(Integer plantypeId) {
+		this.planTypeId = plantypeId;
+	}
+
+	public PlanRange getPlanRange() {
+		return planRange;
+	}
+
+	public void setPlanRange(PlanRange planRange) {
+		this.planRange = planRange;
+	}
+
+	public PlanPeriod getPlanPeriod() {
+		return planPeriod;
+	}
+
+	public void setPlanPeriod(PlanPeriod planPeriod) {
+		this.planPeriod = planPeriod;
+	}
+
+	public PlanType getPlanType() {
+		return planType;
+	}
+
+	public void setPlanType(PlanType planType) {
+		this.planType = planType;
+	} 
 
 }

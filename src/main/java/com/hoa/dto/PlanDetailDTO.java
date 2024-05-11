@@ -2,29 +2,29 @@ package com.hoa.dto;
 
 public class PlanDetailDTO {
 
-	    private Integer plandetailid;
-	    private Integer planid;
+	    private Integer planDetailId;
+	    private Integer planId;
 	    private String name;
-	    private Integer displayorder;
-	    private Boolean activestatus;
-	    private PlanDTO plan;
+	    private Integer displayOrder;
+	    private Boolean activeStatus;
+//	    private PlanDTO plan;
 
 	    // Getters and Setters for all fields
 
 	    public Integer getPlandetailid() {
-	        return plandetailid;
+	        return planDetailId;
 	    }
 
 	    public void setPlandetailid(Integer plandetailid) {
-	        this.plandetailid = plandetailid;
+	        this.planDetailId = plandetailid;
 	    }
 
 	    public Integer getPlanid() {
-	        return planid;
+	        return planId;
 	    }
 
 	    public void setPlanid(Integer planid) {
-	        this.planid = planid;
+	        this.planId = planid;
 	    }
 
 	    public String getName() {
@@ -36,44 +36,44 @@ public class PlanDetailDTO {
 	    }
 
 	    public Integer getDisplayorder() {
-	        return displayorder;
+	        return displayOrder;
 	    }
 
 	    public void setDisplayorder(Integer displayorder) {
-	        this.displayorder = displayorder;
+	        this.displayOrder = displayorder;
 	    }
 
 	    public Boolean getActivestatus() {
-	        return activestatus;
+	        return activeStatus;
 	    }
 
 	    public void setActivestatus(Boolean activestatus) {
-	        this.activestatus = activestatus;
+	        this.activeStatus = activestatus;
 	    }
 
-	    public PlanDTO getPlan() {
-	        return plan;
-	    }
-
-	    public void setPlan(PlanDTO plan) {
-	        this.plan = plan;
-	    }
+//	    public PlanDTO getPlan() {
+//	        return plan;
+//	    }
+//
+//	    public void setPlan(PlanDTO plan) {
+//	        this.plan = plan;
+//	    }
 
 		@Override
 		public String toString() {
-			return "PlandetailDto [plandetailid=" + plandetailid + ", planid=" + planid + ", name=" + name
-					+ ", displayorder=" + displayorder + ", activestatus=" + activestatus + ", plan=" + plan + "]";
+			return "PlandetailDto [plandetailid=" + planDetailId + ", planid=" + planId + ", name=" + name
+					+ ", displayorder=" + displayOrder + ", activestatus=" + activeStatus + "]";
 		}
 
 		public PlanDetailDTO(Integer plandetailid, Integer planid, String name, Integer displayorder,
-				Boolean activestatus, PlanDTO plan) {
+				Boolean activestatus) {
 			super();
-			this.plandetailid = plandetailid;
-			this.planid = planid;
+			this.planDetailId = plandetailid;
+			this.planId = planid;
 			this.name = name;
-			this.displayorder = displayorder;
-			this.activestatus = activestatus;
-			this.plan = plan;
+			this.displayOrder = displayorder;
+			this.activeStatus = activestatus;
+//			this.plan = plan;
 		}
 
 		public PlanDetailDTO() {

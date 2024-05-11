@@ -5,9 +5,10 @@
 */
 package com.hoa.controller;
 
+import com.hoa.dto.PageDTO;
 import com.hoa.entities.Page;
 import com.hoa.service.PageService;
-
+import com.hoa.utils.EntityDTOMapper;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,9 +39,12 @@ public class PageController {
     private final Logger log = LoggerFactory.getLogger(PageController.class);
 	
     private final PageService entityService;
+    
+    private final EntityDTOMapper entityDtoMapper;
 
- 	public PageController (PageService entityService) {
+ 	public PageController (PageService entityService, EntityDTOMapper entityDtoMapper) {
 		this.entityService = entityService;
+		this.entityDtoMapper = entityDtoMapper;
 	}
 
     /**
@@ -50,7 +54,8 @@ public class PageController {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new page.
      */
 	@PostMapping("/add")
-	public ResponseEntity<Page> createPage(@RequestBody @Valid Page page) {
+	public ResponseEntity<Page> createPage(@RequestBody @Valid PageDTO pageDto) {
+		Page page = entityDtoMapper.toEntity(pageDto);
          log.debug("REST request to save Page : {}", page);
          return new ResponseEntity<>(entityService.create(page), HttpStatus.CREATED);
     }
@@ -64,7 +69,8 @@ public class PageController {
      * or with status {@code 500 (Internal Server Error)} if the page couldn't be updated.
      */
     @PutMapping("/update")
-    public ResponseEntity<Page> updatePage(@Valid @RequestBody Page page) {
+    public ResponseEntity<Page> updatePage(@Valid @RequestBody PageDTO pageDto) {
+    	Page page = entityDtoMapper.toEntity(pageDto);
         log.debug("REST request to update Page : {}", page);
         Page result = entityService.update(page);
         return ResponseEntity.ok().body(result);

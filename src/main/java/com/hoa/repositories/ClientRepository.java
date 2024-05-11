@@ -20,5 +20,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ClientRepository  extends JpaRepository<Client, Integer> , JpaSpecificationExecutor<Client> {
-
+	Client findClientByUserId(Integer userId);
 }

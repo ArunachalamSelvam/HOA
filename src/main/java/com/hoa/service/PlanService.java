@@ -75,5 +75,8 @@ public interface PlanService  {
      * @return Page<Plan>  
      */
 	Page<Plan> findAllSpecification(Specification<Plan> specs, Pageable pageable);
+	
+    Plan findPlanByTypeRangePeriod(Integer planTypeId, Integer planRangeId, Integer planPeriodId);
+
 
 }

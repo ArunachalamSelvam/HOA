@@ -7,6 +7,7 @@ package com.hoa.repositories;
 import com.hoa.entities.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -21,4 +22,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmployeeRepository  extends JpaRepository<Employee, Integer> , JpaSpecificationExecutor<Employee> {
 
+	Employee findEmployeeByUserId(Integer userId);
 }

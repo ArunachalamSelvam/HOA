@@ -56,14 +56,21 @@ public class UserServiceImpl implements UserService {
      * {@inheritDoc}
      */
     @Override
-    public User update(User d) {
+    public User update(Integer id, User d) {
         try {
-            return repository.saveAndFlush(d);
+            d.setUserid(id);
 
+            if (repository.existsById(id)) {
+                return repository.saveAndFlush(d);
+            } else {
+                return null; // or throw an exception indicating user not found
+            }
         } catch (Exception ex) {
+            ex.printStackTrace(); // or log the exception
             return null;
         }
     }
+
 
     /**
      * {@inheritDoc}

@@ -4,42 +4,42 @@ import java.util.Date;
 
 public class CommunityDocumentDTO {
 
-	    private Integer communitydocumentid;
-	    private Integer communityid;
-	    private Integer ownerid;
+	    private Integer communityDocumentId;
+	    private Integer communityId;
+	    private Integer ownerId;
 	    private String name;
-	    private Date uploadeddate;
-	    private Integer uploadedbyid;
-	    private String documenturl;
-	    private Integer createdbyid;
-	    private Integer modifiedbyid;
-	    private Date createddate;
-	    private Date modifieddate;
-	    private String documenttype;
+	    private Date uploadedDate;
+	    private Integer uploadedById;
+	    private String documentUrl;
+	    private Integer createdById;
+	    private Integer modifiedById;
+	    private Date createdDate;
+	    private Date modifiedDate;
+	    private String documentType;
 
 	    // Getters and Setters for all fields
 	    public Integer getCommunitydocumentid() {
-	        return communitydocumentid;
+	        return communityDocumentId;
 	    }
 
 	    public void setCommunitydocumentid(Integer communitydocumentid) {
-	        this.communitydocumentid = communitydocumentid;
+	        this.communityDocumentId = communitydocumentid;
 	    }
 
 	    public Integer getCommunityid() {
-	        return communityid;
+	        return communityId;
 	    }
 
 	    public void setCommunityid(Integer communityid) {
-	        this.communityid = communityid;
+	        this.communityId = communityid;
 	    }
 
 	    public Integer getOwnerid() {
-	        return ownerid;
+	        return ownerId;
 	    }
 
 	    public void setOwnerid(Integer ownerid) {
-	        this.ownerid = ownerid;
+	        this.ownerId = ownerid;
 	    }
 
 	    public String getName() {
@@ -51,94 +51,94 @@ public class CommunityDocumentDTO {
 	    }
 
 	    public Date getUploadeddate() {
-	        return uploadeddate;
+	        return uploadedDate;
 	    }
 
 	    public void setUploadeddate(Date uploadeddate) {
-	        this.uploadeddate = uploadeddate;
+	        this.uploadedDate = uploadeddate;
 	    }
 
 	    public Integer getUploadedbyid() {
-	        return uploadedbyid;
+	        return uploadedById;
 	    }
 
 	    public void setUploadedbyid(Integer uploadedbyid) {
-	        this.uploadedbyid = uploadedbyid;
+	        this.uploadedById = uploadedbyid;
 	    }
 
 	    public String getDocumenturl() {
-	        return documenturl;
+	        return documentUrl;
 	    }
 
 	    public void setDocumenturl(String documenturl) {
-	        this.documenturl = documenturl;
+	        this.documentUrl = documenturl;
 	    }
 
 	    public Integer getCreatedbyid() {
-	        return createdbyid;
+	        return createdById;
 	    }
 
 	    public void setCreatedbyid(Integer createdbyid) {
-	        this.createdbyid = createdbyid;
+	        this.createdById = createdbyid;
 	    }
 
 	    public Integer getModifiedbyid() {
-	        return modifiedbyid;
+	        return modifiedById;
 	    }
 
 	    public void setModifiedbyid(Integer modifiedbyid) {
-	        this.modifiedbyid = modifiedbyid;
+	        this.modifiedById = modifiedbyid;
 	    }
 
 	    public Date getCreateddate() {
-	        return createddate;
+	        return createdDate;
 	    }
 
 	    public void setCreateddate(Date createddate) {
-	        this.createddate = createddate;
+	        this.createdDate = createddate;
 	    }
 
 	    public Date getModifieddate() {
-	        return modifieddate;
+	        return modifiedDate;
 	    }
 
 	    public void setModifieddate(Date modifieddate) {
-	        this.modifieddate = modifieddate;
+	        this.modifiedDate = modifieddate;
 	    }
 
 	    public String getDocumenttype() {
-	        return documenttype;
+	        return documentType;
 	    }
 
 	    public void setDocumenttype(String documenttype) {
-	        this.documenttype = documenttype;
+	        this.documentType = documenttype;
 	    }
 
 		@Override
 		public String toString() {
-			return "CommunitydocumentDto [communitydocumentid=" + communitydocumentid + ", communityid=" + communityid
-					+ ", ownerid=" + ownerid + ", name=" + name + ", uploadeddate=" + uploadeddate + ", uploadedbyid="
-					+ uploadedbyid + ", documenturl=" + documenturl + ", createdbyid=" + createdbyid + ", modifiedbyid="
-					+ modifiedbyid + ", createddate=" + createddate + ", modifieddate=" + modifieddate
-					+ ", documenttype=" + documenttype + "]";
+			return "CommunitydocumentDto [communitydocumentid=" + communityDocumentId + ", communityid=" + communityId
+					+ ", ownerid=" + ownerId + ", name=" + name + ", uploadeddate=" + uploadedDate + ", uploadedbyid="
+					+ uploadedById + ", documenturl=" + documentUrl + ", createdbyid=" + createdById + ", modifiedbyid="
+					+ modifiedById + ", createddate=" + createdDate + ", modifieddate=" + modifiedDate
+					+ ", documenttype=" + documentType + "]";
 		}
 
 		public CommunityDocumentDTO(Integer communitydocumentid, Integer communityid, Integer ownerid, String name,
 				Date uploadeddate, Integer uploadedbyid, String documenturl, Integer createdbyid, Integer modifiedbyid,
 				Date createddate, Date modifieddate, String documenttype) {
 			super();
-			this.communitydocumentid = communitydocumentid;
-			this.communityid = communityid;
-			this.ownerid = ownerid;
+			this.communityDocumentId = communitydocumentid;
+			this.communityId = communityid;
+			this.ownerId = ownerid;
 			this.name = name;
-			this.uploadeddate = uploadeddate;
-			this.uploadedbyid = uploadedbyid;
-			this.documenturl = documenturl;
-			this.createdbyid = createdbyid;
-			this.modifiedbyid = modifiedbyid;
-			this.createddate = createddate;
-			this.modifieddate = modifieddate;
-			this.documenttype = documenttype;
+			this.uploadedDate = uploadeddate;
+			this.uploadedById = uploadedbyid;
+			this.documentUrl = documenturl;
+			this.createdById = createdbyid;
+			this.modifiedById = modifiedbyid;
+			this.createdDate = createddate;
+			this.modifiedDate = modifieddate;
+			this.documentType = documenttype;
 		}
 
 		public CommunityDocumentDTO() {

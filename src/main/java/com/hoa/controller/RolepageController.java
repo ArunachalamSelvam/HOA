@@ -5,9 +5,10 @@
 */
 package com.hoa.controller;
 
+import com.hoa.dto.RolePageDTO;
 import com.hoa.entities.RolePage;
 import com.hoa.service.RolepageService;
-
+import com.hoa.utils.EntityDTOMapper;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,9 +39,12 @@ public class RolepageController {
     private final Logger log = LoggerFactory.getLogger(RolepageController.class);
 	
     private final RolepageService entityService;
+    
+    private final EntityDTOMapper entityDtoMapper;
 
- 	public RolepageController (RolepageService entityService) {
+ 	public RolepageController (RolepageService entityService,EntityDTOMapper entityDtoMapper) {
 		this.entityService = entityService;
+		this.entityDtoMapper = entityDtoMapper;
 	}
 
     /**
@@ -50,7 +54,8 @@ public class RolepageController {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new rolepage.
      */
 	@PostMapping("/add")
-	public ResponseEntity<RolePage> createRolepage(@RequestBody @Valid RolePage rolepage) {
+	public ResponseEntity<RolePage> createRolepage(@RequestBody @Valid RolePageDTO rolepageDto) {
+		RolePage rolepage = entityDtoMapper.toEntity(rolepageDto);
          log.debug("REST request to save Rolepage : {}", rolepage);
          return new ResponseEntity<>(entityService.create(rolepage), HttpStatus.CREATED);
     }
@@ -64,7 +69,8 @@ public class RolepageController {
      * or with status {@code 500 (Internal Server Error)} if the rolepage couldn't be updated.
      */
     @PutMapping("/update")
-    public ResponseEntity<RolePage> updateRolepage(@Valid @RequestBody RolePage rolepage) {
+    public ResponseEntity<RolePage> updateRolepage(@Valid @RequestBody RolePageDTO rolepageDto) {
+		RolePage rolepage = entityDtoMapper.toEntity(rolepageDto);
         log.debug("REST request to update Rolepage : {}", rolepage);
         RolePage result = entityService.update(rolepage);
         return ResponseEntity.ok().body(result);
@@ -90,7 +96,7 @@ public class RolepageController {
      * @param id the id of the rolepage to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the rolepage, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/delete/{id}")
+    @GetMapping("/getOne/{id}")
     public ResponseEntity<RolePage> getOneRolepage(@PathVariable(value = "id") Integer id) {
         log.debug("REST request to get Rolepage : {}", id);
         RolePage e = entityService.getOne(id);
@@ -104,7 +110,7 @@ public class RolepageController {
      * @param id the id of the rolepage to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public ResponseEntity<Void> deleteRolepage(@PathVariable("id") Integer id) {
         log.debug("REST request to delete Rolepage : {}", id);
         entityService.delete(id);

@@ -31,11 +31,11 @@ public class ServiceType implements Serializable {
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
-    @OneToMany(mappedBy="servicetype")
-    private List<Vendor> listOfVendor ; 
-
-    @OneToMany(mappedBy="servicetype")
-    private List<ServiceRequest> listOfServicerequest ; 
+//    @OneToMany(mappedBy="servicetype")
+//    private List<Vendor> listOfVendor ; 
+//
+//    @OneToMany(mappedBy="servicetype")
+//    private List<ServiceRequest> listOfServicerequest ; 
 
 
     /**
@@ -68,13 +68,13 @@ public class ServiceType implements Serializable {
     }
 
     //--- GETTERS FOR LINKS
-    public List<Vendor> getListOfVendor() {
-        return this.listOfVendor;
-    } 
-
-    public List<ServiceRequest> getListOfServicerequest() {
-        return this.listOfServicerequest;
-    } 
+//    public List<Vendor> getListOfVendor() {
+//        return this.listOfVendor;
+//    } 
+//
+//    public List<ServiceRequest> getListOfServicerequest() {
+//        return this.listOfServicerequest;
+//    } 
 
     //--- toString specific method
 	@Override

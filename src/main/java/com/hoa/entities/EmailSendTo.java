@@ -19,20 +19,20 @@ public class EmailSendTo implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="emailSendToId", nullable=false)
-    private Integer    emailsendtoid ;
+    private Integer    emailSendToId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="emailDetailId")
-    private Integer    emaildetailid ;
+    private Integer    emailDetailId ;
 
     @Column(name="emailTo", length=256)
-    private String     emailto ;
+    private String     emailTo ;
 
     @Column(name="clientId")
-    private Integer    clientid ;
+    private Integer    clientId ;
 
     @Column(name="activeStatus")
-    private Boolean    activestatus ;
+    private Boolean    activeStatus ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -54,38 +54,38 @@ public class EmailSendTo implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setEmailsendtoid( Integer emailsendtoid ) {
-        this.emailsendtoid = emailsendtoid ;
+        this.emailSendToId = emailsendtoid ;
     }
     public Integer getEmailsendtoid() {
-        return this.emailsendtoid;
+        return this.emailSendToId;
     }
 
     public void setEmaildetailid( Integer emaildetailid ) {
-        this.emaildetailid = emaildetailid ;
+        this.emailDetailId = emaildetailid ;
     }
     public Integer getEmaildetailid() {
-        return this.emaildetailid;
+        return this.emailDetailId;
     }
 
     public void setEmailto( String emailto ) {
-        this.emailto = emailto ;
+        this.emailTo = emailto ;
     }
     public String getEmailto() {
-        return this.emailto;
+        return this.emailTo;
     }
 
     public void setClientid( Integer clientid ) {
-        this.clientid = clientid ;
+        this.clientId = clientid ;
     }
     public Integer getClientid() {
-        return this.clientid;
+        return this.clientId;
     }
 
     public void setActivestatus( Boolean activestatus ) {
-        this.activestatus = activestatus ;
+        this.activeStatus = activestatus ;
     }
     public Boolean getActivestatus() {
-        return this.activestatus;
+        return this.activeStatus;
     }
 
     //--- GETTERS FOR LINKS
@@ -101,15 +101,15 @@ public class EmailSendTo implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(emailsendtoid);
+        sb.append(emailSendToId);
         sb.append("|");
-        sb.append(emaildetailid);
+        sb.append(emailDetailId);
         sb.append("|");
-        sb.append(emailto);
+        sb.append(emailTo);
         sb.append("|");
-        sb.append(clientid);
+        sb.append(clientId);
         sb.append("|");
-        sb.append(activestatus);
+        sb.append(activeStatus);
         return sb.toString(); 
     } 
 

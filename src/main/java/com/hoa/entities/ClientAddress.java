@@ -19,23 +19,23 @@ public class ClientAddress implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="clientAddressId", nullable=false)
-    private Integer    clientaddressid ;
+    private Integer    clientAddressId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="addressId", nullable=false)
-    private Integer    addressid ;
+    private Integer    addressId ;
 
     @Column(name="isRented")
-    private Boolean    isrented ;
+    private Boolean    isRented ;
 
     @Column(name="tenantId")
-    private Integer    tenantid ;
+    private Integer    tenantId ;
 
     @Column(name="activeStatus")
-    private Boolean    activestatus ;
+    private Boolean    activeStatus ;
 
     @Column(name="clientId", nullable=false)
-    private Integer    clientid ;
+    private Integer    clientId ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -61,45 +61,45 @@ public class ClientAddress implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setClientaddressid( Integer clientaddressid ) {
-        this.clientaddressid = clientaddressid ;
+        this.clientAddressId = clientaddressid ;
     }
     public Integer getClientaddressid() {
-        return this.clientaddressid;
+        return this.clientAddressId;
     }
 
     public void setAddressid( Integer addressid ) {
-        this.addressid = addressid ;
+        this.addressId = addressid ;
     }
     public Integer getAddressid() {
-        return this.addressid;
+        return this.addressId;
     }
 
     public void setIsrented( Boolean isrented ) {
-        this.isrented = isrented ;
+        this.isRented = isrented ;
     }
     public Boolean getIsrented() {
-        return this.isrented;
+        return this.isRented;
     }
 
     public void setTenantid( Integer tenantid ) {
-        this.tenantid = tenantid ;
+        this.tenantId = tenantid ;
     }
     public Integer getTenantid() {
-        return this.tenantid;
+        return this.tenantId;
     }
 
     public void setActivestatus( Boolean activestatus ) {
-        this.activestatus = activestatus ;
+        this.activeStatus = activestatus ;
     }
     public Boolean getActivestatus() {
-        return this.activestatus;
+        return this.activeStatus;
     }
 
     public void setClientid( Integer clientid ) {
-        this.clientid = clientid ;
+        this.clientId = clientid ;
     }
     public Integer getClientid() {
-        return this.clientid;
+        return this.clientId;
     }
 
     //--- GETTERS FOR LINKS
@@ -119,17 +119,17 @@ public class ClientAddress implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(clientaddressid);
+        sb.append(clientAddressId);
         sb.append("|");
-        sb.append(addressid);
+        sb.append(addressId);
         sb.append("|");
-        sb.append(isrented);
+        sb.append(isRented);
         sb.append("|");
-        sb.append(tenantid);
+        sb.append(tenantId);
         sb.append("|");
-        sb.append(activestatus);
+        sb.append(activeStatus);
         sb.append("|");
-        sb.append(clientid);
+        sb.append(clientId);
         return sb.toString(); 
     } 
 

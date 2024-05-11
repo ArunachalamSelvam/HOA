@@ -2,68 +2,68 @@ package com.hoa.dto;
 
 public class ClientDTO {
 
-	    private Integer clientid;
-	    private Integer userid;
-	    private Integer communityid;
-	    private String displayname;
-	    private Integer numberofhouses;
-	    private Boolean activestatus;
+	    private Integer clientId;
+	    private Integer userId;
+	    private Integer communityId;
+	    private String displayName;
+	    private Integer numberOfHouses;
+	    private Boolean activeStatus;
 //	    private UserDTO user;
 //	    private CommunityDTO community;
 	    // Add DTOs for other related entities if needed
 
 	    // Getter and Setter for clientid
 	    public Integer getClientid() {
-	        return clientid;
+	        return clientId;
 	    }
 
 	    public void setClientid(Integer clientid) {
-	        this.clientid = clientid;
+	        this.clientId = clientid;
 	    }
 
 	    // Getter and Setter for userid
 	    public Integer getUserid() {
-	        return userid;
+	        return userId;
 	    }
 
 	    public void setUserid(Integer userid) {
-	        this.userid = userid;
+	        this.userId = userid;
 	    }
 
 	    // Getter and Setter for communityid
 	    public Integer getCommunityid() {
-	        return communityid;
+	        return communityId;
 	    }
 
 	    public void setCommunityid(Integer communityid) {
-	        this.communityid = communityid;
+	        this.communityId = communityid;
 	    }
 
 	    // Getter and Setter for displayname
 	    public String getDisplayname() {
-	        return displayname;
+	        return displayName;
 	    }
 
 	    public void setDisplayname(String displayname) {
-	        this.displayname = displayname;
+	        this.displayName = displayname;
 	    }
 
 	    // Getter and Setter for numberofhouses
 	    public Integer getNumberofhouses() {
-	        return numberofhouses;
+	        return numberOfHouses;
 	    }
 
 	    public void setNumberofhouses(Integer numberofhouses) {
-	        this.numberofhouses = numberofhouses;
+	        this.numberOfHouses = numberofhouses;
 	    }
 
 	    // Getter and Setter for activestatus
 	    public Boolean getActivestatus() {
-	        return activestatus;
+	        return activeStatus;
 	    }
 
 	    public void setActivestatus(Boolean activestatus) {
-	        this.activestatus = activestatus;
+	        this.activeStatus = activestatus;
 	    }
 
 	    // Getter and Setter for user
@@ -86,18 +86,18 @@ public class ClientDTO {
 
 		@Override
 		public String toString() {
-			return "ClientDto [clientid=" + clientid + ", userid=" + userid + ", communityid=" + communityid
-					+ ", displayname=" + displayname + ", numberofhouses=" + numberofhouses + ", activestatus="
-					+ activestatus+ "]";
+			return "ClientDto [clientid=" + clientId + ", userid=" + userId + ", communityid=" + communityId
+					+ ", displayname=" + displayName + ", numberofhouses=" + numberOfHouses + ", activestatus="
+					+ activeStatus+ "]";
 		}
 
 		public ClientDTO(Integer userid, Integer communityid, String displayname,
 				Integer numberofhouses) {
-			this.userid = userid;
-			this.communityid = communityid;
-			this.displayname = displayname;
-			this.numberofhouses = numberofhouses;
-			this.activestatus = true;
+			this.userId = userid;
+			this.communityId = communityid;
+			this.displayName = displayname;
+			this.numberOfHouses = numberofhouses;
+			this.activeStatus = true;
 			
 		}
 		

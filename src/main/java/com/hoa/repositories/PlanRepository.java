@@ -20,5 +20,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PlanRepository  extends JpaRepository<Plan, Integer> , JpaSpecificationExecutor<Plan> {
+	
+	Plan findByPlanTypeIdAndPlanRangeIdAndPlanPeriodId(Integer planTypeId, Integer planRangeId, Integer planPeriodId);
 
 }

@@ -1,5 +1,6 @@
 package com.hoa.requestEntities;
 
+import com.hoa.dto.AddressDTO;
 import com.hoa.dto.ContractDTO;
 
 
@@ -8,6 +9,9 @@ public class Contractrequest3 {
 	private ContractDTO contractDto;
 	
 	private ClientRequest clientRequest;
+	
+	private AddressDTO communityAddressDto;
+	
 	
 	public Contractrequest3() {
 		// TODO Auto-generated constructor stub
@@ -24,6 +28,14 @@ public class Contractrequest3 {
 	}
 	public void setClientRequest(ClientRequest clientRequest) {
 		this.clientRequest = clientRequest;
+	}
+
+	public AddressDTO getAddressDto() {
+		return communityAddressDto;
+	}
+
+	public void setAddressDto(AddressDTO addressDto) {
+		this.communityAddressDto = addressDto;
 	}
 	
 	

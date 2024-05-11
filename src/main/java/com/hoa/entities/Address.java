@@ -22,7 +22,7 @@ public class Address implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="addressId", nullable=false)
-    private Integer    addressid ;
+    private Integer    addressId ;
 
     //--- ENTITY DATA FIELDS 
 
@@ -34,27 +34,30 @@ public class Address implements Serializable {
     private String     city ;
 
     @Column(name="stateId")
-    private Integer    stateid ;
+    private Integer    stateId ;
 
     @Column(name="countryId")
-    private Integer    countryid ;
+    private Integer    countryId ;
+    
+    @Column(name="zip_code")
+    private Integer    zipCode ;
 
     @Column(name="activeStatus")
-    private Boolean    activestatus ;
+    private Boolean    activeStatus ;
 
-    @Column(name="createdById", nullable=false)
-    private Integer    createdbyid ;
-
-    @Column(name="modifiedById")
-    private Integer    modifiedbyid ;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="createdDate", nullable=false)
-    private Date       createddate ;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="modifiedDate")
-    private Date       modifieddate ;
+//    @Column(name="createdById", nullable=false)
+//    private Integer    createdById ;
+//
+//    @Column(name="modifiedById")
+//    private Integer    modifiedById ;
+//
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(name="createdDate", nullable=false)
+//    private Date       createdDate ;
+//
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(name="modifiedDate")
+//    private Date       modifieddate ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -64,24 +67,24 @@ public class Address implements Serializable {
 //    @OneToMany(mappedBy="address")
 //    private List<Community> listOfCommunity ; 
 
-    @ManyToOne
-    @JoinColumn(name="modifiedById", referencedColumnName="userId", insertable=false, updatable=false)
-    private User       user2 ; 
+//    @ManyToOne
+//    @JoinColumn(name="modifiedById", referencedColumnName="userId", insertable=false, updatable=false)
+//    private User       user2 ; 
+//
+//    @ManyToOne
+//    @JoinColumn(name="countryId", referencedColumnName="countryId", insertable=false, updatable=false)
+//    private Country    country ; 
+//
+//    @ManyToOne
+//    @JoinColumn(name="createdById", referencedColumnName="userId", insertable=false, updatable=false)
+//    private User       user ; 
+//
+//    @ManyToOne
+//    @JoinColumn(name="stateId", referencedColumnName="stateId", insertable=false, updatable=false)
+//    private State      state ; 
 
-    @ManyToOne
-    @JoinColumn(name="countryId", referencedColumnName="countryId", insertable=false, updatable=false)
-    private Country    country ; 
-
-    @ManyToOne
-    @JoinColumn(name="createdById", referencedColumnName="userId", insertable=false, updatable=false)
-    private User       user ; 
-
-    @ManyToOne
-    @JoinColumn(name="stateId", referencedColumnName="stateId", insertable=false, updatable=false)
-    private State      state ; 
-
-    @OneToMany(mappedBy="address")
-    private List<Contract> listOfContract ; 
+//    @OneToMany(mappedBy="address")
+//    private List<Contract> listOfContract ; 
 
 
     /**
@@ -93,10 +96,10 @@ public class Address implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setAddressid( Integer addressid ) {
-        this.addressid = addressid ;
+        this.addressId = addressid ;
     }
-    public Integer getAddressid() {
-        return this.addressid;
+    public Integer getAddressId() {
+        return this.addressId;
     }
 
     public void setAddress( String address ) {
@@ -114,53 +117,53 @@ public class Address implements Serializable {
     }
 
     public void setStateid( Integer stateid ) {
-        this.stateid = stateid ;
+        this.stateId = stateid ;
     }
-    public Integer getStateid() {
-        return this.stateid;
-    }
-
-    public void setCountryid( Integer countryid ) {
-        this.countryid = countryid ;
-    }
-    public Integer getCountryid() {
-        return this.countryid;
+    public Integer getStateId() {
+        return this.stateId;
     }
 
-    public void setActivestatus( Boolean activestatus ) {
-        this.activestatus = activestatus ;
+    public void setCountryId( Integer countryid ) {
+        this.countryId = countryid ;
     }
-    public Boolean getActivestatus() {
-        return this.activestatus;
-    }
-
-    public void setCreatedbyid( Integer createdbyid ) {
-        this.createdbyid = createdbyid ;
-    }
-    public Integer getCreatedbyid() {
-        return this.createdbyid;
+    public Integer getCountryId() {
+        return this.countryId;
     }
 
-    public void setModifiedbyid( Integer modifiedbyid ) {
-        this.modifiedbyid = modifiedbyid ;
+    public void setActiveStatus( Boolean activeStatus ) {
+        this.activeStatus = activeStatus ;
     }
-    public Integer getModifiedbyid() {
-        return this.modifiedbyid;
-    }
-
-    public void setCreateddate( Date createddate ) {
-        this.createddate = createddate ;
-    }
-    public Date getCreateddate() {
-        return this.createddate;
+    public Boolean getActiveStatus() {
+        return this.activeStatus;
     }
 
-    public void setModifieddate( Date modifieddate ) {
-        this.modifieddate = modifieddate ;
-    }
-    public Date getModifieddate() {
-        return this.modifieddate;
-    }
+//    public void setCreatedbyid( Integer createdbyid ) {
+//        this.createdById = createdbyid ;
+//    }
+//    public Integer getCreatedbyid() {
+//        return this.createdById;
+//    }
+//
+//    public void setModifiedbyid( Integer modifiedbyid ) {
+//        this.modifiedById = modifiedbyid ;
+//    }
+//    public Integer getModifiedbyid() {
+//        return this.modifiedById;
+//    }
+//
+//    public void setCreateddate( Date createddate ) {
+//        this.createdDate = createddate ;
+//    }
+//    public Date getCreateddate() {
+//        return this.createdDate;
+//    }
+//
+//    public void setModifieddate( Date modifieddate ) {
+//        this.modifieddate = modifieddate ;
+//    }
+//    public Date getModifieddate() {
+//        return this.modifieddate;
+//    }
 
     //--- GETTERS FOR LINKS
 //    public List<Clientaddress> getListOfClientaddress() {
@@ -171,49 +174,52 @@ public class Address implements Serializable {
 //        return this.listOfCommunity;
 //    } 
 
-    public User getUser2() {
-        return this.user2;
-    } 
+//    public User getUser2() {
+//        return this.user2;
+//    } 
+//
+//    public Country getCountry() {
+//        return this.country;
+//    } 
+//
+//    public User getUser() {
+//        return this.user;
+//    } 
+//
+//    public State getState() {
+//        return this.state;
+//    } 
 
-    public Country getCountry() {
-        return this.country;
-    } 
+//    public List<Contract> getListOfContract() {
+//        return this.listOfContract;
+//    } 
 
-    public User getUser() {
-        return this.user;
-    } 
+    
+    public Integer getZipCode() {
+		return zipCode;
+	}
 
-    public State getState() {
-        return this.state;
-    } 
+	public void setZipCode(Integer zipCode) {
+		this.zipCode = zipCode;
+	}
 
-    public List<Contract> getListOfContract() {
-        return this.listOfContract;
-    } 
-
-    //--- toString specific method
+	//--- toString specific method
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(addressid);
+        sb.append(addressId);
         sb.append("|");
         sb.append(address);
         sb.append("|");
         sb.append(city);
         sb.append("|");
-        sb.append(stateid);
+        sb.append(stateId);
         sb.append("|");
-        sb.append(countryid);
+        sb.append(countryId);
         sb.append("|");
-        sb.append(activestatus);
+        sb.append(activeStatus);
         sb.append("|");
-        sb.append(createdbyid);
-        sb.append("|");
-        sb.append(modifiedbyid);
-        sb.append("|");
-        sb.append(createddate);
-        sb.append("|");
-        sb.append(modifieddate);
+       
         return sb.toString(); 
     } 
 

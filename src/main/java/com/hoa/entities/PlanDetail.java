@@ -17,22 +17,23 @@ public class PlanDetail implements Serializable {
 
     //--- ENTITY PRIMARY KEY 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "plan_detail_sequence")
+    @SequenceGenerator(name = "plan_detail_sequence", sequenceName = "plan_detail_sequence", allocationSize = 1, initialValue = 1)
     @Column(name="planDetailId", nullable=false)
-    private Integer    plandetailid ;
+    private Integer    planDetailId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="planId", nullable=false)
-    private Integer    planid ;
+    private Integer    planId ;
 
     @Column(name="name", length=128)
     private String     name ;
 
     @Column(name="displayOrder")
-    private Integer    displayorder ;
+    private Integer    displayOrder ;
 
     @Column(name="activeStatus")
-    private Boolean    activestatus ;
+    private Boolean    activeStatus ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -50,17 +51,17 @@ public class PlanDetail implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setPlandetailid( Integer plandetailid ) {
-        this.plandetailid = plandetailid ;
+        this.planDetailId = plandetailid ;
     }
     public Integer getPlandetailid() {
-        return this.plandetailid;
+        return this.planDetailId;
     }
 
     public void setPlanid( Integer planid ) {
-        this.planid = planid ;
+        this.planId = planid ;
     }
     public Integer getPlanid() {
-        return this.planid;
+        return this.planId;
     }
 
     public void setName( String name ) {
@@ -71,17 +72,17 @@ public class PlanDetail implements Serializable {
     }
 
     public void setDisplayorder( Integer displayorder ) {
-        this.displayorder = displayorder ;
+        this.displayOrder = displayorder ;
     }
     public Integer getDisplayorder() {
-        return this.displayorder;
+        return this.displayOrder;
     }
 
     public void setActivestatus( Boolean activestatus ) {
-        this.activestatus = activestatus ;
+        this.activeStatus = activestatus ;
     }
     public Boolean getActivestatus() {
-        return this.activestatus;
+        return this.activeStatus;
     }
 
     //--- GETTERS FOR LINKS
@@ -93,15 +94,15 @@ public class PlanDetail implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(plandetailid);
+        sb.append(planDetailId);
         sb.append("|");
-        sb.append(planid);
+        sb.append(planId);
         sb.append("|");
         sb.append(name);
         sb.append("|");
-        sb.append(displayorder);
+        sb.append(displayOrder);
         sb.append("|");
-        sb.append(activestatus);
+        sb.append(activeStatus);
         return sb.toString(); 
     } 
 

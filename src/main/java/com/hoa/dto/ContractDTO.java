@@ -4,171 +4,171 @@ import java.util.Date;
 
 public class ContractDTO {
 
-	    private Integer contractid;
-	    private Integer salespersonid;
-	    private Integer clientid;
-	    private String contractcode;
-	    private String businessname;
-	    private Integer businessaddressid;
-	    private String communicationchannel;
-	    private Integer planid;
-	    private Double annualrenewalfee;
-	    private Double onetimesetup;
-	    private Integer sizeofthecommunity;
-	    private String renewalcycles;
-	    private Boolean istermsaccepted;
-	    private Integer createdbyid;
-	    private Date createddate;
-	    private Integer modifiedbyid;
-	    private Date modifieddate;
+	    private Integer contractId;
+	    private Integer salesPersonId;
+	    private Integer clientId;
+	    private String contractCode;
+	    private String businessName;
+	    private Integer businessAddressId;
+	    private String communicationChannel;
+	    private Integer planId;
+	    private Double annualRenewalFee;
+	    private Double oneTimeSetUp;
+	    private Integer sizeOfTheCommunity;
+	    private String renewalCycles;
+	    private Boolean isTermsAccepted;
+	    private Integer createdById;
+	    private Date createdDate;
+	    private Integer modifiedById;
+	    private Date modifiedDate;
 
 	    // Getters and Setters for all fields
 
 	    public Integer getContractid() {
-	        return contractid;
+	        return contractId;
 	    }
 
 	    public void setContractid(Integer contractid) {
-	        this.contractid = contractid;
+	        this.contractId = contractid;
 	    }
 
 	    public Integer getSalespersonid() {
-	        return salespersonid;
+	        return salesPersonId;
 	    }
 
 	    public void setSalespersonid(Integer salespersonid) {
-	        this.salespersonid = salespersonid;
+	        this.salesPersonId = salespersonid;
 	    }
 
 	    public Integer getClientid() {
-	        return clientid;
+	        return clientId;
 	    }
 
 	    public void setClientid(Integer clientid) {
-	        this.clientid = clientid;
+	        this.clientId = clientid;
 	    }
 
 	    public String getContractcode() {
-	        return contractcode;
+	        return contractCode;
 	    }
 
 	    public void setContractcode(String contractcode) {
-	        this.contractcode = contractcode;
+	        this.contractCode = contractcode;
 	    }
 
 	    public String getBuisnessname() {
-	        return businessname;
+	        return businessName;
 	    }
 
 	    public void setBuisnessname(String buisnessname) {
-	        this.businessname = buisnessname;
+	        this.businessName = buisnessname;
 	    }
 
 	    public Integer getBusinessaddressid() {
-	        return businessaddressid;
+	        return businessAddressId;
 	    }
 
 	    public void setBusinessaddressid(Integer businessaddressid) {
-	        this.businessaddressid = businessaddressid;
+	        this.businessAddressId = businessaddressid;
 	    }
 
 	    public String getCommunicationchannel() {
-	        return communicationchannel;
+	        return communicationChannel;
 	    }
 
 	    public void setCommunicationchannel(String communicationchannel) {
-	        this.communicationchannel = communicationchannel;
+	        this.communicationChannel = communicationchannel;
 	    }
 
 	    public Integer getPlanid() {
-	        return planid;
+	        return planId;
 	    }
 
 	    public void setPlanid(Integer planid) {
-	        this.planid = planid;
+	        this.planId = planid;
 	    }
 
 	    public Double getAnnualrenewalfee() {
-	        return annualrenewalfee;
+	        return annualRenewalFee;
 	    }
 
 	    public void setAnnualrenewalfee(Double annualrenewalfee) {
-	        this.annualrenewalfee = annualrenewalfee;
+	        this.annualRenewalFee = annualrenewalfee;
 	    }
 
 	    public Double getOnetimesetup() {
-	        return onetimesetup;
+	        return oneTimeSetUp;
 	    }
 
 	    public void setOnetimesetup(Double onetimesetup) {
-	        this.onetimesetup = onetimesetup;
+	        this.oneTimeSetUp = onetimesetup;
 	    }
 
 	    public Integer getSizeofthecommunity() {
-	        return sizeofthecommunity;
+	        return sizeOfTheCommunity;
 	    }
 
 	    public void setSizeofthecommunity(Integer sizeofthecommunity) {
-	        this.sizeofthecommunity = sizeofthecommunity;
+	        this.sizeOfTheCommunity = sizeofthecommunity;
 	    }
 
 	    public String getRenewalcycles() {
-	        return renewalcycles;
+	        return renewalCycles;
 	    }
 
 	    public void setRenewalcycles(String renewalcycles) {
-	        this.renewalcycles = renewalcycles;
+	        this.renewalCycles = renewalcycles;
 	    }
 
 	    public Boolean getIstermsaccepted() {
-	        return istermsaccepted;
+	        return isTermsAccepted;
 	    }
 
 	    public void setIstermsaccepted(Boolean istermsaccepted) {
-	        this.istermsaccepted = istermsaccepted;
+	        this.isTermsAccepted = istermsaccepted;
 	    }
 
 	    public Integer getCreatedbyid() {
-	        return createdbyid;
+	        return createdById;
 	    }
 
 	    public void setCreatedbyid(Integer createdbyid) {
-	        this.createdbyid = createdbyid;
+	        this.createdById = createdbyid;
 	    }
 
 	    public Date getCreateddate() {
-	        return createddate;
+	        return createdDate;
 	    }
 
 	    public void setCreateddate(Date createddate) {
-	        this.createddate = createddate;
+	        this.createdDate = createddate;
 	    }
 
 	    public Integer getModifiedbyid() {
-	        return modifiedbyid;
+	        return modifiedById;
 	    }
 
 	    public void setModifiedbyid(Integer modifiedbyid) {
-	        this.modifiedbyid = modifiedbyid;
+	        this.modifiedById = modifiedbyid;
 	    }
 
 	    public Date getModifieddate() {
-	        return modifieddate;
+	        return modifiedDate;
 	    }
 
 	    public void setModifieddate(Date modifieddate) {
-	        this.modifieddate = modifieddate;
+	        this.modifiedDate = modifieddate;
 	    }
 
 		@Override
 		public String toString() {
-			return "ContractDto [contractid=" + contractid + ", salespersonid=" + salespersonid + ", clientid="
-					+ clientid + ", contractcode=" + contractcode + ", buisnessname=" + businessname
-					+ ", businessaddressid=" + businessaddressid + ", communicationchannel=" + communicationchannel
-					+ ", planid=" + planid + ", annualrenewalfee=" + annualrenewalfee + ", onetimesetup=" + onetimesetup
-					+ ", sizeofthecommunity=" + sizeofthecommunity + ", renewalcycles=" + renewalcycles
-					+ ", istermsaccepted=" + istermsaccepted + ", createdbyid=" + createdbyid + ", createddate="
-					+ createddate + ", modifiedbyid=" + modifiedbyid + ", modifieddate=" + modifieddate + "]";
+			return "ContractDto [contractid=" + contractId + ", salespersonid=" + salesPersonId + ", clientid="
+					+ clientId + ", contractcode=" + contractCode + ", buisnessname=" + businessName
+					+ ", businessaddressid=" + businessAddressId + ", communicationchannel=" + communicationChannel
+					+ ", planid=" + planId + ", annualrenewalfee=" + annualRenewalFee + ", onetimesetup=" + oneTimeSetUp
+					+ ", sizeofthecommunity=" + sizeOfTheCommunity + ", renewalcycles=" + renewalCycles
+					+ ", istermsaccepted=" + isTermsAccepted + ", createdbyid=" + createdById + ", createddate="
+					+ createdDate + ", modifiedbyid=" + modifiedById + ", modifieddate=" + modifiedDate + "]";
 		}
 
 		public ContractDTO(Integer contractid, Integer salespersonid, Integer clientid, String contractcode,
@@ -177,23 +177,23 @@ public class ContractDTO {
 				Boolean istermsaccepted, Integer createdbyid, Date createddate, Integer modifiedbyid,
 				Date modifieddate) {
 			super();
-			this.contractid = contractid;
-			this.salespersonid = salespersonid;
-			this.clientid = clientid;
-			this.contractcode = contractcode;
-			this.businessname = buisnessname;
-			this.businessaddressid = businessaddressid;
-			this.communicationchannel = communicationchannel;
-			this.planid = planid;
-			this.annualrenewalfee = annualrenewalfee;
-			this.onetimesetup = onetimesetup;
-			this.sizeofthecommunity = sizeofthecommunity;
-			this.renewalcycles = renewalcycles;
-			this.istermsaccepted = istermsaccepted;
-			this.createdbyid = createdbyid;
-			this.createddate = createddate;
-			this.modifiedbyid = modifiedbyid;
-			this.modifieddate = modifieddate;
+			this.contractId = contractid;
+			this.salesPersonId = salespersonid;
+			this.clientId = clientid;
+			this.contractCode = contractcode;
+			this.businessName = buisnessname;
+			this.businessAddressId = businessaddressid;
+			this.communicationChannel = communicationchannel;
+			this.planId = planid;
+			this.annualRenewalFee = annualrenewalfee;
+			this.oneTimeSetUp = onetimesetup;
+			this.sizeOfTheCommunity = sizeofthecommunity;
+			this.renewalCycles = renewalcycles;
+			this.isTermsAccepted = istermsaccepted;
+			this.createdById = createdbyid;
+			this.createdDate = createddate;
+			this.modifiedById = modifiedbyid;
+			this.modifiedDate = modifieddate;
 		}
 
 		public ContractDTO() {

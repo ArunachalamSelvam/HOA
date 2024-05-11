@@ -27,7 +27,7 @@ public class AmenityType implements Serializable {
     private String     name ;
 
     @Column(name="activeStatus", nullable=false)
-    private Boolean    activestatus ;
+    private Boolean    activeStatus ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -58,10 +58,10 @@ public class AmenityType implements Serializable {
     }
 
     public void setActivestatus( Boolean activestatus ) {
-        this.activestatus = activestatus ;
+        this.activeStatus = activestatus ;
     }
     public Boolean getActivestatus() {
-        return this.activestatus;
+        return this.activeStatus;
     }
 
     //--- GETTERS FOR LINKS
@@ -77,7 +77,7 @@ public class AmenityType implements Serializable {
         sb.append("|");
         sb.append(name);
         sb.append("|");
-        sb.append(activestatus);
+        sb.append(activeStatus);
         return sb.toString(); 
     } 
 

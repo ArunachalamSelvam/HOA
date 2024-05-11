@@ -20,34 +20,34 @@ public class BankDetail implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="bankId", nullable=false)
-    private Integer    bankid ;
+    private Integer    bankId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="communityId")
-    private Integer    communityid ;
+    private Integer    communityId ;
 
     @Column(name="routingNumber", length=128)
-    private String     routingnumber ;
+    private String     routingNumber ;
 
     @Column(name="accountNumber", length=256)
-    private String     accountnumber ;
+    private String     accountNumber ;
 
     @Column(name="isVerified")
-    private Boolean    isverified ;
+    private Boolean    isVerified ;
 
     @Column(name="createdById", nullable=false)
-    private Integer    createdbyid ;
+    private Integer    createdById ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="createdDate", nullable=false)
-    private Date       createddate ;
+    private Date       createdDate ;
 
     @Column(name="modifiedById")
-    private Integer    modifiedbyid ;
+    private Integer    modifiedById ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="modifiedDate")
-    private Date       modifieddate ;
+    private Date       modifiedDate ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -73,66 +73,66 @@ public class BankDetail implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setBankid( Integer bankid ) {
-        this.bankid = bankid ;
+        this.bankId = bankid ;
     }
     public Integer getBankid() {
-        return this.bankid;
+        return this.bankId;
     }
 
     public void setCommunityid( Integer communityid ) {
-        this.communityid = communityid ;
+        this.communityId = communityid ;
     }
     public Integer getCommunityid() {
-        return this.communityid;
+        return this.communityId;
     }
 
     public void setRoutingnumber( String routingnumber ) {
-        this.routingnumber = routingnumber ;
+        this.routingNumber = routingnumber ;
     }
     public String getRoutingnumber() {
-        return this.routingnumber;
+        return this.routingNumber;
     }
 
     public void setAccountnumber( String accountnumber ) {
-        this.accountnumber = accountnumber ;
+        this.accountNumber = accountnumber ;
     }
     public String getAccountnumber() {
-        return this.accountnumber;
+        return this.accountNumber;
     }
 
     public void setIsverified( Boolean isverified ) {
-        this.isverified = isverified ;
+        this.isVerified = isverified ;
     }
     public Boolean getIsverified() {
-        return this.isverified;
+        return this.isVerified;
     }
 
     public void setCreatedbyid( Integer createdbyid ) {
-        this.createdbyid = createdbyid ;
+        this.createdById = createdbyid ;
     }
     public Integer getCreatedbyid() {
-        return this.createdbyid;
+        return this.createdById;
     }
 
     public void setCreateddate( Date createddate ) {
-        this.createddate = createddate ;
+        this.createdDate = createddate ;
     }
     public Date getCreateddate() {
-        return this.createddate;
+        return this.createdDate;
     }
 
     public void setModifiedbyid( Integer modifiedbyid ) {
-        this.modifiedbyid = modifiedbyid ;
+        this.modifiedById = modifiedbyid ;
     }
     public Integer getModifiedbyid() {
-        return this.modifiedbyid;
+        return this.modifiedById;
     }
 
     public void setModifieddate( Date modifieddate ) {
-        this.modifieddate = modifieddate ;
+        this.modifiedDate = modifieddate ;
     }
     public Date getModifieddate() {
-        return this.modifieddate;
+        return this.modifiedDate;
     }
 
     //--- GETTERS FOR LINKS
@@ -152,23 +152,23 @@ public class BankDetail implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(bankid);
+        sb.append(bankId);
         sb.append("|");
-        sb.append(communityid);
+        sb.append(communityId);
         sb.append("|");
-        sb.append(routingnumber);
+        sb.append(routingNumber);
         sb.append("|");
-        sb.append(accountnumber);
+        sb.append(accountNumber);
         sb.append("|");
-        sb.append(isverified);
+        sb.append(isVerified);
         sb.append("|");
-        sb.append(createdbyid);
+        sb.append(createdById);
         sb.append("|");
-        sb.append(createddate);
+        sb.append(createdDate);
         sb.append("|");
-        sb.append(modifiedbyid);
+        sb.append(modifiedById);
         sb.append("|");
-        sb.append(modifieddate);
+        sb.append(modifiedDate);
         return sb.toString(); 
     } 
 

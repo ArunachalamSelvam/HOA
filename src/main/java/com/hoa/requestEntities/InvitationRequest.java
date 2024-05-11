@@ -4,7 +4,7 @@ public class InvitationRequest {
 
     private String clientEmail;
     private String clientName;
-    private String communityCode;
+    private String contractCode;
 
     // Getters and setters
 
@@ -24,12 +24,12 @@ public class InvitationRequest {
         this.clientName = clientName;
     }
 
-	public String getCommunityCode() {
-		return communityCode;
+	public String getContractCode() {
+		return contractCode;
 	}
 
-	public void setCommunityCode(String communityCode) {
-		this.communityCode = communityCode;
+	public void setContractCode(String communityCode) {
+		this.contractCode = communityCode;
 	}
 }
 

@@ -4,19 +4,19 @@ import java.util.List;
 
 public class DesignationDTO {
 
-	    private Integer designationid;
+	    private Integer designationId;
 	    private String name;
-	    private Boolean activestatus;
+	    private Boolean activeStatus;
 //	    private List<EmployeeDTO> listOfEmployee;
 
 	    // Getters and Setters for all fields
 
 	    public Integer getDesignationid() {
-	        return designationid;
+	        return designationId;
 	    }
 
 	    public void setDesignationid(Integer designationid) {
-	        this.designationid = designationid;
+	        this.designationId = designationid;
 	    }
 
 	    public String getName() {
@@ -28,11 +28,11 @@ public class DesignationDTO {
 	    }
 
 	    public Boolean getActivestatus() {
-	        return activestatus;
+	        return activeStatus;
 	    }
 
 	    public void setActivestatus(Boolean activestatus) {
-	        this.activestatus = activestatus;
+	        this.activeStatus = activestatus;
 	    }
 
 //	    public List<EmployeeDTO> getListOfEmployee() {
@@ -45,15 +45,15 @@ public class DesignationDTO {
 
 		@Override
 		public String toString() {
-			return "DesignationDto [designationid=" + designationid + ", name=" + name + ", activestatus="
-					+ activestatus  + "]";
+			return "DesignationDto [designationid=" + designationId + ", name=" + name + ", activestatus="
+					+ activeStatus  + "]";
 		}
 
 		public DesignationDTO(Integer designationid, String name, Boolean activestatus) {
 			super();
-			this.designationid = designationid;
+			this.designationId = designationid;
 			this.name = name;
-			this.activestatus = activestatus;
+			this.activeStatus = activestatus;
 //			this.listOfEmployee = listOfEmployee;
 		}
 

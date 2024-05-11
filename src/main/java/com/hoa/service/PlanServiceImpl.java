@@ -123,5 +123,10 @@ public class PlanServiceImpl implements PlanService {
 	public Page<Plan> findAllSpecification(Specification<Plan> specs, Pageable pageable) {
 		return repository.findAll(specs, pageable);
 	}
+    
+    @Override
+    public Plan findPlanByTypeRangePeriod(Integer planTypeId, Integer planRangeId, Integer planPeriodId) {
+        return repository.findByPlanTypeIdAndPlanRangeIdAndPlanPeriodId(planTypeId, planRangeId, planPeriodId);
+    }
 
 }

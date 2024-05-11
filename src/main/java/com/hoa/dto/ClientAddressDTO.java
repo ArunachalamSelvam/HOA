@@ -2,68 +2,68 @@ package com.hoa.dto;
 
 public class ClientAddressDTO {
 
-	    private Integer clientaddressid;
-	    private Integer addressid;
-	    private Boolean isrented;
-	    private Integer tenantid;
-	    private Boolean activestatus;
-	    private Integer clientid;
+	    private Integer clientAddressId;
+	    private Integer addressId;
+	    private Boolean isRented;
+	    private Integer tenantId;
+	    private Boolean activeStatus;
+	    private Integer clientId;
 //	    private AddressDTO address;
 //	    private ClientDTO client;
 //	    private UserDTO user;
 
 	    // Getter and Setter for clientaddressid
 	    public Integer getClientaddressid() {
-	        return clientaddressid;
+	        return clientAddressId;
 	    }
 
 	    public void setClientaddressid(Integer clientaddressid) {
-	        this.clientaddressid = clientaddressid;
+	        this.clientAddressId = clientaddressid;
 	    }
 
 	    // Getter and Setter for addressid
 	    public Integer getAddressid() {
-	        return addressid;
+	        return addressId;
 	    }
 
 	    public void setAddressid(Integer addressid) {
-	        this.addressid = addressid;
+	        this.addressId = addressid;
 	    }
 
 	    // Getter and Setter for isrented
 	    public Boolean getIsrented() {
-	        return isrented;
+	        return isRented;
 	    }
 
 	    public void setIsrented(Boolean isrented) {
-	        this.isrented = isrented;
+	        this.isRented = isrented;
 	    }
 
 	    // Getter and Setter for tenantid
 	    public Integer getTenantid() {
-	        return tenantid;
+	        return tenantId;
 	    }
 
 	    public void setTenantid(Integer tenantid) {
-	        this.tenantid = tenantid;
+	        this.tenantId = tenantid;
 	    }
 
 	    // Getter and Setter for activestatus
 	    public Boolean getActivestatus() {
-	        return activestatus;
+	        return activeStatus;
 	    }
 
 	    public void setActivestatus(Boolean activestatus) {
-	        this.activestatus = activestatus;
+	        this.activeStatus = activestatus;
 	    }
 
 	    // Getter and Setter for clientid
 	    public Integer getClientid() {
-	        return clientid;
+	        return clientId;
 	    }
 
 	    public void setClientid(Integer clientid) {
-	        this.clientid = clientid;
+	        this.clientId = clientid;
 	    }
 
 	    // Getter and Setter for address
@@ -95,20 +95,20 @@ public class ClientAddressDTO {
 
 		@Override
 		public String toString() {
-			return "ClientaddressDto [clientaddressid=" + clientaddressid + ", addressid=" + addressid + ", isrented="
-					+ isrented + ", tenantid=" + tenantid + ", activestatus=" + activestatus + ", clientid=" + clientid
+			return "ClientaddressDto [clientaddressid=" + clientAddressId + ", addressid=" + addressId + ", isrented="
+					+ isRented + ", tenantid=" + tenantId + ", activestatus=" + activeStatus + ", clientid=" + clientId
 					+  "]";
 		}
 
 		public ClientAddressDTO(Integer clientaddressid, Integer addressid, Boolean isrented, Integer tenantid,
 				Boolean activestatus, Integer clientid, AddressDTO address, ClientDTO client, UserDTO user) {
 			super();
-			this.clientaddressid = clientaddressid;
-			this.addressid = addressid;
-			this.isrented = isrented;
-			this.tenantid = tenantid;
-			this.activestatus = activestatus;
-			this.clientid = clientid;
+			this.clientAddressId = clientaddressid;
+			this.addressId = addressid;
+			this.isRented = isrented;
+			this.tenantId = tenantid;
+			this.activeStatus = activestatus;
+			this.clientId = clientid;
 //			this.address = address;
 //			this.client = client;
 //			this.user = user;

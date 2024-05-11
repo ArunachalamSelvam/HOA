@@ -4,50 +4,50 @@ import java.util.List;
 
 public class CountryDTO {
 
-	    private Integer countryid;
-	    private String countryname;
-	    private Boolean activestatus;
+	    private Integer countryId;
+	    private String countryName;
+	    private Boolean activeStatus;
 	   
 
 	    // Getters and Setters for all fields
 
 	    public Integer getCountryid() {
-	        return countryid;
+	        return countryId;
 	    }
 
 	    public void setCountryid(Integer countryid) {
-	        this.countryid = countryid;
+	        this.countryId = countryid;
 	    }
 
 	    public String getCountryname() {
-	        return countryname;
+	        return countryName;
 	    }
 
 	    public void setCountryname(String countryname) {
-	        this.countryname = countryname;
+	        this.countryName = countryname;
 	    }
 
 	    public Boolean getActivestatus() {
-	        return activestatus;
+	        return activeStatus;
 	    }
 
 	    public void setActivestatus(Boolean activestatus) {
-	        this.activestatus = activestatus;
+	        this.activeStatus = activestatus;
 	    }
 
 	   
 		@Override
 		public String toString() {
-			return "CountryDto [countryid=" + countryid + ", countryname=" + countryname + ", activestatus="
-					+ activestatus + "]";
+			return "CountryDto [countryid=" + countryId + ", countryname=" + countryName + ", activestatus="
+					+ activeStatus + "]";
 		}
 
 		public CountryDTO(Integer countryid, String countryname, Boolean activestatus
 				) {
 			super();
-			this.countryid = countryid;
-			this.countryname = countryname;
-			this.activestatus = activestatus;
+			this.countryId = countryid;
+			this.countryName = countryname;
+			this.activeStatus = activestatus;
 			
 		}
 

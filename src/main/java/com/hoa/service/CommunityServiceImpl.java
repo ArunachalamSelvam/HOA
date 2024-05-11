@@ -129,5 +129,10 @@ public class CommunityServiceImpl implements CommunityService {
 	public Community getOneByCommunityCode(String communitycode) {
 		return repository.findByCommunityCode(communitycode);
 	}
+	
+	@Override
+	public Integer findCommunityIdByContractId(Integer contractId) {
+        return repository.findCommunityIdByContractId(contractId);
+    }
 
 }

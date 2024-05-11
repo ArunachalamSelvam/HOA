@@ -10,10 +10,11 @@ public class StateDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer stateid;
-    private String statename;
-    private Integer countryid;
-    private Boolean activestatus;
+    private Integer stateId;
+    private String stateName;
+    private Integer countryId;
+    private Boolean activeStatus;
+    
 //    private List<EnquiryDTO> listOfEnquiry;
 //    private CountryDTO country;
 //    private List<AddressDTO> listOfAddress;
@@ -24,44 +25,44 @@ public class StateDTO implements Serializable {
 
     // Constructor with fields
     public StateDTO(Integer stateid, String statename, Integer countryid, Boolean activestatus) {
-        this.stateid = stateid;
-        this.statename = statename;
-        this.countryid = countryid;
-        this.activestatus = activestatus;
+        this.stateId = stateid;
+        this.stateName = statename;
+        this.countryId = countryid;
+        this.activeStatus = activestatus;
       
     }
 
     // Getters and Setters
     public Integer getStateid() {
-        return stateid;
+        return stateId;
     }
 
     public void setStateid(Integer stateid) {
-        this.stateid = stateid;
+        this.stateId = stateid;
     }
 
     public String getStatename() {
-        return statename;
+        return stateName;
     }
 
     public void setStatename(String statename) {
-        this.statename = statename;
+        this.stateName = statename;
     }
 
     public Integer getCountryid() {
-        return countryid;
+        return countryId;
     }
 
     public void setCountryid(Integer countryid) {
-        this.countryid = countryid;
+        this.countryId = countryid;
     }
 
     public Boolean getActivestatus() {
-        return activestatus;
+        return activeStatus;
     }
 
     public void setActivestatus(Boolean activestatus) {
-        this.activestatus = activestatus;
+        this.activeStatus = activestatus;
     }
 
 //    public List<EnquiryDTO> getListOfEnquiry() {
@@ -92,10 +93,10 @@ public class StateDTO implements Serializable {
     @Override
     public String toString() {
         return "StateDTO{" +
-                "stateid=" + stateid +
-                ", statename='" + statename + '\'' +
-                ", countryid=" + countryid +
-                ", activestatus=" + activestatus +
+                "stateid=" + stateId +
+                ", statename='" + stateName + '\'' +
+                ", countryid=" + countryId +
+                ", activestatus=" + activeStatus +
                 '}';
     }
 }

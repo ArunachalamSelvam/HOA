@@ -78,4 +78,6 @@ public interface CommunityService  {
      */
 	Page<Community> findAllSpecification(Specification<Community> specs, Pageable pageable);
 
+	Integer findCommunityIdByContractId(Integer contractId);
+
 }

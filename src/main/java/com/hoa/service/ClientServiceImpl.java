@@ -135,4 +135,21 @@ public class ClientServiceImpl implements ClientService {
 		return repository.findAll(specs, pageable);
 	}
 
+    
+    @Transactional
+    public Client updateClientCommunityId(Integer clientId, Integer communityId) {
+        // Fetch the client entity by its ID
+        Client client = repository.findById(clientId).orElse(null);
+        
+        if (client != null) {
+            // Update the communityId
+            client.setCommunityid(communityId);
+            // Save the updated client entity
+            return repository.save(client);
+        } else {
+            // Handle case where client with given ID is not found
+            // You can throw an exception or handle it as per your requirement
+            throw new RuntimeException("Client with ID " + clientId + " not found");
+        }
+    }
 }

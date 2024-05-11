@@ -22,14 +22,14 @@ public class Designation implements Serializable {
 //    @SequenceGenerator(name = "designation_seq", sequenceName = "designation_seq", allocationSize = 1, initialValue = 1) // Set initialValue to the desired starting number
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="designationId", nullable=false)
-    private Integer    designationid ;
+    private Integer    designationId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="name", nullable=false, length=128)
     private String     name ;
 
     @Column(name="activeStatus", nullable=false)
-    private Boolean    activestatus ;
+    private Boolean    activeStatus ;
 
     //--- ENTITY LINKS ( RELATIONSHIP )
 //    @OneToMany(mappedBy="designation")
@@ -46,10 +46,10 @@ public class Designation implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setDesignationid( Integer designationid ) {
-        this.designationid = designationid ;
+        this.designationId = designationid ;
     }
     public Integer getDesignationid() {
-        return this.designationid;
+        return this.designationId;
     }
 
     public void setName( String name ) {
@@ -60,10 +60,10 @@ public class Designation implements Serializable {
     }
 
     public void setActivestatus( Boolean activestatus ) {
-        this.activestatus = activestatus ;
+        this.activeStatus = activestatus ;
     }
     public Boolean getActivestatus() {
-        return this.activestatus;
+        return this.activeStatus;
     }
 
     //--- GETTERS FOR LINKS
@@ -75,11 +75,11 @@ public class Designation implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(designationid);
+        sb.append(designationId);
         sb.append("|");
         sb.append(name);
         sb.append("|");
-        sb.append(activestatus);
+        sb.append(activeStatus);
         return sb.toString(); 
     } 
 

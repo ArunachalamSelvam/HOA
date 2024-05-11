@@ -20,44 +20,44 @@ public class CommunityDocument implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="communityDocumentId", nullable=false)
-    private Integer    communitydocumentid ;
+    private Integer    communityDocumentId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="communityID", nullable=false)
-    private Integer    communityid ;
+    private Integer    communityId ;
 
     @Column(name="ownerID", nullable=false)
-    private Integer    ownerid ;
+    private Integer    ownerId ;
 
     @Column(name="name", nullable=false, length=128)
     private String     name ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="uploadedDate")
-    private Date       uploadeddate ;
+    private Date       uploadedDate ;
 
     @Column(name="uploadedByID")
-    private Integer    uploadedbyid ;
+    private Integer    uploadedById ;
 
     @Column(name="documentUrl", length=256)
-    private String     documenturl ;
+    private String     documentUrl ;
 
     @Column(name="createdByID", nullable=false)
-    private Integer    createdbyid ;
+    private Integer    createdById ;
 
     @Column(name="modifiedByID")
-    private Integer    modifiedbyid ;
+    private Integer    modifiedById ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="createdDate", nullable=false)
-    private Date       createddate ;
+    private Date       createdDate ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="modifiedDate")
-    private Date       modifieddate ;
+    private Date       modifiedDate ;
 
     @Column(name="documentType", length=128)
-    private String     documenttype ;
+    private String     documentType ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -91,24 +91,24 @@ public class CommunityDocument implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setCommunitydocumentid( Integer communitydocumentid ) {
-        this.communitydocumentid = communitydocumentid ;
+        this.communityDocumentId = communitydocumentid ;
     }
     public Integer getCommunitydocumentid() {
-        return this.communitydocumentid;
+        return this.communityDocumentId;
     }
 
     public void setCommunityid( Integer communityid ) {
-        this.communityid = communityid ;
+        this.communityId = communityid ;
     }
     public Integer getCommunityid() {
-        return this.communityid;
+        return this.communityId;
     }
 
     public void setOwnerid( Integer ownerid ) {
-        this.ownerid = ownerid ;
+        this.ownerId = ownerid ;
     }
     public Integer getOwnerid() {
-        return this.ownerid;
+        return this.ownerId;
     }
 
     public void setName( String name ) {
@@ -119,59 +119,59 @@ public class CommunityDocument implements Serializable {
     }
 
     public void setUploadeddate( Date uploadeddate ) {
-        this.uploadeddate = uploadeddate ;
+        this.uploadedDate = uploadeddate ;
     }
     public Date getUploadeddate() {
-        return this.uploadeddate;
+        return this.uploadedDate;
     }
 
     public void setUploadedbyid( Integer uploadedbyid ) {
-        this.uploadedbyid = uploadedbyid ;
+        this.uploadedById = uploadedbyid ;
     }
     public Integer getUploadedbyid() {
-        return this.uploadedbyid;
+        return this.uploadedById;
     }
 
     public void setDocumenturl( String documenturl ) {
-        this.documenturl = documenturl ;
+        this.documentUrl = documenturl ;
     }
     public String getDocumenturl() {
-        return this.documenturl;
+        return this.documentUrl;
     }
 
     public void setCreatedbyid( Integer createdbyid ) {
-        this.createdbyid = createdbyid ;
+        this.createdById = createdbyid ;
     }
     public Integer getCreatedbyid() {
-        return this.createdbyid;
+        return this.createdById;
     }
 
     public void setModifiedbyid( Integer modifiedbyid ) {
-        this.modifiedbyid = modifiedbyid ;
+        this.modifiedById = modifiedbyid ;
     }
     public Integer getModifiedbyid() {
-        return this.modifiedbyid;
+        return this.modifiedById;
     }
 
     public void setCreateddate( Date createddate ) {
-        this.createddate = createddate ;
+        this.createdDate = createddate ;
     }
     public Date getCreateddate() {
-        return this.createddate;
+        return this.createdDate;
     }
 
     public void setModifieddate( Date modifieddate ) {
-        this.modifieddate = modifieddate ;
+        this.modifiedDate = modifieddate ;
     }
     public Date getModifieddate() {
-        return this.modifieddate;
+        return this.modifiedDate;
     }
 
     public void setDocumenttype( String documenttype ) {
-        this.documenttype = documenttype ;
+        this.documentType = documenttype ;
     }
     public String getDocumenttype() {
-        return this.documenttype;
+        return this.documentType;
     }
 
     //--- GETTERS FOR LINKS
@@ -199,29 +199,29 @@ public class CommunityDocument implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(communitydocumentid);
+        sb.append(communityDocumentId);
         sb.append("|");
-        sb.append(communityid);
+        sb.append(communityId);
         sb.append("|");
-        sb.append(ownerid);
+        sb.append(ownerId);
         sb.append("|");
         sb.append(name);
         sb.append("|");
-        sb.append(uploadeddate);
+        sb.append(uploadedDate);
         sb.append("|");
-        sb.append(uploadedbyid);
+        sb.append(uploadedById);
         sb.append("|");
-        sb.append(documenturl);
+        sb.append(documentUrl);
         sb.append("|");
-        sb.append(createdbyid);
+        sb.append(createdById);
         sb.append("|");
-        sb.append(modifiedbyid);
+        sb.append(modifiedById);
         sb.append("|");
-        sb.append(createddate);
+        sb.append(createdDate);
         sb.append("|");
-        sb.append(modifieddate);
+        sb.append(modifiedDate);
         sb.append("|");
-        sb.append(documenttype);
+        sb.append(documentType);
         return sb.toString(); 
     } 
 

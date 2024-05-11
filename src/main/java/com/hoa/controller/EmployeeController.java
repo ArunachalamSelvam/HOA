@@ -6,8 +6,12 @@
 package com.hoa.controller;
 
 import com.hoa.dto.EmployeeDTO;
+import com.hoa.dto.UserDTO;
 import com.hoa.entities.Employee;
+import com.hoa.entities.User;
+import com.hoa.requestEntities.EmployeeRequest;
 import com.hoa.service.EmployeeService;
+import com.hoa.service.UserService;
 import com.hoa.utils.EntityDTOMapper;
 
 import org.springframework.http.HttpStatus;
@@ -40,11 +44,14 @@ public class EmployeeController {
 	
     private final EmployeeService entityService;
     
+    private final UserService userService;
+    
     private final EntityDTOMapper entityDtoMapper;
 
- 	public EmployeeController (EmployeeService entityService, EntityDTOMapper entityDTOMapper) {
+ 	public EmployeeController (EmployeeService entityService, EntityDTOMapper entityDTOMapper, UserService userService) {
 		this.entityService = entityService;
 		this.entityDtoMapper = entityDTOMapper;
+		this.userService = userService;
 	}
 
     /**
@@ -54,12 +61,23 @@ public class EmployeeController {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new employee.
      */
 	@PostMapping("/add")
-	public ResponseEntity<Employee> createEmployee(@RequestBody @Valid EmployeeDTO employeeDto) {
+	public ResponseEntity<Employee> createEmployee(@RequestBody @Valid EmployeeRequest employeeRequest) {
 		
+		EmployeeDTO employeeDto = employeeRequest.getEmployeeDto();
+
+		UserDTO userDto = employeeRequest.getUserDto();
+		
+		User user = entityDtoMapper.toEntity(userDto);
+		
+		User savedUser = userService.create(user);
+		employeeDto.setUserid(savedUser.getUserid());
 		Employee employee = entityDtoMapper.toEntity(employeeDto);
 		
+		
+		Employee savedEmployee = entityService.create(employee);
+		
          log.debug("REST request to save Employee : {}", employee);
-         return new ResponseEntity<>(entityService.create(employee), HttpStatus.CREATED);
+         return ResponseEntity.ok(savedEmployee);
     }
 
    /**
@@ -70,13 +88,25 @@ public class EmployeeController {
      * or with status {@code 400 (Bad Request)} if the employee is not valid,
      * or with status {@code 500 (Internal Server Error)} if the employee couldn't be updated.
      */
-    @PutMapping("/update")
-    public ResponseEntity<Employee> updateEmployee(@Valid @RequestBody EmployeeDTO employeeDto) {
-    	
-    	Employee employee = entityDtoMapper.toEntity(employeeDto);
-        log.debug("REST request to update Employee : {}", employee);
-        Employee result = entityService.update(employee);
-        return ResponseEntity.ok().body(result);
+    @PutMapping("/update{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Integer employeeId,@Valid @RequestBody EmployeeRequest employeeRequest) {
+    	EmployeeDTO employeeDto = employeeRequest.getEmployeeDto();
+        UserDTO userDto = employeeRequest.getUserDto();
+
+        Employee employee = entityDtoMapper.toEntity(employeeDto);
+        User user = entityDtoMapper.toEntity(userDto);
+        
+        userService.update(employee.getUserid(), user);
+
+        log.debug("REST request to update Employee with ID {}: {}", employeeId, employee);
+        
+        Employee result = entityService.update(employeeId, employee);
+        
+        if (result != null) {
+            return ResponseEntity.ok().body(result);
+        } else {
+            return ResponseEntity.notFound().build(); // or handle it according to your application logic
+        }
     }
 
     /**

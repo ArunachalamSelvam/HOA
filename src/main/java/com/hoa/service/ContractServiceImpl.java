@@ -123,5 +123,16 @@ public class ContractServiceImpl implements ContractService {
 	public Page<Contract> findAllSpecification(Specification<Contract> specs, Pageable pageable) {
 		return repository.findAll(specs, pageable);
 	}
+    
+    @Override
+    public Integer getContractIdByContractCode(String contractCode) {
+        return repository.findContractIdByContractCode(contractCode);
+    }
+    
+    @Override
+    public boolean existsByContractCode(String contractCode) {
+        return repository.countByContractCode(contractCode) > 0;
+    }
+
 
 }

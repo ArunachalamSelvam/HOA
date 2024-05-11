@@ -13,7 +13,7 @@ public class EmailService {
     @Autowired
     private JavaMailSender emailSender;
 
-    public void sendInvitation(String clientEmail, String clientName, String communityCode) {
+    public void sendInvitation(String clientEmail, String clientName, String contractCode) {
         MimeMessage message = emailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
@@ -22,7 +22,7 @@ public class EmailService {
             helper.setSubject("Invitation for Client Onboarding");
             String htmlMsg = "<h3>Hello " + clientName + ",</h3>"
                     + "<p>Welcome to our community! We're thrilled to have you on board.</p>"
-                    + "<h3>Community Code: " +communityCode+ "</h3>"
+                    + "<h3>Contract Code: " +contractCode+ "</h3>"
                     + "<p>Please follow this link to complete your onboarding process: <a href=\"https://hoa-web-reactjs.netlify.app/hoa-register/\">Onboarding Link</a></p>"
                     + "<p>Looking forward to working with you!</p>";
             helper.setText(htmlMsg, true);

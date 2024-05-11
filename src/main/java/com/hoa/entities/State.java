@@ -20,17 +20,17 @@ public class State implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="stateId", nullable=false)
-    private Integer    stateid ;
+    private Integer    stateId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="stateName", nullable=false, length=128)
-    private String     statename ;
+    private String     stateName ;
 
     @Column(name="countryId", nullable=false)
-    private Integer    countryid ;
+    private Integer    countryId ;
 
     @Column(name="activeStatus")
-    private Boolean    activestatus ;
+    private Boolean    activeStatus ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -54,31 +54,31 @@ public class State implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setStateid( Integer stateid ) {
-        this.stateid = stateid ;
+        this.stateId = stateid ;
     }
     public Integer getStateid() {
-        return this.stateid;
+        return this.stateId;
     }
 
     public void setStatename( String statename ) {
-        this.statename = statename ;
+        this.stateName = statename ;
     }
     public String getStatename() {
-        return this.statename;
+        return this.stateName;
     }
 
     public void setCountryid( Integer countryid ) {
-        this.countryid = countryid ;
+        this.countryId = countryid ;
     }
     public Integer getCountryid() {
-        return this.countryid;
+        return this.countryId;
     }
 
     public void setActivestatus( Boolean activestatus ) {
-        this.activestatus = activestatus ;
+        this.activeStatus = activestatus ;
     }
     public Boolean getActivestatus() {
-        return this.activestatus;
+        return this.activeStatus;
     }
 
     //--- GETTERS FOR LINKS
@@ -98,13 +98,13 @@ public class State implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(stateid);
+        sb.append(stateId);
         sb.append("|");
-        sb.append(statename);
+        sb.append(stateName);
         sb.append("|");
-        sb.append(countryid);
+        sb.append(countryId);
         sb.append("|");
-        sb.append(activestatus);
+        sb.append(activeStatus);
         return sb.toString(); 
     } 
 

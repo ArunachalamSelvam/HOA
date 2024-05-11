@@ -4,66 +4,66 @@ import java.util.Date;
 
 public class AuditLogDTO {
 
-	    private Integer auditlogid;
-	    private Integer userid;
-	    private String actionperformed;
-	    private String pagename;
-	    private Integer communityid;
-	    private Date createddate;
+	    private Integer auditLogId;
+	    private Integer userId;
+	    private String actionPerformed;
+	    private String pageName;
+	    private Integer communityId;
+	    private Date createdDate;
 	    
 
 	    // Getter and Setter for auditlogid
 	    public Integer getAuditlogid() {
-	        return auditlogid;
+	        return auditLogId;
 	    }
 
 	    public void setAuditlogid(Integer auditlogid) {
-	        this.auditlogid = auditlogid;
+	        this.auditLogId = auditlogid;
 	    }
 
 	    // Getter and Setter for userid
 	    public Integer getUserid() {
-	        return userid;
+	        return userId;
 	    }
 
 	    public void setUserid(Integer userid) {
-	        this.userid = userid;
+	        this.userId = userid;
 	    }
 
 	    // Getter and Setter for actionperformed
 	    public String getActionperformed() {
-	        return actionperformed;
+	        return actionPerformed;
 	    }
 
 	    public void setActionperformed(String actionperformed) {
-	        this.actionperformed = actionperformed;
+	        this.actionPerformed = actionperformed;
 	    }
 
 	    // Getter and Setter for pagename
 	    public String getPagename() {
-	        return pagename;
+	        return pageName;
 	    }
 
 	    public void setPagename(String pagename) {
-	        this.pagename = pagename;
+	        this.pageName = pagename;
 	    }
 
 	    // Getter and Setter for communityid
 	    public Integer getCommunityid() {
-	        return communityid;
+	        return communityId;
 	    }
 
 	    public void setCommunityid(Integer communityid) {
-	        this.communityid = communityid;
+	        this.communityId = communityid;
 	    }
 
 	    // Getter and Setter for createddate
 	    public Date getCreateddate() {
-	        return createddate;
+	        return createdDate;
 	    }
 
 	    public void setCreateddate(Date createddate) {
-	        this.createddate = createddate;
+	        this.createdDate = createddate;
 	    }
 
 	    // Getter and Setter for user
@@ -86,20 +86,20 @@ public class AuditLogDTO {
 
 		@Override
 		public String toString() {
-			return "AuditlogDto [auditlogid=" + auditlogid + ", userid=" + userid + ", actionperformed="
-					+ actionperformed + ", pagename=" + pagename + ", communityid=" + communityid + ", createddate="
-					+ createddate + "]";
+			return "AuditlogDto [auditlogid=" + auditLogId + ", userid=" + userId + ", actionperformed="
+					+ actionPerformed + ", pagename=" + pageName + ", communityid=" + communityId + ", createddate="
+					+ createdDate + "]";
 		}
 
 		public AuditLogDTO(Integer auditlogid, Integer userid, String actionperformed, String pagename,
 				Integer communityid, Date createddate) {
 			super();
-			this.auditlogid = auditlogid;
-			this.userid = userid;
-			this.actionperformed = actionperformed;
-			this.pagename = pagename;
-			this.communityid = communityid;
-			this.createddate = createddate;
+			this.auditLogId = auditlogid;
+			this.userId = userid;
+			this.actionPerformed = actionperformed;
+			this.pageName = pagename;
+			this.communityId = communityid;
+			this.createdDate = createddate;
 			
 		}
 

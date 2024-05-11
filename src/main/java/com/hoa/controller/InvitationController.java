@@ -24,10 +24,10 @@ public class InvitationController {
     public String sendInvitation(@RequestBody InvitationRequest invitationRequest) {
         String clientEmail = invitationRequest.getClientEmail();
         String clientName = invitationRequest.getClientName();
-        String communityCode = invitationRequest.getCommunityCode();
+        String contractCode = invitationRequest.getContractCode();
 
         // Call the email service to send the invitation
-        emailService.sendInvitation(clientEmail, clientName,communityCode);
+        emailService.sendInvitation(clientEmail, clientName,contractCode);
 
         return "Invitation sent successfully to " + clientEmail;
     }

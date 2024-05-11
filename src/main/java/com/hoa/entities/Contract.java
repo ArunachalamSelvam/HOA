@@ -21,58 +21,58 @@ public class Contract implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="contractId", nullable=false)
-    private Integer    contractid ;
+    private Integer    contractId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="salesPersonId")
-    private Integer    salespersonid ;
+    private Integer    salesPersonId ;
 
     @Column(name="clientId")
-    private Integer    clientid ;
+    private Integer    clientId ;
 
     @Column(name="contractCode", length=2147483647)
-    private String     contractcode ;
+    private String     contractCode ;
 
     @Column(name="businessName", length=2147483647)
-    private String     businessname ;
+    private String     businessName ;
 
     @Column(name="businessAddressId")
-    private Integer    businessaddressid ;
+    private Integer    businessAddressId ;
 
     @Column(name="communicationChannel", length=128)
-    private String     communicationchannel ;
+    private String     communicationChannel ;
 
     @Column(name="planId")
-    private Integer    planid ;
+    private Integer    planId ;
 
     @Column(name="annualRenewalFee")
-    private Double     annualrenewalfee ;
+    private Double     annualRenewalFee ;
 
     @Column(name="oneTimeSetUp")
-    private Double     onetimesetup ;
+    private Double     oneTimeSetUp ;
 
     @Column(name="sizeofthecommunity")
     private Integer    sizeofthecommunity ;
 
     @Column(name="renewalCycles", length=128)
-    private String     renewalcycles ;
+    private String     renewalCycles ;
 
     @Column(name="isTermsAccepted")
-    private Boolean    istermsaccepted ;
+    private Boolean    isTermsAccepted ;
 
     @Column(name="createdById", nullable=false)
-    private Integer    createdbyid ;
+    private Integer    createdById ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="createdDate", nullable=false)
-    private Date       createddate ;
+    private Date       createdDate ;
 
     @Column(name="modifiedById")
-    private Integer    modifiedbyid ;
+    private Integer    modifiedById ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="modifiedDate")
-    private Date       modifieddate ;
+    private Date       modifiedDate ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -113,73 +113,73 @@ public class Contract implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setContractid( Integer contractid ) {
-        this.contractid = contractid ;
+        this.contractId = contractid ;
     }
     public Integer getContractid() {
-        return this.contractid;
+        return this.contractId;
     }
 
     public void setSalespersonid( Integer salespersonid ) {
-        this.salespersonid = salespersonid ;
+        this.salesPersonId = salespersonid ;
     }
     public Integer getSalespersonid() {
-        return this.salespersonid;
+        return this.salesPersonId;
     }
 
     public void setClientid( Integer clientid ) {
-        this.clientid = clientid ;
+        this.clientId = clientid ;
     }
     public Integer getClientid() {
-        return this.clientid;
+        return this.clientId;
     }
 
     public void setContractcode( String contractcode ) {
-        this.contractcode = contractcode ;
+        this.contractCode = contractcode ;
     }
     public String getContractcode() {
-        return this.contractcode;
+        return this.contractCode;
     }
 
     public void setBuisnessname( String buisnessname ) {
-        this.businessname = buisnessname ;
+        this.businessName = buisnessname ;
     }
     public String getBuisnessname() {
-        return this.businessname;
+        return this.businessName;
     }
 
     public void setBusinessaddressid( Integer businessaddressid ) {
-        this.businessaddressid = businessaddressid ;
+        this.businessAddressId = businessaddressid ;
     }
     public Integer getBusinessaddressid() {
-        return this.businessaddressid;
+        return this.businessAddressId;
     }
 
     public void setCommunicationchannel( String communicationchannel ) {
-        this.communicationchannel = communicationchannel ;
+        this.communicationChannel = communicationchannel ;
     }
     public String getCommunicationchannel() {
-        return this.communicationchannel;
+        return this.communicationChannel;
     }
 
     public void setPlanid( Integer planid ) {
-        this.planid = planid ;
+        this.planId = planid ;
     }
     public Integer getPlanid() {
-        return this.planid;
+        return this.planId;
     }
 
     public void setAnnualrenewalfee( Double annualrenewalfee ) {
-        this.annualrenewalfee = annualrenewalfee ;
+        this.annualRenewalFee = annualrenewalfee ;
     }
     public Double getAnnualrenewalfee() {
-        return this.annualrenewalfee;
+        return this.annualRenewalFee;
     }
 
     public void setOnetimesetup( Double onetimesetup ) {
-        this.onetimesetup = onetimesetup ;
+        this.oneTimeSetUp = onetimesetup ;
     }
     public Double getOnetimesetup() {
-        return this.onetimesetup;
+        return this.oneTimeSetUp;
     }
 
     public void setSizeofthecommunity( Integer sizeofthecommunity ) {
@@ -190,45 +190,45 @@ public class Contract implements Serializable {
     }
 
     public void setRenewalcycles( String renewalcycles ) {
-        this.renewalcycles = renewalcycles ;
+        this.renewalCycles = renewalcycles ;
     }
     public String getRenewalcycles() {
-        return this.renewalcycles;
+        return this.renewalCycles;
     }
 
     public void setIstermsaccepted( Boolean istermsaccepted ) {
-        this.istermsaccepted = istermsaccepted ;
+        this.isTermsAccepted = istermsaccepted ;
     }
     public Boolean getIstermsaccepted() {
-        return this.istermsaccepted;
+        return this.isTermsAccepted;
     }
 
     public void setCreatedbyid( Integer createdbyid ) {
-        this.createdbyid = createdbyid ;
+        this.createdById = createdbyid ;
     }
     public Integer getCreatedbyid() {
-        return this.createdbyid;
+        return this.createdById;
     }
 
     public void setCreateddate( Date createddate ) {
-        this.createddate = createddate ;
+        this.createdDate = createddate ;
     }
     public Date getCreateddate() {
-        return this.createddate;
+        return this.createdDate;
     }
 
     public void setModifiedbyid( Integer modifiedbyid ) {
-        this.modifiedbyid = modifiedbyid ;
+        this.modifiedById = modifiedbyid ;
     }
     public Integer getModifiedbyid() {
-        return this.modifiedbyid;
+        return this.modifiedById;
     }
 
     public void setModifieddate( Date modifieddate ) {
-        this.modifieddate = modifieddate ;
+        this.modifiedDate = modifieddate ;
     }
     public Date getModifieddate() {
-        return this.modifieddate;
+        return this.modifiedDate;
     }
 
     //--- GETTERS FOR LINKS
@@ -264,39 +264,39 @@ public class Contract implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(contractid);
+        sb.append(contractId);
         sb.append("|");
-        sb.append(salespersonid);
+        sb.append(salesPersonId);
         sb.append("|");
-        sb.append(clientid);
+        sb.append(clientId);
         sb.append("|");
-        sb.append(contractcode);
+        sb.append(contractCode);
         sb.append("|");
-        sb.append(businessname);
+        sb.append(businessName);
         sb.append("|");
-        sb.append(businessaddressid);
+        sb.append(businessAddressId);
         sb.append("|");
-        sb.append(communicationchannel);
+        sb.append(communicationChannel);
         sb.append("|");
-        sb.append(planid);
+        sb.append(planId);
         sb.append("|");
-        sb.append(annualrenewalfee);
+        sb.append(annualRenewalFee);
         sb.append("|");
-        sb.append(onetimesetup);
+        sb.append(oneTimeSetUp);
         sb.append("|");
         sb.append(sizeofthecommunity);
         sb.append("|");
-        sb.append(renewalcycles);
+        sb.append(renewalCycles);
         sb.append("|");
-        sb.append(istermsaccepted);
+        sb.append(isTermsAccepted);
         sb.append("|");
-        sb.append(createdbyid);
+        sb.append(createdById);
         sb.append("|");
-        sb.append(createddate);
+        sb.append(createdDate);
         sb.append("|");
-        sb.append(modifiedbyid);
+        sb.append(modifiedById);
         sb.append("|");
-        sb.append(modifieddate);
+        sb.append(modifiedDate);
         return sb.toString(); 
     } 
 

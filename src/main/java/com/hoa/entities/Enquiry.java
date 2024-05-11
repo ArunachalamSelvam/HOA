@@ -20,17 +20,17 @@ public class Enquiry implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="enquiryId", nullable=false)
-    private Integer    enquiryid ;
+    private Integer    enquiryId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="firstName", nullable=false, length=128)
-    private String     firstname ;
+    private String     firstName ;
 
     @Column(name="lastName", length=128)
-    private String     lastname ;
+    private String     lastName ;
 
     @Column(name="emailId", length=128)
-    private String     emailid ;
+    private String     emailId ;
 
     @Column(name="phone", length=20)
     private String     phone ;
@@ -39,17 +39,17 @@ public class Enquiry implements Serializable {
     private String     city ;
 
     @Column(name="countryId")
-    private Integer    countryid ;
+    private Integer    countryId ;
 
     @Column(name="stateId")
-    private Integer    stateid ;
+    private Integer    stateId ;
 
     @Column(name="planId")
-    private Integer    planid ;
+    private Integer    planId ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="createdDate", nullable=false)
-    private Date       createddate ;
+    private Date       createdDate ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -75,31 +75,31 @@ public class Enquiry implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setEnquiryid( Integer enquiryid ) {
-        this.enquiryid = enquiryid ;
+        this.enquiryId = enquiryid ;
     }
     public Integer getEnquiryid() {
-        return this.enquiryid;
+        return this.enquiryId;
     }
 
     public void setFirstname( String firstname ) {
-        this.firstname = firstname ;
+        this.firstName = firstname ;
     }
     public String getFirstname() {
-        return this.firstname;
+        return this.firstName;
     }
 
     public void setLastname( String lastname ) {
-        this.lastname = lastname ;
+        this.lastName = lastname ;
     }
     public String getLastname() {
-        return this.lastname;
+        return this.lastName;
     }
 
     public void setEmailid( String emailid ) {
-        this.emailid = emailid ;
+        this.emailId = emailid ;
     }
     public String getEmailid() {
-        return this.emailid;
+        return this.emailId;
     }
 
     public void setPhone( String phone ) {
@@ -117,31 +117,31 @@ public class Enquiry implements Serializable {
     }
 
     public void setCountryid( Integer countryid ) {
-        this.countryid = countryid ;
+        this.countryId = countryid ;
     }
     public Integer getCountryid() {
-        return this.countryid;
+        return this.countryId;
     }
 
     public void setStateid( Integer stateid ) {
-        this.stateid = stateid ;
+        this.stateId = stateid ;
     }
     public Integer getStateid() {
-        return this.stateid;
+        return this.stateId;
     }
 
     public void setPlanid( Integer planid ) {
-        this.planid = planid ;
+        this.planId = planid ;
     }
     public Integer getPlanid() {
-        return this.planid;
+        return this.planId;
     }
 
     public void setCreateddate( Date createddate ) {
-        this.createddate = createddate ;
+        this.createdDate = createddate ;
     }
     public Date getCreateddate() {
-        return this.createddate;
+        return this.createdDate;
     }
 
     //--- GETTERS FOR LINKS
@@ -161,25 +161,25 @@ public class Enquiry implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(enquiryid);
+        sb.append(enquiryId);
         sb.append("|");
-        sb.append(firstname);
+        sb.append(firstName);
         sb.append("|");
-        sb.append(lastname);
+        sb.append(lastName);
         sb.append("|");
-        sb.append(emailid);
+        sb.append(emailId);
         sb.append("|");
         sb.append(phone);
         sb.append("|");
         sb.append(city);
         sb.append("|");
-        sb.append(countryid);
+        sb.append(countryId);
         sb.append("|");
-        sb.append(stateid);
+        sb.append(stateId);
         sb.append("|");
-        sb.append(planid);
+        sb.append(planId);
         sb.append("|");
-        sb.append(createddate);
+        sb.append(createdDate);
         return sb.toString(); 
     } 
 

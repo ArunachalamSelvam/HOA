@@ -21,27 +21,27 @@ public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="employeeId", nullable=false)
-    private Integer    employeeid ;
+    private Integer    employeeId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="userId")
-    private Integer    userid ;
+    private Integer    userId ;
 
     @Column(name="employeeNo", nullable=false, length=128)
-    private String     employeeno ;
+    private String     employeeNo ;
 
     @Temporal(TemporalType.DATE)
     @Column(name="dateOfJoining")
-    private Date       dateofjoining ;
+    private Date       dateOfJoining ;
 
     @Column(name="managerId")
-    private Integer    managerid ;
+    private Integer    managerId ;
 
     @Column(name="designationId")
-    private Integer    designationid ;
+    private Integer    designationId ;
 
     @Column(name="activeStatus")
-    private Boolean    activestatus ;
+    private Boolean    activeStatus ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -73,52 +73,52 @@ public class Employee implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setEmployeeid( Integer employeeid ) {
-        this.employeeid = employeeid ;
+        this.employeeId = employeeid ;
     }
     public Integer getEmployeeid() {
-        return this.employeeid;
+        return this.employeeId;
     }
 
     public void setUserid( Integer userid ) {
-        this.userid = userid ;
+        this.userId = userid ;
     }
     public Integer getUserid() {
-        return this.userid;
+        return this.userId;
     }
 
     public void setEmployeeno( String employeeno ) {
-        this.employeeno = employeeno ;
+        this.employeeNo = employeeno ;
     }
     public String getEmployeeno() {
-        return this.employeeno;
+        return this.employeeNo;
     }
 
     public void setDateofjoining( Date dateofjoining ) {
-        this.dateofjoining = dateofjoining ;
+        this.dateOfJoining = dateofjoining ;
     }
     public Date getDateofjoining() {
-        return this.dateofjoining;
+        return this.dateOfJoining;
     }
 
     public void setManagerid( Integer managerid ) {
-        this.managerid = managerid ;
+        this.managerId = managerid ;
     }
     public Integer getManagerid() {
-        return this.managerid;
+        return this.managerId;
     }
 
     public void setDesignationid( Integer designationid ) {
-        this.designationid = designationid ;
+        this.designationId = designationid ;
     }
     public Integer getDesignationid() {
-        return this.designationid;
+        return this.designationId;
     }
 
     public void setActivestatus( Boolean activestatus ) {
-        this.activestatus = activestatus ;
+        this.activeStatus = activestatus ;
     }
     public Boolean getActivestatus() {
-        return this.activestatus;
+        return this.activeStatus;
     }
 
     //--- GETTERS FOR LINKS
@@ -146,19 +146,19 @@ public class Employee implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(employeeid);
+        sb.append(employeeId);
         sb.append("|");
-        sb.append(userid);
+        sb.append(userId);
         sb.append("|");
-        sb.append(employeeno);
+        sb.append(employeeNo);
         sb.append("|");
-        sb.append(dateofjoining);
+        sb.append(dateOfJoining);
         sb.append("|");
-        sb.append(managerid);
+        sb.append(managerId);
         sb.append("|");
-        sb.append(designationid);
+        sb.append(designationId);
         sb.append("|");
-        sb.append(activestatus);
+        sb.append(activeStatus);
         return sb.toString(); 
     } 
 

@@ -19,14 +19,14 @@ public class RolePage implements Serializable {
     @Id
     @Column(name="rolepageId", nullable=false)
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer    rolepageid ;
+    private Integer    rolepageId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="roleId", nullable=false)
-    private Integer    roleid ;
+    private Integer    roleId ;
 
     @Column(name="pageId", nullable=false)
-    private Integer    pageid ;
+    private Integer    pageId ;
 
     @Column(name="creates")
     private Boolean    create ;
@@ -60,24 +60,24 @@ public class RolePage implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setRolepageid( Integer rolepageid ) {
-        this.rolepageid = rolepageid ;
+        this.rolepageId = rolepageid ;
     }
     public Integer getRolepageid() {
-        return this.rolepageid;
+        return this.rolepageId;
     }
 
     public void setRoleid( Integer roleid ) {
-        this.roleid = roleid ;
+        this.roleId = roleid ;
     }
     public Integer getRoleid() {
-        return this.roleid;
+        return this.roleId;
     }
 
     public void setPageid( Integer pageid ) {
-        this.pageid = pageid ;
+        this.pageId = pageid ;
     }
     public Integer getPageid() {
-        return this.pageid;
+        return this.pageId;
     }
 
     public void setCreate( Boolean create ) {
@@ -121,11 +121,11 @@ public class RolePage implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(rolepageid);
+        sb.append(rolepageId);
         sb.append("|");
-        sb.append(roleid);
+        sb.append(roleId);
         sb.append("|");
-        sb.append(pageid);
+        sb.append(pageId);
         sb.append("|");
         sb.append(create);
         sb.append("|");

@@ -5,147 +5,133 @@ import java.util.List;
 
 public class PlanDTO {
 
-	    private Integer planid;
-	    private Integer planrangefrom;
-	    private Integer planrangeto;
-	    private String planperiod;
-	    private String plantype;
-	    private Double price;
-	    private Boolean activestatus;
-	    private Date createddate;
-	    private List<PlanDetailDTO> listOfPlandetail;
-	    private List<CommunityDTO> listOfCommunity;
-	    private List<EnquiryDTO> listOfEnquiry;
-	    private List<ContractDTO> listOfContract;
+    private Integer planId;
+    private Integer planRangeId;
+    private Integer planPeriodId;
+    private Integer planTypeId;
+    private Double price;
+    private Boolean activeStatus;
+    private Date createdDate;
+//    private List<PlanDetailDTO> listOfPlanDetailDTO;
+//    private List<CommunityDTO> listOfCommunityDTO;
+//    private List<EnquiryDTO> listOfEnquiryDTO;
+//    private List<ContractDTO> listOfContractDTO;
+//    private PlanRangeDTO planRangeDTO;
+//    private PlanPeriodDTO planPeriodDTO;
+//    private PlanTypeDTO planTypeDTO;
 
-	    // Getters and Setters for all fields
+    // Getters and Setters for all fields
 
-	    public Integer getPlanid() {
-	        return planid;
-	    }
+    public Integer getPlanId() {
+        return planId;
+    }
 
-	    public void setPlanid(Integer planid) {
-	        this.planid = planid;
-	    }
+    public void setPlanId(Integer planId) {
+        this.planId = planId;
+    }
 
-	    public Integer getPlanrangefrom() {
-	        return planrangefrom;
-	    }
+    public Integer getPlanRangeId() {
+        return planRangeId;
+    }
 
-	    public void setPlanrangefrom(Integer planrangefrom) {
-	        this.planrangefrom = planrangefrom;
-	    }
+    public void setPlanRangeId(Integer planRangeId) {
+        this.planRangeId = planRangeId;
+    }
 
-	    public Integer getPlanrangeto() {
-	        return planrangeto;
-	    }
+    public Integer getPlanPeriodId() {
+        return planPeriodId;
+    }
 
-	    public void setPlanrangeto(Integer planrangeto) {
-	        this.planrangeto = planrangeto;
-	    }
+    public void setPlanPeriodId(Integer planPeriodId) {
+        this.planPeriodId = planPeriodId;
+    }
 
-	    public String getPlanperiod() {
-	        return planperiod;
-	    }
+    public Integer getPlanTypeId() {
+        return planTypeId;
+    }
 
-	    public void setPlanperiod(String planperiod) {
-	        this.planperiod = planperiod;
-	    }
+    public void setPlanTypeId(Integer planTypeId) {
+        this.planTypeId = planTypeId;
+    }
 
-	    public String getPlantype() {
-	        return plantype;
-	    }
+    public Double getPrice() {
+        return price;
+    }
 
-	    public void setPlantype(String plantype) {
-	        this.plantype = plantype;
-	    }
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
-	    public Double getPrice() {
-	        return price;
-	    }
+    public Boolean getActiveStatus() {
+        return activeStatus;
+    }
 
-	    public void setPrice(Double price) {
-	        this.price = price;
-	    }
+    public void setActiveStatus(Boolean activeStatus) {
+        this.activeStatus = activeStatus;
+    }
 
-	    public Boolean getActivestatus() {
-	        return activestatus;
-	    }
+    public Date getCreatedDate() {
+        return createdDate;
+    }
 
-	    public void setActivestatus(Boolean activestatus) {
-	        this.activestatus = activestatus;
-	    }
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
 
-	    public Date getCreateddate() {
-	        return createddate;
-	    }
+//    public List<PlanDetailDTO> getListOfPlanDetailDTO() {
+//        return listOfPlanDetailDTO;
+//    }
+//
+//    public void setListOfPlanDetailDTO(List<PlanDetailDTO> listOfPlanDetailDTO) {
+//        this.listOfPlanDetailDTO = listOfPlanDetailDTO;
+//    }
+//
+//    public List<CommunityDTO> getListOfCommunityDTO() {
+//        return listOfCommunityDTO;
+//    }
+//
+//    public void setListOfCommunityDTO(List<CommunityDTO> listOfCommunityDTO) {
+//        this.listOfCommunityDTO = listOfCommunityDTO;
+//    }
+//
+//    public List<EnquiryDTO> getListOfEnquiryDTO() {
+//        return listOfEnquiryDTO;
+//    }
+//
+//    public void setListOfEnquiryDTO(List<EnquiryDTO> listOfEnquiryDTO) {
+//        this.listOfEnquiryDTO = listOfEnquiryDTO;
+//    }
+//
+//    public List<ContractDTO> getListOfContractDTO() {
+//        return listOfContractDTO;
+//    }
+//
+//    public void setListOfContractDTO(List<ContractDTO> listOfContractDTO) {
+//        this.listOfContractDTO = listOfContractDTO;
+//    }
 
-	    public void setCreateddate(Date createddate) {
-	        this.createddate = createddate;
-	    }
-
-	    public List<PlanDetailDTO> getListOfPlandetail() {
-	        return listOfPlandetail;
-	    }
-
-	    public void setListOfPlandetail(List<PlanDetailDTO> listOfPlandetail) {
-	        this.listOfPlandetail = listOfPlandetail;
-	    }
-
-	    public List<CommunityDTO> getListOfCommunity() {
-	        return listOfCommunity;
-	    }
-
-	    public void setListOfCommunity(List<CommunityDTO> listOfCommunity) {
-	        this.listOfCommunity = listOfCommunity;
-	    }
-
-	    public List<EnquiryDTO> getListOfEnquiry() {
-	        return listOfEnquiry;
-	    }
-
-	    public void setListOfEnquiry(List<EnquiryDTO> listOfEnquiry) {
-	        this.listOfEnquiry = listOfEnquiry;
-	    }
-
-	    public List<ContractDTO> getListOfContract() {
-	        return listOfContract;
-	    }
-
-	    public void setListOfContract(List<ContractDTO> listOfContract) {
-	        this.listOfContract = listOfContract;
-	    }
-
-		@Override
-		public String toString() {
-			return "PlanDto [planid=" + planid + ", planrangefrom=" + planrangefrom + ", planrangeto=" + planrangeto
-					+ ", planperiod=" + planperiod + ", plantype=" + plantype + ", price=" + price + ", activestatus="
-					+ activestatus + ", createddate=" + createddate + ", listOfPlandetail=" + listOfPlandetail
-					+ ", listOfCommunity=" + listOfCommunity + ", listOfEnquiry=" + listOfEnquiry + ", listOfContract="
-					+ listOfContract + "]";
-		}
-
-		public PlanDTO(Integer planid, Integer planrangefrom, Integer planrangeto, String planperiod, String plantype,
-				Double price, Boolean activestatus, Date createddate, List<PlanDetailDTO> listOfPlandetail,
-				List<CommunityDTO> listOfCommunity, List<EnquiryDTO> listOfEnquiry, List<ContractDTO> listOfContract) {
-			super();
-			this.planid = planid;
-			this.planrangefrom = planrangefrom;
-			this.planrangeto = planrangeto;
-			this.planperiod = planperiod;
-			this.plantype = plantype;
-			this.price = price;
-			this.activestatus = activestatus;
-			this.createddate = createddate;
-			this.listOfPlandetail = listOfPlandetail;
-			this.listOfCommunity = listOfCommunity;
-			this.listOfEnquiry = listOfEnquiry;
-			this.listOfContract = listOfContract;
-		}
-
-		public PlanDTO() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
+//    public PlanRangeDTO getPlanRangeDTO() {
+//        return planRangeDTO;
+//    }
+//
+//    public void setPlanRangeDTO(PlanRangeDTO planRangeDTO) {
+//        this.planRangeDTO = planRangeDTO;
+//    }
+//
+//    public PlanPeriodDTO getPlanPeriodDTO() {
+//        return planPeriodDTO;
+//    }
+//
+//    public void setPlanPeriodDTO(PlanPeriodDTO planPeriodDTO) {
+//        this.planPeriodDTO = planPeriodDTO;
+//    }
+//
+//    public PlanTypeDTO getPlanTypeDTO() {
+//        return planTypeDTO;
+//    }
+//
+//    public void setPlanTypeDTO(PlanTypeDTO planTypeDTO) {
+//        this.planTypeDTO = planTypeDTO;
+//    }
 
 }

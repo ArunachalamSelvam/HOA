@@ -21,7 +21,7 @@ public class Community implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="communityID", nullable=false)
-    private Integer    communityid ;
+    private Integer    communityId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="name", length=128)
@@ -31,76 +31,76 @@ public class Community implements Serializable {
     private String     communityCode ;
 
     @Column(name="addressID")
-    private Integer    addressid ;
+    private Integer    addressId ;
 
     @Column(name="presidentEmailID", length=128)
-    private String     presidentemailid ;
+    private String     presidentEmailID ;
 
     @Column(name="presidentInviteStatus", length=128)
-    private String     presidentinvitestatus ;
+    private String     presidentInviteStatus ;
 
     @Column(name="presidentUserId")
-    private Integer    presidentuserid ;
+    private Integer    presidentUserId ;
 
     @Column(name="secretaryEmailID", length=128)
-    private String     secretaryemailid ;
+    private String     secretaryEmailID ;
 
     @Column(name="secretaryInviteStatus", length=128)
-    private String     secretaryinvitestatus ;
+    private String     secretaryInviteStatus ;
 
     @Column(name="secretaryUserID")
-    private Integer    secretaryuserid ;
+    private Integer    secretaryUserID ;
 
     @Column(name="treasurerEmailID", length=128)
-    private String     treasureremailid ;
+    private String     treasurerEmailID ;
 
     @Column(name="treasurerInviteStatus", length=128)
-    private String     treasurerinvitestatus ;
+    private String     treasurerInviteStatus ;
 
     @Column(name="treasurerUserID")
-    private Integer    treasureruserid ;
+    private Integer    treasurerUserID ;
 
     @Column(name="planId")
-    private Integer    planid ;
+    private Integer    planId ;
 
     @Column(name="licenseStatus", length=128)
-    private String     licensestatus ;
+    private String     licenseStatus ;
 
     @Column(name="communitySize")
-    private Integer    communitysize ;
+    private Integer    communitySize ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="planExpireDate")
-    private Date       planexpiredate ;
+    private Date       planExpireDate ;
 
     @Column(name="contactPerson", length=128)
-    private String     contactperson ;
+    private String     contactPerson ;
 
     @Column(name="totalOwners")
-    private Integer    totalowners ;
+    private Integer    totalOwners ;
 
     @Column(name="activeStatus")
-    private Boolean    activestatus ;
+    private Boolean    activeStatus ;
 
     @Column(name="createdById", nullable=false)
-    private Integer    createdbyid ;
+    private Integer    createdById ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="createdDate", nullable=false)
-    private Date       createddate ;
+    private Date       createdDate ;
 
     @Column(name="modifiedById")
-    private Integer    modifiedbyid ;
+    private Integer    modifiedById ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="modifiedDate")
-    private Date       modifieddate ;
+    private Date       modifiedDate ;
 
     @Column(name="timeZone", length=2147483647)
-    private String     timezone ;
+    private String     timeZone ;
 
     @Column(name="contractId")
-    private Integer    contractid ;
+    private Integer    contractId ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -171,10 +171,10 @@ public class Community implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setCommunityid( Integer communityid ) {
-        this.communityid = communityid ;
+        this.communityId = communityid ;
     }
     public Integer getCommunityid() {
-        return this.communityid;
+        return this.communityId;
     }
 
     public void setName( String name ) {
@@ -192,164 +192,164 @@ public class Community implements Serializable {
     }
 
     public void setAddressid( Integer addressid ) {
-        this.addressid = addressid ;
+        this.addressId = addressid ;
     }
     public Integer getAddressid() {
-        return this.addressid;
+        return this.addressId;
     }
 
     public void setPresidentemailid( String presidentemailid ) {
-        this.presidentemailid = presidentemailid ;
+        this.presidentEmailID = presidentemailid ;
     }
     public String getPresidentemailid() {
-        return this.presidentemailid;
+        return this.presidentEmailID;
     }
 
     public void setPresidentinvitestatus( String presidentinvitestatus ) {
-        this.presidentinvitestatus = presidentinvitestatus ;
+        this.presidentInviteStatus = presidentinvitestatus ;
     }
     public String getPresidentinvitestatus() {
-        return this.presidentinvitestatus;
+        return this.presidentInviteStatus;
     }
 
     public void setPresidentuserid( Integer presidentuserid ) {
-        this.presidentuserid = presidentuserid ;
+        this.presidentUserId = presidentuserid ;
     }
     public Integer getPresidentuserid() {
-        return this.presidentuserid;
+        return this.presidentUserId;
     }
 
     public void setSecretaryemailid( String secretaryemailid ) {
-        this.secretaryemailid = secretaryemailid ;
+        this.secretaryEmailID = secretaryemailid ;
     }
     public String getSecretaryemailid() {
-        return this.secretaryemailid;
+        return this.secretaryEmailID;
     }
 
     public void setSecretaryinvitestatus( String secretaryinvitestatus ) {
-        this.secretaryinvitestatus = secretaryinvitestatus ;
+        this.secretaryInviteStatus = secretaryinvitestatus ;
     }
     public String getSecretaryinvitestatus() {
-        return this.secretaryinvitestatus;
+        return this.secretaryInviteStatus;
     }
 
     public void setSecretaryuserid( Integer secretaryuserid ) {
-        this.secretaryuserid = secretaryuserid ;
+        this.secretaryUserID = secretaryuserid ;
     }
     public Integer getSecretaryuserid() {
-        return this.secretaryuserid;
+        return this.secretaryUserID;
     }
 
     public void setTreasureremailid( String treasureremailid ) {
-        this.treasureremailid = treasureremailid ;
+        this.treasurerEmailID = treasureremailid ;
     }
     public String getTreasureremailid() {
-        return this.treasureremailid;
+        return this.treasurerEmailID;
     }
 
     public void setTreasurerinvitestatus( String treasurerinvitestatus ) {
-        this.treasurerinvitestatus = treasurerinvitestatus ;
+        this.treasurerInviteStatus = treasurerinvitestatus ;
     }
     public String getTreasurerinvitestatus() {
-        return this.treasurerinvitestatus;
+        return this.treasurerInviteStatus;
     }
 
     public void setTreasureruserid( Integer treasureruserid ) {
-        this.treasureruserid = treasureruserid ;
+        this.treasurerUserID = treasureruserid ;
     }
     public Integer getTreasureruserid() {
-        return this.treasureruserid;
+        return this.treasurerUserID;
     }
 
     public void setPlanid( Integer planid ) {
-        this.planid = planid ;
+        this.planId = planid ;
     }
     public Integer getPlanid() {
-        return this.planid;
+        return this.planId;
     }
 
     public void setLicensestatus( String licensestatus ) {
-        this.licensestatus = licensestatus ;
+        this.licenseStatus = licensestatus ;
     }
     public String getLicensestatus() {
-        return this.licensestatus;
+        return this.licenseStatus;
     }
 
     public void setCommunitysize( Integer communitysize ) {
-        this.communitysize = communitysize ;
+        this.communitySize = communitysize ;
     }
     public Integer getCommunitysize() {
-        return this.communitysize;
+        return this.communitySize;
     }
 
     public void setPlanexpiredate( Date planexpiredate ) {
-        this.planexpiredate = planexpiredate ;
+        this.planExpireDate = planexpiredate ;
     }
     public Date getPlanexpiredate() {
-        return this.planexpiredate;
+        return this.planExpireDate;
     }
 
     public void setContactperson( String contactperson ) {
-        this.contactperson = contactperson ;
+        this.contactPerson = contactperson ;
     }
     public String getContactperson() {
-        return this.contactperson;
+        return this.contactPerson;
     }
 
     public void setTotalowners( Integer totalowners ) {
-        this.totalowners = totalowners ;
+        this.totalOwners = totalowners ;
     }
     public Integer getTotalowners() {
-        return this.totalowners;
+        return this.totalOwners;
     }
 
     public void setActivestatus( Boolean activestatus ) {
-        this.activestatus = activestatus ;
+        this.activeStatus = activestatus ;
     }
     public Boolean getActivestatus() {
-        return this.activestatus;
+        return this.activeStatus;
     }
 
     public void setCreatedbyid( Integer createdbyid ) {
-        this.createdbyid = createdbyid ;
+        this.createdById = createdbyid ;
     }
     public Integer getCreatedbyid() {
-        return this.createdbyid;
+        return this.createdById;
     }
 
     public void setCreateddate( Date createddate ) {
-        this.createddate = createddate ;
+        this.createdDate = createddate ;
     }
     public Date getCreateddate() {
-        return this.createddate;
+        return this.createdDate;
     }
 
     public void setModifiedbyid( Integer modifiedbyid ) {
-        this.modifiedbyid = modifiedbyid ;
+        this.modifiedById = modifiedbyid ;
     }
     public Integer getModifiedbyid() {
-        return this.modifiedbyid;
+        return this.modifiedById;
     }
 
     public void setModifieddate( Date modifieddate ) {
-        this.modifieddate = modifieddate ;
+        this.modifiedDate = modifieddate ;
     }
     public Date getModifieddate() {
-        return this.modifieddate;
+        return this.modifiedDate;
     }
 
     public void setTimezone( String timezone ) {
-        this.timezone = timezone ;
+        this.timeZone = timezone ;
     }
     public String getTimezone() {
-        return this.timezone;
+        return this.timeZone;
     }
 
     public void setContractid( Integer contractid ) {
-        this.contractid = contractid ;
+        this.contractId = contractid ;
     }
     public Integer getContractid() {
-        return this.contractid;
+        return this.contractId;
     }
 
     //--- GETTERS FOR LINKS
@@ -429,57 +429,57 @@ public class Community implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(communityid);
+        sb.append(communityId);
         sb.append("|");
         sb.append(name);
         sb.append("|");
         sb.append(communityCode);
         sb.append("|");
-        sb.append(addressid);
+        sb.append(addressId);
         sb.append("|");
-        sb.append(presidentemailid);
+        sb.append(presidentEmailID);
         sb.append("|");
-        sb.append(presidentinvitestatus);
+        sb.append(presidentInviteStatus);
         sb.append("|");
-        sb.append(presidentuserid);
+        sb.append(presidentUserId);
         sb.append("|");
-        sb.append(secretaryemailid);
+        sb.append(secretaryEmailID);
         sb.append("|");
-        sb.append(secretaryinvitestatus);
+        sb.append(secretaryInviteStatus);
         sb.append("|");
-        sb.append(secretaryuserid);
+        sb.append(secretaryUserID);
         sb.append("|");
-        sb.append(treasureremailid);
+        sb.append(treasurerEmailID);
         sb.append("|");
-        sb.append(treasurerinvitestatus);
+        sb.append(treasurerInviteStatus);
         sb.append("|");
-        sb.append(treasureruserid);
+        sb.append(treasurerUserID);
         sb.append("|");
-        sb.append(planid);
+        sb.append(planId);
         sb.append("|");
-        sb.append(licensestatus);
+        sb.append(licenseStatus);
         sb.append("|");
-        sb.append(communitysize);
+        sb.append(communitySize);
         sb.append("|");
-        sb.append(planexpiredate);
+        sb.append(planExpireDate);
         sb.append("|");
-        sb.append(contactperson);
+        sb.append(contactPerson);
         sb.append("|");
-        sb.append(totalowners);
+        sb.append(totalOwners);
         sb.append("|");
-        sb.append(activestatus);
+        sb.append(activeStatus);
         sb.append("|");
-        sb.append(createdbyid);
+        sb.append(createdById);
         sb.append("|");
-        sb.append(createddate);
+        sb.append(createdDate);
         sb.append("|");
-        sb.append(modifiedbyid);
+        sb.append(modifiedById);
         sb.append("|");
-        sb.append(modifieddate);
+        sb.append(modifiedDate);
         sb.append("|");
-        sb.append(timezone);
+        sb.append(timeZone);
         sb.append("|");
-        sb.append(contractid);
+        sb.append(contractId);
         return sb.toString(); 
     } 
 

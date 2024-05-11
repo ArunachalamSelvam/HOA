@@ -21,44 +21,44 @@ public class Vendor implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="vendorId", nullable=false)
-    private Integer    vendorid ;
+    private Integer    vendorId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="name", nullable=false, length=128)
     private String     name ;
 
     @Column(name="emailId", nullable=false, length=128)
-    private String     emailid ;
+    private String     emailId ;
 
     @Column(name="phone", nullable=false, length=128)
     private String     phone ;
 
     @Column(name="zipCode", nullable=false, length=128)
-    private String     zipcode ;
+    private String     zipCode ;
 
     @Column(name="serviceTypeID", nullable=false)
-    private Integer    servicetypeid ;
+    private Integer    serviceTypeId ;
 
     @Column(name="communityID", nullable=false)
-    private Integer    communityid ;
+    private Integer    communityId ;
 
     @Temporal(TemporalType.DATE)
     @Column(name="licenseExpiryDate")
-    private Date       licenseexpirydate ;
+    private Date       licenseExpiryDate ;
 
     @Column(name="createdByID", nullable=false)
-    private Integer    createdbyid ;
+    private Integer    createdById ;
 
     @Column(name="modifiedByID")
-    private Integer    modifiedbyid ;
+    private Integer    modifieById ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="createdDate", nullable=false)
-    private Date       createddate ;
+    private Date       createdDate ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="modifiedDate")
-    private Date       modifieddate ;
+    private Date       modifiedDate ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -91,10 +91,10 @@ public class Vendor implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setVendorid( Integer vendorid ) {
-        this.vendorid = vendorid ;
+        this.vendorId = vendorid ;
     }
     public Integer getVendorid() {
-        return this.vendorid;
+        return this.vendorId;
     }
 
     public void setName( String name ) {
@@ -105,10 +105,10 @@ public class Vendor implements Serializable {
     }
 
     public void setEmailid( String emailid ) {
-        this.emailid = emailid ;
+        this.emailId = emailid ;
     }
     public String getEmailid() {
-        return this.emailid;
+        return this.emailId;
     }
 
     public void setPhone( String phone ) {
@@ -119,59 +119,59 @@ public class Vendor implements Serializable {
     }
 
     public void setZipcode( String zipcode ) {
-        this.zipcode = zipcode ;
+        this.zipCode = zipcode ;
     }
     public String getZipcode() {
-        return this.zipcode;
+        return this.zipCode;
     }
 
     public void setServicetypeid( Integer servicetypeid ) {
-        this.servicetypeid = servicetypeid ;
+        this.serviceTypeId = servicetypeid ;
     }
     public Integer getServicetypeid() {
-        return this.servicetypeid;
+        return this.serviceTypeId;
     }
 
     public void setCommunityid( Integer communityid ) {
-        this.communityid = communityid ;
+        this.communityId = communityid ;
     }
     public Integer getCommunityid() {
-        return this.communityid;
+        return this.communityId;
     }
 
     public void setLicenseexpirydate( Date licenseexpirydate ) {
-        this.licenseexpirydate = licenseexpirydate ;
+        this.licenseExpiryDate = licenseexpirydate ;
     }
     public Date getLicenseexpirydate() {
-        return this.licenseexpirydate;
+        return this.licenseExpiryDate;
     }
 
     public void setCreatedbyid( Integer createdbyid ) {
-        this.createdbyid = createdbyid ;
+        this.createdById = createdbyid ;
     }
     public Integer getCreatedbyid() {
-        return this.createdbyid;
+        return this.createdById;
     }
 
     public void setModifiedbyid( Integer modifiedbyid ) {
-        this.modifiedbyid = modifiedbyid ;
+        this.modifieById = modifiedbyid ;
     }
     public Integer getModifiedbyid() {
-        return this.modifiedbyid;
+        return this.modifieById;
     }
 
     public void setCreateddate( Date createddate ) {
-        this.createddate = createddate ;
+        this.createdDate = createddate ;
     }
     public Date getCreateddate() {
-        return this.createddate;
+        return this.createdDate;
     }
 
     public void setModifieddate( Date modifieddate ) {
-        this.modifieddate = modifieddate ;
+        this.modifiedDate = modifieddate ;
     }
     public Date getModifieddate() {
-        return this.modifieddate;
+        return this.modifiedDate;
     }
 
     //--- GETTERS FOR LINKS
@@ -199,29 +199,29 @@ public class Vendor implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(vendorid);
+        sb.append(vendorId);
         sb.append("|");
         sb.append(name);
         sb.append("|");
-        sb.append(emailid);
+        sb.append(emailId);
         sb.append("|");
         sb.append(phone);
         sb.append("|");
-        sb.append(zipcode);
+        sb.append(zipCode);
         sb.append("|");
-        sb.append(servicetypeid);
+        sb.append(serviceTypeId);
         sb.append("|");
-        sb.append(communityid);
+        sb.append(communityId);
         sb.append("|");
-        sb.append(licenseexpirydate);
+        sb.append(licenseExpiryDate);
         sb.append("|");
-        sb.append(createdbyid);
+        sb.append(createdById);
         sb.append("|");
-        sb.append(modifiedbyid);
+        sb.append(modifieById);
         sb.append("|");
-        sb.append(createddate);
+        sb.append(createdDate);
         sb.append("|");
-        sb.append(modifieddate);
+        sb.append(modifiedDate);
         return sb.toString(); 
     } 
 

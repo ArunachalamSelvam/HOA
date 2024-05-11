@@ -20,24 +20,24 @@ public class AuditLog implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="auditLogId", nullable=false)
-    private Integer    auditlogid ;
+    private Integer    auditLogId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="userId", nullable=false)
-    private Integer    userid ;
+    private Integer    userId ;
 
     @Column(name="actionPerformed", length=255)
-    private String     actionperformed ;
+    private String     actionPerformed ;
 
     @Column(name="pageName", length=128)
-    private String     pagename ;
+    private String     pageName ;
 
     @Column(name="communityId")
-    private Integer    communityid ;
+    private Integer    communityId ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="createdDate", nullable=false)
-    private Date       createddate ;
+    private Date       createdDate ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -59,45 +59,45 @@ public class AuditLog implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setAuditlogid( Integer auditlogid ) {
-        this.auditlogid = auditlogid ;
+        this.auditLogId = auditlogid ;
     }
     public Integer getAuditlogid() {
-        return this.auditlogid;
+        return this.auditLogId;
     }
 
     public void setUserid( Integer userid ) {
-        this.userid = userid ;
+        this.userId = userid ;
     }
     public Integer getUserid() {
-        return this.userid;
+        return this.userId;
     }
 
     public void setActionperformed( String actionperformed ) {
-        this.actionperformed = actionperformed ;
+        this.actionPerformed = actionperformed ;
     }
     public String getActionperformed() {
-        return this.actionperformed;
+        return this.actionPerformed;
     }
 
     public void setPagename( String pagename ) {
-        this.pagename = pagename ;
+        this.pageName = pagename ;
     }
     public String getPagename() {
-        return this.pagename;
+        return this.pageName;
     }
 
     public void setCommunityid( Integer communityid ) {
-        this.communityid = communityid ;
+        this.communityId = communityid ;
     }
     public Integer getCommunityid() {
-        return this.communityid;
+        return this.communityId;
     }
 
     public void setCreateddate( Date createddate ) {
-        this.createddate = createddate ;
+        this.createdDate = createddate ;
     }
     public Date getCreateddate() {
-        return this.createddate;
+        return this.createdDate;
     }
 
     //--- GETTERS FOR LINKS
@@ -113,17 +113,17 @@ public class AuditLog implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(auditlogid);
+        sb.append(auditLogId);
         sb.append("|");
-        sb.append(userid);
+        sb.append(userId);
         sb.append("|");
-        sb.append(actionperformed);
+        sb.append(actionPerformed);
         sb.append("|");
-        sb.append(pagename);
+        sb.append(pageName);
         sb.append("|");
-        sb.append(communityid);
+        sb.append(communityId);
         sb.append("|");
-        sb.append(createddate);
+        sb.append(createdDate);
         return sb.toString(); 
     } 
 

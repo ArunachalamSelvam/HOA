@@ -5,32 +5,32 @@ import java.util.List;
 
 public class CommunityDTO {
 
-	    private Integer communityid;
+	    private Integer communityId;
 	    private String name;
-	    private String communitycode;
-	    private Integer addressid;
-	    private String presidentemailid;
-	    private String presidentinvitestatus;
-	    private Integer presidentuserid;
-	    private String secretaryemailid;
-	    private String secretaryinvitestatus;
-	    private Integer secretaryuserid;
-	    private String treasureremailid;
-	    private String treasurerinvitestatus;
-	    private Integer treasureruserid;
-	    private Integer planid;
-	    private String licensestatus;
-	    private Integer communitysize;
-	    private Date planexpiredate;
-	    private String contactperson;
-	    private Integer totalowners;
-	    private Boolean activestatus;
-	    private Integer createdbyid;
-	    private Date createddate;
-	    private Integer modifiedbyid;
-	    private Date modifieddate;
-	    private String timezone;
-	    private Integer contractid;
+	    private String communityCode;
+	    private Integer addressId;
+	    private String presidentEmailId;
+	    private String presidentInviteStatus;
+	    private Integer presidentUserId;
+	    private String secretaryEmailId;
+	    private String secretaryInviteStatus;
+	    private Integer secretaryUserId;
+	    private String treasurerEmailId;
+	    private String treasurerInviteStatus;
+	    private Integer treasurerUserId;
+	    private Integer planId;
+	    private String licenseStatus;
+	    private Integer communitySize;
+	    private Date planExpiredDate;
+	    private String contactPerson;
+	    private Integer totalOwners;
+	    private Boolean activeStatus;
+	    private Integer createdById;
+	    private Date createdDate;
+	    private Integer modifiedById;
+	    private Date modifiedDate;
+	    private String timeZone;
+	    private Integer contractId;
 //	    private List<HoaFeeDTO> listOfHoafee;
 //	    private List<FaqDTO> listOfFaq;
 //	    private List<ServiceRequestDTO> listOfServicerequest;
@@ -51,10 +51,10 @@ public class CommunityDTO {
 //	    private AddressDTO address;
 	    
 		public Integer getCommunityid() {
-			return communityid;
+			return communityId;
 		}
 		public void setCommunityid(Integer communityid) {
-			this.communityid = communityid;
+			this.communityId = communityid;
 		}
 		public String getName() {
 			return name;
@@ -63,148 +63,148 @@ public class CommunityDTO {
 			this.name = name;
 		}
 		public String getCommunitycode() {
-			return communitycode;
+			return communityCode;
 		}
 		public void setCommunitycode(String communitycode) {
-			this.communitycode = communitycode;
+			this.communityCode = communitycode;
 		}
 		public Integer getAddressid() {
-			return addressid;
+			return addressId;
 		}
 		public void setAddressid(Integer addressid) {
-			this.addressid = addressid;
+			this.addressId = addressid;
 		}
 		public String getPresidentemailid() {
-			return presidentemailid;
+			return presidentEmailId;
 		}
 		public void setPresidentemailid(String presidentemailid) {
-			this.presidentemailid = presidentemailid;
+			this.presidentEmailId = presidentemailid;
 		}
 		public String getPresidentinvitestatus() {
-			return presidentinvitestatus;
+			return presidentInviteStatus;
 		}
 		public void setPresidentinvitestatus(String presidentinvitestatus) {
-			this.presidentinvitestatus = presidentinvitestatus;
+			this.presidentInviteStatus = presidentinvitestatus;
 		}
 		public Integer getPresidentuserid() {
-			return presidentuserid;
+			return presidentUserId;
 		}
 		public void setPresidentuserid(Integer presidentuserid) {
-			this.presidentuserid = presidentuserid;
+			this.presidentUserId = presidentuserid;
 		}
 		public String getSecretaryemailid() {
-			return secretaryemailid;
+			return secretaryEmailId;
 		}
 		public void setSecretaryemailid(String secretaryemailid) {
-			this.secretaryemailid = secretaryemailid;
+			this.secretaryEmailId = secretaryemailid;
 		}
 		public String getSecretaryinvitestatus() {
-			return secretaryinvitestatus;
+			return secretaryInviteStatus;
 		}
 		public void setSecretaryinvitestatus(String secretaryinvitestatus) {
-			this.secretaryinvitestatus = secretaryinvitestatus;
+			this.secretaryInviteStatus = secretaryinvitestatus;
 		}
 		public Integer getSecretaryuserid() {
-			return secretaryuserid;
+			return secretaryUserId;
 		}
 		public void setSecretaryuserid(Integer secretaryuserid) {
-			this.secretaryuserid = secretaryuserid;
+			this.secretaryUserId = secretaryuserid;
 		}
 		public String getTreasureremailid() {
-			return treasureremailid;
+			return treasurerEmailId;
 		}
 		public void setTreasureremailid(String treasureremailid) {
-			this.treasureremailid = treasureremailid;
+			this.treasurerEmailId = treasureremailid;
 		}
 		public String getTreasurerinvitestatus() {
-			return treasurerinvitestatus;
+			return treasurerInviteStatus;
 		}
 		public void setTreasurerinvitestatus(String treasurerinvitestatus) {
-			this.treasurerinvitestatus = treasurerinvitestatus;
+			this.treasurerInviteStatus = treasurerinvitestatus;
 		}
 		public Integer getTreasureruserid() {
-			return treasureruserid;
+			return treasurerUserId;
 		}
 		public void setTreasureruserid(Integer treasureruserid) {
-			this.treasureruserid = treasureruserid;
+			this.treasurerUserId = treasureruserid;
 		}
 		public Integer getPlanid() {
-			return planid;
+			return planId;
 		}
 		public void setPlanid(Integer planid) {
-			this.planid = planid;
+			this.planId = planid;
 		}
 		public String getLicensestatus() {
-			return licensestatus;
+			return licenseStatus;
 		}
 		public void setLicensestatus(String licensestatus) {
-			this.licensestatus = licensestatus;
+			this.licenseStatus = licensestatus;
 		}
 		public Integer getCommunitysize() {
-			return communitysize;
+			return communitySize;
 		}
 		public void setCommunitysize(Integer communitysize) {
-			this.communitysize = communitysize;
+			this.communitySize = communitysize;
 		}
 		public Date getPlanexpiredate() {
-			return planexpiredate;
+			return planExpiredDate;
 		}
 		public void setPlanexpiredate(Date planexpiredate) {
-			this.planexpiredate = planexpiredate;
+			this.planExpiredDate = planexpiredate;
 		}
 		public String getContactperson() {
-			return contactperson;
+			return contactPerson;
 		}
 		public void setContactperson(String contactperson) {
-			this.contactperson = contactperson;
+			this.contactPerson = contactperson;
 		}
 		public Integer getTotalowners() {
-			return totalowners;
+			return totalOwners;
 		}
 		public void setTotalowners(Integer totalowners) {
-			this.totalowners = totalowners;
+			this.totalOwners = totalowners;
 		}
 		public Boolean getActivestatus() {
-			return activestatus;
+			return activeStatus;
 		}
 		public void setActivestatus(Boolean activestatus) {
-			this.activestatus = activestatus;
+			this.activeStatus = activestatus;
 		}
 		public Integer getCreatedbyid() {
-			return createdbyid;
+			return createdById;
 		}
 		public void setCreatedbyid(Integer createdbyid) {
-			this.createdbyid = createdbyid;
+			this.createdById = createdbyid;
 		}
 		public Date getCreateddate() {
-			return createddate;
+			return createdDate;
 		}
 		public void setCreateddate(Date createddate) {
-			this.createddate = createddate;
+			this.createdDate = createddate;
 		}
 		public Integer getModifiedbyid() {
-			return modifiedbyid;
+			return modifiedById;
 		}
 		public void setModifiedbyid(Integer modifiedbyid) {
-			this.modifiedbyid = modifiedbyid;
+			this.modifiedById = modifiedbyid;
 		}
 		public Date getModifieddate() {
-			return modifieddate;
+			return modifiedDate;
 		}
 		public void setModifieddate(Date modifieddate) {
-			this.modifieddate = modifieddate;
+			this.modifiedDate = modifieddate;
 		}
 		public String getTimezone() {
-			return timezone;
+			return timeZone;
 		}
 		public void setTimezone(String timezone) {
-			this.timezone = timezone;
+			this.timeZone = timezone;
 		}
 		public Integer getContractid() {
-			return contractid;
+			return contractId;
 		}
 		public void setContractid(Integer contractid) {
-			this.contractid = contractid;
+			this.contractId = contractid;
 		}
 //		public List<HoaFeeDTO> getListOfHoafee() {
 //			return listOfHoafee;
@@ -317,17 +317,17 @@ public class CommunityDTO {
 		
 		@Override
 		public String toString() {
-			return "CommunityDto [communityid=" + communityid + ", name=" + name + ", communitycode=" + communitycode
-					+ ", addressid=" + addressid + ", presidentemailid=" + presidentemailid + ", presidentinvitestatus="
-					+ presidentinvitestatus + ", presidentuserid=" + presidentuserid + ", secretaryemailid="
-					+ secretaryemailid + ", secretaryinvitestatus=" + secretaryinvitestatus + ", secretaryuserid="
-					+ secretaryuserid + ", treasureremailid=" + treasureremailid + ", treasurerinvitestatus="
-					+ treasurerinvitestatus + ", treasureruserid=" + treasureruserid + ", planid=" + planid
-					+ ", licensestatus=" + licensestatus + ", communitysize=" + communitysize + ", planexpiredate="
-					+ planexpiredate + ", contactperson=" + contactperson + ", totalowners=" + totalowners
-					+ ", activestatus=" + activestatus + ", createdbyid=" + createdbyid + ", createddate=" + createddate
-					+ ", modifiedbyid=" + modifiedbyid + ", modifieddate=" + modifieddate + ", timezone=" + timezone
-					+ ", contractid=" + contractid +  "]";
+			return "CommunityDto [communityid=" + communityId + ", name=" + name + ", communitycode=" + communityCode
+					+ ", addressid=" + addressId + ", presidentemailid=" + presidentEmailId + ", presidentinvitestatus="
+					+ presidentInviteStatus + ", presidentuserid=" + presidentUserId + ", secretaryemailid="
+					+ secretaryEmailId + ", secretaryinvitestatus=" + secretaryInviteStatus + ", secretaryuserid="
+					+ secretaryUserId + ", treasureremailid=" + treasurerEmailId + ", treasurerinvitestatus="
+					+ treasurerInviteStatus + ", treasureruserid=" + treasurerUserId + ", planid=" + planId
+					+ ", licensestatus=" + licenseStatus + ", communitysize=" + communitySize + ", planexpiredate="
+					+ planExpiredDate + ", contactperson=" + contactPerson + ", totalowners=" + totalOwners
+					+ ", activestatus=" + activeStatus + ", createdbyid=" + createdById + ", createddate=" + createdDate
+					+ ", modifiedbyid=" + modifiedById + ", modifieddate=" + modifiedDate + ", timezone=" + timeZone
+					+ ", contractid=" + contractId +  "]";
 		}
 		
 		public CommunityDTO(Integer communityid, String name, String communitycode, Integer addressid,
@@ -338,32 +338,32 @@ public class CommunityDTO {
 				Boolean activestatus, Integer createdbyid, Date createddate, Integer modifiedbyid, Date modifieddate,
 				String timezone, Integer contractid) {
 			super();
-			this.communityid = communityid;
+			this.communityId = communityid;
 			this.name = name;
-			this.communitycode = communitycode;
-			this.addressid = addressid;
-			this.presidentemailid = presidentemailid;
-			this.presidentinvitestatus = presidentinvitestatus;
-			this.presidentuserid = presidentuserid;
-			this.secretaryemailid = secretaryemailid;
-			this.secretaryinvitestatus = secretaryinvitestatus;
-			this.secretaryuserid = secretaryuserid;
-			this.treasureremailid = treasureremailid;
-			this.treasurerinvitestatus = treasurerinvitestatus;
-			this.treasureruserid = treasureruserid;
-			this.planid = planid;
-			this.licensestatus = licensestatus;
-			this.communitysize = communitysize;
-			this.planexpiredate = planexpiredate;
-			this.contactperson = contactperson;
-			this.totalowners = totalowners;
-			this.activestatus = activestatus;
-			this.createdbyid = createdbyid;
-			this.createddate = createddate;
-			this.modifiedbyid = modifiedbyid;
-			this.modifieddate = modifieddate;
-			this.timezone = timezone;
-			this.contractid = contractid;
+			this.communityCode = communitycode;
+			this.addressId = addressid;
+			this.presidentEmailId = presidentemailid;
+			this.presidentInviteStatus = presidentinvitestatus;
+			this.presidentUserId = presidentuserid;
+			this.secretaryEmailId = secretaryemailid;
+			this.secretaryInviteStatus = secretaryinvitestatus;
+			this.secretaryUserId = secretaryuserid;
+			this.treasurerEmailId = treasureremailid;
+			this.treasurerInviteStatus = treasurerinvitestatus;
+			this.treasurerUserId = treasureruserid;
+			this.planId = planid;
+			this.licenseStatus = licensestatus;
+			this.communitySize = communitysize;
+			this.planExpiredDate = planexpiredate;
+			this.contactPerson = contactperson;
+			this.totalOwners = totalowners;
+			this.activeStatus = activestatus;
+			this.createdById = createdbyid;
+			this.createdDate = createddate;
+			this.modifiedById = modifiedbyid;
+			this.modifiedDate = modifieddate;
+			this.timeZone = timezone;
+			this.contractId = contractid;
 //			this.listOfHoafee = listOfHoafee;
 //			this.listOfFaq = listOfFaq;
 //			this.listOfServicerequest = listOfServicerequest;

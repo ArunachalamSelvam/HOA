@@ -76,4 +76,6 @@ public interface PlandetailService  {
      */
 	Page<PlanDetail> findAllSpecification(Specification<PlanDetail> specs, Pageable pageable);
 
+	PlanDetail findPlanDetailByPlanId(Integer planId);
+
 }

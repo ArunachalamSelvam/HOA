@@ -21,14 +21,14 @@ public class Role implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_seq")
     @SequenceGenerator(name = "role_seq", sequenceName = "role_seq", allocationSize = 1, initialValue = 1000) // Set initialValue to the desired starting number
     @Column(name="roleId",nullable = false)
-    private Integer    roleid ;
+    private Integer    roleId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="name", nullable=false, length=128)
     private String     name ;
 
     @Column(name="activeStatus")
-    private Boolean    activestatus ;
+    private Boolean    activeStatus ;
 
 
 //    //--- ENTITY LINKS ( RELATIONSHIP )
@@ -54,7 +54,7 @@ public class Role implements Serializable {
     public Role(String name) {
 	
 		this.name = name;
-		this.activestatus = true;
+		this.activeStatus = true;
 	}
     
     
@@ -63,19 +63,19 @@ public class Role implements Serializable {
 
 	public Role(Integer roleid, String name, Boolean activestatus) {
 	
-		this.roleid = roleid;
+		this.roleId = roleid;
 		this.name = name;
-		this.activestatus = activestatus;
+		this.activeStatus = activestatus;
 	}
 
 
 
 	//--- GETTERS & SETTERS FOR FIELDS
     public void setRoleid( Integer roleid ) {
-        this.roleid = roleid ;
+        this.roleId = roleid ;
     }
     public Integer getRoleid() {
-        return this.roleid;
+        return this.roleId;
     }
 
     public void setName( String name ) {
@@ -86,10 +86,10 @@ public class Role implements Serializable {
     }
 
     public void setActivestatus( Boolean activestatus ) {
-        this.activestatus = activestatus ;
+        this.activeStatus = activestatus ;
     }
     public Boolean getActivestatus() {
-        return this.activestatus;
+        return this.activeStatus;
     }
 
     //--- GETTERS FOR LINKS
@@ -109,11 +109,11 @@ public class Role implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(roleid);
+        sb.append(roleId);
         sb.append("|");
         sb.append(name);
         sb.append("|");
-        sb.append(activestatus);
+        sb.append(activeStatus);
         return sb.toString(); 
     } 
 

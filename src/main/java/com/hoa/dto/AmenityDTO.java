@@ -4,33 +4,33 @@ import java.util.Date;
 
 public class AmenityDTO {
 
-	    private Integer amenityid;
-	    private Integer amenitytypeid;
+	    private Integer amenityId;
+	    private Integer amenityTypeId;
 	    private String name;
-	    private Integer communityid;
-	    private Integer createdbyid;
-	    private Integer modifiedbyid;
-	    private Date createddate;
-	    private Date modifieddate;
+	    private Integer communityId;
+	    private Integer createdById;
+	    private Integer modifiedById;
+	    private Date createdDate;
+	    private Date modifiedDate;
 	    private Double amount;
-	    private Double latecharge;
+	    private Double lateCharge;
 
 	    // Getter and Setter for amenityid
 	    public Integer getAmenityid() {
-	        return amenityid;
+	        return amenityId;
 	    }
 
 	    public void setAmenityid(Integer amenityid) {
-	        this.amenityid = amenityid;
+	        this.amenityId = amenityid;
 	    }
 
 	    // Getter and Setter for amenitytypeid
 	    public Integer getAmenitytypeid() {
-	        return amenitytypeid;
+	        return amenityTypeId;
 	    }
 
 	    public void setAmenitytypeid(Integer amenitytypeid) {
-	        this.amenitytypeid = amenitytypeid;
+	        this.amenityTypeId = amenitytypeid;
 	    }
 
 	    // Getter and Setter for name
@@ -44,47 +44,47 @@ public class AmenityDTO {
 
 	    // Getter and Setter for communityid
 	    public Integer getCommunityid() {
-	        return communityid;
+	        return communityId;
 	    }
 
 	    public void setCommunityid(Integer communityid) {
-	        this.communityid = communityid;
+	        this.communityId = communityid;
 	    }
 
 	    // Getter and Setter for createdbyid
 	    public Integer getCreatedbyid() {
-	        return createdbyid;
+	        return createdById;
 	    }
 
 	    public void setCreatedbyid(Integer createdbyid) {
-	        this.createdbyid = createdbyid;
+	        this.createdById = createdbyid;
 	    }
 
 	    // Getter and Setter for modifiedbyid
 	    public Integer getModifiedbyid() {
-	        return modifiedbyid;
+	        return modifiedById;
 	    }
 
 	    public void setModifiedbyid(Integer modifiedbyid) {
-	        this.modifiedbyid = modifiedbyid;
+	        this.modifiedById = modifiedbyid;
 	    }
 
 	    // Getter and Setter for createddate
 	    public Date getCreateddate() {
-	        return createddate;
+	        return createdDate;
 	    }
 
 	    public void setCreateddate(Date createddate) {
-	        this.createddate = createddate;
+	        this.createdDate = createddate;
 	    }
 
 	    // Getter and Setter for modifieddate
 	    public Date getModifieddate() {
-	        return modifieddate;
+	        return modifiedDate;
 	    }
 
 	    public void setModifieddate(Date modifieddate) {
-	        this.modifieddate = modifieddate;
+	        this.modifiedDate = modifieddate;
 	    }
 
 	    // Getter and Setter for amount
@@ -98,35 +98,35 @@ public class AmenityDTO {
 
 	    // Getter and Setter for latecharge
 	    public Double getLatecharge() {
-	        return latecharge;
+	        return lateCharge;
 	    }
 
 	    public void setLatecharge(Double latecharge) {
-	        this.latecharge = latecharge;
+	        this.lateCharge = latecharge;
 	    }
 
 		@Override
 		public String toString() {
-			return "AmenityDto [amenityid=" + amenityid + ", amenitytypeid=" + amenitytypeid + ", name=" + name
-					+ ", communityid=" + communityid + ", createdbyid=" + createdbyid + ", modifiedbyid=" + modifiedbyid
-					+ ", createddate=" + createddate + ", modifieddate=" + modifieddate + ", amount=" + amount
-					+ ", latecharge=" + latecharge + "]";
+			return "AmenityDto [amenityid=" + amenityId + ", amenitytypeid=" + amenityTypeId + ", name=" + name
+					+ ", communityid=" + communityId + ", createdbyid=" + createdById + ", modifiedbyid=" + modifiedById
+					+ ", createddate=" + createdDate + ", modifieddate=" + modifiedDate + ", amount=" + amount
+					+ ", latecharge=" + lateCharge + "]";
 		}
 
 		public AmenityDTO(Integer amenityid, Integer amenitytypeid, String name, Integer communityid,
 				Integer createdbyid, Integer modifiedbyid, Date createddate, Date modifieddate, Double amount,
 				Double latecharge) {
 			super();
-			this.amenityid = amenityid;
-			this.amenitytypeid = amenitytypeid;
+			this.amenityId = amenityid;
+			this.amenityTypeId = amenitytypeid;
 			this.name = name;
-			this.communityid = communityid;
-			this.createdbyid = createdbyid;
-			this.modifiedbyid = modifiedbyid;
-			this.createddate = createddate;
-			this.modifieddate = modifieddate;
+			this.communityId = communityid;
+			this.createdById = createdbyid;
+			this.modifiedById = modifiedbyid;
+			this.createdDate = createddate;
+			this.modifiedDate = modifieddate;
 			this.amount = amount;
-			this.latecharge = latecharge;
+			this.lateCharge = latecharge;
 		}
 
 		public AmenityDTO() {

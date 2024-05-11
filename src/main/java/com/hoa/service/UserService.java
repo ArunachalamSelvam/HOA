@@ -32,7 +32,7 @@ public interface UserService  {
      * @param id of entity
      * @return User
      */
-    User update(User d);
+    User update(Integer id, User d);
 
     /**
      * get User by id. Can be return empty

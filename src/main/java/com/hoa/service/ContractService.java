@@ -76,4 +76,8 @@ public interface ContractService  {
      */
 	Page<Contract> findAllSpecification(Specification<Contract> specs, Pageable pageable);
 
+	Integer getContractIdByContractCode(String contractCode);
+
+	boolean existsByContractCode(String contractCode);
+
 }

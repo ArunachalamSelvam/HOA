@@ -5,9 +5,11 @@
 */
 package com.hoa.controller;
 
+import com.hoa.dto.PlanDetailDTO;
+import com.hoa.entities.Plan;
 import com.hoa.entities.PlanDetail;
 import com.hoa.service.PlandetailService;
-
+import com.hoa.utils.EntityDTOMapper;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,9 +40,12 @@ public class PlandetailController {
     private final Logger log = LoggerFactory.getLogger(PlandetailController.class);
 	
     private final PlandetailService entityService;
+    
+    private final EntityDTOMapper entityDtoMapper;
 
- 	public PlandetailController (PlandetailService entityService) {
+ 	public PlandetailController (PlandetailService entityService, EntityDTOMapper entityDtoMapper) {
 		this.entityService = entityService;
+		this.entityDtoMapper = entityDtoMapper;
 	}
 
     /**
@@ -50,9 +55,10 @@ public class PlandetailController {
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new plandetail.
      */
 	@PostMapping("/add")
-	public ResponseEntity<PlanDetail> createPlandetail(@RequestBody @Valid PlanDetail plandetail) {
-         log.debug("REST request to save Plandetail : {}", plandetail);
-         return new ResponseEntity<>(entityService.create(plandetail), HttpStatus.CREATED);
+	public ResponseEntity<PlanDetail> createPlandetail(@RequestBody @Valid PlanDetailDTO plandetailDto) {
+		PlanDetail planDetail = entityDtoMapper.toEntity(plandetailDto);
+         log.debug("REST request to save Plandetail : {}", planDetail);
+         return new ResponseEntity<>(entityService.create(planDetail), HttpStatus.CREATED);
     }
 
    /**
@@ -64,9 +70,11 @@ public class PlandetailController {
      * or with status {@code 500 (Internal Server Error)} if the plandetail couldn't be updated.
      */
     @PutMapping("/update")
-    public ResponseEntity<PlanDetail> updatePlandetail(@Valid @RequestBody PlanDetail plandetail) {
-        log.debug("REST request to update Plandetail : {}", plandetail);
-        PlanDetail result = entityService.update(plandetail);
+    public ResponseEntity<PlanDetail> updatePlandetail(@Valid @RequestBody PlanDetailDTO plandetailDto) {
+		PlanDetail planDetail = entityDtoMapper.toEntity(plandetailDto);
+
+        log.debug("REST request to update Plandetail : {}", planDetail);
+        PlanDetail result = entityService.update(planDetail);
         return ResponseEntity.ok().body(result);
     }
 
@@ -110,5 +118,15 @@ public class PlandetailController {
         entityService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    
+    @GetMapping("getPlanDetailByPlanId/{planId}")
+    public ResponseEntity<PlanDetail> findPlanDetailByPlanId(@PathVariable Integer planId) {
+        PlanDetail planDetail = entityService.findPlanDetailByPlanId(planId);
+        if (planDetail != null) {
+            return ResponseEntity.ok(planDetail);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }   
 
 }

@@ -20,11 +20,11 @@ public class Violation implements Serializable {
     //--- ENTITY PRIMARY KEY 
     @Id
     @Column(name="violationId", nullable=false)
-    private Integer    violationid ;
+    private Integer    violationId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="violationTypeID", nullable=false)
-    private Integer    violationtypeid ;
+    private Integer    violationTypeID ;
 
     @Column(name="name", nullable=false, length=128)
     private String     name ;
@@ -33,33 +33,33 @@ public class Violation implements Serializable {
     private Double     amount ;
 
     @Column(name="lateCharge")
-    private Double     latecharge ;
+    private Double     lateCharge ;
 
     @Column(name="communityID", nullable=false)
-    private Integer    communityid ;
+    private Integer    communityId ;
 
     @Column(name="createdByID", nullable=false)
-    private Integer    createdbyid ;
+    private Integer    createdById ;
 
     @Column(name="modifiedByID")
-    private Integer    modifiedbyid ;
+    private Integer    modifiedById ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="createdDate", nullable=false)
-    private Date       createddate ;
+    private Date       createdDate ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="modifiedDate")
-    private Date       modifieddate ;
+    private Date       modifiedDate ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
     @ManyToOne
     @JoinColumn(name="violationTypeID", referencedColumnName="violationTypeId", insertable=false, updatable=false)
-    private ViolationType violationtype ; 
+    private ViolationType violationType ; 
 
     @OneToMany(mappedBy="violation")
-    private List<ViolationDetail> listOfViolationdetail ; 
+    private List<ViolationDetail> listOfViolationDetail ; 
 
     @ManyToOne
     @JoinColumn(name="modifiedByID", referencedColumnName="userId", insertable=false, updatable=false)
@@ -83,17 +83,17 @@ public class Violation implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setViolationid( Integer violationid ) {
-        this.violationid = violationid ;
+        this.violationId = violationid ;
     }
     public Integer getViolationid() {
-        return this.violationid;
+        return this.violationId;
     }
 
     public void setViolationtypeid( Integer violationtypeid ) {
-        this.violationtypeid = violationtypeid ;
+        this.violationTypeID = violationtypeid ;
     }
     public Integer getViolationtypeid() {
-        return this.violationtypeid;
+        return this.violationTypeID;
     }
 
     public void setName( String name ) {
@@ -111,54 +111,54 @@ public class Violation implements Serializable {
     }
 
     public void setLatecharge( Double latecharge ) {
-        this.latecharge = latecharge ;
+        this.lateCharge = latecharge ;
     }
     public Double getLatecharge() {
-        return this.latecharge;
+        return this.lateCharge;
     }
 
     public void setCommunityid( Integer communityid ) {
-        this.communityid = communityid ;
+        this.communityId = communityid ;
     }
     public Integer getCommunityid() {
-        return this.communityid;
+        return this.communityId;
     }
 
     public void setCreatedbyid( Integer createdbyid ) {
-        this.createdbyid = createdbyid ;
+        this.createdById = createdbyid ;
     }
     public Integer getCreatedbyid() {
-        return this.createdbyid;
+        return this.createdById;
     }
 
     public void setModifiedbyid( Integer modifiedbyid ) {
-        this.modifiedbyid = modifiedbyid ;
+        this.modifiedById = modifiedbyid ;
     }
     public Integer getModifiedbyid() {
-        return this.modifiedbyid;
+        return this.modifiedById;
     }
 
     public void setCreateddate( Date createddate ) {
-        this.createddate = createddate ;
+        this.createdDate = createddate ;
     }
     public Date getCreateddate() {
-        return this.createddate;
+        return this.createdDate;
     }
 
     public void setModifieddate( Date modifieddate ) {
-        this.modifieddate = modifieddate ;
+        this.modifiedDate = modifieddate ;
     }
     public Date getModifieddate() {
-        return this.modifieddate;
+        return this.modifiedDate;
     }
 
     //--- GETTERS FOR LINKS
     public ViolationType getViolationtype() {
-        return this.violationtype;
+        return this.violationType;
     } 
 
     public List<ViolationDetail> getListOfViolationdetail() {
-        return this.listOfViolationdetail;
+        return this.listOfViolationDetail;
     } 
 
     public User getUser2() {
@@ -177,25 +177,25 @@ public class Violation implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(violationid);
+        sb.append(violationId);
         sb.append("|");
-        sb.append(violationtypeid);
+        sb.append(violationTypeID);
         sb.append("|");
         sb.append(name);
         sb.append("|");
         sb.append(amount);
         sb.append("|");
-        sb.append(latecharge);
+        sb.append(lateCharge);
         sb.append("|");
-        sb.append(communityid);
+        sb.append(communityId);
         sb.append("|");
-        sb.append(createdbyid);
+        sb.append(createdById);
         sb.append("|");
-        sb.append(modifiedbyid);
+        sb.append(modifiedById);
         sb.append("|");
-        sb.append(createddate);
+        sb.append(createdDate);
         sb.append("|");
-        sb.append(modifieddate);
+        sb.append(modifiedDate);
         return sb.toString(); 
     } 
 

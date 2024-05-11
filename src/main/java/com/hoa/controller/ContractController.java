@@ -200,19 +200,24 @@ public class ContractController {
 		Address savedAddress = addressService.create(address);
 		
 		ClientAddress clientAddress = new ClientAddress();
-		clientAddress.setAddressid(savedAddress.getAddressid());
+		clientAddress.setAddressid(savedAddress.getAddressId());
 		clientAddress.setClientid(savedClient.getClientid());
 		
 		ClientAddress savedClientAddress = clientAddressService.create(clientAddress);
 	
 		contractDto.setClientid(savedClient.getClientid());
 		
+		AddressDTO communityAddressDto = contractRequest.getAddressDto();
+		Address communityAddress = entityDtoMapper.toEntity(communityAddressDto);
+		Address savedCommunityAddress = addressService.create(communityAddress);
+		
+		contractDto.setBusinessaddressid(savedCommunityAddress.getAddressId());
 		
 		CommunityDTO communityDto = new CommunityDTO();
-		communityDto.setAddressid(contractDto.getBusinessaddressid());
+		communityDto.setAddressid(savedCommunityAddress.getAddressId());
 		communityDto.setCommunitysize(contractDto.getSizeofthecommunity());
 		communityDto.setPlanid(contractDto.getPlanid());
-		communityDto.setCreatedbyid(contractDto.getSalespersonid());
+		communityDto.setCreatedbyid(contractDto.getCreatedbyid());
 		communityDto.setCreateddate(contractDto.getCreateddate());
 		
 		Community community = entityDtoMapper.toEntity(communityDto);
@@ -224,9 +229,14 @@ public class ContractController {
 		community.setContractid(savedContract.getContractid());
 		
 		Community savedCommunity = communityService.create(community);
-		savedClient.setCommunityid(savedCommunity.getCommunityid());
+//		savedClient.setCommunityid(savedCommunity.getCommunityid());
 		
-		clientService.update(savedClient.getClientid(), savedClient);
+		
+//		clientService.update(savedClient.getClientid(), savedClient);
+		Client updatedClient = clientService.updateClientCommunityId(savedClient.getClientid(), savedCommunity.getCommunityid());
+		
+		System.out.println("Client after set community Id : " + updatedClient);
+
 
       log.debug("REST request to save Contract : {}", contract);
       return ResponseEntity.ok(savedContract);

@@ -4,128 +4,128 @@ import java.util.Date;
 
 public class AmenityBookingDTO {
 	
-	    private Integer amenitybookingid;
-	    private Integer amenityid;
-	    private Date bookingdate;
-	    private Date bookingstart;
-	    private Date bookingend;
-	    private Integer communityid;
-	    private Integer bookeduserid;
-	    private Integer bookedforclientid;
-	    private Integer createdbyid;
-	    private Integer modifiedbyid;
-	    private Date createddate;
-	    private Date modifieddate;
+	    private Integer amenityBookingId;
+	    private Integer amenityId;
+	    private Date bookingDate;
+	    private Date bookingStart;
+	    private Date bookingEnd;
+	    private Integer communityId;
+	    private Integer bookedUserId;
+	    private Integer bookedForClientId;
+	    private Integer createdById;
+	    private Integer modifiedById;
+	    private Date createdDate;
+	    private Date modifiedDate;
 	    private Double amount;
-	    private String paymentstatus;
-	    private Integer paymentdetailid;
+	    private String paymentStatus;
+	    private Integer paymentDetailId;
 
 	    // Getter and Setter for amenitybookingid
 	    public Integer getAmenitybookingid() {
-	        return amenitybookingid;
+	        return amenityBookingId;
 	    }
 
 	    public void setAmenitybookingid(Integer amenitybookingid) {
-	        this.amenitybookingid = amenitybookingid;
+	        this.amenityBookingId = amenitybookingid;
 	    }
 
 	    // Getter and Setter for amenityid
 	    public Integer getAmenityid() {
-	        return amenityid;
+	        return amenityId;
 	    }
 
 	    public void setAmenityid(Integer amenityid) {
-	        this.amenityid = amenityid;
+	        this.amenityId = amenityid;
 	    }
 
 	    // Getter and Setter for bookingdate
 	    public Date getBookingdate() {
-	        return bookingdate;
+	        return bookingDate;
 	    }
 
 	    public void setBookingdate(Date bookingdate) {
-	        this.bookingdate = bookingdate;
+	        this.bookingDate = bookingdate;
 	    }
 
 	    // Getter and Setter for bookingstart
 	    public Date getBookingstart() {
-	        return bookingstart;
+	        return bookingStart;
 	    }
 
 	    public void setBookingstart(Date bookingstart) {
-	        this.bookingstart = bookingstart;
+	        this.bookingStart = bookingstart;
 	    }
 
 	    // Getter and Setter for bookingend
 	    public Date getBookingend() {
-	        return bookingend;
+	        return bookingEnd;
 	    }
 
 	    public void setBookingend(Date bookingend) {
-	        this.bookingend = bookingend;
+	        this.bookingEnd = bookingend;
 	    }
 
 	    // Getter and Setter for communityid
 	    public Integer getCommunityid() {
-	        return communityid;
+	        return communityId;
 	    }
 
 	    public void setCommunityid(Integer communityid) {
-	        this.communityid = communityid;
+	        this.communityId = communityid;
 	    }
 
 	    // Getter and Setter for bookeduserid
 	    public Integer getBookeduserid() {
-	        return bookeduserid;
+	        return bookedUserId;
 	    }
 
 	    public void setBookeduserid(Integer bookeduserid) {
-	        this.bookeduserid = bookeduserid;
+	        this.bookedUserId = bookeduserid;
 	    }
 
 	    // Getter and Setter for bookedforclientid
 	    public Integer getBookedforclientid() {
-	        return bookedforclientid;
+	        return bookedForClientId;
 	    }
 
 	    public void setBookedforclientid(Integer bookedforclientid) {
-	        this.bookedforclientid = bookedforclientid;
+	        this.bookedForClientId = bookedforclientid;
 	    }
 
 	    // Getter and Setter for createdbyid
 	    public Integer getCreatedbyid() {
-	        return createdbyid;
+	        return createdById;
 	    }
 
 	    public void setCreatedbyid(Integer createdbyid) {
-	        this.createdbyid = createdbyid;
+	        this.createdById = createdbyid;
 	    }
 
 	    // Getter and Setter for modifiedbyid
 	    public Integer getModifiedbyid() {
-	        return modifiedbyid;
+	        return modifiedById;
 	    }
 
 	    public void setModifiedbyid(Integer modifiedbyid) {
-	        this.modifiedbyid = modifiedbyid;
+	        this.modifiedById = modifiedbyid;
 	    }
 
 	    // Getter and Setter for createddate
 	    public Date getCreateddate() {
-	        return createddate;
+	        return createdDate;
 	    }
 
 	    public void setCreateddate(Date createddate) {
-	        this.createddate = createddate;
+	        this.createdDate = createddate;
 	    }
 
 	    // Getter and Setter for modifieddate
 	    public Date getModifieddate() {
-	        return modifieddate;
+	        return modifiedDate;
 	    }
 
 	    public void setModifieddate(Date modifieddate) {
-	        this.modifieddate = modifieddate;
+	        this.modifiedDate = modifieddate;
 	    }
 
 	    // Getter and Setter for amount
@@ -139,30 +139,30 @@ public class AmenityBookingDTO {
 
 	    // Getter and Setter for paymentstatus
 	    public String getPaymentstatus() {
-	        return paymentstatus;
+	        return paymentStatus;
 	    }
 
 	    public void setPaymentstatus(String paymentstatus) {
-	        this.paymentstatus = paymentstatus;
+	        this.paymentStatus = paymentstatus;
 	    }
 
 	    // Getter and Setter for paymentdetailid
 	    public Integer getPaymentdetailid() {
-	        return paymentdetailid;
+	        return paymentDetailId;
 	    }
 
 	    public void setPaymentdetailid(Integer paymentdetailid) {
-	        this.paymentdetailid = paymentdetailid;
+	        this.paymentDetailId = paymentdetailid;
 	    }
 
 		@Override
 		public String toString() {
-			return "AmenitybookingDto [amenitybookingid=" + amenitybookingid + ", amenityid=" + amenityid
-					+ ", bookingdate=" + bookingdate + ", bookingstart=" + bookingstart + ", bookingend=" + bookingend
-					+ ", communityid=" + communityid + ", bookeduserid=" + bookeduserid + ", bookedforclientid="
-					+ bookedforclientid + ", createdbyid=" + createdbyid + ", modifiedbyid=" + modifiedbyid
-					+ ", createddate=" + createddate + ", modifieddate=" + modifieddate + ", amount=" + amount
-					+ ", paymentstatus=" + paymentstatus + ", paymentdetailid=" + paymentdetailid + "]";
+			return "AmenitybookingDto [amenitybookingid=" + amenityBookingId + ", amenityid=" + amenityId
+					+ ", bookingdate=" + bookingDate + ", bookingstart=" + bookingStart + ", bookingend=" + bookingEnd
+					+ ", communityid=" + communityId + ", bookeduserid=" + bookedUserId + ", bookedforclientid="
+					+ bookedForClientId + ", createdbyid=" + createdById + ", modifiedbyid=" + modifiedById
+					+ ", createddate=" + createdDate + ", modifieddate=" + modifiedDate + ", amount=" + amount
+					+ ", paymentstatus=" + paymentStatus + ", paymentdetailid=" + paymentDetailId + "]";
 		}
 
 		public AmenityBookingDTO(Integer amenitybookingid, Integer amenityid, Date bookingdate, Date bookingstart,
@@ -170,21 +170,21 @@ public class AmenityBookingDTO {
 				Integer createdbyid, Integer modifiedbyid, Date createddate, Date modifieddate, Double amount,
 				String paymentstatus, Integer paymentdetailid) {
 			super();
-			this.amenitybookingid = amenitybookingid;
-			this.amenityid = amenityid;
-			this.bookingdate = bookingdate;
-			this.bookingstart = bookingstart;
-			this.bookingend = bookingend;
-			this.communityid = communityid;
-			this.bookeduserid = bookeduserid;
-			this.bookedforclientid = bookedforclientid;
-			this.createdbyid = createdbyid;
-			this.modifiedbyid = modifiedbyid;
-			this.createddate = createddate;
-			this.modifieddate = modifieddate;
+			this.amenityBookingId = amenitybookingid;
+			this.amenityId = amenityid;
+			this.bookingDate = bookingdate;
+			this.bookingStart = bookingstart;
+			this.bookingEnd = bookingend;
+			this.communityId = communityid;
+			this.bookedUserId = bookeduserid;
+			this.bookedForClientId = bookedforclientid;
+			this.createdById = createdbyid;
+			this.modifiedById = modifiedbyid;
+			this.createdDate = createddate;
+			this.modifiedDate = modifieddate;
 			this.amount = amount;
-			this.paymentstatus = paymentstatus;
-			this.paymentdetailid = paymentdetailid;
+			this.paymentStatus = paymentstatus;
+			this.paymentDetailId = paymentdetailid;
 		}
 
 		public AmenityBookingDTO() {

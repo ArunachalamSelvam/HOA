@@ -4,24 +4,25 @@ import java.util.Date;
 
 public class AddressDTO {
 
-	    private Integer addressid;
+	    private Integer addressId;
 	    private String address;
 	    private String city;
-	    private Integer stateid;
-	    private Integer countryid;
-	    private Boolean activestatus;
-	    private Integer createdbyid;
-	    private Integer modifiedbyid;
-	    private Date createddate;
-	    private Date modifieddate;
+	    private Integer stateId;
+	    private Integer countryId;
+	    private Integer zipCode ;
+	    private Boolean activeStatus;
+//	    private Integer createdbyid;
+//	    private Integer modifiedbyid;
+//	    private Date createddate;
+//	    private Date modifieddate;
 
 	    // Getter and Setter for addressid
 	    public Integer getAddressid() {
-	        return addressid;
+	        return addressId;
 	    }
 
 	    public void setAddressid(Integer addressid) {
-	        this.addressid = addressid;
+	        this.addressId = addressid;
 	    }
 
 	    // Getter and Setter for address
@@ -44,93 +45,101 @@ public class AddressDTO {
 
 	    // Getter and Setter for stateid
 	    public Integer getStateid() {
-	        return stateid;
+	        return stateId;
 	    }
 
 	    public void setStateid(Integer stateid) {
-	        this.stateid = stateid;
+	        this.stateId = stateid;
 	    }
 
 	    // Getter and Setter for countryid
 	    public Integer getCountryid() {
-	        return countryid;
+	        return countryId;
 	    }
 
 	    public void setCountryid(Integer countryid) {
-	        this.countryid = countryid;
+	        this.countryId = countryid;
 	    }
 
 	    // Getter and Setter for activestatus
 	    public Boolean getActivestatus() {
-	        return activestatus;
+	        return activeStatus;
 	    }
 
 	    public void setActivestatus(Boolean activestatus) {
-	        this.activestatus = activestatus;
+	        this.activeStatus = activestatus;
 	    }
 
 	    // Getter and Setter for createdbyid
-	    public Integer getCreatedbyid() {
-	        return createdbyid;
-	    }
-
-	    public void setCreatedbyid(Integer createdbyid) {
-	        this.createdbyid = createdbyid;
-	    }
-
-	    // Getter and Setter for modifiedbyid
-	    public Integer getModifiedbyid() {
-	        return modifiedbyid;
-	    }
-
-	    public void setModifiedbyid(Integer modifiedbyid) {
-	        this.modifiedbyid = modifiedbyid;
-	    }
-
-	    // Getter and Setter for createddate
-	    public Date getCreateddate() {
-	        return createddate;
-	    }
-
-	    public void setCreateddate(Date createddate) {
-	        this.createddate = createddate;
-	    }
-
-	    // Getter and Setter for modifieddate
-	    public Date getModifieddate() {
-	        return modifieddate;
-	    }
-
-	    public void setModifieddate(Date modifieddate) {
-	        this.modifieddate = modifieddate;
-	    }
+//	    public Integer getCreatedbyid() {
+//	        return createdbyid;
+//	    }
+//
+//	    public void setCreatedbyid(Integer createdbyid) {
+//	        this.createdbyid = createdbyid;
+//	    }
+//
+//	    // Getter and Setter for modifiedbyid
+//	    public Integer getModifiedbyid() {
+//	        return modifiedbyid;
+//	    }
+//
+//	    public void setModifiedbyid(Integer modifiedbyid) {
+//	        this.modifiedbyid = modifiedbyid;
+//	    }
+//
+//	    // Getter and Setter for createddate
+//	    public Date getCreateddate() {
+//	        return createddate;
+//	    }
+//
+//	    public void setCreateddate(Date createddate) {
+//	        this.createddate = createddate;
+//	    }
+//
+//	    // Getter and Setter for modifieddate
+//	    public Date getModifieddate() {
+//	        return modifieddate;
+//	    }
+//
+//	    public void setModifieddate(Date modifieddate) {
+//	        this.modifieddate = modifieddate;
+//	    }
 
 		@Override
 		public String toString() {
-			return "AddressDto [addressid=" + addressid + ", address=" + address + ", city=" + city + ", stateid="
-					+ stateid + ", countryid=" + countryid + ", activestatus=" + activestatus + ", createdbyid="
-					+ createdbyid + ", modifiedbyid=" + modifiedbyid + ", createddate=" + createddate
-					+ ", modifieddate=" + modifieddate + "]";
+			return "AddressDto [addressid=" + addressId + ", address=" + address + ", city=" + city + ", stateid="
+					+ stateId + ", countryid=" + countryId + ", activestatus=" + activeStatus + ", createdbyid="
+					+"]";
 		}
 
-		public AddressDTO(Integer addressid, String address, String city, Integer stateid, Integer countryid,
-				Boolean activestatus, Integer createdbyid, Integer modifiedbyid, Date createddate, Date modifieddate) {
+		public AddressDTO(Integer addressid, String address, String city, Integer stateid, Integer countryid, Integer zipCode,
+				Boolean activestatus) {
 			super();
-			this.addressid = addressid;
+			this.addressId = addressid;
 			this.address = address;
 			this.city = city;
-			this.stateid = stateid;
-			this.countryid = countryid;
-			this.activestatus = activestatus;
-			this.createdbyid = createdbyid;
-			this.modifiedbyid = modifiedbyid;
-			this.createddate = createddate;
-			this.modifieddate = modifieddate;
+			this.stateId = stateid;
+			this.countryId = countryid;
+			this.zipCode = zipCode;
+			this.activeStatus = activestatus;
+//			this.createdbyid = createdbyid;
+//			this.modifiedbyid = modifiedbyid;
+//			this.createddate = createddate;
+//			this.modifieddate = modifieddate;
 		}
 
 		public AddressDTO() {
 			super();
 			// TODO Auto-generated constructor stub
+		}
+
+		public Integer getZipCode() {
+			return zipCode;
+		}
+
+		public void setZipCode(Integer zipCode) {
+			this.zipCode = zipCode;
 		}
 
 }

@@ -4,52 +4,52 @@ import java.util.Date;
 
 public class EnquiryDTO {
 
-	    private Integer enquiryid;
-	    private String firstname;
-	    private String lastname;
-	    private String emailid;
+	    private Integer enquiryId;
+	    private String firstName;
+	    private String lastName;
+	    private String emailId;
 	    private String phone;
 	    private String city;
-	    private Integer countryid;
-	    private Integer stateid;
-	    private Integer planid;
-	    private Date createddate;
-	    private CountryDTO country;
-	    private StateDTO state;
-	    private PlanDTO plan;
+	    private Integer countryId;
+	    private Integer stateId;
+	    private Integer planId;
+	    private Date createdDate;
+//	    private CountryDTO country;
+//	    private StateDTO state;
+//	    private PlanDTO plan;
 
 	    // Getters and Setters for all fields
 
 	    public Integer getEnquiryid() {
-	        return enquiryid;
+	        return enquiryId;
 	    }
 
 	    public void setEnquiryid(Integer enquiryid) {
-	        this.enquiryid = enquiryid;
+	        this.enquiryId = enquiryid;
 	    }
 
 	    public String getFirstname() {
-	        return firstname;
+	        return firstName;
 	    }
 
 	    public void setFirstname(String firstname) {
-	        this.firstname = firstname;
+	        this.firstName = firstname;
 	    }
 
 	    public String getLastname() {
-	        return lastname;
+	        return lastName;
 	    }
 
 	    public void setLastname(String lastname) {
-	        this.lastname = lastname;
+	        this.lastName = lastname;
 	    }
 
 	    public String getEmailid() {
-	        return emailid;
+	        return emailId;
 	    }
 
 	    public void setEmailid(String emailid) {
-	        this.emailid = emailid;
+	        this.emailId = emailid;
 	    }
 
 	    public String getPhone() {
@@ -69,86 +69,82 @@ public class EnquiryDTO {
 	    }
 
 	    public Integer getCountryid() {
-	        return countryid;
+	        return countryId;
 	    }
 
 	    public void setCountryid(Integer countryid) {
-	        this.countryid = countryid;
+	        this.countryId = countryid;
 	    }
 
 	    public Integer getStateid() {
-	        return stateid;
+	        return stateId;
 	    }
 
 	    public void setStateid(Integer stateid) {
-	        this.stateid = stateid;
+	        this.stateId = stateid;
 	    }
 
 	    public Integer getPlanid() {
-	        return planid;
+	        return planId;
 	    }
 
 	    public void setPlanid(Integer planid) {
-	        this.planid = planid;
+	        this.planId = planid;
 	    }
 
 	    public Date getCreateddate() {
-	        return createddate;
+	        return createdDate;
 	    }
 
 	    public void setCreateddate(Date createddate) {
-	        this.createddate = createddate;
+	        this.createdDate = createddate;
 	    }
 
-	    public CountryDTO getCountry() {
-	        return country;
-	    }
-
-	    public void setCountry(CountryDTO country) {
-	        this.country = country;
-	    }
-
-	    public StateDTO getState() {
-	        return state;
-	    }
-
-	    public void setState(StateDTO state) {
-	        this.state = state;
-	    }
-
-	    public PlanDTO getPlan() {
-	        return plan;
-	    }
-
-	    public void setPlan(PlanDTO plan) {
-	        this.plan = plan;
-	    }
+//	    public CountryDTO getCountry() {
+//	        return country;
+//	    }
+//
+//	    public void setCountry(CountryDTO country) {
+//	        this.country = country;
+//	    }
+//
+//	    public StateDTO getState() {
+//	        return state;
+//	    }
+//
+//	    public void setState(StateDTO state) {
+//	        this.state = state;
+//	    }
+//
+//	    public PlanDTO getPlan() {
+//	        return plan;
+//	    }
+//
+//	    public void setPlan(PlanDTO plan) {
+//	        this.plan = plan;
+//	    }
 
 		@Override
 		public String toString() {
-			return "EnquiryDto [enquiryid=" + enquiryid + ", firstname=" + firstname + ", lastname=" + lastname
-					+ ", emailid=" + emailid + ", phone=" + phone + ", city=" + city + ", countryid=" + countryid
-					+ ", stateid=" + stateid + ", planid=" + planid + ", createddate=" + createddate + ", country="
-					+ country + ", state=" + state + ", plan=" + plan + "]";
+			return "EnquiryDto [enquiryid=" + enquiryId + ", firstname=" + firstName + ", lastname=" + lastName
+					+ ", emailid=" + emailId + ", phone=" + phone + ", city=" + city + ", countryid=" + countryId
+					+ ", stateid=" + stateId + ", planid=" + planId + ", createddate=" + createdDate +"]";
 		}
 
 		public EnquiryDTO(Integer enquiryid, String firstname, String lastname, String emailid, String phone,
-				String city, Integer countryid, Integer stateid, Integer planid, Date createddate, CountryDTO country,
-				StateDTO state, PlanDTO plan) {
+				String city, Integer countryid, Integer stateid, Integer planid, Date createddate) {
 			super();
-			this.enquiryid = enquiryid;
-			this.firstname = firstname;
-			this.lastname = lastname;
-			this.emailid = emailid;
+			this.enquiryId = enquiryid;
+			this.firstName = firstname;
+			this.lastName = lastname;
+			this.emailId = emailid;
 			this.phone = phone;
 			this.city = city;
-			this.countryid = countryid;
-			this.stateid = stateid;
-			this.planid = planid;
-			this.createddate = createddate;
-			this.country = country;
-			this.state = state;
-			this.plan = plan;
+			this.countryId = countryid;
+			this.stateId = stateid;
+			this.planId = planid;
+			this.createdDate = createddate;
+			
 		}
 
 		public EnquiryDTO() {

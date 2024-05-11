@@ -124,4 +124,9 @@ public class PlandetailServiceImpl implements PlandetailService {
 		return repository.findAll(specs, pageable);
 	}
 
+    @Override
+    public PlanDetail findPlanDetailByPlanId(Integer planId) {
+        return repository.findPlanDetailByPlanId(planId);
+    }
+    
 }

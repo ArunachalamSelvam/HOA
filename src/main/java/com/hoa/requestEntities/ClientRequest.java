@@ -9,6 +9,8 @@ public class ClientRequest {
 	private UserDTO userDto;
 	private ClientDTO clientDto;
 	private AddressDTO addressDto;
+	private String contractCode;
+	
 	
 	public ClientRequest() {
 		// TODO Auto-generated constructor stub
@@ -31,6 +33,14 @@ public class ClientRequest {
 	public void setAddressDto(AddressDTO addressDto) {
 		this.addressDto = addressDto;
 	}
+	public String getContractCode() {
+		return contractCode;
+	}
+	public void setContractCode(String contractCode) {
+		this.contractCode = contractCode;
+	}
+	
+	
 	
 
 }

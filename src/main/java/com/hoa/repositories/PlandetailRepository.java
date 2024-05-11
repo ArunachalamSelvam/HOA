@@ -21,4 +21,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PlandetailRepository  extends JpaRepository<PlanDetail, Integer> , JpaSpecificationExecutor<PlanDetail> {
 
+	PlanDetail findPlanDetailByPlanId(Integer planId);
 }

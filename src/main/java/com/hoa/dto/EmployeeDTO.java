@@ -5,13 +5,13 @@ import java.util.List;
 
 public class EmployeeDTO {
 	
-	    private Integer employeeid;
-	    private Integer userid;
-	    private String employeeno;
-	    private Date dateofjoining;
-	    private Integer managerid;
-	    private Integer designationid;
-	    private Boolean activestatus;
+	    private Integer employeeId;
+	    private Integer userId;
+	    private String employeeNo;
+	    private Date dateOfJoining;
+	    private Integer managerId;
+	    private Integer designationId;
+	    private Boolean activeStatus;
 //	    private UserDTO user;
 //	    private List<EmployeeDTO> listOfEmployee;
 //	    private DesignationDTO designation;
@@ -21,59 +21,59 @@ public class EmployeeDTO {
 	    // Getters and Setters for all fields
 
 	    public Integer getEmployeeid() {
-	        return employeeid;
+	        return employeeId;
 	    }
 
 	    public void setEmployeeid(Integer employeeid) {
-	        this.employeeid = employeeid;
+	        this.employeeId = employeeid;
 	    }
 
 	    public Integer getUserid() {
-	        return userid;
+	        return userId;
 	    }
 
 	    public void setUserid(Integer userid) {
-	        this.userid = userid;
+	        this.userId = userid;
 	    }
 
 	    public String getEmployeeno() {
-	        return employeeno;
+	        return employeeNo;
 	    }
 
 	    public void setEmployeeno(String employeeno) {
-	        this.employeeno = employeeno;
+	        this.employeeNo = employeeno;
 	    }
 
 	    public Date getDateofjoining() {
-	        return dateofjoining;
+	        return dateOfJoining;
 	    }
 
 	    public void setDateofjoining(Date dateofjoining) {
-	        this.dateofjoining = dateofjoining;
+	        this.dateOfJoining = dateofjoining;
 	    }
 
 	    public Integer getManagerid() {
-	        return managerid;
+	        return managerId;
 	    }
 
 	    public void setManagerid(Integer managerid) {
-	        this.managerid = managerid;
+	        this.managerId = managerid;
 	    }
 
 	    public Integer getDesignationid() {
-	        return designationid;
+	        return designationId;
 	    }
 
 	    public void setDesignationid(Integer designationid) {
-	        this.designationid = designationid;
+	        this.designationId = designationid;
 	    }
 
 	    public Boolean getActivestatus() {
-	        return activestatus;
+	        return activeStatus;
 	    }
 
 	    public void setActivestatus(Boolean activestatus) {
-	        this.activestatus = activestatus;
+	        this.activeStatus = activestatus;
 	    }
 
 //	    public UserDTO getUser() {
@@ -118,21 +118,21 @@ public class EmployeeDTO {
 
 		@Override
 		public String toString() {
-			return "EmployeeDto [employeeid=" + employeeid + ", userid=" + userid + ", employeeno=" + employeeno
-					+ ", dateofjoining=" + dateofjoining + ", managerid=" + managerid + ", designationid="
-					+ designationid + ", activestatus=" + activestatus + "]";
+			return "EmployeeDto [employeeid=" + employeeId + ", userid=" + userId + ", employeeno=" + employeeNo
+					+ ", dateofjoining=" + dateOfJoining + ", managerid=" + managerId + ", designationid="
+					+ designationId + ", activestatus=" + activeStatus + "]";
 		}
 
 		public EmployeeDTO(Integer employeeid, Integer userid, String employeeno, Date dateofjoining, Integer managerid,
 				Integer designationid, Boolean activestatus) {
 			super();
-			this.employeeid = employeeid;
-			this.userid = userid;
-			this.employeeno = employeeno;
-			this.dateofjoining = dateofjoining;
-			this.managerid = managerid;
-			this.designationid = designationid;
-			this.activestatus = activestatus;
+			this.employeeId = employeeid;
+			this.userId = userid;
+			this.employeeNo = employeeno;
+			this.dateOfJoining = dateofjoining;
+			this.managerId = managerid;
+			this.designationId = designationid;
+			this.activeStatus = activestatus;
 			
 		}
 

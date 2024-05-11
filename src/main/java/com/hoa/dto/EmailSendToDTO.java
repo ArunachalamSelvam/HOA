@@ -2,89 +2,88 @@ package com.hoa.dto;
 
 public class EmailSendToDTO {
 
-	    private Integer emailsendtoid;
-	    private Integer emaildetailid;
-	    private String emailto;
-	    private Integer clientid;
-	    private Boolean activestatus;
-	    private ClientDTO client;
-	    private EmailDetailDTO emaildetail;
+	    private Integer emailSendToId;
+	    private Integer emailDetailId;
+	    private String emailTo;
+	    private Integer clientId;
+	    private Boolean activeStatus;
+//	    private ClientDTO client;
+//	    private EmailDetailDTO emaildetail;
 
 	    // Getters and Setters for all fields
 
 	    public Integer getEmailsendtoid() {
-	        return emailsendtoid;
+	        return emailSendToId;
 	    }
 
 	    public void setEmailsendtoid(Integer emailsendtoid) {
-	        this.emailsendtoid = emailsendtoid;
+	        this.emailSendToId = emailsendtoid;
 	    }
 
 	    public Integer getEmaildetailid() {
-	        return emaildetailid;
+	        return emailDetailId;
 	    }
 
 	    public void setEmaildetailid(Integer emaildetailid) {
-	        this.emaildetailid = emaildetailid;
+	        this.emailDetailId = emaildetailid;
 	    }
 
 	    public String getEmailto() {
-	        return emailto;
+	        return emailTo;
 	    }
 
 	    public void setEmailto(String emailto) {
-	        this.emailto = emailto;
+	        this.emailTo = emailto;
 	    }
 
 	    public Integer getClientid() {
-	        return clientid;
+	        return clientId;
 	    }
 
 	    public void setClientid(Integer clientid) {
-	        this.clientid = clientid;
+	        this.clientId = clientid;
 	    }
 
 	    public Boolean getActivestatus() {
-	        return activestatus;
+	        return activeStatus;
 	    }
 
 	    public void setActivestatus(Boolean activestatus) {
-	        this.activestatus = activestatus;
+	        this.activeStatus = activestatus;
 	    }
 
-	    public ClientDTO getClient() {
-	        return client;
-	    }
-
-	    public void setClient(ClientDTO client) {
-	        this.client = client;
-	    }
-
-	    public EmailDetailDTO getEmaildetail() {
-	        return emaildetail;
-	    }
-
-	    public void setEmaildetail(EmailDetailDTO emaildetail) {
-	        this.emaildetail = emaildetail;
-	    }
+//	    public ClientDTO getClient() {
+//	        return client;
+//	    }
+//
+//	    public void setClient(ClientDTO client) {
+//	        this.client = client;
+//	    }
+//
+//	    public EmailDetailDTO getEmaildetail() {
+//	        return emaildetail;
+//	    }
+//
+//	    public void setEmaildetail(EmailDetailDTO emaildetail) {
+//	        this.emaildetail = emaildetail;
+//	    }
 
 		@Override
 		public String toString() {
-			return "EmailsendtoDto [emailsendtoid=" + emailsendtoid + ", emaildetailid=" + emaildetailid + ", emailto="
-					+ emailto + ", clientid=" + clientid + ", activestatus=" + activestatus + ", client=" + client
-					+ ", emaildetail=" + emaildetail + "]";
+			return "EmailsendtoDto [emailsendtoid=" + emailSendToId + ", emaildetailid=" + emailDetailId + ", emailto="
+					+ emailTo + ", clientid=" + clientId + ", activestatus=" + activeStatus + "]";
 		}
 
 		public EmailSendToDTO(Integer emailsendtoid, Integer emaildetailid, String emailto, Integer clientid,
-				Boolean activestatus, ClientDTO client, EmailDetailDTO emaildetail) {
+				Boolean activestatus) {
 			super();
-			this.emailsendtoid = emailsendtoid;
-			this.emaildetailid = emaildetailid;
-			this.emailto = emailto;
-			this.clientid = clientid;
-			this.activestatus = activestatus;
-			this.client = client;
-			this.emaildetail = emaildetail;
+			this.emailSendToId = emailsendtoid;
+			this.emailDetailId = emaildetailid;
+			this.emailTo = emailto;
+			this.clientId = clientid;
+			this.activeStatus = activestatus;
+//			this.client = client;
+//			this.emaildetail = emaildetail;
 		}
 
 		public EmailSendToDTO() {

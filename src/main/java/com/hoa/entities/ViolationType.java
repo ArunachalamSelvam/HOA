@@ -31,8 +31,8 @@ public class ViolationType implements Serializable {
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
-    @OneToMany(mappedBy="violationtype")
-    private List<Violation> listOfViolation ; 
+//    @OneToMany(mappedBy="violationtype")
+//    private List<Violation> listOfViolation ; 
 
 
     /**
@@ -65,9 +65,9 @@ public class ViolationType implements Serializable {
     }
 
     //--- GETTERS FOR LINKS
-    public List<Violation> getListOfViolation() {
-        return this.listOfViolation;
-    } 
+//    public List<Violation> getListOfViolation() {
+//        return this.listOfViolation;
+//    } 
 
     //--- toString specific method
 	@Override

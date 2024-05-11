@@ -12,6 +12,7 @@ import com.hoa.dto.BankDetailDTO;
 import com.hoa.dto.ClientAddressDTO;
 import com.hoa.dto.ClientDTO;
 import com.hoa.dto.CommunityDocumentDTO;
+import com.hoa.dto.ContactDTO;
 import com.hoa.dto.ContractDTO;
 import com.hoa.dto.CommunityDTO;
 import com.hoa.dto.CountryDTO;
@@ -27,6 +28,9 @@ import com.hoa.dto.PageDTO;
 import com.hoa.dto.PaymentDetailDTO;
 import com.hoa.dto.PlanDTO;
 import com.hoa.dto.PlanDetailDTO;
+import com.hoa.dto.PlanPeriodDTO;
+import com.hoa.dto.PlanRangeDTO;
+import com.hoa.dto.PlanTypeDTO;
 import com.hoa.dto.RoleDTO;
 import com.hoa.dto.RolePageDTO;
 import com.hoa.dto.ServiceRequestDTO;
@@ -48,6 +52,7 @@ import com.hoa.entities.Client;
 import com.hoa.entities.ClientAddress;
 import com.hoa.entities.Community;
 import com.hoa.entities.CommunityDocument;
+import com.hoa.entities.Contact;
 import com.hoa.entities.Contract;
 import com.hoa.entities.Country;
 import com.hoa.entities.Designation;
@@ -62,6 +67,9 @@ import com.hoa.entities.Page;
 import com.hoa.entities.PaymentDetail;
 import com.hoa.entities.Plan;
 import com.hoa.entities.PlanDetail;
+import com.hoa.entities.PlanPeriod;
+import com.hoa.entities.PlanRange;
+import com.hoa.entities.PlanType;
 import com.hoa.entities.Role;
 import com.hoa.entities.RolePage;
 import com.hoa.entities.ServiceRequest;
@@ -182,6 +190,15 @@ public class EntityDTOMapper {
     public CommunityDocument toEntity(CommunityDocumentDTO dto) {
         return modelMapper.map(dto, CommunityDocument.class);
     }
+    
+    public ContactDTO toDTO(Contact entity) {
+        return modelMapper.map(entity, ContactDTO.class);
+    }
+
+    public Contact toEntity(ContactDTO dto) {
+        return modelMapper.map(dto, Contact.class);
+    }
+
 
     public CountryDTO toDTO(Country entity) {
         return modelMapper.map(entity, CountryDTO.class);
@@ -278,6 +295,31 @@ public class EntityDTOMapper {
     public Plan toEntity(PlanDTO planDTO) {
         return modelMapper.map(planDTO, Plan.class);
     }
+    
+    public PlanRangeDTO toDTO(PlanRange planRange) {
+        return modelMapper.map(planRange, PlanRangeDTO.class);
+    }
+
+    public PlanRange toEntity(PlanRangeDTO planRangeDTO) {
+        return modelMapper.map(planRangeDTO, PlanRange.class);
+    }
+    
+    public PlanPeriodDTO toDTO(PlanPeriod planPeriod) {
+        return modelMapper.map(planPeriod, PlanPeriodDTO.class);
+    }
+
+    public PlanPeriod toEntity(PlanPeriodDTO planPeriodDTO) {
+        return modelMapper.map(planPeriodDTO, PlanPeriod.class);
+    }
+    
+    public PlanTypeDTO toDTO(PlanType planType) {
+        return modelMapper.map(planType, PlanTypeDTO.class);
+    }
+
+    public PlanType toEntity(PlanTypeDTO planTypeDTO) {
+        return modelMapper.map(planTypeDTO, PlanType.class);
+    }
+
 
     public PlanDetailDTO toDTO(PlanDetail planDetail) {
         return modelMapper.map(planDetail, PlanDetailDTO.class);

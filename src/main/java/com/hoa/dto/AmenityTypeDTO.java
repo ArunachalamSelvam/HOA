@@ -6,7 +6,7 @@ public class AmenityTypeDTO {
 
 	    private Integer id;
 	    private String name;
-	    private Boolean activestatus;
+	    private Boolean activeStatus;
 //	    private List<AmenityDTO> listOfAmenity;
 
 	    // Getter and Setter for id
@@ -29,11 +29,11 @@ public class AmenityTypeDTO {
 
 	    // Getter and Setter for activestatus
 	    public Boolean getActivestatus() {
-	        return activestatus;
+	        return activeStatus;
 	    }
 
 	    public void setActivestatus(Boolean activestatus) {
-	        this.activestatus = activestatus;
+	        this.activeStatus = activestatus;
 	    }
 
 	    // Getter and Setter for listOfAmenity
@@ -47,7 +47,7 @@ public class AmenityTypeDTO {
 
 		@Override
 		public String toString() {
-			return "AmenitytypeDto [id=" + id + ", name=" + name + ", activestatus=" + activestatus + ", listOfAmenity="
+			return "AmenitytypeDto [id=" + id + ", name=" + name + ", activestatus=" + activeStatus + ", listOfAmenity="
 					 + "]";
 		}
 
@@ -55,7 +55,7 @@ public class AmenityTypeDTO {
 			super();
 			this.id = id;
 			this.name = name;
-			this.activestatus = activestatus;
+			this.activeStatus = activestatus;
 			
 		}
 

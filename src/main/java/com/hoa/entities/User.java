@@ -21,48 +21,48 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="userId", nullable=false)
-    private Integer    userid ;
+    private Integer    userId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="firstName", nullable=false, length=128)
-    private String     firstname ;
+    private String     firstName ;
 
     @Column(name="middleName", length=128)
-    private String     middlename ;
+    private String     middleName ;
 
     @Column(name="lastName", length=128)
-    private String     lastname ;
+    private String     lastName ;
 
     @Column(name="mobileNumber", nullable=false, length=128)
-    private String     mobilenumber ;
+    private String     mobileNumber ;
 
     @Column(name="mobileIsVerified")
-    private Boolean    mobileisverified ;
+    private Boolean    mobileIsVerified ;
 
     @Column(name="emailID", nullable=false, length=128)
     private String     emailId ;
 
     @Column(name="emailIdIsVerified")
-    private Boolean    emailidisverified ;
+    private Boolean    emailIdIsVerified ;
 
     @Column(name="isClient")
-    private Boolean    isclient ;
+    private Boolean    isClient ;
 
     @Column(name="otp")
     private Integer    otp ;
 
     @Column(name="roleId")
-    private Integer    roleid ;
+    private Integer    roleId ;
 
     @Column(name="password", length=256)
     private String     password ;
 
     @Column(name="activeStatus")
-    private Boolean    activestatus ;
+    private Boolean    activeStatus ;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="lastLogin")
-    private Date       lastlogin ;
+    private Date       lastLogin ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -185,45 +185,45 @@ public class User implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setUserid( Integer userid ) {
-        this.userid = userid ;
+        this.userId = userid ;
     }
     public Integer getUserid() {
-        return this.userid;
+        return this.userId;
     }
 
     public void setFirstname( String firstname ) {
-        this.firstname = firstname ;
+        this.firstName = firstname ;
     }
     public String getFirstname() {
-        return this.firstname;
+        return this.firstName;
     }
 
     public void setMiddlename( String middlename ) {
-        this.middlename = middlename ;
+        this.middleName = middlename ;
     }
     public String getMiddlename() {
-        return this.middlename;
+        return this.middleName;
     }
 
     public void setLastname( String lastname ) {
-        this.lastname = lastname ;
+        this.lastName = lastname ;
     }
     public String getLastname() {
-        return this.lastname;
+        return this.lastName;
     }
 
     public void setMobilenumber( String mobilenumber ) {
-        this.mobilenumber = mobilenumber ;
+        this.mobileNumber = mobilenumber ;
     }
     public String getMobilenumber() {
-        return this.mobilenumber;
+        return this.mobileNumber;
     }
 
     public void setMobileisverified( Boolean mobileisverified ) {
-        this.mobileisverified = mobileisverified ;
+        this.mobileIsVerified = mobileisverified ;
     }
     public Boolean getMobileisverified() {
-        return this.mobileisverified;
+        return this.mobileIsVerified;
     }
 
     public void setEmailid( String emailid ) {
@@ -234,17 +234,17 @@ public class User implements Serializable {
     }
 
     public void setEmailidisverified( Boolean emailidisverified ) {
-        this.emailidisverified = emailidisverified ;
+        this.emailIdIsVerified = emailidisverified ;
     }
     public Boolean getEmailidisverified() {
-        return this.emailidisverified;
+        return this.emailIdIsVerified;
     }
 
     public void setIsclient( Boolean isclient ) {
-        this.isclient = isclient ;
+        this.isClient = isclient ;
     }
     public Boolean getIsclient() {
-        return this.isclient;
+        return this.isClient;
     }
 
     public void setOtp( Integer otp ) {
@@ -255,10 +255,10 @@ public class User implements Serializable {
     }
 
     public void setRoleid( Integer roleid ) {
-        this.roleid = roleid ;
+        this.roleId = roleid ;
     }
     public Integer getRoleid() {
-        return this.roleid;
+        return this.roleId;
     }
 
     public void setPassword( String password ) {
@@ -269,17 +269,17 @@ public class User implements Serializable {
     }
 
     public void setActivestatus( Boolean activestatus ) {
-        this.activestatus = activestatus ;
+        this.activeStatus = activestatus ;
     }
     public Boolean getActivestatus() {
-        return this.activestatus;
+        return this.activeStatus;
     }
 
     public void setLastlogin( Date lastlogin ) {
-        this.lastlogin = lastlogin ;
+        this.lastLogin = lastlogin ;
     }
     public Date getLastlogin() {
-        return this.lastlogin;
+        return this.lastLogin;
     }
 
 //    //--- GETTERS FOR LINKS
@@ -435,33 +435,33 @@ public class User implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(userid);
+        sb.append(userId);
         sb.append("|");
-        sb.append(firstname);
+        sb.append(firstName);
         sb.append("|");
-        sb.append(middlename);
+        sb.append(middleName);
         sb.append("|");
-        sb.append(lastname);
+        sb.append(lastName);
         sb.append("|");
-        sb.append(mobilenumber);
+        sb.append(mobileNumber);
         sb.append("|");
-        sb.append(mobileisverified);
+        sb.append(mobileIsVerified);
         sb.append("|");
         sb.append(emailId);
         sb.append("|");
-        sb.append(emailidisverified);
+        sb.append(emailIdIsVerified);
         sb.append("|");
-        sb.append(isclient);
+        sb.append(isClient);
         sb.append("|");
         sb.append(otp);
         sb.append("|");
-        sb.append(roleid);
+        sb.append(roleId);
         sb.append("|");
         sb.append(password);
         sb.append("|");
-        sb.append(activestatus);
+        sb.append(activeStatus);
         sb.append("|");
-        sb.append(lastlogin);
+        sb.append(lastLogin);
         return sb.toString(); 
     } 
 

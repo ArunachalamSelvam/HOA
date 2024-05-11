@@ -52,11 +52,17 @@ public class EmployeeServiceImpl implements EmployeeService {
      * {@inheritDoc}
      */
     @Override
-    public Employee update(Employee d) {
+    public Employee update(Integer id, Employee d) {
         try {
-            return repository.saveAndFlush(d);
+            d.setEmployeeid(id);
 
+            if (repository.existsById(id)) {
+                return repository.save(d);
+            } else {
+                return null; // or throw an exception indicating employee not found
+            }
         } catch (Exception ex) {
+            ex.printStackTrace(); // or log the exception
             return null;
         }
     }

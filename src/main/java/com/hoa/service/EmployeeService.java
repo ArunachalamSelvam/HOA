@@ -32,7 +32,7 @@ public interface EmployeeService  {
      * @param id of entity
      * @return Employee
      */
-    Employee update(Employee d);
+    Employee update(Integer id,Employee d);
 
     /**
      * get Employee by id. Can be return empty

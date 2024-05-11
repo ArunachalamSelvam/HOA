@@ -11,7 +11,7 @@ public class RoleDTO implements Serializable {
 
 //    private Integer roleid;
     private String name;
-    private Boolean activestatus;
+    private Boolean activeStatus;
 
     // Constructor
     public RoleDTO() {
@@ -21,7 +21,7 @@ public class RoleDTO implements Serializable {
     public RoleDTO(String name, Boolean activestatus) {
 //        this.roleid = roleid;
         this.name = name;
-        this.activestatus = activestatus;
+        this.activeStatus = activestatus;
     }
 
     // Getters and Setters
@@ -42,11 +42,11 @@ public class RoleDTO implements Serializable {
     }
 
     public Boolean getActivestatus() {
-        return activestatus;
+        return activeStatus;
     }
 
     public void setActivestatus(Boolean activestatus) {
-        this.activestatus = activestatus;
+        this.activeStatus = activestatus;
     }
 
     // toString method
@@ -54,7 +54,7 @@ public class RoleDTO implements Serializable {
     public String toString() {
         return "RoleDTO{" +
                 ", name='" + name + '\'' +
-                ", activestatus=" + activestatus +
+                ", activestatus=" + activeStatus +
                 '}';
     }
     

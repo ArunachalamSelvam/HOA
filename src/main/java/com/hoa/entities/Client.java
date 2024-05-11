@@ -20,23 +20,23 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="clientId", nullable=false)
-    private Integer    clientid ;
+    private Integer    clientId ;
 
     //--- ENTITY DATA FIELDS 
     @Column(name="userId", nullable=false)
-    private Integer    userid ;
+    private Integer    userId ;
 
     @Column(name="communityId")
-    private Integer    communityid ;
+    private Integer    communityId ;
 
     @Column(name="displayName", length=150)
-    private String     displayname ;
+    private String     displayName ;
 
     @Column(name="numberOfHouses")
-    private Integer    numberofhouses ;
+    private Integer    numberOfHouses ;
 
     @Column(name="activeStatus")
-    private Boolean    activestatus ;
+    private Boolean    activeStatus ;
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -82,45 +82,45 @@ public class Client implements Serializable {
     
     //--- GETTERS & SETTERS FOR FIELDS
     public void setClientid( Integer clientid ) {
-        this.clientid = clientid ;
+        this.clientId = clientid ;
     }
     public Integer getClientid() {
-        return this.clientid;
+        return this.clientId;
     }
 
     public void setUserid( Integer userid ) {
-        this.userid = userid ;
+        this.userId = userid ;
     }
     public Integer getUserid() {
-        return this.userid;
+        return this.userId;
     }
 
     public void setCommunityid( Integer communityid ) {
-        this.communityid = communityid ;
+        this.communityId = communityid ;
     }
     public Integer getCommunityid() {
-        return this.communityid;
+        return this.communityId;
     }
 
     public void setDisplayname( String displayname ) {
-        this.displayname = displayname ;
+        this.displayName = displayname ;
     }
     public String getDisplayname() {
-        return this.displayname;
+        return this.displayName;
     }
 
     public void setNumberofhouses( Integer numberofhouses ) {
-        this.numberofhouses = numberofhouses ;
+        this.numberOfHouses = numberofhouses ;
     }
     public Integer getNumberofhouses() {
-        return this.numberofhouses;
+        return this.numberOfHouses;
     }
 
     public void setActivestatus( Boolean activestatus ) {
-        this.activestatus = activestatus ;
+        this.activeStatus = activestatus ;
     }
     public Boolean getActivestatus() {
-        return this.activestatus;
+        return this.activeStatus;
     }
 
     //--- GETTERS FOR LINKS
@@ -168,17 +168,17 @@ public class Client implements Serializable {
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
-        sb.append(clientid);
+        sb.append(clientId);
         sb.append("|");
-        sb.append(userid);
+        sb.append(userId);
         sb.append("|");
-        sb.append(communityid);
+        sb.append(communityId);
         sb.append("|");
-        sb.append(displayname);
+        sb.append(displayName);
         sb.append("|");
-        sb.append(numberofhouses);
+        sb.append(numberOfHouses);
         sb.append("|");
-        sb.append(activestatus);
+        sb.append(activeStatus);
         return sb.toString(); 
     } 
 
