@@ -7,9 +7,11 @@ package com.hoa.repositories;
 import com.hoa.entities.Community;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <h2>CommunityRepository</h2>
@@ -27,6 +29,17 @@ public interface CommunityRepository  extends JpaRepository<Community, Integer> 
 	
 	@Query("SELECT c.communityId FROM Community c WHERE c.contractId = :contractId")
 	Integer findCommunityIdByContractId(@Param("contractId") Integer contractId);
+	
+	@Query("SELECT COUNT(c) FROM Community c WHERE c.communityCode = :communityCode")
+	int countByCommunityCode(@Param("communityCode") String communityCode);
+	
+	boolean existsByCommunityCode(String communityCode);
+	
+	@Transactional
+    @Modifying
+    @Query("UPDATE Community c SET c.activeStatus = :activeStatus WHERE c.communityId = :communityId")
+    int updateActiveStatus(Integer communityId, Boolean activeStatus);
+
 
 	
 	

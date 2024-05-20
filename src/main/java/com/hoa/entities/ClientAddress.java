@@ -59,7 +59,11 @@ public class ClientAddress implements Serializable {
 		super();
     }
     
-    //--- GETTERS & SETTERS FOR FIELDS
+    
+   
+
+
+	//--- GETTERS & SETTERS FOR FIELDS
     public void setClientaddressid( Integer clientaddressid ) {
         this.clientAddressId = clientaddressid ;
     }

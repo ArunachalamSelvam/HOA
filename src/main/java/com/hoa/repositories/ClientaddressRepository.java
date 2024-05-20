@@ -20,5 +20,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ClientaddressRepository  extends JpaRepository<ClientAddress, Integer> , JpaSpecificationExecutor<ClientAddress> {
-
+	ClientAddress findByClientClientId(Integer clientId);
 }

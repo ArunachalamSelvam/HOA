@@ -20,14 +20,28 @@ public class InvitationController {
         this.emailService = emailService;
     }
 
-    @PostMapping("/send-invitation")
-    public String sendInvitation(@RequestBody InvitationRequest invitationRequest) {
+    @PostMapping("/send-invitation-To-The-First-Client")
+    public String sendInvitationToTheFirstClient(@RequestBody InvitationRequest invitationRequest) {
         String clientEmail = invitationRequest.getClientEmail();
         String clientName = invitationRequest.getClientName();
         String contractCode = invitationRequest.getContractCode();
 
         // Call the email service to send the invitation
-        emailService.sendInvitation(clientEmail, clientName,contractCode);
+        emailService.sendInvitationToTheFirstClient(clientEmail, clientName,contractCode);
+
+        return "Invitation sent successfully to " + clientEmail;
+    }
+    
+    @PostMapping("/send-invitation-To-The-Other-BoardMember")
+    public String sendInvitationToTheOtherBoardMember(@RequestBody InvitationRequest invitationRequest) {
+        String clientEmail = invitationRequest.getClientEmail();
+        String clientName = invitationRequest.getClientName();
+        String contractCode = invitationRequest.getContractCode();
+        String boardMemberRole = invitationRequest.getBoardMemberRole();
+        int roleId = invitationRequest.getRoleId();
+
+        // Call the email service to send the invitation
+        emailService.sendBoardMemberInvitation(clientEmail, clientName,contractCode,boardMemberRole,roleId);
 
         return "Invitation sent successfully to " + clientEmail;
     }

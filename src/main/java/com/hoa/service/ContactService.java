@@ -1,6 +1,7 @@
 package com.hoa.service;
 
 import com.hoa.entities.Contact;
+import com.hoa.responseEntities.ContactResponse;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface ContactService {
     Contact updateContact(Integer contactId, Contact contact);
 
     void deleteContact(Integer contactId);
+
+	ContactResponse findContactWithPlanDetails(Integer contactId);
 }

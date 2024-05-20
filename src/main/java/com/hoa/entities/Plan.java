@@ -80,10 +80,10 @@ public class Plan implements Serializable {
     }
     
     //--- GETTERS & SETTERS FOR FIELDS
-    public void setPlanid( Integer planid ) {
-        this.planId = planid ;
+    public void setPlanId( Integer planId ) {
+        this.planId = planId ;
     }
-    public Integer getPlanid() {
+    public Integer getPlanId() {
         return this.planId;
     }
 
@@ -103,17 +103,17 @@ public class Plan implements Serializable {
         return this.price;
     }
 
-    public void setActivestatus( Boolean activestatus ) {
-        this.activeStatus = activestatus ;
+    public void setActiveStatus( Boolean activeStatus ) {
+        this.activeStatus = activeStatus ;
     }
-    public Boolean getActivestatus() {
+    public Boolean getActiveStatus() {
         return this.activeStatus;
     }
 
-    public void setCreateddate( Date createddate ) {
-        this.createdDate = createddate ;
+    public void setCreatedDate( Date createdDate ) {
+        this.createdDate = createdDate ;
     }
-    public Date getCreateddate() {
+    public Date getCreatedDate() {
         return this.createdDate;
     }
 
@@ -157,28 +157,28 @@ public class Plan implements Serializable {
         return sb.toString(); 
     }
 
-	public Integer getPlanrangeId() {
+	public Integer getPlanRangeId() {
 		return planRangeId;
 	}
 
-	public void setPlanrangeId(Integer planrangeId) {
-		this.planRangeId = planrangeId;
+	public void setPlanRangeId(Integer planRangeId) {
+		this.planRangeId = planRangeId;
 	}
 
-	public Integer getPlanperiodId() {
+	public Integer getPlanPeriodId() {
 		return planPeriodId;
 	}
 
-	public void setPlanperiodId(Integer planperiodId) {
-		this.planPeriodId = planperiodId;
+	public void setPlanPeriodId(Integer planPeriodId) {
+		this.planPeriodId = planPeriodId;
 	}
 
-	public Integer getPlantypeId() {
+	public Integer getPlanTypeId() {
 		return planTypeId;
 	}
 
-	public void setPlantypeId(Integer plantypeId) {
-		this.planTypeId = plantypeId;
+	public void setPlanTypeId(Integer planTypeId) {
+		this.planTypeId = planTypeId;
 	}
 
 	public PlanRange getPlanRange() {

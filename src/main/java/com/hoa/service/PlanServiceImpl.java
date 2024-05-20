@@ -52,9 +52,16 @@ public class PlanServiceImpl implements PlanService {
      * {@inheritDoc}
      */
     @Override
-    public Plan update(Plan d) {
-        try {
-            return repository.saveAndFlush(d);
+    public Plan update(Integer id,Plan d) {
+        try { 
+   		 if(repository.existsById(id)) {
+			 d.setPlanId(id);
+         return repository.saveAndFlush(d);
+		 }
+		 else {
+			 return null;
+		 }
+
 
         } catch (Exception ex) {
             return null;
@@ -128,5 +135,11 @@ public class PlanServiceImpl implements PlanService {
     public Plan findPlanByTypeRangePeriod(Integer planTypeId, Integer planRangeId, Integer planPeriodId) {
         return repository.findByPlanTypeIdAndPlanRangeIdAndPlanPeriodId(planTypeId, planRangeId, planPeriodId);
     }
+    
+    @Override
+    public List<Plan> findPlansByRangePeriod(Integer planRangeId, Integer planPeriodId) {
+        return repository.findByPlanRangeIdAndPlanPeriodId(planRangeId, planPeriodId);
+    }
+
 
 }

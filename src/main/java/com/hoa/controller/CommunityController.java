@@ -7,6 +7,8 @@ package com.hoa.controller;
 
 import com.hoa.dto.CommunityDTO;
 import com.hoa.entities.Community;
+import com.hoa.exception.CommunityNotFoundException;
+import com.hoa.exception.ContractNotFoundException;
 import com.hoa.service.CommunityService;
 import com.hoa.utils.EntityDTOMapper;
 
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,9 +70,10 @@ public class CommunityController {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated community,
      * or with status {@code 400 (Bad Request)} if the community is not valid,
      * or with status {@code 500 (Internal Server Error)} if the community couldn't be updated.
+ * @throws CommunityNotFoundException 
      */
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Community> updateCommunity(@PathVariable Integer id, @Valid @RequestBody CommunityDTO communityDto) {
+	public ResponseEntity<Community> updateCommunity(@PathVariable Integer id, @Valid @RequestBody CommunityDTO communityDto) throws CommunityNotFoundException {
 	    Community existingCommunity = entityService.getOne(id);
 
 	    if (existingCommunity == null) {
@@ -77,10 +81,10 @@ public class CommunityController {
 	    }
 
 	    Community updatedCommunity = entityDtoMapper.toEntity(communityDto);
-	    updatedCommunity.setCommunityid(existingCommunity.getCommunityid()); // Set the ID of the existing community to the updated community
+	    updatedCommunity.setCommunityId(existingCommunity.getCommunityId()); // Set the ID of the existing community to the updated community
 
 	    log.debug("REST request to update Community with ID {}: {}", id, updatedCommunity);
-	    Community result = entityService.update(updatedCommunity);
+	    Community result = entityService.update(id,updatedCommunity);
 	    
 	    return ResponseEntity.ok().body(result);
 	}
@@ -134,6 +138,16 @@ public class CommunityController {
         log.debug("REST request to delete Community : {}", id);
         entityService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    
+    @PutMapping("/updateActiveStatus/{communityId}/activeStatus")
+    public ResponseEntity<String> updateActiveStatus(@PathVariable("communityId") Integer communityId, @RequestParam("status") Boolean activeStatus) throws CommunityNotFoundException, ContractNotFoundException {
+        boolean isUpdated = entityService.updateActiveStatus(communityId, activeStatus);
+        if (isUpdated) {
+            return ResponseEntity.ok("Active status updated successfully");
+        } else {
+            return ResponseEntity.status(404).body("Community not found");
+        }
     }
 
 }

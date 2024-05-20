@@ -33,8 +33,9 @@ public interface AddressService  {
      * @param entity domain
      * @param id of entity
      * @return Address
+     * @throws AddressNotFoundException 
      */
-    Address update(Address d);
+    Address update(Integer id,Address d) throws AddressNotFoundException;
 
     /**
      * get Address by id. Can be return empty

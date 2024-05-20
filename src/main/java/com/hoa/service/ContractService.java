@@ -5,6 +5,13 @@
 */
 package com.hoa.service;
 import com.hoa.entities.Contract;
+import com.hoa.exception.ClientIdNotFoundException;
+import com.hoa.exception.CommunityNotFoundException;
+import com.hoa.exception.ContractNotFoundException;
+import com.hoa.exception.UserNotFoundException;
+import com.hoa.requestEntities.Contractrequest3;
+import com.hoa.responseEntities.ContractListResponse;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -31,16 +38,18 @@ public interface ContractService  {
      * @param entity domain
      * @param id of entity
      * @return Contract
+     * @throws ContractNotFoundException 
      */
-    Contract update(Contract d);
+    Contract update(Integer id,Contract d) throws ContractNotFoundException;
 
     /**
      * get Contract by id. Can be return empty
      *
      * @param id the id of the entity.
      * @return Contract
+     * @throws ContractNotFoundException 
      */
-    Contract getOne(Integer id) ;
+    Contract getOne(Integer id) throws ContractNotFoundException ;
 
     /**
      * Get all entities
@@ -79,5 +88,15 @@ public interface ContractService  {
 	Integer getContractIdByContractCode(String contractCode);
 
 	boolean existsByContractCode(String contractCode);
+
+	String generateUniqueContractCode();
+
+	Contract createContract(Contractrequest3 contractRequest) throws ClientIdNotFoundException;
+
+	boolean updateActiveStatus(Integer clientId, Boolean activeStatus)
+			throws CommunityNotFoundException, ContractNotFoundException, UserNotFoundException;
+
+	List<ContractListResponse> findEmployeeContractsBySalesPersonId(Integer salesManagerId, Integer salesPersonId);
+
 
 }

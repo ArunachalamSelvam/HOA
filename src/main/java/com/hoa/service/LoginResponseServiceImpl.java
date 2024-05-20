@@ -1,5 +1,9 @@
 package com.hoa.service;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,53 +17,42 @@ import com.hoa.responseEntities.LoginResponse;
 
 @Service
 @Transactional
-public class LoginResponseServiceImpl implements LoginResponseService{
-	
-    private final UserRepository userRepository;
-    
-    private final ClientRepository clientRepository;
-    
-    private final EmployeeRepository employeeRepository;
-    
-    
+public class LoginResponseServiceImpl implements LoginResponseService {
 
-	public LoginResponseServiceImpl(UserRepository userRepository, ClientRepository clientRepository, EmployeeRepository employeeRepository) {
+	private final UserRepository userRepository;
+
+	public LoginResponseServiceImpl(UserRepository userRepository) {
 		super();
 		this.userRepository = userRepository;
-		this.clientRepository = clientRepository;
-		this.employeeRepository = employeeRepository;
 	}
-    
-    @Override
+
+	@Override
 	public LoginResponse login(String emailId, String password) {
-		User user = userRepository.findUserByEmailId(emailId);
-		
-		if(user!=null && user.getPassword().equals(password)) {
-			
-			Client client = clientRepository.findClientByUserId(user.getUserid()); 
-			Employee employee = employeeRepository.findEmployeeByUserId(user.getUserid());
-			System.out.println("User : " + user);
-			
-			System.out.println("Client : " + client);
-			System.out.println("Employee : " + employee);
-			LoginResponse response = new LoginResponse();
-			response.setUserId(user.getUserid());
-			if(client!=null) {
-				response.setClientId(client.getClientid());
-				response.setCommunityId(client.getCommunityid());
+		List<User> users = userRepository.findUserByEmailId(emailId);
+		for (User user : users) {
+			if (user != null && user.getPassword().equals(password)) {
+				Map<String, Object> results = userRepository.getUserResponseByEmailAndPassword(emailId, password);
+				return mapToUserResponse(results);
+
 			}
-			if(employee!=null) {
-				response.setEmployeeId(employee.getEmployeeid());
-			}
-			response.setEmailId(emailId);
-			response.setRoleId(user.getRoleid());
-			
-			return response;
-		}else {
-			System.out.println("User Not Found ..");
-			return null;
 		}
-		
+		System.out.println("User Not Found ..");
+		return null;
+
+	}
+
+	private LoginResponse mapToUserResponse(Map<String, Object> result) {
+		LoginResponse response = new LoginResponse();
+		response.setUserId(((Integer) result.get("userId")));
+		response.setEmailId((String) result.get("emailId"));
+		response.setRoleId(result.get("roleId") != null ? ((Number) result.get("roleId")).intValue() : null);
+		response.setClientId(result.get("clientId") != null ? ((Number) result.get("clientId")).intValue() : null);
+		response.setCommunityId(
+				result.get("communityId") != null ? ((Number) result.get("communityId")).intValue() : null);
+		response.setEmployeeId(
+				result.get("employeeId") != null ? ((Number) result.get("employeeId")).intValue() : null);
+		response.setManagerId(result.get("managerId") != null ? ((Number) result.get("managerId")).intValue() : null);
+		return response;
 	}
 
 }

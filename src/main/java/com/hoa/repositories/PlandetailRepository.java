@@ -5,6 +5,9 @@
  */
 package com.hoa.repositories;
 import com.hoa.entities.PlanDetail;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
@@ -21,5 +24,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PlandetailRepository  extends JpaRepository<PlanDetail, Integer> , JpaSpecificationExecutor<PlanDetail> {
 
-	PlanDetail findPlanDetailByPlanId(Integer planId);
+	List<PlanDetail> findPlanDetailsByPlanId(Integer planId);
 }

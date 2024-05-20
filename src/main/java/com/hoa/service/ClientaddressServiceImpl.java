@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.hoa.repositories.ClientaddressRepository;
 import com.hoa.entities.ClientAddress;
+import com.hoa.exception.ClientAddressNotFoundException;
+import com.hoa.exception.ClientIdNotFoundException;
 import com.hoa.service.ClientaddressService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -50,16 +52,25 @@ public class ClientaddressServiceImpl implements ClientaddressService {
 
     /**
      * {@inheritDoc}
+     * @throws ClientIdNotFoundException 
      */
     @Override
-    public ClientAddress update(ClientAddress d) {
+    public ClientAddress update(Integer id, ClientAddress updatedClientAddress) throws ClientIdNotFoundException {
         try {
-            return repository.saveAndFlush(d);
-
+        	if(repository.existsById(id)) {
+            // Set the ID of the updated client address
+            updatedClientAddress.setClientaddressid(id);
+            
+            // Save and return the updated client address
+            return repository.saveAndFlush(updatedClientAddress);
+        	}else {
+        		throw new ClientAddressNotFoundException("ClientAddress with id " + id + " not found.");
+        	}
         } catch (Exception ex) {
-            return null;
+            throw new ClientIdNotFoundException("ClientAddress with id " + id + " not found.");
         }
     }
+    
 
     /**
      * {@inheritDoc}
@@ -123,5 +134,10 @@ public class ClientaddressServiceImpl implements ClientaddressService {
 	public Page<ClientAddress> findAllSpecification(Specification<ClientAddress> specs, Pageable pageable) {
 		return repository.findAll(specs, pageable);
 	}
+    
+    @Override
+    public ClientAddress getClientAddressByClientId(Integer clientId) {
+        return repository.findByClientClientId(clientId);
+    }
 
 }

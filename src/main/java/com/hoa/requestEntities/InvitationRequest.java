@@ -5,6 +5,8 @@ public class InvitationRequest {
     private String clientEmail;
     private String clientName;
     private String contractCode;
+    private String boardMemberRole;
+    private int roleId;
 
     // Getters and setters
 
@@ -30,6 +32,22 @@ public class InvitationRequest {
 
 	public void setContractCode(String communityCode) {
 		this.contractCode = communityCode;
+	}
+
+	public String getBoardMemberRole() {
+		return boardMemberRole;
+	}
+
+	public void setBoardMemberRole(String boardMemberRole) {
+		this.boardMemberRole = boardMemberRole;
+	}
+
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
 	}
 }
 

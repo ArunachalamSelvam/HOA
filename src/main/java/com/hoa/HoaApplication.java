@@ -20,6 +20,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 
 @SpringBootApplication
+
 public class HoaApplication extends SpringBootServletInitializer{
 
 	public static void main(String[] args) {

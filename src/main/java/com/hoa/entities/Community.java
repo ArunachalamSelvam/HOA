@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 /**
  * JPA entity class for "Community"
  *
@@ -12,98 +14,106 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name="Community", schema="public" )
+@Table(name = "Community", schema = "public")
 public class Community implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    //--- ENTITY PRIMARY KEY 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="communityID", nullable=false)
-    private Integer    communityId ;
+	// --- ENTITY PRIMARY KEY
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "communityID", nullable = false)
+	private Integer communityId;
 
-    //--- ENTITY DATA FIELDS 
-    @Column(name="name", length=128)
-    private String     name ;
+	// --- ENTITY DATA FIELDS
+	@Column(name = "name", length = 128)
+	private String name;
 
-    @Column(name="communityCode", length=255)
-    private String     communityCode ;
+	@Column(name = "communityCode", length = 255)
+	private String communityCode;
 
-    @Column(name="addressID")
-    private Integer    addressId ;
+	@Column(name = "addressID")
+	private Integer addressId;
 
-    @Column(name="presidentEmailID", length=128)
-    private String     presidentEmailID ;
+	@Column(name = "presidentEmailID", length = 128)
+	private String presidentEmailID;
 
-    @Column(name="presidentInviteStatus", length=128)
-    private String     presidentInviteStatus ;
+	@Column(name = "presidentInviteStatus", length = 128)
+	private String presidentInviteStatus;
 
-    @Column(name="presidentUserId")
-    private Integer    presidentUserId ;
+	@Column(name = "presidentUserId")
+	private Integer presidentUserId;
 
-    @Column(name="secretaryEmailID", length=128)
-    private String     secretaryEmailID ;
+	@Column(name = "secretaryEmailID", length = 128)
+	private String secretaryEmailID;
 
-    @Column(name="secretaryInviteStatus", length=128)
-    private String     secretaryInviteStatus ;
+	@Column(name = "secretaryInviteStatus", length = 128)
+	private String secretaryInviteStatus;
 
-    @Column(name="secretaryUserID")
-    private Integer    secretaryUserID ;
+	@Column(name = "secretaryUserID")
+	private Integer secretaryUserID;
 
-    @Column(name="treasurerEmailID", length=128)
-    private String     treasurerEmailID ;
+	@Column(name = "treasurerEmailID", length = 128)
+	private String treasurerEmailID;
 
-    @Column(name="treasurerInviteStatus", length=128)
-    private String     treasurerInviteStatus ;
+	@Column(name = "treasurerInviteStatus", length = 128)
+	private String treasurerInviteStatus;
 
-    @Column(name="treasurerUserID")
-    private Integer    treasurerUserID ;
+	@Column(name = "adminUserID")
+	private Integer adminUserID;
 
-    @Column(name="planId")
-    private Integer    planId ;
+	@Column(name = "adminEmailID", length = 128)
+	private String adminEmailID;
 
-    @Column(name="licenseStatus", length=128)
-    private String     licenseStatus ;
+	@Column(name = "adminInviteStatus", length = 128)
+	private String adminInviteStatus;
 
-    @Column(name="communitySize")
-    private Integer    communitySize ;
+	@Column(name = "treasurerUserID")
+	private Integer treasurerUserID;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="planExpireDate")
-    private Date       planExpireDate ;
+	@Column(name = "planId")
+	private Integer planId;
 
-    @Column(name="contactPerson", length=128)
-    private String     contactPerson ;
+	@Column(name = "licenseStatus", length = 128)
+	private String licenseStatus;
 
-    @Column(name="totalOwners")
-    private Integer    totalOwners ;
+	@Column(name = "communitySize")
+	private Integer communitySize;
 
-    @Column(name="activeStatus")
-    private Boolean    activeStatus ;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "planExpireDate")
+	private Date planExpireDate;
 
-    @Column(name="createdById", nullable=false)
-    private Integer    createdById ;
+	@Column(name = "contactPerson", length = 128)
+	private String contactPerson;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="createdDate", nullable=false)
-    private Date       createdDate ;
+	@Column(name = "totalOwners")
+	private Integer totalOwners;
 
-    @Column(name="modifiedById")
-    private Integer    modifiedById ;
+	@Column(name = "activeStatus")
+	private Boolean activeStatus;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="modifiedDate")
-    private Date       modifiedDate ;
+	@Column(name = "createdById", nullable = false)
+	private Integer createdById;
 
-    @Column(name="timeZone", length=2147483647)
-    private String     timeZone ;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "createdDate", nullable = false)
+	private Date createdDate;
 
-    @Column(name="contractId")
-    private Integer    contractId ;
+	@Column(name = "modifiedById")
+	private Integer modifiedById;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "modifiedDate")
+	private Date modifiedDate;
 
-    //--- ENTITY LINKS ( RELATIONSHIP )
+	@Column(name = "timeZone", length = 2147483647)
+	private String timeZone;
+
+	@Column(name = "contractId")
+	private Integer contractId;
+
+	// --- ENTITY LINKS ( RELATIONSHIP )
 //    @OneToMany(mappedBy="community")
 //    private List<HoaFee> listOfHoafee ; 
 //
@@ -134,16 +144,33 @@ public class Community implements Serializable {
 //    @OneToMany(mappedBy="community")
 //    private List<Vendor> listOfVendor ; 
 
-    @ManyToOne
-    @JoinColumn(name="planId", referencedColumnName="planId", insertable=false, updatable=false)
-    private Plan       plan ; 
+	@ManyToOne
+	@JoinColumn(name = "planId", referencedColumnName = "planId", insertable = false, updatable = false)
+	private Plan plan;
 
 //    @OneToMany(mappedBy="community")
 //    private List<Client> listOfClient ; 
 
-    @ManyToOne
-    @JoinColumn(name="contractId", referencedColumnName="contractId", insertable=false, updatable=false)
-    private Contract   contract ; 
+	@ManyToOne
+	@JoinColumn(name = "contractId", referencedColumnName = "contractId", insertable = false, updatable = false)
+	@JsonBackReference
+	private Contract contract;
+
+	@ManyToOne
+	@JoinColumn(name = "presidentUserId", referencedColumnName = "userId", insertable = false, updatable = false)
+	private User president;
+
+	@ManyToOne
+	@JoinColumn(name = "treasurerUserID", referencedColumnName = "userId", insertable = false, updatable = false)
+	private User treasurer;
+
+	@ManyToOne
+	@JoinColumn(name = "secretaryUserID", referencedColumnName = "userId", insertable = false, updatable = false)
+	private User secretary;
+
+	@ManyToOne
+	@JoinColumn(name = "adminUserID", referencedColumnName = "userId", insertable = false, updatable = false)
+	private User admin;
 
 //    @OneToMany(mappedBy="community")
 //    private List<PaymentDetail> listOfPaymentdetail ; 
@@ -157,202 +184,20 @@ public class Community implements Serializable {
 //    @OneToMany(mappedBy="community")
 //    private List<ViolationDetail> listOfViolationdetail ; 
 
-    @ManyToOne
-    @JoinColumn(name="addressID", referencedColumnName="addressId", insertable=false, updatable=false)
-    private Address    address ; 
+	@ManyToOne
+	@JoinColumn(name = "addressID", referencedColumnName = "addressId", insertable = false, updatable = false)
+	private Address address;
 
-
-    /**
-     * Constructor
-     */
-    public Community() {
+	/**
+	 * Constructor
+	 */
+	public Community() {
 		super();
-    }
-    
-    //--- GETTERS & SETTERS FOR FIELDS
-    public void setCommunityid( Integer communityid ) {
-        this.communityId = communityid ;
-    }
-    public Integer getCommunityid() {
-        return this.communityId;
-    }
+	}
 
-    public void setName( String name ) {
-        this.name = name ;
-    }
-    public String getName() {
-        return this.name;
-    }
+	// --- GETTERS & SETTERS FOR FIELDS
 
-    public void setCommunitycode( String communitycode ) {
-        this.communityCode = communitycode ;
-    }
-    public String getCommunitycode() {
-        return this.communityCode;
-    }
-
-    public void setAddressid( Integer addressid ) {
-        this.addressId = addressid ;
-    }
-    public Integer getAddressid() {
-        return this.addressId;
-    }
-
-    public void setPresidentemailid( String presidentemailid ) {
-        this.presidentEmailID = presidentemailid ;
-    }
-    public String getPresidentemailid() {
-        return this.presidentEmailID;
-    }
-
-    public void setPresidentinvitestatus( String presidentinvitestatus ) {
-        this.presidentInviteStatus = presidentinvitestatus ;
-    }
-    public String getPresidentinvitestatus() {
-        return this.presidentInviteStatus;
-    }
-
-    public void setPresidentuserid( Integer presidentuserid ) {
-        this.presidentUserId = presidentuserid ;
-    }
-    public Integer getPresidentuserid() {
-        return this.presidentUserId;
-    }
-
-    public void setSecretaryemailid( String secretaryemailid ) {
-        this.secretaryEmailID = secretaryemailid ;
-    }
-    public String getSecretaryemailid() {
-        return this.secretaryEmailID;
-    }
-
-    public void setSecretaryinvitestatus( String secretaryinvitestatus ) {
-        this.secretaryInviteStatus = secretaryinvitestatus ;
-    }
-    public String getSecretaryinvitestatus() {
-        return this.secretaryInviteStatus;
-    }
-
-    public void setSecretaryuserid( Integer secretaryuserid ) {
-        this.secretaryUserID = secretaryuserid ;
-    }
-    public Integer getSecretaryuserid() {
-        return this.secretaryUserID;
-    }
-
-    public void setTreasureremailid( String treasureremailid ) {
-        this.treasurerEmailID = treasureremailid ;
-    }
-    public String getTreasureremailid() {
-        return this.treasurerEmailID;
-    }
-
-    public void setTreasurerinvitestatus( String treasurerinvitestatus ) {
-        this.treasurerInviteStatus = treasurerinvitestatus ;
-    }
-    public String getTreasurerinvitestatus() {
-        return this.treasurerInviteStatus;
-    }
-
-    public void setTreasureruserid( Integer treasureruserid ) {
-        this.treasurerUserID = treasureruserid ;
-    }
-    public Integer getTreasureruserid() {
-        return this.treasurerUserID;
-    }
-
-    public void setPlanid( Integer planid ) {
-        this.planId = planid ;
-    }
-    public Integer getPlanid() {
-        return this.planId;
-    }
-
-    public void setLicensestatus( String licensestatus ) {
-        this.licenseStatus = licensestatus ;
-    }
-    public String getLicensestatus() {
-        return this.licenseStatus;
-    }
-
-    public void setCommunitysize( Integer communitysize ) {
-        this.communitySize = communitysize ;
-    }
-    public Integer getCommunitysize() {
-        return this.communitySize;
-    }
-
-    public void setPlanexpiredate( Date planexpiredate ) {
-        this.planExpireDate = planexpiredate ;
-    }
-    public Date getPlanexpiredate() {
-        return this.planExpireDate;
-    }
-
-    public void setContactperson( String contactperson ) {
-        this.contactPerson = contactperson ;
-    }
-    public String getContactperson() {
-        return this.contactPerson;
-    }
-
-    public void setTotalowners( Integer totalowners ) {
-        this.totalOwners = totalowners ;
-    }
-    public Integer getTotalowners() {
-        return this.totalOwners;
-    }
-
-    public void setActivestatus( Boolean activestatus ) {
-        this.activeStatus = activestatus ;
-    }
-    public Boolean getActivestatus() {
-        return this.activeStatus;
-    }
-
-    public void setCreatedbyid( Integer createdbyid ) {
-        this.createdById = createdbyid ;
-    }
-    public Integer getCreatedbyid() {
-        return this.createdById;
-    }
-
-    public void setCreateddate( Date createddate ) {
-        this.createdDate = createddate ;
-    }
-    public Date getCreateddate() {
-        return this.createdDate;
-    }
-
-    public void setModifiedbyid( Integer modifiedbyid ) {
-        this.modifiedById = modifiedbyid ;
-    }
-    public Integer getModifiedbyid() {
-        return this.modifiedById;
-    }
-
-    public void setModifieddate( Date modifieddate ) {
-        this.modifiedDate = modifieddate ;
-    }
-    public Date getModifieddate() {
-        return this.modifiedDate;
-    }
-
-    public void setTimezone( String timezone ) {
-        this.timeZone = timezone ;
-    }
-    public String getTimezone() {
-        return this.timeZone;
-    }
-
-    public void setContractid( Integer contractid ) {
-        this.contractId = contractid ;
-    }
-    public Integer getContractid() {
-        return this.contractId;
-    }
-
-    //--- GETTERS FOR LINKS
+	// --- GETTERS FOR LINKS
 //    public List<HoaFee> getListOfHoafee() {
 //        return this.listOfHoafee;
 //    } 
@@ -421,66 +266,350 @@ public class Community implements Serializable {
 //        return this.listOfViolationdetail;
 //    } 
 
-    public Address getAddress() {
-        return this.address;
-    } 
-
-    //--- toString specific method
+	// --- toString specific method
 	@Override
-    public String toString() { 
-        StringBuilder sb = new StringBuilder(); 
-        sb.append(communityId);
-        sb.append("|");
-        sb.append(name);
-        sb.append("|");
-        sb.append(communityCode);
-        sb.append("|");
-        sb.append(addressId);
-        sb.append("|");
-        sb.append(presidentEmailID);
-        sb.append("|");
-        sb.append(presidentInviteStatus);
-        sb.append("|");
-        sb.append(presidentUserId);
-        sb.append("|");
-        sb.append(secretaryEmailID);
-        sb.append("|");
-        sb.append(secretaryInviteStatus);
-        sb.append("|");
-        sb.append(secretaryUserID);
-        sb.append("|");
-        sb.append(treasurerEmailID);
-        sb.append("|");
-        sb.append(treasurerInviteStatus);
-        sb.append("|");
-        sb.append(treasurerUserID);
-        sb.append("|");
-        sb.append(planId);
-        sb.append("|");
-        sb.append(licenseStatus);
-        sb.append("|");
-        sb.append(communitySize);
-        sb.append("|");
-        sb.append(planExpireDate);
-        sb.append("|");
-        sb.append(contactPerson);
-        sb.append("|");
-        sb.append(totalOwners);
-        sb.append("|");
-        sb.append(activeStatus);
-        sb.append("|");
-        sb.append(createdById);
-        sb.append("|");
-        sb.append(createdDate);
-        sb.append("|");
-        sb.append(modifiedById);
-        sb.append("|");
-        sb.append(modifiedDate);
-        sb.append("|");
-        sb.append(timeZone);
-        sb.append("|");
-        sb.append(contractId);
-        return sb.toString(); 
-    } 
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(communityId);
+		sb.append("|");
+		sb.append(name);
+		sb.append("|");
+		sb.append(communityCode);
+		sb.append("|");
+		sb.append(addressId);
+		sb.append("|");
+		sb.append(presidentEmailID);
+		sb.append("|");
+		sb.append(presidentInviteStatus);
+		sb.append("|");
+		sb.append(presidentUserId);
+		sb.append("|");
+		sb.append(secretaryEmailID);
+		sb.append("|");
+		sb.append(secretaryInviteStatus);
+		sb.append("|");
+		sb.append(secretaryUserID);
+		sb.append("|");
+		sb.append(treasurerEmailID);
+		sb.append("|");
+		sb.append(treasurerInviteStatus);
+		sb.append("|");
+		sb.append(treasurerUserID);
+		sb.append("|");
+		sb.append(planId);
+		sb.append("|");
+		sb.append(licenseStatus);
+		sb.append("|");
+		sb.append(communitySize);
+		sb.append("|");
+		sb.append(planExpireDate);
+		sb.append("|");
+		sb.append(contactPerson);
+		sb.append("|");
+		sb.append(totalOwners);
+		sb.append("|");
+		sb.append(activeStatus);
+		sb.append("|");
+		sb.append(createdById);
+		sb.append("|");
+		sb.append(createdDate);
+		sb.append("|");
+		sb.append(modifiedById);
+		sb.append("|");
+		sb.append(modifiedDate);
+		sb.append("|");
+		sb.append(timeZone);
+		sb.append("|");
+		sb.append(contractId);
+		return sb.toString();
+	}
+
+	public Integer getCommunityId() {
+		return communityId;
+	}
+
+	public void setCommunityId(Integer communityId) {
+		this.communityId = communityId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCommunityCode() {
+		return communityCode;
+	}
+
+	public void setCommunityCode(String communityCode) {
+		this.communityCode = communityCode;
+	}
+
+	public Integer getAddressId() {
+		return addressId;
+	}
+
+	public void setAddressId(Integer addressId) {
+		this.addressId = addressId;
+	}
+
+	public String getPresidentEmailID() {
+		return presidentEmailID;
+	}
+
+	public void setPresidentEmailID(String presidentEmailID) {
+		this.presidentEmailID = presidentEmailID;
+	}
+
+	public String getPresidentInviteStatus() {
+		return presidentInviteStatus;
+	}
+
+	public void setPresidentInviteStatus(String presidentInviteStatus) {
+		this.presidentInviteStatus = presidentInviteStatus;
+	}
+
+	public Integer getPresidentUserId() {
+		return presidentUserId;
+	}
+
+	public void setPresidentUserId(Integer presidentUserId) {
+		this.presidentUserId = presidentUserId;
+	}
+
+	public String getSecretaryEmailID() {
+		return secretaryEmailID;
+	}
+
+	public void setSecretaryEmailID(String secretaryEmailID) {
+		this.secretaryEmailID = secretaryEmailID;
+	}
+
+	public String getSecretaryInviteStatus() {
+		return secretaryInviteStatus;
+	}
+
+	public void setSecretaryInviteStatus(String secretaryInviteStatus) {
+		this.secretaryInviteStatus = secretaryInviteStatus;
+	}
+
+	public Integer getSecretaryUserID() {
+		return secretaryUserID;
+	}
+
+	public void setSecretaryUserID(Integer secretaryUserID) {
+		this.secretaryUserID = secretaryUserID;
+	}
+
+	public String getTreasurerEmailID() {
+		return treasurerEmailID;
+	}
+
+	public void setTreasurerEmailID(String treasurerEmailID) {
+		this.treasurerEmailID = treasurerEmailID;
+	}
+
+	public String getTreasurerInviteStatus() {
+		return treasurerInviteStatus;
+	}
+
+	public void setTreasurerInviteStatus(String treasurerInviteStatus) {
+		this.treasurerInviteStatus = treasurerInviteStatus;
+	}
+
+	public Integer getAdminUserID() {
+		return adminUserID;
+	}
+
+	public void setAdminUserID(Integer adminUserID) {
+		this.adminUserID = adminUserID;
+	}
+
+	public String getAdminEmailID() {
+		return adminEmailID;
+	}
+
+	public void setAdminEmailID(String adminEmailID) {
+		this.adminEmailID = adminEmailID;
+	}
+
+	public String getAdminInviteStatus() {
+		return adminInviteStatus;
+	}
+
+	public void setAdminInviteStatus(String adminInviteStatus) {
+		this.adminInviteStatus = adminInviteStatus;
+	}
+
+	public Integer getTreasurerUserID() {
+		return treasurerUserID;
+	}
+
+	public void setTreasurerUserID(Integer treasurerUserID) {
+		this.treasurerUserID = treasurerUserID;
+	}
+
+	public Integer getPlanId() {
+		return planId;
+	}
+
+	public void setPlanId(Integer planId) {
+		this.planId = planId;
+	}
+
+	public String getLicenseStatus() {
+		return licenseStatus;
+	}
+
+	public void setLicenseStatus(String licenseStatus) {
+		this.licenseStatus = licenseStatus;
+	}
+
+	public Integer getCommunitySize() {
+		return communitySize;
+	}
+
+	public void setCommunitySize(Integer communitySize) {
+		this.communitySize = communitySize;
+	}
+
+	public Date getPlanExpireDate() {
+		return planExpireDate;
+	}
+
+	public void setPlanExpireDate(Date planExpireDate) {
+		this.planExpireDate = planExpireDate;
+	}
+
+	public String getContactPerson() {
+		return contactPerson;
+	}
+
+	public void setContactPerson(String contactPerson) {
+		this.contactPerson = contactPerson;
+	}
+
+	public Integer getTotalOwners() {
+		return totalOwners;
+	}
+
+	public void setTotalOwners(Integer totalOwners) {
+		this.totalOwners = totalOwners;
+	}
+
+	public Boolean getActiveStatus() {
+		return activeStatus;
+	}
+
+	public void setActiveStatus(Boolean activeStatus) {
+		this.activeStatus = activeStatus;
+	}
+
+	public Integer getCreatedById() {
+		return createdById;
+	}
+
+	public void setCreatedById(Integer createdById) {
+		this.createdById = createdById;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Integer getModifiedById() {
+		return modifiedById;
+	}
+
+	public void setModifiedById(Integer modifiedById) {
+		this.modifiedById = modifiedById;
+	}
+
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+
+	public String getTimeZone() {
+		return timeZone;
+	}
+
+	public void setTimeZone(String timeZone) {
+		this.timeZone = timeZone;
+	}
+
+	public Integer getContractId() {
+		return contractId;
+	}
+
+	public void setContractId(Integer contractId) {
+		this.contractId = contractId;
+	}
+
+	public Plan getPlan() {
+		return plan;
+	}
+
+	public void setPlan(Plan plan) {
+		this.plan = plan;
+	}
+
+	public Contract getContract() {
+		return contract;
+	}
+
+	public void setContract(Contract contract) {
+		this.contract = contract;
+	}
+
+	public User getPresident() {
+		return president;
+	}
+
+	public void setPresident(User president) {
+		this.president = president;
+	}
+
+	public User getTreasurer() {
+		return treasurer;
+	}
+
+	public void setTreasurer(User treasurer) {
+		this.treasurer = treasurer;
+	}
+
+	public User getSecretary() {
+		return secretary;
+	}
+
+	public void setSecretary(User secretary) {
+		this.secretary = secretary;
+	}
+
+	public User getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(User admin) {
+		this.admin = admin;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 }

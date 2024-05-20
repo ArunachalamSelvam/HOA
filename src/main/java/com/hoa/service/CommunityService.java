@@ -5,6 +5,9 @@
 */
 package com.hoa.service;
 import com.hoa.entities.Community;
+import com.hoa.exception.CommunityNotFoundException;
+import com.hoa.exception.ContractNotFoundException;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -31,8 +34,9 @@ public interface CommunityService  {
      * @param entity domain
      * @param id of entity
      * @return Community
+     * @throws CommunityNotFoundException 
      */
-    Community update(Community d);
+    Community update(Integer id, Community d) throws CommunityNotFoundException;
 
     /**
      * get Community by id. Can be return empty
@@ -79,5 +83,12 @@ public interface CommunityService  {
 	Page<Community> findAllSpecification(Specification<Community> specs, Pageable pageable);
 
 	Integer findCommunityIdByContractId(Integer contractId);
+
+	boolean existsByCommunityCode(String communityCode);
+
+	String generateUniqueCommunityCode();
+
+	boolean updateActiveStatus(Integer communityId, Boolean activeStatus) throws CommunityNotFoundException, ContractNotFoundException;
+	
 
 }

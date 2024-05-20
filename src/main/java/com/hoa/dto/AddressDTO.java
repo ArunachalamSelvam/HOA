@@ -17,12 +17,12 @@ public class AddressDTO {
 //	    private Date modifieddate;
 
 	    // Getter and Setter for addressid
-	    public Integer getAddressid() {
+	    public Integer getAddressId() {
 	        return addressId;
 	    }
 
-	    public void setAddressid(Integer addressid) {
-	        this.addressId = addressid;
+	    public void setAddressId(Integer addressId) {
+	        this.addressId = addressId;
 	    }
 
 	    // Getter and Setter for address
@@ -44,29 +44,29 @@ public class AddressDTO {
 	    }
 
 	    // Getter and Setter for stateid
-	    public Integer getStateid() {
+	    public Integer getStateId() {
 	        return stateId;
 	    }
 
-	    public void setStateid(Integer stateid) {
-	        this.stateId = stateid;
+	    public void setStateId(Integer stateId) {
+	        this.stateId = stateId;
 	    }
 
 	    // Getter and Setter for countryid
-	    public Integer getCountryid() {
+	    public Integer getCountryId() {
 	        return countryId;
 	    }
 
-	    public void setCountryid(Integer countryid) {
-	        this.countryId = countryid;
+	    public void setCountryId(Integer countryId) {
+	        this.countryId = countryId;
 	    }
 
 	    // Getter and Setter for activestatus
-	    public Boolean getActivestatus() {
+	    public Boolean getActiveStatus() {
 	        return activeStatus;
 	    }
 
-	    public void setActivestatus(Boolean activestatus) {
+	    public void setActiveStatus(Boolean activestatus) {
 	        this.activeStatus = activestatus;
 	    }
 
@@ -113,16 +113,16 @@ public class AddressDTO {
 					+"]";
 		}
 
-		public AddressDTO(Integer addressid, String address, String city, Integer stateid, Integer countryid, Integer zipCode,
-				Boolean activestatus) {
+		public AddressDTO(Integer addressId, String address, String city, Integer stateId, Integer countryId, Integer zipCode,
+				Boolean activeStatus) {
 			super();
-			this.addressId = addressid;
+			this.addressId = addressId;
 			this.address = address;
 			this.city = city;
-			this.stateId = stateid;
-			this.countryId = countryid;
+			this.stateId = stateId;
+			this.countryId = countryId;
 			this.zipCode = zipCode;
-			this.activeStatus = activestatus;
+			this.activeStatus = activeStatus;
 //			this.createdbyid = createdbyid;
 //			this.modifiedbyid = modifiedbyid;
 //			this.createddate = createddate;

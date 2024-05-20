@@ -7,6 +7,7 @@ package com.hoa.controller;
 
 import com.hoa.dto.ClientAddressDTO;
 import com.hoa.entities.ClientAddress;
+import com.hoa.exception.ClientIdNotFoundException;
 import com.hoa.service.ClientaddressService;
 import com.hoa.utils.EntityDTOMapper;
 
@@ -68,13 +69,14 @@ public class ClientaddressController {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated clientaddress,
      * or with status {@code 400 (Bad Request)} if the clientaddress is not valid,
      * or with status {@code 500 (Internal Server Error)} if the clientaddress couldn't be updated.
+ * @throws ClientIdNotFoundException 
      */
-    @PutMapping("/update")
-    public ResponseEntity<ClientAddress> updateClientaddress(@Valid @RequestBody ClientAddressDTO clientaddressDto) {
+    @PutMapping("/update/{ClientAddressId}")
+    public ResponseEntity<ClientAddress> updateClientaddress(@PathVariable(value = "clientAddressId") Integer clientAddressId,@Valid @RequestBody ClientAddressDTO clientaddressDto) throws ClientIdNotFoundException {
     	
     	ClientAddress clientaddress= entityDTOMapper.toEntity(clientaddressDto);
         log.debug("REST request to update Clientaddress : {}", clientaddress);
-        ClientAddress result = entityService.update(clientaddress);
+        ClientAddress result = entityService.update(clientAddressId,clientaddress);
         return ResponseEntity.ok().body(result);
     }
 

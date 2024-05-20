@@ -46,6 +46,12 @@ public class Contact {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
     
+    @Column(name="activeStatus")
+    private Boolean    activeStatus ;
+    
+    @Column(name = "zipCode")
+    private Integer zipCode;
+    
     @ManyToOne
     @JoinColumn(name = "countryID", referencedColumnName = "countryID", insertable = false, updatable = false)
     private Country country;
@@ -179,9 +185,29 @@ public class Contact {
 	public void setPlan(Plan plan) {
 		this.plan = plan;
 	}
+	
+	
 
     
-    public Contact() {
+    public Boolean getActiveStatus() {
+		return activeStatus;
+	}
+
+	public void setActiveStatus(Boolean activeStatus) {
+		this.activeStatus = activeStatus;
+	}
+
+	
+	
+	public Integer getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(Integer zipCode) {
+		this.zipCode = zipCode;
+	}
+
+	public Contact() {
 		// TODO Auto-generated constructor stub
 	}
 }

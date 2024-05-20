@@ -2,6 +2,7 @@ package com.hoa.controller;
 
 import com.hoa.dto.ContactDTO;
 import com.hoa.entities.Contact;
+import com.hoa.responseEntities.ContactResponse;
 import com.hoa.service.ContactService;
 import com.hoa.utils.EntityDTOMapper;
 
@@ -72,5 +73,14 @@ public class ContactController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/getContactWithPlanDetails/{contactId}")
+    public ResponseEntity<ContactResponse> getContactWithPlanDetails(@PathVariable Integer contactId) {
+        ContactResponse contact = contactService.findContactWithPlanDetails(contactId);
+        if (contact != null) {
+            return ResponseEntity.ok(contact);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
    
 }

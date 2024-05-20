@@ -52,15 +52,25 @@ public class AddressServiceImpl implements AddressService {
 
     /**
      * {@inheritDoc}
+     * @throws AddressNotFoundException 
      */
     @Override
-    public Address update(Address d) {
+    public Address update(Integer id,Address d) throws AddressNotFoundException {
         try {
-            return repository.saveAndFlush(d);
+        	if(repository.existsById(id)) {
+        		d.setAddressId(id);
+                System.out.println("\033[31m" + "Existing User Id : " + d.getAddressId() + "\033[0m");
+
+        		 return repository.saveAndFlush(d);
+        	}  else {
+                throw new AddressNotFoundException("Address with id " + id + " not found.");
+            }
+           
 
         } catch (Exception ex) {
-            return null;
+            throw new AddressNotFoundException("Address with id " + id + " not found.");
         }
+		
     }
 
     /**

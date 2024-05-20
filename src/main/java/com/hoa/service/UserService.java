@@ -5,6 +5,9 @@
 */
 package com.hoa.service;
 import com.hoa.entities.User;
+import com.hoa.exception.UserNotFoundException;
+import com.hoa.responseEntities.UserListResponse;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -31,16 +34,18 @@ public interface UserService  {
      * @param entity domain
      * @param id of entity
      * @return User
+     * @throws UserNotFoundException 
      */
-    User update(Integer id, User d);
+    User update(Integer id, User d) throws UserNotFoundException;
 
     /**
      * get User by id. Can be return empty
      *
      * @param id the id of the entity.
      * @return User
+     * @throws UserNotFoundException 
      */
-    User getOne(Integer id) ;
+    User getOne(Integer id) throws UserNotFoundException ;
 
     /**
      * Get all entities
@@ -78,6 +83,10 @@ public interface UserService  {
 	
 	User createUserWithRole(User user);
 	
-	User login(String emailId, String password);
+//	User login(String emailId, String password);
+
+	void setActiveStatus(Integer userId, boolean activeStatus) throws UserNotFoundException;
+
+	List<UserListResponse> getUsersByCommunityId(Integer communityId);
 
 }

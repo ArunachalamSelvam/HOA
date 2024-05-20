@@ -39,7 +39,7 @@ public class User implements Serializable {
     @Column(name="mobileIsVerified")
     private Boolean    mobileIsVerified ;
 
-    @Column(name="emailID", nullable=false, length=128)
+    @Column(name="emailId", nullable=false, length=128)
     private String     emailId ;
 
     @Column(name="emailIdIsVerified")
@@ -184,66 +184,66 @@ public class User implements Serializable {
     }
     
     //--- GETTERS & SETTERS FOR FIELDS
-    public void setUserid( Integer userid ) {
-        this.userId = userid ;
+    public void setUserId( Integer userId ) {
+        this.userId = userId ;
     }
-    public Integer getUserid() {
+    public Integer getUserId() {
         return this.userId;
     }
 
-    public void setFirstname( String firstname ) {
-        this.firstName = firstname ;
+    public void setFirstName( String firstName ) {
+        this.firstName = firstName ;
     }
-    public String getFirstname() {
+    public String getFirstName() {
         return this.firstName;
     }
 
-    public void setMiddlename( String middlename ) {
-        this.middleName = middlename ;
+    public void setMiddleName( String middleName ) {
+        this.middleName = middleName ;
     }
-    public String getMiddlename() {
+    public String getMiddleName() {
         return this.middleName;
     }
 
-    public void setLastname( String lastname ) {
-        this.lastName = lastname ;
+    public void setLastName( String lastName ) {
+        this.lastName = lastName ;
     }
-    public String getLastname() {
+    public String getLastName() {
         return this.lastName;
     }
 
-    public void setMobilenumber( String mobilenumber ) {
-        this.mobileNumber = mobilenumber ;
+    public void setMobileNumber( String mobileNumber ) {
+        this.mobileNumber = mobileNumber ;
     }
-    public String getMobilenumber() {
+    public String getMobileNumber() {
         return this.mobileNumber;
     }
 
-    public void setMobileisverified( Boolean mobileisverified ) {
-        this.mobileIsVerified = mobileisverified ;
+    public void setMobileIsVerified( Boolean mobileIsVerified ) {
+        this.mobileIsVerified = mobileIsVerified ;
     }
-    public Boolean getMobileisverified() {
+    public Boolean getMobileIsVerified() {
         return this.mobileIsVerified;
     }
 
-    public void setEmailid( String emailid ) {
-        this.emailId = emailid ;
+    public void setEmailId( String emailId ) {
+        this.emailId = emailId ;
     }
-    public String getEmailid() {
+    public String getEmailId() {
         return this.emailId;
     }
 
-    public void setEmailidisverified( Boolean emailidisverified ) {
-        this.emailIdIsVerified = emailidisverified ;
+    public void setEmailIdIsverified( Boolean emailIdIsVerified ) {
+        this.emailIdIsVerified = emailIdIsVerified ;
     }
-    public Boolean getEmailidisverified() {
+    public Boolean getEmailIdIsVerified() {
         return this.emailIdIsVerified;
     }
 
-    public void setIsclient( Boolean isclient ) {
-        this.isClient = isclient ;
+    public void setIsClient( Boolean isClient ) {
+        this.isClient = isClient ;
     }
-    public Boolean getIsclient() {
+    public Boolean getIsClient() {
         return this.isClient;
     }
 
@@ -254,10 +254,10 @@ public class User implements Serializable {
         return this.otp;
     }
 
-    public void setRoleid( Integer roleid ) {
-        this.roleId = roleid ;
+    public void setRoleId( Integer roleId ) {
+        this.roleId = roleId ;
     }
-    public Integer getRoleid() {
+    public Integer getRoleId() {
         return this.roleId;
     }
 
@@ -268,17 +268,17 @@ public class User implements Serializable {
         return this.password;
     }
 
-    public void setActivestatus( Boolean activestatus ) {
-        this.activeStatus = activestatus ;
+    public void setActiveStatus( Boolean activeStatus ) {
+        this.activeStatus = activeStatus ;
     }
-    public Boolean getActivestatus() {
+    public Boolean getActiveStatus() {
         return this.activeStatus;
     }
 
-    public void setLastlogin( Date lastlogin ) {
-        this.lastLogin = lastlogin ;
+    public void setLastLogin( Date lastLogin ) {
+        this.lastLogin = lastLogin ;
     }
-    public Date getLastlogin() {
+    public Date getLastLogin() {
         return this.lastLogin;
     }
 

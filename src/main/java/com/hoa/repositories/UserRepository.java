@@ -5,8 +5,15 @@
  */
 package com.hoa.repositories;
 import com.hoa.entities.User;
+import com.hoa.responseEntities.UserListResponse;
+
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -21,6 +28,40 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository  extends JpaRepository<User, Integer> , JpaSpecificationExecutor<User> {
 	
-	User findUserByEmailId(String emailId);
+	List<User> findUserByEmailId(String emailId);
+	
+	@Override
+	@Query("Select u From User u ORDER BY u.userId")
+	List<User> findAll();
+	
+	@Query(value ="SELECT\n"
+			+ "	c.client_id As clientId,\n"
+			+ "	u.first_name As firstName,\n"
+			+ "	u.mobile_number As mobileNumber,\n"
+			+ "	u.email_id As emailId,\n"
+			+ "	u.active_status As activeStatus,\n"
+			+ "	r.name As roleName\n"
+			+ "FROM	\n"
+			+ "	client c\n"
+			+ "JOIN \n"
+			+ "	\"user\" u ON u.user_id = c.user_id\n"
+			+ "JOIN\n"
+			+ "	\"role\" r ON r.role_id = u.role_id\n"
+			+ "WHERE c.community_id = :communityId	",nativeQuery = true)
+	List<Map<String, Object>> userListByCommunityId(@Param("communityId") Integer communityId);
+	
+	@Query(value = "SELECT u.user_id AS userId,\n"
+			+ "       u.email_id AS emailId,\n"
+			+ "       u.role_id AS roleId,\n"
+			+ "       cl.client_id AS clientId,\n"
+			+ "       cl.community_id AS communityId,\n"
+			+ "       e.employee_id AS employeeId,\n"
+			+ "       e.manager_id AS managerId\n"
+			+ "FROM \"user\" u\n"
+			+ "LEFT JOIN client cl ON u.user_id = cl.user_id\n"
+			+ "LEFT JOIN employee e ON u.user_id = e.user_id\n"
+			+ "WHERE u.email_id = :emailId AND u.password = :password", nativeQuery = true)
+	Map<String, Object> getUserResponseByEmailAndPassword(@Param("emailId") String emailId,@Param("password") String  password );
+
 
 }

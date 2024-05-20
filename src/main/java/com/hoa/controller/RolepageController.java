@@ -7,6 +7,7 @@ package com.hoa.controller;
 
 import com.hoa.dto.RolePageDTO;
 import com.hoa.entities.RolePage;
+import com.hoa.responseEntities.RolePageListResponse;
 import com.hoa.service.RolepageService;
 import com.hoa.utils.EntityDTOMapper;
 
@@ -25,6 +26,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -83,11 +85,14 @@ public class RolepageController {
      */
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<RolePage>> getAllRolepage() {
-	    log.debug("REST request to get all rolepages");
+    public ResponseEntity<List<RolePageDTO>> getAllRolepage() {
+        log.debug("REST request to get all rolepages");
         List<RolePage> lst = entityService.getAll();
+        List<RolePageDTO> dtoList = lst.stream()
+                                       .map(entityDtoMapper::toDTO)
+                                       .collect(Collectors.toList());
 
-        return new ResponseEntity<>(lst,HttpStatus.OK);
+        return new ResponseEntity<>(dtoList, HttpStatus.OK);
     }
 
     /**
@@ -97,11 +102,12 @@ public class RolepageController {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the rolepage, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/getOne/{id}")
-    public ResponseEntity<RolePage> getOneRolepage(@PathVariable(value = "id") Integer id) {
+    public ResponseEntity<RolePageDTO> getOneRolepage(@PathVariable(value = "id") Integer id) {
         log.debug("REST request to get Rolepage : {}", id);
-        RolePage e = entityService.getOne(id);
+        RolePage rolePage = entityService.getOne(id);
+        RolePageDTO rolePageDto = entityDtoMapper.toDTO(rolePage);
 
-        return new ResponseEntity<>(e, HttpStatus.OK);
+        return new ResponseEntity<>(rolePageDto, HttpStatus.OK);
     }
 
   /**
@@ -116,5 +122,12 @@ public class RolepageController {
         entityService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    
+    @GetMapping("/getByRoleId/{roleId}")
+    public ResponseEntity<List<RolePageListResponse>> getRolePageByRoleId(@PathVariable Integer roleId) {
+        List<RolePageListResponse> rolePages = entityService.getRolePageByRoleId(roleId);
+        return ResponseEntity.ok(rolePages);
+    }
+
 
 }

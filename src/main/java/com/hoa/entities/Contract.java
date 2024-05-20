@@ -73,6 +73,13 @@ public class Contract implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="modifiedDate")
     private Date       modifiedDate ;
+    
+//    @Column(name="activeStatus")
+//    private boolean    activeStatus ;
+    @Column(name="activeStatus")
+    private String    activeStatus ;
+
+
 
 
     //--- ENTITY LINKS ( RELATIONSHIP )
@@ -259,8 +266,16 @@ public class Contract implements Serializable {
     public Client getClient() {
         return this.client;
     } 
+        
+    public String getActiveStatus() {
+		return activeStatus;
+	}
 
-    //--- toString specific method
+	public void setActiveStatus(String activeStatus) {
+		this.activeStatus = activeStatus;
+	}
+
+	//--- toString specific method
 	@Override
     public String toString() { 
         StringBuilder sb = new StringBuilder(); 
@@ -297,6 +312,8 @@ public class Contract implements Serializable {
         sb.append(modifiedById);
         sb.append("|");
         sb.append(modifiedDate);
+        sb.append("|");
+        sb.append(activeStatus);
         return sb.toString(); 
     } 
 

@@ -32,7 +32,7 @@ public interface PlanService  {
      * @param id of entity
      * @return Plan
      */
-    Plan update(Plan d);
+    Plan update(Integer id,Plan d);
 
     /**
      * get Plan by id. Can be return empty
@@ -77,6 +77,8 @@ public interface PlanService  {
 	Page<Plan> findAllSpecification(Specification<Plan> specs, Pageable pageable);
 	
     Plan findPlanByTypeRangePeriod(Integer planTypeId, Integer planRangeId, Integer planPeriodId);
+
+	List<Plan> findPlansByRangePeriod(Integer planRangeId, Integer planPeriodId);
 
 
 }

@@ -95,8 +95,8 @@ public class Address implements Serializable {
     }
     
     //--- GETTERS & SETTERS FOR FIELDS
-    public void setAddressid( Integer addressid ) {
-        this.addressId = addressid ;
+    public void setAddressId( Integer addressId ) {
+        this.addressId = addressId ;
     }
     public Integer getAddressId() {
         return this.addressId;
@@ -116,15 +116,15 @@ public class Address implements Serializable {
         return this.city;
     }
 
-    public void setStateid( Integer stateid ) {
-        this.stateId = stateid ;
+    public void setStateId( Integer stateId ) {
+        this.stateId = stateId ;
     }
     public Integer getStateId() {
         return this.stateId;
     }
 
-    public void setCountryId( Integer countryid ) {
-        this.countryId = countryid ;
+    public void setCountryId( Integer countryId ) {
+        this.countryId = countryId ;
     }
     public Integer getCountryId() {
         return this.countryId;

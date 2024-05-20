@@ -33,7 +33,7 @@ spring:
             trust: '*'  
      
 server:
-  port: 8081 # Change this to your desired port number
+  port: 80 # Change this to your desired port number
   servlet : 
     context-path : /hoa
     

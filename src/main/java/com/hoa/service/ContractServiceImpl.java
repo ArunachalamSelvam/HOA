@@ -5,134 +5,354 @@
 */
 package com.hoa.service;
 
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.hoa.repositories.ContractRepository;
+import com.hoa.requestEntities.ClientRequest;
+import com.hoa.requestEntities.Contractrequest3;
+import com.hoa.responseEntities.ContractListResponse;
+import com.hoa.dto.AddressDTO;
+import com.hoa.dto.ClientDTO;
+import com.hoa.dto.CommunityDTO;
+import com.hoa.dto.ContractDTO;
+import com.hoa.entities.Address;
+import com.hoa.entities.Client;
+import com.hoa.entities.ClientAddress;
+import com.hoa.entities.Community;
 import com.hoa.entities.Contract;
+import com.hoa.entities.User;
+import com.hoa.enums.ContractActiveStatus;
+import com.hoa.exception.ClientIdNotFoundException;
+import com.hoa.exception.CommunityNotFoundException;
+import com.hoa.exception.ContractNotFoundException;
+import com.hoa.exception.UserNotFoundException;
 import com.hoa.service.ContractService;
+import com.hoa.utils.EntityDTOMapper;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
-
+import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 /**
  * Service Implementation for managing {@link Contract}.
+ * 
  * @author aek
  */
 @Service
 @Transactional
 public class ContractServiceImpl implements ContractService {
 
+	private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	private static final int CODE_LENGTH = 16;
+	private static final Random RANDOM = new SecureRandom();
 
-    private final ContractRepository repository;
+	private final ContractRepository repository;
+	private final UserService userService;
+	private final ClientService clientService;
+	private final AddressService addressService;
+	private final ClientaddressService clientAddressService;
+	private final CommunityService communityService;
+	private final EntityDTOMapper entityDtoMapper;
 
-    public ContractServiceImpl(ContractRepository repo) {
-         this.repository = repo;
-    }
+	@Autowired
+	public ContractServiceImpl(ContractRepository repository, UserService userService, ClientService clientService,
+			AddressService addressService, ClientaddressService clientAddressService, CommunityService communityService,
+			EntityDTOMapper entityDtoMapper) {
+		this.userService = userService;
+		this.repository = repository;
+		this.clientService = clientService;
+		this.addressService = addressService;
+		this.clientAddressService = clientAddressService;
+		this.communityService = communityService;
+		this.entityDtoMapper = entityDtoMapper;
+	}
 
+//    public ContractServiceImpl(ContractRepository repo) {
+//         this.repository = repo;
+//    }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Contract create(Contract d) {
-        try {
-            return repository.save(d);
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Contract create(Contract d) {
+		try {
+			return repository.save(d);
 
-        } catch (Exception ex) {
-            return null;
-        }
-    }
+		} catch (Exception ex) {
+			return null;
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Contract update(Contract d) {
-        try {
-            return repository.saveAndFlush(d);
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @throws ContractNotFoundException
+	 */
+	@Override
+	public Contract update(Integer id, Contract contract) throws ContractNotFoundException {
+		// Retrieve the contract with the given ID from the database
+		Contract existingContract = repository.findById(id)
+				.orElseThrow(() -> new ContractNotFoundException("Contract not found with id: " + id));
 
-        } catch (Exception ex) {
-            return null;
-        }
-    }
+		// Update the existing contract with the values from the provided contract
+//        existingContract.setSomeField(contract.getSomeField()); // Update fields as needed
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Contract getOne(Integer id) {
-        try {
-            return repository.findById(id).orElse(null);
+		// Save the updated contract
+		contract.setContractid(id);
+		return repository.save(contract);
+	}
 
-        } catch (Exception ex) {
-            return null;
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @throws ContractNotFoundException
+	 */
+	@Override
+	public Contract getOne(Integer id) throws ContractNotFoundException {
+		try {
+			return repository.findById(id).orElse(null);
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<Contract> getAll() {
-        try {
-            return repository.findAll();
+		} catch (Exception ex) {
+			throw new ContractNotFoundException("Contract with Id " + id + " not found.");
+		}
+	}
 
-        } catch (Exception ex) {
-            return Collections.emptyList();
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<Contract> getAll() {
+		try {
+			return repository.findAll();
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public long getTotal() {
-        try {
-            return repository.count();
-        } catch (Exception ex) {
-            return 0;
-        }
-    }
+		} catch (Exception ex) {
+			return Collections.emptyList();
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void delete(Integer id) {
-        repository.deleteById(id);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public long getTotal() {
+		try {
+			return repository.count();
+		} catch (Exception ex) {
+			return 0;
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-   	@Override
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void delete(Integer id) {
+		repository.deleteById(id);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Page<Contract> findAllPaginate(Pageable pageable) {
 
 		return repository.findAll(pageable);
 	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Page<Contract> findAllSpecification(Specification<Contract> specs, Pageable pageable) {
 		return repository.findAll(specs, pageable);
 	}
-    
-    @Override
-    public Integer getContractIdByContractCode(String contractCode) {
-        return repository.findContractIdByContractCode(contractCode);
-    }
-    
-    @Override
-    public boolean existsByContractCode(String contractCode) {
-        return repository.countByContractCode(contractCode) > 0;
-    }
 
+	@Override
+	public Integer getContractIdByContractCode(String contractCode) {
+		return repository.findContractIdByContractCode(contractCode);
+	}
+
+	@Override
+	public boolean existsByContractCode(String contractCode) {
+		return repository.countByContractCode(contractCode) > 0;
+	}
+
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public Contract createContract(Contractrequest3 contractRequest) throws ClientIdNotFoundException {
+		ContractDTO contractDto = contractRequest.getContractDto();
+
+		// Generating ContractCode
+		String contractCode = generateUniqueContractCode();
+		// Set the ContractCode to the Contract
+		contractDto.setContractcode(contractCode);
+
+		ClientRequest clientRequest = contractRequest.getClientRequest();
+		User user = entityDtoMapper.toEntity(clientRequest.getUserDto());
+		User savedUser = userService.create(user);
+
+		ClientDTO clientDto = clientRequest.getClientDto();
+		clientDto.setUserid(savedUser.getUserId());
+		Client client = entityDtoMapper.toEntity(clientDto);
+		Client savedClient = clientService.create(client);
+
+		AddressDTO addressDTO = clientRequest.getAddressDto();
+		Address address = entityDtoMapper.toEntity(addressDTO);
+		Address savedAddress = addressService.create(address);
+
+		ClientAddress clientAddress = new ClientAddress();
+		clientAddress.setAddressid(savedAddress.getAddressId());
+		clientAddress.setClientid(savedClient.getClientid());
+		clientAddressService.create(clientAddress);
+
+		contractDto.setClientid(savedClient.getClientid());
+
+		AddressDTO communityAddressDto = contractRequest.getAddressDto();
+		Address communityAddress = entityDtoMapper.toEntity(communityAddressDto);
+		Address savedCommunityAddress = addressService.create(communityAddress);
+		contractDto.setBusinessaddressid(savedCommunityAddress.getAddressId());
+
+		String communityCode = communityService.generateUniqueCommunityCode();
+		CommunityDTO communityDto = new CommunityDTO();
+		communityDto.setName(contractDto.getBuisnessname());
+		communityDto.setCommunityCode(communityCode);
+		communityDto.setAddressId(savedCommunityAddress.getAddressId());
+		communityDto.setCommunitySize(contractDto.getSizeofthecommunity());
+		communityDto.setPlanId(contractDto.getPlanid());
+		communityDto.setCreatedById(contractDto.getCreatedbyid());
+		communityDto.setCreatedDate(contractDto.getCreateddate());
+		communityDto.setContactPerson(
+				savedUser.getFirstName() + " " + savedUser.getMiddleName() + " " + savedUser.getLastName());
+
+		Community community = entityDtoMapper.toEntity(communityDto);
+		Contract contract = entityDtoMapper.toEntity(contractDto);
+		Contract savedContract = repository.save(contract);
+
+		community.setContractId(savedContract.getContractid());
+		Community savedCommunity = communityService.create(community);
+
+		clientService.updateClientCommunityId(savedClient.getClientid(), savedCommunity.getCommunityId());
+
+		return savedContract;
+	}
+
+	@Override
+	@Transactional
+	public boolean updateActiveStatus(Integer clientId, Boolean activeStatus)
+			throws CommunityNotFoundException, ContractNotFoundException, UserNotFoundException {
+
+		Client client = clientService.getOne(clientId);
+		userService.setActiveStatus(client.getUserid(), true);
+		Integer communityId = client.getCommunityid();
+
+		Community community = communityService.getOne(communityId);
+
+		Integer contractId = community.getContractId();
+		if (community != null) {
+			boolean isCommunityUpdated = communityService.updateActiveStatus(communityId, activeStatus);
+			Contract updatedContract = null;
+			if (activeStatus == true) {
+				Contract contract = repository.findById(contractId).get();
+
+				System.out.println("\033[31m" + "Contract Before Update : " + contract + "\033[0m");
+
+				String contacrActiveStatus = ContractActiveStatus.APPROVED.toString();
+
+				contract.setActiveStatus(contacrActiveStatus);
+				updatedContract = repository.save(contract);
+
+				System.out.println("\033[31m" + "Contract After Update : " + updatedContract + "\033[0m");
+			} else {
+				Contract contract = repository.findById(contractId).get();
+
+				System.out.println("\033[31m" + "Contract Before Update : " + contract + "\033[0m");
+
+				String contacrActiveStatus = ContractActiveStatus.APPROVAL_PENDING.toString();
+
+				contract.setActiveStatus(contacrActiveStatus);
+				updatedContract = repository.save(contract);
+
+				System.out.println("\033[31m" + "Contract After Update : " + updatedContract + "\033[0m");
+			}
+			return isCommunityUpdated && updatedContract != null;
+		} else {
+			throw new CommunityNotFoundException("Community with the Id : " + communityId + " not found.");
+		}
+	}
+
+	@Override
+	public List<ContractListResponse> findEmployeeContractsBySalesPersonId(Integer salesManagerId,
+			Integer salesPersonId) {
+		List<Map<String, Object>> results = null;
+
+		if (salesManagerId == 0 && salesPersonId == 0) {
+			results = repository.findContractsBySalesManagerIdAndSalesPersonId();
+
+		} else if (salesManagerId > 0 && salesPersonId == 0) {
+			results = repository.findContractsBySalesManagerIdAndSalesPersonId(salesManagerId);
+		} else if (salesManagerId > 0 && salesPersonId > 0) {
+			results = repository.findContractsBySalesManagerIdAndSalesPersonId(salesPersonId, salesManagerId);
+		}
+		List<ContractListResponse> contractResponses = new ArrayList<>();
+		for (Map<String, Object> row : results) {
+			contractResponses.add(mapToEmployeeContractResponse(row));
+		}
+		return contractResponses;
+	}
+
+	// Method to generate a random ContractCode with custom length and characters
+	@Override
+	public String generateUniqueContractCode() {
+		String contractCode;
+		do {
+			contractCode = generateCustomRandomContractCode();
+		} while (repository.countByContractCode(contractCode) == 1); // Check uniqueness
+		return contractCode;
+	}
+
+	// Helper method to generate a custom random ContractCode
+	private String generateCustomRandomContractCode() {
+		StringBuilder contractCode = new StringBuilder(CODE_LENGTH);
+		for (int i = 0; i < CODE_LENGTH; i++) {
+			contractCode.append(CHARACTERS.charAt(RANDOM.nextInt(CHARACTERS.length())));
+		}
+		return contractCode.toString();
+	}
+
+	private ContractListResponse mapToEmployeeContractResponse(Map<String, Object> row) {
+		ContractListResponse contractResponse = new ContractListResponse();
+		contractResponse.setContractId((Integer) row.get("contractId"));
+		contractResponse.setClientId((Integer) row.get("clientId"));
+		contractResponse.setContractCode((String) row.get("contractCode"));
+		contractResponse.setContractActiveStatus((String) row.get("contractActiveStatus"));
+		contractResponse.setBusinessName((String) row.get("businessName"));
+		contractResponse.setAnnualRenewalFee((Double) row.get("annualRenewalFee"));
+		contractResponse.setRenewalCycles((String) row.get("renewalCycles"));
+		contractResponse.setIsTermsAccepted((Boolean) row.get("isTermsAccepted"));
+		contractResponse.setCommunityId((Integer) row.get("communityId"));
+		contractResponse.setCreatedDate((Date) row.get("createdDate"));
+		contractResponse.setClientDisplayName((String) row.get("clientDisplayName"));
+		contractResponse.setClientActiveStatus((Boolean) row.get("clientActiveStatus"));
+		contractResponse.setUserFirstName((String) row.get("userFirstName"));
+		contractResponse.setUserLastName((String) row.get("userLastName"));
+		contractResponse.setEmailId((String) row.get("emailId"));
+		contractResponse.setMobileNumber((String) row.get("mobileNumber"));
+		contractResponse.setCity((String) row.get("city"));
+		contractResponse.setZipCode((Integer) row.get("zipCode"));
+		contractResponse.setCountry((String) row.get("country"));
+		contractResponse.setSalesPersonEmail((String) row.get("salesPersonEmailId"));
+		contractResponse.setSalesPersonMobileNumber((String) row.get("salesPersonMobileNumber"));
+		return contractResponse;
+	}
 
 }

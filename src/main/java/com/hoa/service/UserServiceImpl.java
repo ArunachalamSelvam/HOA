@@ -5,166 +5,206 @@
 */
 package com.hoa.service;
 
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hoa.repositories.RoleRepository;
 import com.hoa.repositories.UserRepository;
+import com.hoa.responseEntities.ContractListResponse;
+import com.hoa.responseEntities.UserListResponse;
 import com.hoa.entities.Role;
 import com.hoa.entities.User;
+import com.hoa.exception.UserNotFoundException;
 import com.hoa.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
-
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link User}.
+ * 
  * @author aek
  */
 @Service
 public class UserServiceImpl implements UserService {
 
+	private final UserRepository repository;
 
-    private final UserRepository repository;
+	private final RoleRepository roleRepository;
 
-    private final RoleRepository roleRepository;
-    public UserServiceImpl(UserRepository repo, RoleRepository roleRepository) {
-         this.repository = repo;
-         this.roleRepository = roleRepository;
-    }
+	public UserServiceImpl(UserRepository repo, RoleRepository roleRepository) {
+		this.repository = repo;
+		this.roleRepository = roleRepository;
+	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public User create(User d) {
+		try {
+			return repository.save(d);
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public User create(User d) {
-        try {
-            return repository.save(d);
+		} catch (Exception ex) {
+			return null;
+		}
+	}
 
-        } catch (Exception ex) {
-            return null;
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @throws UserNotFoundException
+	 */
+	@Override
+	public User update(Integer id, User d) throws UserNotFoundException {
+		try {
+			d.setUserId(id);
+			System.out.println("\033[31m" + "Existing User Id : " + d.getUserId() + "\033[0m");
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public User update(Integer id, User d) {
-        try {
-            d.setUserid(id);
+			if (repository.existsById(id)) {
+				return repository.saveAndFlush(d);
+			} else {
+				throw new UserNotFoundException("User Id with : " + id + " not found.");
+			}
+		} catch (UserNotFoundException ex) {
+			throw ex; // Re-throw UserNotFoundException to be handled by the exception handler
+		} catch (Exception ex) {
+			ex.printStackTrace(); // or log the exception
+			return null;
+		}
+	}
 
-            if (repository.existsById(id)) {
-                return repository.saveAndFlush(d);
-            } else {
-                return null; // or throw an exception indicating user not found
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace(); // or log the exception
-            return null;
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @throws UserNotFoundException
+	 */
+	@Override
+	public User getOne(Integer id) throws UserNotFoundException {
+		try {
+			return repository.findById(id).orElse(null);
 
+		} catch (Exception ex) {
+			throw new UserNotFoundException("User Id with : " + id + "not found.");
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public User getOne(Integer id) {
-        try {
-            return repository.findById(id).orElse(null);
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<User> getAll() {
+		try {
+			return repository.findAll();
 
-        } catch (Exception ex) {
-            return null;
-        }
-    }
+		} catch (Exception ex) {
+			return Collections.emptyList();
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<User> getAll() {
-        try {
-            return repository.findAll();
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public long getTotal() {
+		try {
+			return repository.count();
+		} catch (Exception ex) {
+			return 0;
+		}
+	}
 
-        } catch (Exception ex) {
-            return Collections.emptyList();
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void delete(Integer id) {
+		repository.deleteById(id);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public long getTotal() {
-        try {
-            return repository.count();
-        } catch (Exception ex) {
-            return 0;
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void delete(Integer id) {
-        repository.deleteById(id);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-   	@Override
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Page<User> findAllPaginate(Pageable pageable) {
 
 		return repository.findAll(pageable);
 	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Page<User> findAllSpecification(Specification<User> specs, Pageable pageable) {
 		return repository.findAll(specs, pageable);
 	}
-    
-    @Override
-    @Transactional
-    public User createUserWithRole(User user) {
-    	
-    	Role role = user.getRole();
-        
-        if (role == null) {
-            throw new IllegalArgumentException("Role cannot be null");
-        }
-
-        // Save the role first if it doesn't exist
-        if (role.getRoleid() == null) {
-            role = roleRepository.save(role);
-        }
-
-        // Assign the role to the user
-        user.setRole(role);
-
-        return repository.save(user);
-    }
-
 
 	@Override
-	public User login(String emailId, String password) {
-		User user = repository.findUserByEmailId(emailId);
-		if(user!=null && user.getPassword().equals(password)) {
-			return user;
+	@Transactional
+	public User createUserWithRole(User user) {
+
+		Role role = user.getRole();
+
+		if (role == null) {
+			throw new IllegalArgumentException("Role cannot be null");
 		}
-		return null;
+
+		// Save the role first if it doesn't exist
+		if (role.getRoleid() == null) {
+			role = roleRepository.save(role);
+		}
+
+		// Assign the role to the user
+		user.setRole(role);
+
+		return repository.save(user);
 	}
 
+//	@Override
+//	public User login(String emailId, String password) {
+//		User user = repository.findUserByEmailId(emailId);
+//		if (user != null && user.getPassword().equals(password)) {
+//			return user;
+//		}
+//		return null;
+//	}
+
+	@Override
+	@Transactional
+	public void setActiveStatus(Integer userId, boolean activeStatus) throws UserNotFoundException {
+        User user = repository.findById(userId)
+                .orElseThrow(() -> new UserNotFoundException("User not found with id: " + userId));
+
+        // Update active status to the desired value
+        user.setActiveStatus(activeStatus);
+        repository.save(user);
+    }
+
+	@Override
+	public List<UserListResponse> getUsersByCommunityId(Integer communityId) {
+	    List<Map<String, Object>> userMaps = repository.userListByCommunityId(communityId);
+	    return userMaps.stream()
+	                   .map(this::mapToUserListResponse)
+	                   .collect(Collectors.toList());
+	}
+
+	private UserListResponse mapToUserListResponse(Map<String, Object> row) {
+	    UserListResponse userListResponse = new UserListResponse();
+	    userListResponse.setFirstName((String) row.get("firstName"));
+	    userListResponse.setEmailId((String) row.get("emailId"));
+	    userListResponse.setMobileNumber((String) row.get("mobileNumber"));
+	    userListResponse.setClientId((Integer) row.get("clientId"));
+	    userListResponse.setRoleName((String) row.get("roleName"));
+	    userListResponse.setActiveStatus(row.get("activeStatus") != null ? row.get("activeStatus").toString() : null);
+	    return userListResponse;
+	}
+	
+	
 
 }

@@ -7,6 +7,7 @@ public class LoginResponse {
 	private Integer clientId;
 	private Integer communityId;
 	private Integer employeeId;
+	private Integer managerId;
 	private String emailId;
 	
 	public LoginResponse() {
@@ -47,6 +48,12 @@ public class LoginResponse {
 	}
 	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
+	}
+	public Integer getManagerId() {
+		return managerId;
+	}
+	public void setManagerId(Integer managerId) {
+		this.managerId = managerId;
 	}
 	
 	

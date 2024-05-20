@@ -85,9 +85,9 @@ public class PlandetailController {
      */
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<PlanDetail>> getAllPlandetail() {
+    public ResponseEntity<List<PlanDetailDTO>> getAllPlandetail() {
 	    log.debug("REST request to get all plandetails");
-        List<PlanDetail> lst = entityService.getAll();
+        List<PlanDetailDTO> lst = entityService.getAll();
 
         return new ResponseEntity<>(lst,HttpStatus.OK);
     }
@@ -120,8 +120,8 @@ public class PlandetailController {
     }
     
     @GetMapping("getPlanDetailByPlanId/{planId}")
-    public ResponseEntity<PlanDetail> findPlanDetailByPlanId(@PathVariable Integer planId) {
-        PlanDetail planDetail = entityService.findPlanDetailByPlanId(planId);
+    public ResponseEntity<List<PlanDetailDTO>> findPlanDetailByPlanId(@PathVariable Integer planId) {
+        List<PlanDetailDTO> planDetail = entityService.findPlanDetailsByPlanId(planId);
         if (planDetail != null) {
             return ResponseEntity.ok(planDetail);
         } else {

@@ -7,6 +7,7 @@ package com.hoa.controller;
 
 import com.hoa.dto.RoleDTO;
 import com.hoa.entities.Role;
+import com.hoa.responseEntities.RolePageListResponse;
 import com.hoa.service.RoleService;
 import com.hoa.utils.EntityDTOMapper;
 
@@ -130,5 +131,6 @@ public class RoleController {
 		roleService.delete(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-
+	
+	
 }

@@ -5,129 +5,270 @@
 */
 package com.hoa.service;
 
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.hoa.repositories.EmployeeRepository;
+import com.hoa.requestEntities.EmployeeRequest;
+import com.hoa.responseEntities.EmployeeResponseWithIdAndName;
+import com.hoa.dto.EmployeeDTO;
+import com.hoa.dto.UserDTO;
 import com.hoa.entities.Employee;
+import com.hoa.entities.User;
+import com.hoa.exception.EmployeeNotFoundException;
+import com.hoa.exception.UserNotFoundException;
 import com.hoa.service.EmployeeService;
+import com.hoa.utils.EntityDTOMapper;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
-
+import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 /**
  * Service Implementation for managing {@link Employee}.
+ * 
  * @author aek
  */
 @Service
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
+	private static final String CHARACTERS = "0123456789";
+	private static final int CODE_LENGTH = 6;
+	private static final Random RANDOM = new SecureRandom();
 
-    private final EmployeeRepository repository;
+	private final EmployeeRepository repository;
+	private final UserService userService;
+	private final EntityDTOMapper entityDtoMapper;
 
-    public EmployeeServiceImpl(EmployeeRepository repo) {
-         this.repository = repo;
-    }
+	public EmployeeServiceImpl(EmployeeRepository employeeRepository, UserService userService,
+			EntityDTOMapper entityDtoMapper) {
+		this.repository = employeeRepository;
+		this.userService = userService;
+		this.entityDtoMapper = entityDtoMapper;
+	}
 
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public Employee createEmployee(EmployeeRequest employeeRequest) {
+		int designationId = employeeRequest.getEmployeeDto().getDesignationId();
+		String employeeNo = generateUniqueEmployeeNo(designationId);
+		EmployeeDTO employeeDto = employeeRequest.getEmployeeDto();
+		UserDTO userDto = employeeRequest.getUserDto();
+		String password = generateRandomPassword();
+		userDto.setPassword(password);
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Employee create(Employee d) {
-        try {
-            return repository.save(d);
+		User user = entityDtoMapper.toEntity(userDto);
+		User savedUser = userService.create(user);
+		employeeDto.setUserId(savedUser.getUserId());
+		employeeDto.setEmployeeNo(employeeNo);
 
-        } catch (Exception ex) {
-            return null;
-        }
-    }
+		Employee employee = entityDtoMapper.toEntity(employeeDto);
+		return repository.save(employee);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Employee update(Integer id, Employee d) {
-        try {
-            d.setEmployeeid(id);
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public Employee updateEmployee(Integer employeeId, Integer userId, EmployeeRequest employeeRequest)
+			throws UserNotFoundException, EmployeeNotFoundException {
+		EmployeeDTO employeeDto = employeeRequest.getEmployeeDto();
+		employeeDto.setUserId(userId);
 
-            if (repository.existsById(id)) {
-                return repository.save(d);
-            } else {
-                return null; // or throw an exception indicating employee not found
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace(); // or log the exception
-            return null;
-        }
-    }
+		UserDTO userDto = employeeRequest.getUserDto();
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Employee getOne(Integer id) {
-        try {
-            return repository.findById(id).orElse(null);
+		User user = entityDtoMapper.toEntity(userDto);
 
-        } catch (Exception ex) {
-            return null;
-        }
-    }
+		userService.update(userId, user);
+		// Retrieve the existing employee from the database
+		Employee existingEmployee = repository.findById(employeeId)
+				.orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id: " + employeeId));
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<Employee> getAll() {
-        try {
-            return repository.findAll();
+		employeeDto.setEmployeeId(employeeId);
+		Employee employee = entityDtoMapper.toEntity(employeeDto);
 
-        } catch (Exception ex) {
-            return Collections.emptyList();
-        }
-    }
+		return repository.save(employee);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public long getTotal() {
-        try {
-            return repository.count();
-        } catch (Exception ex) {
-            return 0;
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Employee create(Employee d) {
+		try {
+			return repository.save(d);
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void delete(Integer id) {
-        repository.deleteById(id);
-    }
+		} catch (Exception ex) {
+			return null;
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-   	@Override
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Employee update(Integer id, Employee d) {
+		try {
+			d.setEmployeeId(id);
+
+			if (repository.existsById(id)) {
+				return repository.save(d);
+			} else {
+				return null; // or throw an exception indicating employee not found
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace(); // or log the exception
+			return null;
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Employee getOne(Integer id) {
+		try {
+			return repository.findById(id).orElse(null);
+
+		} catch (Exception ex) {
+			return null;
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<Employee> getAll() {
+		try {
+			return repository.findAll();
+
+		} catch (Exception ex) {
+			return Collections.emptyList();
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public long getTotal() {
+		try {
+			return repository.count();
+		} catch (Exception ex) {
+			return 0;
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void delete(Integer id) {
+		repository.deleteById(id);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Page<Employee> findAllPaginate(Pageable pageable) {
 
 		return repository.findAll(pageable);
 	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Page<Employee> findAllSpecification(Specification<Employee> specs, Pageable pageable) {
 		return repository.findAll(specs, pageable);
 	}
+	
+	@Override
+	public List<EmployeeResponseWithIdAndName> getEmployeeResponseWithIdAndName(Integer designationId) {
+        List<Map<String, Object>> results = repository.getEmployeeResponseWithIdAndName(designationId);
+        return mapToEmployeeResponse(results);
+    }
 
+	@Override
+    public List<EmployeeResponseWithIdAndName> getEmployeeResponseWithIdAndNameByManagerId(Integer managerId) {
+        List<Map<String, Object>> results = repository.getEmployeeResponseWithIdAndNameByManagerId(managerId);
+        return mapToEmployeeResponse(results);
+    }
+
+
+	// Method to generate a unique CommunityCode
+	@Override
+	public String generateUniqueEmployeeNo(int designation) {
+		String employeeNo = "";
+
+		if (designation == 1) {
+			employeeNo = "SM";
+			do {
+				employeeNo += generateRandomEmployeeNo();
+			} while (repository.countByEmployeeNo(employeeNo) == 1); // Check uniqueness
+		}
+
+		else if (designation == 2) {
+			employeeNo = "SP";
+			do {
+				employeeNo += generateRandomEmployeeNo();
+			} while (repository.countByEmployeeNo(employeeNo) == 1); // Check uniqueness
+		}
+		return employeeNo;
+	}
+
+	// Helper method to generate a random CommunityCode
+	private String generateRandomEmployeeNo() {
+		StringBuilder communityCode = new StringBuilder(CODE_LENGTH);
+		for (int i = 0; i < CODE_LENGTH; i++) {
+			communityCode.append(CHARACTERS.charAt(RANDOM.nextInt(CHARACTERS.length())));
+		}
+		return communityCode.toString();
+	}
+
+	private List<EmployeeResponseWithIdAndName> mapToEmployeeResponse(List<Map<String, Object>> mapList) {
+
+		List<EmployeeResponseWithIdAndName> list = new ArrayList<>();
+
+		for (Map<String, Object> row : mapList) {
+			EmployeeResponseWithIdAndName response = new EmployeeResponseWithIdAndName();
+			response.setEmployeeId((Integer) row.get("employeeId"));
+			response.setFirstName((String) row.get("firstName"));
+			list.add(response);
+		}
+		return list;
+	}
+	
+	private String generateRandomPassword() {
+        // Define characters to be used in the random password
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        // Length of the password
+        int length = 10;
+
+        // Create a StringBuilder to store the generated password
+        StringBuilder password = new StringBuilder();
+
+        // Create a secure random number generator
+        SecureRandom random = new SecureRandom();
+
+        // Generate random characters until the password reaches the desired length
+        for (int i = 0; i < length; i++) {
+            // Generate a random index within the range of the characters string
+            int randomIndex = random.nextInt(characters.length());
+
+            // Append the character at the random index to the password
+            password.append(characters.charAt(randomIndex));
+        }
+
+        // Return the generated password
+        return password.toString();
+    }
 }

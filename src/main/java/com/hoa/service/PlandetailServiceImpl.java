@@ -9,15 +9,19 @@ package com.hoa.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.hoa.repositories.PlandetailRepository;
+import com.hoa.dto.PlanDetailDTO;
 import com.hoa.entities.PlanDetail;
 import com.hoa.service.PlandetailService;
+import com.hoa.utils.EntityDTOMapper;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
-
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Service Implementation for managing {@link PlanDetail}.
@@ -29,9 +33,11 @@ public class PlandetailServiceImpl implements PlandetailService {
 
 
     private final PlandetailRepository repository;
+    private final EntityDTOMapper entityDtoMapper;
 
-    public PlandetailServiceImpl(PlandetailRepository repo) {
+    public PlandetailServiceImpl(PlandetailRepository repo, EntityDTOMapper entityDtoMapper) {
          this.repository = repo;
+         this.entityDtoMapper = entityDtoMapper;
     }
 
 
@@ -78,9 +84,11 @@ public class PlandetailServiceImpl implements PlandetailService {
      * {@inheritDoc}
      */
     @Override
-    public List<PlanDetail> getAll() {
+    public List<PlanDetailDTO> getAll() {
         try {
-            return repository.findAll();
+            return repository.findAll().stream()
+                    .map(entityDtoMapper::toDTO)
+                    .collect(Collectors.toList());
 
         } catch (Exception ex) {
             return Collections.emptyList();
@@ -125,8 +133,12 @@ public class PlandetailServiceImpl implements PlandetailService {
 	}
 
     @Override
-    public PlanDetail findPlanDetailByPlanId(Integer planId) {
-        return repository.findPlanDetailByPlanId(planId);
+    public List<PlanDetailDTO> findPlanDetailsByPlanId(Integer planId) {
+    	List<PlanDetail> planDetails = repository.findPlanDetailsByPlanId(planId);
+    	
+    	return planDetails.stream()
+                .map(entityDtoMapper::toDTO)
+                .collect(Collectors.toList());
     }
     
 }

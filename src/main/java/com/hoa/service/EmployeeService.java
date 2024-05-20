@@ -5,6 +5,11 @@
 */
 package com.hoa.service;
 import com.hoa.entities.Employee;
+import com.hoa.exception.EmployeeNotFoundException;
+import com.hoa.exception.UserNotFoundException;
+import com.hoa.requestEntities.EmployeeRequest;
+import com.hoa.responseEntities.EmployeeResponseWithIdAndName;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -75,5 +80,16 @@ public interface EmployeeService  {
      * @return Page<Employee>  
      */
 	Page<Employee> findAllSpecification(Specification<Employee> specs, Pageable pageable);
+
+	Employee createEmployee(EmployeeRequest employeeRequest);
+
+	Employee updateEmployee(Integer employeeId, Integer userId, EmployeeRequest employeeRequest)
+			throws UserNotFoundException, EmployeeNotFoundException;
+
+	String generateUniqueEmployeeNo(int designation);
+
+	List<EmployeeResponseWithIdAndName> getEmployeeResponseWithIdAndName(Integer designationId);
+
+	List<EmployeeResponseWithIdAndName> getEmployeeResponseWithIdAndNameByManagerId(Integer managerId);
 
 }

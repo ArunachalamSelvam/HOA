@@ -5,134 +5,186 @@
 */
 package com.hoa.service;
 
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.hoa.repositories.CommunityRepository;
 import com.hoa.entities.Community;
+import com.hoa.entities.Contract;
+import com.hoa.enums.ContractActiveStatus;
+import com.hoa.exception.CommunityNotFoundException;
+import com.hoa.exception.ContractNotFoundException;
 import com.hoa.service.CommunityService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
-
+import java.security.SecureRandom;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Service Implementation for managing {@link Community}.
+ * 
  * @author aek
  */
 @Service
 @Transactional
 public class CommunityServiceImpl implements CommunityService {
 
+	private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	private static final int CODE_LENGTH = 16;
+	private static final Random RANDOM = new SecureRandom();
 
-    private final CommunityRepository repository;
+	private final CommunityRepository repository;
+//	private final ContractService contractService;
+	public CommunityServiceImpl(CommunityRepository repo) {
+		this.repository = repo;
+//		this.contractService = contractService;
+	}
 
-    public CommunityServiceImpl(CommunityRepository repo) {
-         this.repository = repo;
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Community create(Community d) {
+		try {
+			return repository.save(d);
 
+		} catch (Exception ex) {
+			return null;
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Community create(Community d) {
-        try {
-            return repository.save(d);
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @throws CommunityNotFoundException
+	 */
+	@Override
+	public Community update(Integer id, Community d) throws CommunityNotFoundException {
+		try {
+			if (repository.existsById(id)) {
+				d.setCommunityId(id);
+				return repository.saveAndFlush(d);
+			} else {
+				throw new CommunityNotFoundException("Community with the Id " + id + " not found.");
+			}
 
-        } catch (Exception ex) {
-            return null;
-        }
-    }
+		} catch (Exception ex) {
+			throw new CommunityNotFoundException("Community with the Id " + id + " not found.");
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Community update(Community d) {
-        try {
-            return repository.saveAndFlush(d);
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Community getOne(Integer id) {
+		try {
+			return repository.findById(id).orElse(null);
 
-        } catch (Exception ex) {
-            return null;
-        }
-    }
+		} catch (Exception ex) {
+			return null;
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Community getOne(Integer id) {
-        try {
-            return repository.findById(id).orElse(null);
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<Community> getAll() {
+		try {
+			return repository.findAll();
 
-        } catch (Exception ex) {
-            return null;
-        }
-    }
+		} catch (Exception ex) {
+			return Collections.emptyList();
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<Community> getAll() {
-        try {
-            return repository.findAll();
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public long getTotal() {
+		try {
+			return repository.count();
+		} catch (Exception ex) {
+			return 0;
+		}
+	}
 
-        } catch (Exception ex) {
-            return Collections.emptyList();
-        }
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void delete(Integer id) {
+		repository.deleteById(id);
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public long getTotal() {
-        try {
-            return repository.count();
-        } catch (Exception ex) {
-            return 0;
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void delete(Integer id) {
-        repository.deleteById(id);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-   	@Override
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Page<Community> findAllPaginate(Pageable pageable) {
 
 		return repository.findAll(pageable);
 	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Page<Community> findAllSpecification(Specification<Community> specs, Pageable pageable) {
 		return repository.findAll(specs, pageable);
 	}
-
 
 	@Override
 	public Community getOneByCommunityCode(String communitycode) {
 		return repository.findByCommunityCode(communitycode);
 	}
-	
+
 	@Override
 	public Integer findCommunityIdByContractId(Integer contractId) {
-        return repository.findCommunityIdByContractId(contractId);
-    }
+		return repository.findCommunityIdByContractId(contractId);
+	}
+
+	@Override
+	public boolean existsByCommunityCode(String communityCode) {
+		return repository.countByCommunityCode(communityCode) > 0;
+	}
+	
+	@Override
+	 @Transactional
+	    public boolean updateActiveStatus(Integer communityId, Boolean activeStatus) throws CommunityNotFoundException, ContractNotFoundException {
+		Community community = repository.findByCommunityId(communityId);
+		 if(community!=null) {
+		   int updatedRows = repository.updateActiveStatus(communityId, activeStatus);
+
+
+	        return updatedRows > 0;
+		 }else {
+			throw new CommunityNotFoundException("Community with the Id : " + communityId +" not found.");
+		 }
+	    }
+
+	// Method to generate a unique CommunityCode
+	@Override
+	public String generateUniqueCommunityCode() {
+		String communityCode;
+		do {
+			communityCode = generateRandomCommunityCode();
+		} while (repository.countByCommunityCode(communityCode) == 1); // Check uniqueness
+		return communityCode;
+	}
+
+	// Helper method to generate a random CommunityCode
+	private String generateRandomCommunityCode() {
+		StringBuilder communityCode = new StringBuilder(CODE_LENGTH);
+		for (int i = 0; i < CODE_LENGTH; i++) {
+			communityCode.append(CHARACTERS.charAt(RANDOM.nextInt(CHARACTERS.length())));
+		}
+		return communityCode.toString();
+	}
 
 }

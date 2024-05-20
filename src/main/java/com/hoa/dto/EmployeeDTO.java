@@ -20,59 +20,59 @@ public class EmployeeDTO {
 
 	    // Getters and Setters for all fields
 
-	    public Integer getEmployeeid() {
+	    public Integer getEmployeeId() {
 	        return employeeId;
 	    }
 
-	    public void setEmployeeid(Integer employeeid) {
-	        this.employeeId = employeeid;
+	    public void setEmployeeId(Integer employeeId) {
+	        this.employeeId = employeeId;
 	    }
 
-	    public Integer getUserid() {
+	    public Integer getUserId() {
 	        return userId;
 	    }
 
-	    public void setUserid(Integer userid) {
+	    public void setUserId(Integer userid) {
 	        this.userId = userid;
 	    }
 
-	    public String getEmployeeno() {
+	    public String getEmployeeNo() {
 	        return employeeNo;
 	    }
 
-	    public void setEmployeeno(String employeeno) {
+	    public void setEmployeeNo(String employeeno) {
 	        this.employeeNo = employeeno;
 	    }
 
-	    public Date getDateofjoining() {
+	    public Date getDateOfJoining() {
 	        return dateOfJoining;
 	    }
 
-	    public void setDateofjoining(Date dateofjoining) {
+	    public void setDateOfJoining(Date dateofjoining) {
 	        this.dateOfJoining = dateofjoining;
 	    }
 
-	    public Integer getManagerid() {
+	    public Integer getManagerId() {
 	        return managerId;
 	    }
 
-	    public void setManagerid(Integer managerid) {
+	    public void setManagerId(Integer managerid) {
 	        this.managerId = managerid;
 	    }
 
-	    public Integer getDesignationid() {
+	    public Integer getDesignationId() {
 	        return designationId;
 	    }
 
-	    public void setDesignationid(Integer designationid) {
+	    public void setDesignationId(Integer designationid) {
 	        this.designationId = designationid;
 	    }
 
-	    public Boolean getActivestatus() {
+	    public Boolean getActiveStatus() {
 	        return activeStatus;
 	    }
 
-	    public void setActivestatus(Boolean activestatus) {
+	    public void setActiveStatus(Boolean activestatus) {
 	        this.activeStatus = activestatus;
 	    }
 

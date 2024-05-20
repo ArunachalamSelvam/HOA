@@ -6,6 +6,11 @@
 package com.hoa.repositories;
 
 import com.hoa.entities.Contract;
+import com.hoa.responseEntities.ContractListResponse;
+
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
@@ -27,6 +32,207 @@ public interface ContractRepository extends JpaRepository<Contract, Integer>, Jp
 	@Query("SELECT c.contractId FROM Contract c WHERE c.contractCode = :contractCode")
 	Integer findContractIdByContractCode(@Param("contractCode") String contractCode);
 
+	@Query("SELECT c FROM Contract c WHERE c.contractCode = :contractCode")
+	Contract getContractByContractCode(@Param("contractCode") String contractCode);
+
 	@Query("SELECT COUNT(c) FROM Contract c WHERE c.contractCode = :contractCode")
 	int countByContractCode(@Param("contractCode") String contractCode);
+
+	@Override
+	@Query("SELECT c FROM Contract c ORDER BY c.contractId")
+	List<Contract> findAll();
+
+//	@Query("SELECT " +
+//	        "c.contractId, " +
+//	        "c.contractCode, " +
+//	        "c.businessName, " +
+//	        "c.annualRenewalFee, " +
+//	        "c.renewalCycles, " +
+//	        "c.isTermsAccepted, " +
+//	        "c.activeStatus, " +
+//	        "c.createdDate, " +
+//	        "c.modifiedDate, " +
+//	        "cl.displayName, " +
+//	        "cl.activeStatus, " +
+//	        "u.firstName, " +
+//	        "u.lastName, " +
+//	        "u.emailId, " +
+//	        "u.mobileNumber, " +
+//	        "a.city, " +
+//	        "a.zipCode, " +
+//	        "a.country" +
+//	        "FROM Contract c " +
+//	        "JOIN c.client cl " +
+//	        "JOIN cl.user u " +
+//	        "JOIN ClientAddress ca ON cl.clientId = ca.clientId " +
+//	        "JOIN ca.address a " +
+//	        "WHERE c.salesPersonId = :salesPersonId")
+//	List<EmployeeContractResponse> findEmployeeContractsBySalesPersonId(@Param("salesPersonId") Integer salesPersonId);
+//	
+	@Query(value = "SELECT " +
+	        "c.contract_id AS contractId, " +
+			"c.client_id As clientId,"+
+	        "cl.community_id AS communityId,"+
+	        "c.contract_code AS contractCode, " +
+	        "c.business_name AS businessName, " +
+	        "c.annual_renewal_fee AS annualRenewalFee, " +
+	        "c.renewal_cycles AS renewalCycles, " +
+	        "c.is_terms_accepted AS isTermsAccepted, " +
+	        "c.active_status AS contractActiveStatus, " +
+	        "c.created_date AS createdDate, " +
+	        "cl.display_name AS clientDisplayName, " +
+	        "cl.active_status AS clientActiveStatus, " +
+	        "u.first_name AS userFirstName, " +
+	        "u.last_name AS userLastName, " +
+	        "u.email_id AS emailId, " +
+	        "u.mobile_number AS mobileNumber, " +
+	        "a.city AS city, " +
+	        "a.zip_code AS zipCode, " +
+	        "co.country_name AS country " +
+	        "FROM " +
+	        "contract c " +
+	        "JOIN " +
+	        "client cl ON c.client_id = cl.client_id " +
+	        "JOIN " +
+	        "\"user\" u ON cl.user_id = u.user_id " +
+	        "JOIN " +
+	        "client_address ca ON cl.client_id = ca.client_id " +
+	        "JOIN " +
+	        "address a ON ca.address_id = a.address_id " +
+	        "JOIN " +
+	        "country co ON a.country_id = co.country_id " +
+	        "WHERE " +
+	        "c.sales_person_id = :salesPersonId", nativeQuery = true)
+	List<Map<String, Object>> findEmployeeContractsBySalesPersonId(@Param("salesPersonId") Integer salesPersonId);
+	
+	
+	@Query(value = "SELECT\n"
+			+ "    c.contract_id AS contractId,\n"
+			+ "    c.client_id AS clientId,\n"
+			+ "    cl.community_id AS communityId,\n"
+			+ "    c.contract_code AS contractCode, \n"
+			+ "    c.business_name AS businessName,\n"
+			+ "    c.annual_renewal_fee AS annualRenewalFee,\n"
+			+ "    c.renewal_cycles AS renewalCycles,\n"
+			+ "    c.is_terms_accepted AS isTermsAccepted,\n"
+			+ "    c.active_status AS contractActiveStatus,\n"
+			+ "    c.created_date AS createdDate,\n"
+			+ "    cl.display_name AS clientDisplayName,\n"
+			+ "    cl.active_status AS clientActiveStatus,\n"
+			+ "    u.first_name AS userFirstName,\n"
+			+ "    u.last_name AS userLastName,\n"
+			+ "    u.email_id AS emailId,\n"
+			+ "    u.mobile_number AS mobileNumber,\n"
+			+ "    a.city AS city,\n"
+			+ "    a.zip_code AS zipCode,\n"
+			+ "    co.country_name AS country,\n"
+			+ "    e.employee_id AS salesPersonId,\n"
+			+ "    v.email_id AS salesPersonEmailId,\n"
+			+ "    v.mobile_number AS salesPersonMobileNumber\n"
+			+ "FROM \n"
+			+ "    contract c \n"
+			+ "JOIN \n"
+			+ "    client cl ON c.client_id = cl.client_id \n"
+			+ "JOIN \n"
+			+ "    \"user\" u ON cl.user_id = u.user_id \n"
+			+ "JOIN\n"
+			+ "    client_address ca ON cl.client_id = ca.client_id\n"
+			+ "JOIN\n"
+			+ "    address a ON ca.address_id = a.address_id\n"
+			+ "JOIN\n"
+			+ "    country co ON a.country_id = co.country_id\n"
+			+ "JOIN\n"
+			+ "    employee e ON c.sales_person_id = e.employee_id \n"
+			+ "JOIN\n"
+			+ "    \"user\" v ON e.user_id = v.user_id\n"
+			+ "WHERE\n"
+			+ "    c.sales_person_id = :salesPersonId AND e.manager_id = :salesManagerId", nativeQuery = true)
+	List<Map<String, Object>> findContractsBySalesManagerIdAndSalesPersonId(@Param("salesPersonId") Integer salesPersonId,@Param("salesManagerId") Integer salesManagerId);
+
+	
+	@Query(value = "SELECT\n"
+			+ "    c.contract_id AS contractId,\n"
+			+ "    c.client_id AS clientId,\n"
+			+ "    cl.community_id AS communityId,\n"
+			+ "    c.contract_code AS contractCode, \n"
+			+ "    c.business_name AS businessName,\n"
+			+ "    c.annual_renewal_fee AS annualRenewalFee,\n"
+			+ "    c.renewal_cycles AS renewalCycles,\n"
+			+ "    c.is_terms_accepted AS isTermsAccepted,\n"
+			+ "    c.active_status AS contractActiveStatus,\n"
+			+ "    c.created_date AS createdDate,\n"
+			+ "    cl.display_name AS clientDisplayName,\n"
+			+ "    cl.active_status AS clientActiveStatus,\n"
+			+ "    u.first_name AS userFirstName,\n"
+			+ "    u.last_name AS userLastName,\n"
+			+ "    u.email_id AS emailId,\n"
+			+ "    u.mobile_number AS mobileNumber,\n"
+			+ "    a.city AS city,\n"
+			+ "    a.zip_code AS zipCode,\n"
+			+ "    co.country_name AS country,\n"
+			+ "    e.employee_id AS salesPersonId,\n"
+			+ "    v.email_id AS salesPersonEmailId,\n"
+			+ "    v.mobile_number AS salesPersonMobileNumber\n"
+			+ "FROM \n"
+			+ "    contract c \n"
+			+ "JOIN \n"
+			+ "    client cl ON c.client_id = cl.client_id \n"
+			+ "JOIN \n"
+			+ "    \"user\" u ON cl.user_id = u.user_id \n"
+			+ "JOIN\n"
+			+ "    client_address ca ON cl.client_id = ca.client_id\n"
+			+ "JOIN\n"
+			+ "    address a ON ca.address_id = a.address_id\n"
+			+ "JOIN\n"
+			+ "    country co ON a.country_id = co.country_id\n"
+			+ "JOIN\n"
+			+ "    employee e ON c.sales_person_id = e.employee_id \n"
+			+ "JOIN\n"
+			+ "    \"user\" v ON e.user_id = v.user_id\n"
+			+ "WHERE\n"
+			+ "   e.manager_id = :salesManagerId", nativeQuery = true)
+	List<Map<String, Object>> findContractsBySalesManagerIdAndSalesPersonId(@Param("salesManagerId") Integer salesManagerId);
+
+	@Query(value = "SELECT\n"
+			+ "    c.contract_id AS contractId,\n"
+			+ "    c.client_id AS clientId,\n"
+			+ "    cl.community_id AS communityId,\n"
+			+ "    c.contract_code AS contractCode, \n"
+			+ "    c.business_name AS businessName,\n"
+			+ "    c.annual_renewal_fee AS annualRenewalFee,\n"
+			+ "    c.renewal_cycles AS renewalCycles,\n"
+			+ "    c.is_terms_accepted AS isTermsAccepted,\n"
+			+ "    c.active_status AS contractActiveStatus,\n"
+			+ "    c.created_date AS createdDate,\n"
+			+ "    cl.display_name AS clientDisplayName,\n"
+			+ "    cl.active_status AS clientActiveStatus,\n"
+			+ "    u.first_name AS userFirstName,\n"
+			+ "    u.last_name AS userLastName,\n"
+			+ "    u.email_id AS emailId,\n"
+			+ "    u.mobile_number AS mobileNumber,\n"
+			+ "    a.city AS city,\n"
+			+ "    a.zip_code AS zipCode,\n"
+			+ "    co.country_name AS country,\n"
+			+ "    e.employee_id AS salesPersonId,\n"
+			+ "    v.email_id AS salesPersonEmailId,\n"
+			+ "    v.mobile_number AS salesPersonMobileNumber\n"
+			+ "FROM \n"
+			+ "    contract c \n"
+			+ "JOIN \n"
+			+ "    client cl ON c.client_id = cl.client_id \n"
+			+ "JOIN \n"
+			+ "    \"user\" u ON cl.user_id = u.user_id \n"
+			+ "JOIN\n"
+			+ "    client_address ca ON cl.client_id = ca.client_id\n"
+			+ "JOIN\n"
+			+ "    address a ON ca.address_id = a.address_id\n"
+			+ "JOIN\n"
+			+ "    country co ON a.country_id = co.country_id\n"
+			+ "JOIN\n"
+			+ "    employee e ON c.sales_person_id = e.employee_id \n"
+			+ "JOIN\n"
+			+ "    \"user\" v ON e.user_id = v.user_id\n", nativeQuery = true)
+	List<Map<String, Object>> findContractsBySalesManagerIdAndSalesPersonId();
+
+
 }

@@ -70,10 +70,10 @@ public class PlanController {
 	 *         plan is not valid, or with status {@code 500 (Internal Server Error)}
 	 *         if the plan couldn't be updated.
 	 */
-	@PutMapping("/update")
-	public ResponseEntity<Plan> updatePlan(@Valid @RequestBody Plan plan) {
+	@PutMapping("/update/{planId}")
+	public ResponseEntity<Plan> updatePlan(@PathVariable(value = "planId") Integer planId,@Valid @RequestBody Plan plan) {
 		log.debug("REST request to update Plan : {}", plan);
-		Plan result = entityService.update(plan);
+		Plan result = entityService.update(planId,plan);
 		return ResponseEntity.ok().body(result);
 	}
 
@@ -113,6 +113,16 @@ public class PlanController {
 		return entityService.findPlanByTypeRangePeriod(planTypeId, planRangeId, planPeriodId);
 	}
 
+	 @GetMapping("/findByRangeAndPeriod/{planRangeId}/{planPeriodId}")
+	    public ResponseEntity<List<Plan>> getPlansByRangeAndPeriod(
+	    		@PathVariable Integer planRangeId,
+				@PathVariable Integer planPeriodId) {
+	        List<Plan> plans = entityService.findPlansByRangePeriod(planRangeId, planPeriodId);
+	        if (plans.isEmpty()) {
+	            return ResponseEntity.noContent().build();
+	        }
+	        return ResponseEntity.ok(plans);
+	    }
 	/**
 	 * {@code DELETE  /plan/:id} : delete the "id" plan.
 	 *

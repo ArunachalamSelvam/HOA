@@ -59,6 +59,8 @@ public class ClientServiceImpl implements ClientService {
     	try {
         	if(repository.existsById(id)) {
         		d.setClientid(id);
+                System.out.println("\033[31m" + "Existing User Id : " + d.getClientid() + "\033[0m");
+
         		 result =  repository.saveAndFlush(d);
         	} 
         		

@@ -17,6 +17,7 @@ public class ContactDTO {
     private Integer stateId;
     private Integer planId;
     private Date createdDate;
+    private boolean activeStatus;
 
     // Constructors, getters, and setters
 
@@ -122,5 +123,13 @@ public class ContactDTO {
 
 	public void setZipCode(Integer zipCode) {
 		this.zipCode = zipCode;
+	}
+
+	public boolean isActiveStatus() {
+		return activeStatus;
+	}
+
+	public void setActiveStatus(boolean activeStatus) {
+		this.activeStatus = activeStatus;
 	}
 }

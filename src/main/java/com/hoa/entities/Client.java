@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 /**
  * JPA entity class for "Client"
  *
@@ -70,6 +72,7 @@ public class Client implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="communityId", referencedColumnName="communityID", insertable=false, updatable=false)
+    @JsonBackReference
     private Community  community ; 
 
 

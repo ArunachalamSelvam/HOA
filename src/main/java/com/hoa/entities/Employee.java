@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 /**
  * JPA entity class for "Employee"
  *
@@ -58,6 +60,7 @@ public class Employee implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="managerId", referencedColumnName="employeeId", insertable=false, updatable=false)
+    @JsonBackReference
     private Employee   employee ; 
 
 //    @OneToMany(mappedBy="employee")
@@ -72,52 +75,52 @@ public class Employee implements Serializable {
     }
     
     //--- GETTERS & SETTERS FOR FIELDS
-    public void setEmployeeid( Integer employeeid ) {
-        this.employeeId = employeeid ;
+    public void setEmployeeId( Integer employeeId ) {
+        this.employeeId = employeeId ;
     }
-    public Integer getEmployeeid() {
+    public Integer getEmployeeId() {
         return this.employeeId;
     }
 
-    public void setUserid( Integer userid ) {
-        this.userId = userid ;
+    public void setUserid( Integer userId ) {
+        this.userId = userId ;
     }
-    public Integer getUserid() {
+    public Integer getUserId() {
         return this.userId;
     }
 
-    public void setEmployeeno( String employeeno ) {
-        this.employeeNo = employeeno ;
+    public void setEmployeeNo( String employeeNo ) {
+        this.employeeNo = employeeNo ;
     }
-    public String getEmployeeno() {
+    public String getEmployeeNo() {
         return this.employeeNo;
     }
 
-    public void setDateofjoining( Date dateofjoining ) {
-        this.dateOfJoining = dateofjoining ;
+    public void setDateofjoining( Date dateOfJoining ) {
+        this.dateOfJoining = dateOfJoining ;
     }
-    public Date getDateofjoining() {
+    public Date getDateOfJoining() {
         return this.dateOfJoining;
     }
 
-    public void setManagerid( Integer managerid ) {
-        this.managerId = managerid ;
+    public void setManagerid( Integer managerId ) {
+        this.managerId = managerId ;
     }
-    public Integer getManagerid() {
+    public Integer getManagerId() {
         return this.managerId;
     }
 
-    public void setDesignationid( Integer designationid ) {
-        this.designationId = designationid ;
+    public void setDesignationid( Integer designationId ) {
+        this.designationId = designationId ;
     }
-    public Integer getDesignationid() {
+    public Integer getDesignationId() {
         return this.designationId;
     }
 
-    public void setActivestatus( Boolean activestatus ) {
-        this.activeStatus = activestatus ;
+    public void setActivestatus( Boolean activeStatus ) {
+        this.activeStatus = activeStatus ;
     }
-    public Boolean getActivestatus() {
+    public Boolean getActiveStatus() {
         return this.activeStatus;
     }
 

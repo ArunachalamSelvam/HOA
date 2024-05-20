@@ -11,28 +11,28 @@ public class CountryDTO {
 
 	    // Getters and Setters for all fields
 
-	    public Integer getCountryid() {
+	    public Integer getCountryId() {
 	        return countryId;
 	    }
 
-	    public void setCountryid(Integer countryid) {
-	        this.countryId = countryid;
+	    public void setCountryId(Integer countryId) {
+	        this.countryId = countryId;
 	    }
 
-	    public String getCountryname() {
+	    public String getCountryName() {
 	        return countryName;
 	    }
 
-	    public void setCountryname(String countryname) {
-	        this.countryName = countryname;
+	    public void setCountryName(String countryName) {
+	        this.countryName = countryName;
 	    }
 
-	    public Boolean getActivestatus() {
+	    public Boolean getActiveStatus() {
 	        return activeStatus;
 	    }
 
-	    public void setActivestatus(Boolean activestatus) {
-	        this.activeStatus = activestatus;
+	    public void setActiveStatus(Boolean activeStatus) {
+	        this.activeStatus = activeStatus;
 	    }
 
 	   

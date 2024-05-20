@@ -71,14 +71,15 @@ public class AddressController {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated address,
      * or with status {@code 400 (Bad Request)} if the address is not valid,
      * or with status {@code 500 (Internal Server Error)} if the address couldn't be updated.
+ * @throws AddressNotFoundException 
      */
-    @PutMapping("/update")
-    public ResponseEntity<Address> updateAddress(@Valid @RequestBody AddressDTO addressDto) {
+    @PutMapping("/update/{addressId}")
+    public ResponseEntity<Address> updateAddress(@PathVariable(value = "addressId") Integer addressId,@Valid @RequestBody AddressDTO addressDto) throws AddressNotFoundException {
     	
 		Address address = entityDtoMapper.toEntity(addressDto);
 		
         log.debug("REST request to update Address : {}", address);
-        Address result = entityService.update(address);
+        Address result = entityService.update(addressId,address);
         return ResponseEntity.ok().body(result);
     }
 

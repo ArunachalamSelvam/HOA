@@ -5,6 +5,8 @@
 */
 package com.hoa.service;
 import com.hoa.entities.RolePage;
+import com.hoa.responseEntities.RolePageListResponse;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -75,5 +77,7 @@ public interface RolepageService  {
      * @return Page<Rolepage>  
      */
 	Page<RolePage> findAllSpecification(Specification<RolePage> specs, Pageable pageable);
+
+	List<RolePageListResponse> getRolePageByRoleId(Integer roleId);
 
 }

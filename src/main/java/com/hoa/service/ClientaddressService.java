@@ -5,6 +5,8 @@
 */
 package com.hoa.service;
 import com.hoa.entities.ClientAddress;
+import com.hoa.exception.ClientIdNotFoundException;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -31,8 +33,9 @@ public interface ClientaddressService  {
      * @param entity domain
      * @param id of entity
      * @return Clientaddress
+     * @throws ClientIdNotFoundException 
      */
-    ClientAddress update(ClientAddress d);
+    ClientAddress update(Integer id,ClientAddress d) throws ClientIdNotFoundException;
 
     /**
      * get Clientaddress by id. Can be return empty
@@ -75,5 +78,7 @@ public interface ClientaddressService  {
      * @return Page<Clientaddress>  
      */
 	Page<ClientAddress> findAllSpecification(Specification<ClientAddress> specs, Pageable pageable);
+
+	ClientAddress getClientAddressByClientId(Integer clientId);
 
 }

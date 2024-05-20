@@ -9,13 +9,17 @@ import com.hoa.dto.EmployeeDTO;
 import com.hoa.dto.UserDTO;
 import com.hoa.entities.Employee;
 import com.hoa.entities.User;
+import com.hoa.exception.EmployeeNotFoundException;
+import com.hoa.exception.UserNotFoundException;
 import com.hoa.requestEntities.EmployeeRequest;
+import com.hoa.responseEntities.EmployeeResponseWithIdAndName;
 import com.hoa.service.EmployeeService;
 import com.hoa.service.UserService;
 import com.hoa.utils.EntityDTOMapper;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +34,6 @@ import org.slf4j.LoggerFactory;
 import javax.validation.Valid;
 import java.util.List;
 
-
 /**
  * REST controller for managing {@link Employee}.
  *
@@ -40,114 +43,178 @@ import java.util.List;
 @RequestMapping("/api/employee")
 public class EmployeeController {
 
-    private final Logger log = LoggerFactory.getLogger(EmployeeController.class);
-	
-    private final EmployeeService entityService;
-    
-    private final UserService userService;
-    
-    private final EntityDTOMapper entityDtoMapper;
+	private final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 
- 	public EmployeeController (EmployeeService entityService, EntityDTOMapper entityDTOMapper, UserService userService) {
+	private final EmployeeService entityService;
+
+	private final UserService userService;
+
+	private final EntityDTOMapper entityDtoMapper;
+
+	public EmployeeController(EmployeeService entityService, EntityDTOMapper entityDTOMapper, UserService userService) {
 		this.entityService = entityService;
 		this.entityDtoMapper = entityDTOMapper;
 		this.userService = userService;
 	}
 
-    /**
-     * {@code POST  /employee} : Create a new employee.
-     *
-     * @param employee the employee to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new employee.
-     */
+	/**
+	 * {@code POST  /employee} : Create a new employee.
+	 *
+	 * @param employee the employee to create.
+	 * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with
+	 *         body the new employee.
+	 */
+	
 	@PostMapping("/add")
 	public ResponseEntity<Employee> createEmployee(@RequestBody @Valid EmployeeRequest employeeRequest) {
-		
-		EmployeeDTO employeeDto = employeeRequest.getEmployeeDto();
+	    Employee savedEmployee = entityService.createEmployee(employeeRequest);
+	    return ResponseEntity.ok(savedEmployee);
+	}
 
-		UserDTO userDto = employeeRequest.getUserDto();
-		
-		User user = entityDtoMapper.toEntity(userDto);
-		
-		User savedUser = userService.create(user);
-		employeeDto.setUserid(savedUser.getUserid());
-		Employee employee = entityDtoMapper.toEntity(employeeDto);
-		
-		
-		Employee savedEmployee = entityService.create(employee);
-		
-         log.debug("REST request to save Employee : {}", employee);
-         return ResponseEntity.ok(savedEmployee);
-    }
+	
+	
+	
+//	@PostMapping("/add")
+//	public ResponseEntity<Employee> createEmployee(@RequestBody @Valid EmployeeRequest employeeRequest) {
+//
+//		EmployeeDTO employeeDto = employeeRequest.getEmployeeDto();
+//
+//		UserDTO userDto = employeeRequest.getUserDto();
+//
+//		User user = entityDtoMapper.toEntity(userDto);
+//
+//		User savedUser = userService.create(user);
+//		employeeDto.setUserId(savedUser.getUserId());
+//		Employee employee = entityDtoMapper.toEntity(employeeDto);
+//
+//		Employee savedEmployee = entityService.create(employee);
+//
+//		log.debug("REST request to save Employee : {}", employee);
+//		return ResponseEntity.ok(savedEmployee);
+//	}
 
-   /**
-     * {@code PUT  /employee} : Updates an existing employee.
-     *
-     * @param employee the employee to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated employee,
-     * or with status {@code 400 (Bad Request)} if the employee is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the employee couldn't be updated.
-     */
-    @PutMapping("/update{id}")
-    public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "id") Integer employeeId,@Valid @RequestBody EmployeeRequest employeeRequest) {
-    	EmployeeDTO employeeDto = employeeRequest.getEmployeeDto();
-        UserDTO userDto = employeeRequest.getUserDto();
-
-        Employee employee = entityDtoMapper.toEntity(employeeDto);
-        User user = entityDtoMapper.toEntity(userDto);
-        
-        userService.update(employee.getUserid(), user);
-
-        log.debug("REST request to update Employee with ID {}: {}", employeeId, employee);
-        
-        Employee result = entityService.update(employeeId, employee);
-        
-        if (result != null) {
-            return ResponseEntity.ok().body(result);
-        } else {
-            return ResponseEntity.notFound().build(); // or handle it according to your application logic
+	/**
+	 * {@code PUT  /employee} : Updates an existing employee.
+	 *
+	 * @param employee the employee to update.
+	 * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+	 *         the updated employee, or with status {@code 400 (Bad Request)} if the
+	 *         employee is not valid, or with status
+	 *         {@code 500 (Internal Server Error)} if the employee couldn't be
+	 *         updated.
+	 * @throws EmployeeNotFoundException 
+	 */
+	
+	
+	@PutMapping("/update/{employeeId}/{userId}")
+	public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "employeeId") Integer employeeId,
+	        @PathVariable(value = "userId") Integer userId, @Valid @RequestBody EmployeeRequest employeeRequest)
+	        throws UserNotFoundException, EmployeeNotFoundException {
+	    Employee updatedEmployee = entityService.updateEmployee(employeeId, userId, employeeRequest);
+	    if (updatedEmployee != null) {
+	        return ResponseEntity.ok(updatedEmployee);
+	    } else {
+	        return ResponseEntity.notFound().build(); // or handle it according to your application logic
+	    }
+	}
+	
+	@GetMapping("/getEmployeesByDesignation/{designationId}")
+    public ResponseEntity<List<EmployeeResponseWithIdAndName>> getEmployeeResponseWithIdAndName(@PathVariable Integer designationId) {
+        try {
+            List<EmployeeResponseWithIdAndName> employees = entityService.getEmployeeResponseWithIdAndName(designationId);
+            return ResponseEntity.ok(employees);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
-    /**
-     * {@code GET  /employee} : get all the employees.
-     *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of employee in body.
-     */
-
-    @GetMapping("/getAll")
-    public ResponseEntity<List<Employee>> getAllEmployee() {
-	    log.debug("REST request to get all employees");
-        List<Employee> lst = entityService.getAll();
-
-        return new ResponseEntity<>(lst,HttpStatus.OK);
+    @GetMapping("/getEmployeesUnderManager/{managerId}")
+    public ResponseEntity<List<EmployeeResponseWithIdAndName>> getEmployeeResponseWithIdAndNameByManagerId(@PathVariable Integer managerId) {
+        try {
+            List<EmployeeResponseWithIdAndName> employees = entityService.getEmployeeResponseWithIdAndNameByManagerId(managerId);
+            return ResponseEntity.ok(employees);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
+    
+    
+	
+	
+//	@PutMapping("/update/{employeeId}/{userId}")
+//	@Transactional(rollbackFor = Exception.class) // Add this annotation to enable transaction management
+//	public ResponseEntity<Employee> updateEmployee(@PathVariable(value = "employeeId") Integer employeeId,
+//			@PathVariable(value = "userId") Integer userId, @Valid @RequestBody EmployeeRequest employeeRequest)
+//			throws UserNotFoundException {
+//		try {
+//			EmployeeDTO employeeDto = employeeRequest.getEmployeeDto();
+//			employeeDto.setUserId(userId);
+//
+//			UserDTO userDto = employeeRequest.getUserDto();
+//
+//			Employee employee = entityDtoMapper.toEntity(employeeDto);
+////			employee.setUserid(userId);
+//			User user = entityDtoMapper.toEntity(userDto);
+//
+//			userService.update(userId, user);
+//
+//			log.debug("REST request to update Employee with ID {}: {}", employeeId, employee);
+//
+//			Employee result = entityService.update(employeeId, employee);
+//
+//			if (result != null) {
+//				return ResponseEntity.ok().body(result);
+//			} else {
+//				return ResponseEntity.notFound().build(); // or handle it according to your application logic
+//			}
+//		} catch (Exception ex) {
+//			log.error("An error occurred while creating contract", ex);
+//			ex.printStackTrace();
+//			throw ex; // Re-throw the exception to ensure transaction rollback
+//		}
+//	}
 
-    /**
-     * {@code GET  /employee/:id} : get the "id" employee.
-     *
-     * @param id the id of the employee to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the employee, or with status {@code 404 (Not Found)}.
-     */
-    @GetMapping("/getOne/{id}")
-    public ResponseEntity<Employee> getOneEmployee(@PathVariable(value = "id") Integer id) {
-        log.debug("REST request to get Employee : {}", id);
-        Employee e = entityService.getOne(id);
+	/**
+	 * {@code GET  /employee} : get all the employees.
+	 *
+	 * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list
+	 *         of employee in body.
+	 */
 
-        return new ResponseEntity<>(e, HttpStatus.OK);
-    }
+	@GetMapping("/getAll")
+	public ResponseEntity<List<Employee>> getAllEmployee() {
+		log.debug("REST request to get all employees");
+		List<Employee> lst = entityService.getAll();
 
-  /**
-     * {@code DELETE  /employee/:id} : delete the "id" employee.
-     *
-     * @param id the id of the employee to delete.
-     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
-     */
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteEmployee(@PathVariable(value = "id") Integer id) {
-        log.debug("REST request to delete Employee : {}", id);
-        entityService.delete(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+		return new ResponseEntity<>(lst, HttpStatus.OK);
+	}
+
+	/**
+	 * {@code GET  /employee/:id} : get the "id" employee.
+	 *
+	 * @param id the id of the employee to retrieve.
+	 * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
+	 *         the employee, or with status {@code 404 (Not Found)}.
+	 */
+	@GetMapping("/getOne/{id}")
+	public ResponseEntity<Employee> getOneEmployee(@PathVariable(value = "id") Integer id) {
+		log.debug("REST request to get Employee : {}", id);
+		Employee e = entityService.getOne(id);
+
+		return new ResponseEntity<>(e, HttpStatus.OK);
+	}
+
+	/**
+	 * {@code DELETE  /employee/:id} : delete the "id" employee.
+	 *
+	 * @param id the id of the employee to delete.
+	 * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+	 */
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Void> deleteEmployee(@PathVariable(value = "id") Integer id) {
+		log.debug("REST request to delete Employee : {}", id);
+		entityService.delete(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
 
 }

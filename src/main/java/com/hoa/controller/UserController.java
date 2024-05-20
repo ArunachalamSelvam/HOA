@@ -8,7 +8,9 @@ package com.hoa.controller;
 import com.hoa.dto.UserDTO;
 import com.hoa.entities.Role;
 import com.hoa.entities.User;
+import com.hoa.exception.UserNotFoundException;
 import com.hoa.requestEntities.LoginRequest;
+import com.hoa.responseEntities.UserListResponse;
 import com.hoa.service.RoleService;
 import com.hoa.service.UserService;
 import com.hoa.utils.EntityDTOMapper;
@@ -17,11 +19,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,9 +79,10 @@ public class UserController {
 	 *         the updated user, or with status {@code 400 (Bad Request)} if the
 	 *         user is not valid, or with status {@code 500 (Internal Server Error)}
 	 *         if the user couldn't be updated.
+	 * @throws UserNotFoundException 
 	 */
 	@PutMapping("/update{id}")
-	public ResponseEntity<User> updateUser(@PathVariable (value = "id") Integer id,@Valid @RequestBody UserDTO userDTO) {
+	public ResponseEntity<User> updateUser(@PathVariable (value = "id") Integer id,@Valid @RequestBody UserDTO userDTO) throws UserNotFoundException {
 		User user = entityDtoMapper.toEntity(userDTO);
 		log.debug("REST request to update User : {}", user);
 		User result = entityService.update(id,user);
@@ -105,9 +110,10 @@ public class UserController {
 	 * @param id the id of the user to retrieve.
 	 * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body
 	 *         the user, or with status {@code 404 (Not Found)}.
+	 * @throws UserNotFoundException 
 	 */
 	@GetMapping("/getById/{id}")
-	public ResponseEntity<User> getOneUser(@PathVariable(value = "id") Integer id) {
+	public ResponseEntity<User> getOneUser(@PathVariable(value = "id") Integer id) throws UserNotFoundException {
 		log.debug("REST request to get User : {}", id);
 		User e = entityService.getOne(id);
 
@@ -136,14 +142,23 @@ public class UserController {
 		
 	}
 	
-//	 @PostMapping("/login")
-//	    public ResponseEntity<User> login(@RequestBody LoginRequest loginRequest) {
-//	        User user = entityService.login(loginRequest.getEmailId(), loginRequest.getPassword());
-//	        if (user != null) {
-//	            return ResponseEntity.ok(user);
-//	        } else {
-//	            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
-//	        }
-//	    }
+	  // Endpoint to update the active status of a user after approval
+	 @PatchMapping("/{userId}/status")
+	    public ResponseEntity<String> setActiveStatus(@PathVariable Integer userId, @RequestParam boolean activeStatus) {
+	        try {
+	        	entityService.setActiveStatus(userId, activeStatus);
+	            return ResponseEntity.ok("User status updated successfully");
+	        } catch (UserNotFoundException e) {
+	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+	        } catch (Exception e) {
+	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while updating user status");
+	        }
+	    }
+    
+    @GetMapping("/getUsersList/{communityId}")
+    public List<UserListResponse> getUsersByCommunityId(@PathVariable Integer communityId) {
+        return entityService.getUsersByCommunityId(communityId);
+    }
+	
 
 }

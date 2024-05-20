@@ -21,6 +21,7 @@ public class ContractDTO {
 	    private Date createdDate;
 	    private Integer modifiedById;
 	    private Date modifiedDate;
+//	    private boolean activeStatus;
 
 	    // Getters and Setters for all fields
 
@@ -159,6 +160,16 @@ public class ContractDTO {
 	    public void setModifieddate(Date modifieddate) {
 	        this.modifiedDate = modifieddate;
 	    }
+	    
+	    
+
+//		public boolean isActiveStatus() {
+//			return activeStatus;
+//		}
+//
+//		public void setActiveStatus(boolean activeStatus) {
+//			this.activeStatus = activeStatus;
+//		}
 
 		@Override
 		public String toString() {
@@ -194,6 +205,7 @@ public class ContractDTO {
 			this.createdDate = createddate;
 			this.modifiedById = modifiedbyid;
 			this.modifiedDate = modifieddate;
+//			this.activeStatus = activeStatus;
 		}
 
 		public ContractDTO() {
