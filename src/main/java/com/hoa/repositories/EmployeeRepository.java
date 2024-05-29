@@ -54,5 +54,38 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer>, Jp
 	"WHERE \n"
 			+ "    e.manager_id = :managerId", nativeQuery = true)
 	List<Map<String, Object>> getEmployeeResponseWithIdAndNameByManagerId(@Param("managerId") Integer managerId);
+	
+	@Query(value = "SELECT e.employee_id AS employeeId,\n"
+	        + "       e.employee_no AS employeeNo,\n"
+	        + "       e.manager_id AS managerId,\n"
+	        + "       u.user_id AS userId,\n"
+	        + "       u.first_name AS firstName,\n"
+	        + "       u.email_id AS emailId,\n"
+	        + "       u.mobile_number AS mobileNumber,\n"
+	        + "       u.active_status AS activeStatus,\n"
+	        + "       d.name\n"
+	        + "FROM employee e\n"
+	        + "JOIN\n"
+	        + "     \"user\" u ON u.user_id = e.user_id\n"
+	        + "JOIN\n"
+	        + "     designation d ON d.designation_id = e.designation_id", nativeQuery = true)
+	List<Map<String, Object>> findEmployeesByemployeeId();
+
+	@Query(value = "SELECT e.employee_id AS employeeId,\n"
+	        + "       e.employee_no AS employeeNo,\n"
+	        + "       e.manager_id AS managerId,\n"
+	        + "       u.user_id AS userId,\n"
+	        + "       u.first_name AS firstName,\n"
+	        + "       u.email_id AS emailId,\n"
+	        + "       u.mobile_number AS mobileNumber,\n"
+	        + "       u.active_status AS activeStatus,\n"
+	        + "       d.name\n"
+	        + "FROM employee e\n"
+	        + "JOIN\n"
+	        + "     \"user\" u ON u.user_id = e.user_id\n"
+	        + "JOIN\n"
+	        + "     designation d ON d.designation_id = e.designation_id\n"
+	        + "WHERE e.manager_id = :managerId", nativeQuery = true)
+	List<Map<String, Object>> findEmployeesBymanagerId(@Param("managerId") Integer managerId);
 
 }

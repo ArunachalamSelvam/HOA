@@ -5,37 +5,22 @@
 */
 package com.hoa.controller;
 
-import com.hoa.dto.AddressDTO;
-import com.hoa.dto.ClientDTO;
-import com.hoa.dto.CommunityDTO;
+
 import com.hoa.dto.ContractDTO;
-import com.hoa.dto.UserDTO;
-import com.hoa.entities.Address;
-import com.hoa.entities.Client;
-import com.hoa.entities.ClientAddress;
-import com.hoa.entities.Community;
 import com.hoa.entities.Contract;
-import com.hoa.entities.User;
+import com.hoa.exception.AddressNotFoundException;
 import com.hoa.exception.ClientIdNotFoundException;
 import com.hoa.exception.CommunityNotFoundException;
 import com.hoa.exception.ContractNotFoundException;
 import com.hoa.exception.UserNotFoundException;
-import com.hoa.requestEntities.ClientRequest;
-import com.hoa.requestEntities.ContractRequest;
-import com.hoa.requestEntities.ContractRequest2;
 import com.hoa.requestEntities.Contractrequest3;
 import com.hoa.responseEntities.ContractListResponse;
-import com.hoa.service.AddressService;
-import com.hoa.service.ClientService;
-import com.hoa.service.ClientaddressService;
-import com.hoa.service.CommunityService;
+import com.hoa.responseEntities.ContractUpdateResponse;
 import com.hoa.service.ContractService;
-import com.hoa.service.UserService;
 import com.hoa.utils.EntityDTOMapper;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,9 +33,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -68,31 +53,15 @@ public class ContractController {
     private final EntityDTOMapper entityDtoMapper;
 	
     private final ContractService entityService;
-    
-    private final UserService userService;
-    
-    private final CommunityService communityService;
-    
-    private final ClientService clientService;
-    
-  private final AddressService addressService;
-    
-    private final ClientaddressService clientAddressService;
+  
 
  	
 
-    public ContractController(EntityDTOMapper entityDtoMapper, ContractService entityService, UserService userService,
-			CommunityService communityService, ClientService clientService,AddressService addressService, ClientaddressService clientAddressService) {
-		super();
+    public ContractController(EntityDTOMapper entityDtoMapper, ContractService entityService) {
+	
 		this.entityDtoMapper = entityDtoMapper;
 		this.entityService = entityService;
-		this.userService = userService;
-		this.communityService = communityService;
-		this.clientService = clientService;
-		this.addressService = addressService;
-		this.clientAddressService = clientAddressService;
-	}
-
+    }	
 	/**
      * {@code POST  /contract} : Create a new contract.
      *
@@ -115,167 +84,9 @@ public class ContractController {
         }
     }
 	
-/*    
-    @PostMapping("/add")
-	public ResponseEntity<Contract> createContract(@RequestBody @Valid ContractRequest contractRequest) {
-		
-//		Contract contract = entityDtoMapper.toEntity(contractDTO);
-//		Contract contract = new Contract();
-//    	contract.setContractid(contractDTO.getContractid());
-//    	contract.setAnnualrenewalfee(contractDTO.getAnnualrenewalfee());
-//    	contract.setSalespersonid(contractDTO.getSalespersonid());
-//    	contract.setClientid(contractDTO.getClientid());
-//    	contract.setContractcode(contractDTO.getContractcode());
-//    	contract.setBuisnessname(contractDTO.getBuisnessname());
-//    	contract.setBusinessaddressid(contractDTO.getBusinessaddressid());
-//    	contract.setCommunicationchannel(contractDTO.getCommunicationchannel());
-//    	contract.setPlanid(contractDTO.getPlanid());
-//    	contract.setOnetimesetup(contractDTO.getOnetimesetup());
-//    	contract.setSizeofthecommunity(contractDTO.getSizeofthecommunity());
-//    	contract.setRenewalcycles(contractDTO.getRenewalcycles());
-//    	contract.setIstermsaccepted(contractDTO.getIstermsaccepted());
-//    	contract.setCreatedbyid(contractDTO.getCreatedbyid());
-//    	contract.setCreateddate(contractDTO.getCreateddate());
-//    	contract.setModifiedbyid(contractDTO.getModifiedbyid());
-//    	contract.setModifieddate(contractDTO.getModifieddate());
-		
-//         log.debug("REST request to save Contract : {}", contract);
-//         return new ResponseEntity<>(entityService.create(contract), HttpStatus.CREATED);
-		
-		ContractDTO contractDto = contractRequest.getContractDto();
-		UserDTO userDto = contractRequest.getUserDto();
-		CommunityDTO communityDto = contractRequest.getCommunityDto();
-		
-		User user = entityDtoMapper.toEntity(userDto);
-		
-		User savedUser = userService.create(user);
-		
-		communityDto.setPresidentuserid(savedUser.getUserid());
-		Community community = entityDtoMapper.toEntity(communityDto);
-		Community savedCommunity = communityService.create(community);
-		
-		ClientDTO clientDto = new ClientDTO(savedUser.getUserid(),savedCommunity.getCommunityid(),savedUser.getFirstname(),1);
-		
-		Client client = entityDtoMapper.toEntity(clientDto);
-		Client savedClient = clientService.create(client);
-		
-		contractDto.setClientid(savedClient.getClientid());
-		Contract contract = entityDtoMapper.toEntity(contractDto);
-		Contract savedContract = entityService.create(contract);
-		
-
-      log.debug("REST request to save Contract : {}", contract);
-      return new ResponseEntity<>(entityService.create(savedContract), HttpStatus.CREATED);
-		
-		
-		
-    }
-*/
-
-
-//	@PostMapping("/add")
-//	public ResponseEntity<Contract> createContract(@RequestBody @Valid ContractRequest2 contractRequest) {
-//		
-//		ContractDTO contractDto = contractRequest.getContractDto();
-//	
-//		CommunityDTO communityDto = contractRequest.getCommunityDto();
-//	
-//		
-//		
-//		Community community = entityDtoMapper.toEntity(communityDto);
-//		
-//		
-//		Contract contract = entityDtoMapper.toEntity(contractDto);
-//		Contract savedContract = entityService.create(contract);
-//		
-//		community.setContractid(savedContract.getContractid());
-//		
-//		Community savedCommunity = communityService.create(community);
-//
-//      log.debug("REST request to save Contract : {}", contract);
-//      return new ResponseEntity<>(entityService.create(savedContract), HttpStatus.CREATED);
-//		
-//		
-//		
-//    }
     
-//    @PostMapping("/add")
-//    @Transactional(rollbackFor = Exception.class) // Add this annotation to enable transaction management
-//	public ResponseEntity<Contract> createContract(@RequestBody @Valid Contractrequest3 contractRequest) throws ClientIdNotFoundException {
-//		try {
-//		ContractDTO contractDto = contractRequest.getContractDto();
-//		
-//		//Generating ContractCode
-//		String contractCode = entityService.generateUniqueContractCode();
-//		//Set the ContractCode to the Contract.
-//		contractDto.setContractcode(contractCode);
-//		
-//		ClientRequest clientRequest = contractRequest.getClientRequest();
-//		User user = entityDtoMapper.toEntity(clientRequest.getUserDto());
-//		User savedUser = userService.create(user);
-//		
-//		ClientDTO clientDto = clientRequest.getClientDto();
-//		
-//		clientDto.setUserid(savedUser.getUserId());
-//		Client client = entityDtoMapper.toEntity(clientRequest.getClientDto());
-//		Client savedClient = clientService.create(client);
-//		
-//		AddressDTO addressDTO = clientRequest.getAddressDto();
-//		Address address = entityDtoMapper.toEntity(addressDTO);
-//		Address savedAddress = addressService.create(address);
-//		
-//		ClientAddress clientAddress = new ClientAddress();
-//		clientAddress.setAddressid(savedAddress.getAddressId());
-//		clientAddress.setClientid(savedClient.getClientid());
-//		
-//		ClientAddress savedClientAddress = clientAddressService.create(clientAddress);
-//	
-//		contractDto.setClientid(savedClient.getClientid());
-//		
-//		AddressDTO communityAddressDto = contractRequest.getAddressDto();
-//		Address communityAddress = entityDtoMapper.toEntity(communityAddressDto);
-//		Address savedCommunityAddress = addressService.create(communityAddress);
-//		
-//		contractDto.setBusinessaddressid(savedCommunityAddress.getAddressId());
-//		
-//		String communityCode = communityService.generateUniqueCommunityCode();
-//		CommunityDTO communityDto = new CommunityDTO();
-//		communityDto.setName(contractDto.getBuisnessname());
-//		communityDto.setCommunitycode(communityCode);
-//		communityDto.setAddressid(savedCommunityAddress.getAddressId());
-//		communityDto.setCommunitysize(contractDto.getSizeofthecommunity());
-//		communityDto.setPlanid(contractDto.getPlanid());
-//		communityDto.setCreatedbyid(contractDto.getCreatedbyid());
-//		communityDto.setCreateddate(contractDto.getCreateddate());
-//		
-//		Community community = entityDtoMapper.toEntity(communityDto);
-//		
-//		
-//		Contract contract = entityDtoMapper.toEntity(contractDto);
-//		Contract savedContract = entityService.create(contract);
-//		
-//		community.setContractid(savedContract.getContractid());
-//		
-//		Community savedCommunity = communityService.create(community);
-////		savedClient.setCommunityid(savedCommunity.getCommunityid());
-//		
-//		
-////		clientService.update(savedClient.getClientid(), savedClient);
-//		Client updatedClient = clientService.updateClientCommunityId(savedClient.getClientid(), savedCommunity.getCommunityid());
-//		
-//		System.out.println("Client after set community Id : " + updatedClient);
-//
-//
-//      log.debug("REST request to save Contract : {}", contract);
-//      return ResponseEntity.ok(savedContract);
-//		
-//		}catch (Exception ex) {
-//			log.error("An error occurred while creating contract", ex);
-//	        ex.printStackTrace();
-//	        throw ex; // Re-throw the exception to ensure transaction rollback
-//	    }
-//		
-//    }
+  
+
 
 	
    /**
@@ -287,19 +98,19 @@ public class ContractController {
      * or with status {@code 500 (Internal Server Error)} if the contract couldn't be updated.
  * @throws ContractNotFoundException 
      */
-    @PutMapping("/update/{id}")
-    public ResponseEntity<ContractDTO> updateContract(@PathVariable (value = "id") Integer id,@Valid @RequestBody ContractDTO contractDTO) throws ContractNotFoundException {
-    	
-    	Contract contract = entityDtoMapper.toEntity(contractDTO);
-    	
-        log.debug("REST request to update Contract : {}", contract);
-        Contract result = entityService.update(id, contract);
-        
-        ContractDTO rContractDto = entityDtoMapper.toDTO(contract);
-        rContractDto.setModifieddate(result.getModifieddate());
-        
-        return ResponseEntity.ok().body(rContractDto);
-    }
+//    @PutMapping("/update/{id}")
+//    public ResponseEntity<ContractDTO> updateContract(@PathVariable (value = "id") Integer id,@Valid @RequestBody ContractDTO contractDTO) throws ContractNotFoundException {
+//    	
+//    	Contract contract = entityDtoMapper.toEntity(contractDTO);
+//    	
+//        log.debug("REST request to update Contract : {}", contract);
+//        Contract result = entityService.update(id, contract);
+//        
+//        ContractDTO rContractDto = entityDtoMapper.toDTO(contract);
+//        rContractDto.setModifieddate(result.getModifieddate());
+//        
+//        return ResponseEntity.ok().body(rContractDto);
+//    }
 
     /**
      * {@code GET  /contract} : get all the contracts.
@@ -312,31 +123,6 @@ public class ContractController {
 	    log.debug("REST request to get all contracts");
         List<Contract> contractList = entityService.getAll();
 
-//        List<ContractDTO> contractDtoList = new ArrayList<>();
-//        for(Contract contract : contractList) {
-//        	
-//        	ContractDTO contractDto = new ContractDTO();
-//        	contractDto.setContractid(contract.getContractid());
-//        	contractDto.setAnnualrenewalfee(contract.getAnnualrenewalfee());
-//        	contractDto.setSalespersonid(contract.getSalespersonid());
-//        	contractDto.setClientid(contract.getClientid());
-//        	contractDto.setContractcode(contract.getContractcode());
-//        	contractDto.setBuisnessname(contract.getBuisnessname());
-//        	contractDto.setBusinessaddressid(contract.getBusinessaddressid());
-//        	contractDto.setCommunicationchannel(contract.getCommunicationchannel());
-//        	contractDto.setPlanid(contract.getPlanid());
-//        	contractDto.setOnetimesetup(contract.getOnetimesetup());
-//        	contractDto.setSizeofthecommunity(contract.getSizeofthecommunity());
-//        	contractDto.setRenewalcycles(contract.getRenewalcycles());
-//        	contractDto.setIstermsaccepted(contract.getIstermsaccepted());
-//        	contractDto.setCreatedbyid(contract.getCreatedbyid());
-//        	contractDto.setCreateddate(contract.getCreateddate());
-//        	contractDto.setModifiedbyid(contract.getModifiedbyid());
-//        	contractDto.setModifieddate(contract.getModifieddate());
-//        	
-//        	contractDtoList.add(contractDto);
-//        	
-//        }
         return new ResponseEntity<>(contractList,HttpStatus.OK);
     }
 
@@ -371,7 +157,7 @@ public class ContractController {
     }
     
     @PutMapping("/updateActiveStatus")
-    public ResponseEntity<String> updateActiveStatus(@RequestParam("clientId") Integer clientId, @RequestParam("activeStatus") Boolean activeStatus) throws UserNotFoundException {
+    public ResponseEntity<String> updateActiveStatus(@RequestParam("clientId") Integer clientId, @RequestParam("activeStatus") Boolean activeStatus) throws UserNotFoundException, MessagingException {
         try {
             boolean isUpdated =entityService.updateActiveStatus(clientId, activeStatus);
             if (isUpdated) {
@@ -396,19 +182,23 @@ public class ContractController {
         }
     }
     
-//    @GetMapping("/getContractBySalesperson/{salesPersonId}")
-//    public List<EmployeeContractResponse> getContractsBySalesPersonId(@PathVariable Integer salesPersonId) {
-//        return entityService.getContractsBySalesPersonId(salesPersonId);
-//    }
+    @PutMapping("updateContract/{contractId}")
+    public ResponseEntity<Contract> updateContract(@PathVariable(value = "contractId") Integer contractId, @RequestBody Contractrequest3 contractRequest) {
+        try {
+            Contract updatedContract = entityService.updateContract(contractId,contractRequest);
+            return ResponseEntity.ok(updatedContract);
+        } catch (ClientIdNotFoundException | CommunityNotFoundException | UserNotFoundException | AddressNotFoundException e) {
+            return ResponseEntity.status(404).body(null); // or handle specific exceptions with different statuses
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(null); // handle unexpected exceptions
+        }
+    }
     
-//    @GetMapping("/getContractBySalesperson/{salesPersonId}")
-//    public ResponseEntity<?> getContractsBySalesPersonId(@PathVariable Integer salesPersonId) {
-//        List<EmployeeContractResponse> contracts = contractRequestService.findContractsBySalesPersonId(salesPersonId);
-//        if (contracts.isEmpty()) {
-//            return new ResponseEntity<>("No contracts found for sales person ID: " + salesPersonId, HttpStatus.NOT_FOUND);
-//        } else {
-//            return new ResponseEntity<>(contracts, HttpStatus.OK);
-//        }
-//    }
+    @GetMapping("/getContractUpdateResponse/{contractId}")
+    public ContractUpdateResponse getContractUpdateResponse(@PathVariable Integer contractId) {
+        return entityService.getContractUpdateResponse(contractId);
+    }
+    
+
 
 }

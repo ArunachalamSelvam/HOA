@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hoa.exception.UserNotFoundException;
 import com.hoa.requestEntities.LoginRequest;
 import com.hoa.responseEntities.LoginResponse;
 import com.hoa.service.LoginResponseService;
@@ -32,7 +33,7 @@ public class LoginController {
 
 
 	@PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) throws UserNotFoundException {
         LoginResponse response = responseService.login(loginRequest.getEmailId(), loginRequest.getPassword());
         if (response != null) {
         	 log.debug("REST request to Login Response : {}", response);

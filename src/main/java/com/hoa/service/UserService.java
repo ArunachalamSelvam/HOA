@@ -5,7 +5,9 @@
 */
 package com.hoa.service;
 import com.hoa.entities.User;
+import com.hoa.exception.AddressNotFoundException;
 import com.hoa.exception.UserNotFoundException;
+import com.hoa.requestEntities.UserUpdateRequest;
 import com.hoa.responseEntities.UserListResponse;
 
 import org.springframework.data.domain.Page;
@@ -88,5 +90,8 @@ public interface UserService  {
 	void setActiveStatus(Integer userId, boolean activeStatus) throws UserNotFoundException;
 
 	List<UserListResponse> getUsersByCommunityId(Integer communityId);
+
+	UserUpdateRequest updateUserWithAddress(Integer userId, Integer addressId, UserUpdateRequest userUpdateRequest)
+			throws UserNotFoundException, AddressNotFoundException;
 
 }

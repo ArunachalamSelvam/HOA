@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.hoa.repositories.EmployeeRepository;
 import com.hoa.requestEntities.EmployeeRequest;
+import com.hoa.responseEntities.EmployeeListResponse;
 import com.hoa.responseEntities.EmployeeResponseWithIdAndName;
 import com.hoa.dto.EmployeeDTO;
 import com.hoa.dto.UserDTO;
@@ -270,5 +271,39 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         // Return the generated password
         return password.toString();
+    }
+	
+	@Override
+	 public List<EmployeeListResponse> findEmployees(Integer managerId) {
+        List<Map<String, Object>> results = null;
+
+        if (managerId == 0 ) {
+            // If managerId is null, fetch all employees
+            results = repository.findEmployeesByemployeeId();
+        } else if(managerId > 0 ) {
+            // If managerId is provided, fetch employees by managerId
+            results = repository.findEmployeesBymanagerId(managerId);
+        }
+
+        // Map the results to EmployeeListResponse objects
+        List<EmployeeListResponse> employeeResponses = new ArrayList<>();
+        for (Map<String, Object> row : results) {
+            employeeResponses.add(mapToEmployeeListResponse(row));
+        }
+        return employeeResponses;
+    }
+
+    private EmployeeListResponse mapToEmployeeListResponse(Map<String, Object> row) {
+        EmployeeListResponse employeeResponse = new EmployeeListResponse();
+        employeeResponse.setEmployeeId((Integer) row.get("employeeId"));
+        employeeResponse.setEmployeeNo((String) row.get("employeeNo"));
+        employeeResponse.setManagerId(row.get("managerId") != null ? (Integer) row.get("managerId") : null);
+        employeeResponse.setUserId((Integer) row.get("userId"));
+        employeeResponse.setFirstName((String) row.get("firstName"));
+        employeeResponse.setEmailId((String) row.get("emailId"));
+        employeeResponse.setMobileNumber((String) row.get("mobileNumber"));
+        employeeResponse.setActiveStatus((Boolean) row.get("activeStatus"));
+        employeeResponse.setDesignationName((String) row.get("name"));
+        return employeeResponse;
     }
 }

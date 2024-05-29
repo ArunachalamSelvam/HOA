@@ -2,10 +2,12 @@ package com.hoa.responseEntities;
 
 public class UserListResponse {
 	
+	private Integer userId;
 	private String firstName;
 	private String emailId;
 	private String mobileNumber;
 	private Integer clientId;
+	private Integer addressId;
 	private String roleName;
 	private String activeStatus;
 	
@@ -59,6 +61,22 @@ public class UserListResponse {
 
 	public void setActiveStatus(String activeStatus) {
 		this.activeStatus = activeStatus;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+	public Integer getAddressId() {
+		return addressId;
+	}
+
+	public void setAddressId(Integer addressId) {
+		this.addressId = addressId;
 	}
 	
 	

@@ -8,19 +8,26 @@ package com.hoa.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.hoa.repositories.CommunityRepository;
+import com.hoa.responseEntities.CommunityListResponse;
+import com.hoa.controller.CommunityController;
 import com.hoa.entities.Community;
 import com.hoa.entities.Contract;
 import com.hoa.enums.ContractActiveStatus;
 import com.hoa.exception.CommunityNotFoundException;
 import com.hoa.exception.ContractNotFoundException;
 import com.hoa.service.CommunityService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -35,6 +42,8 @@ public class CommunityServiceImpl implements CommunityService {
 	private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 	private static final int CODE_LENGTH = 16;
 	private static final Random RANDOM = new SecureRandom();
+    private final Logger logger = LoggerFactory.getLogger(CommunityServiceImpl.class);
+
 
 	private final CommunityRepository repository;
 //	private final ContractService contractService;
@@ -92,15 +101,39 @@ public class CommunityServiceImpl implements CommunityService {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
-	public List<Community> getAll() {
-		try {
-			return repository.findAll();
+	public List<CommunityListResponse> getAll() {
+        try {
+            List<Map<String, Object>> response = repository.getAll();
+            logger.info("Response from repository: {}", response);  // Debugging line
+            return mapToCommunityListResponse(response);
+        } catch (Exception ex) {
+            logger.error("Error retrieving data: ", ex);
+            return Collections.emptyList();
+        }
+    }
 
-		} catch (Exception ex) {
-			return Collections.emptyList();
-		}
-	}
+    private List<CommunityListResponse> mapToCommunityListResponse(List<Map<String, Object>> response) {
+        List<CommunityListResponse> communityListResponses = new ArrayList<>();
+        
+        for (Map<String, Object> row : response) {
+            CommunityListResponse communityListResponse = new CommunityListResponse();
+            
+            communityListResponse.setCommunityId((Integer) row.get("communityId"));
+            communityListResponse.setContractId((Integer) row.get("contractId"));
+            communityListResponse.setCommunityCode((String) row.get("communityCode"));
+            communityListResponse.setContractCode((String) row.get("contractCode"));
+            communityListResponse.setCommunityName((String) row.get("communityName"));
+            communityListResponse.setCommunitySize((Integer) row.get("communitySize"));
+            
+         // Retrieve the active status as a boolean, handling null values
+            Boolean activeStatus = (Boolean) row.get("activeStatus");
+            communityListResponse.setActiveStatus(activeStatus != null ? activeStatus : false);
+            
+            communityListResponses.add(communityListResponse);
+        }
+        
+        return communityListResponses;
+    }
 
 	/**
 	 * {@inheritDoc}

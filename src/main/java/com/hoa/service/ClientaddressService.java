@@ -81,4 +81,5 @@ public interface ClientaddressService  {
 
 	ClientAddress getClientAddressByClientId(Integer clientId);
 
+
 }

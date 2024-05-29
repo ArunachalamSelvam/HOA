@@ -2,6 +2,8 @@ package com.hoa.controller;
 
 import com.hoa.dto.ContactDTO;
 import com.hoa.entities.Contact;
+import com.hoa.exception.ContactNotFoundException;
+import com.hoa.exception.UserNotFoundException;
 import com.hoa.responseEntities.ContactResponse;
 import com.hoa.service.ContactService;
 import com.hoa.utils.EntityDTOMapper;
@@ -81,6 +83,16 @@ public class ContactController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+    
+    @PatchMapping("updateUserActiveStatus/{contactId}/activeStatus")
+    public ResponseEntity<String> setActiveStatus(@PathVariable Integer contactId, @RequestParam boolean activeStatus) {
+        try {
+        	contactService.setActiveStatus(contactId, activeStatus);
+            return ResponseEntity.ok("User status updated successfully");
+        } catch (ContactNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } 
     }
    
 }

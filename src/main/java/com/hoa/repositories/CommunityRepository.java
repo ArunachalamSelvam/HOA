@@ -5,6 +5,11 @@
  */
 package com.hoa.repositories;
 import com.hoa.entities.Community;
+import com.hoa.responseEntities.CommunityListResponse;
+
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -39,7 +44,20 @@ public interface CommunityRepository  extends JpaRepository<Community, Integer> 
     @Modifying
     @Query("UPDATE Community c SET c.activeStatus = :activeStatus WHERE c.communityId = :communityId")
     int updateActiveStatus(Integer communityId, Boolean activeStatus);
-
+	
+	 @Query(value = "SELECT \n"
+	            + " c.communityid AS communityId,\n"
+	            + " c.contract_id AS contractId,\n"
+	            + " c.community_code AS communityCode,\n"
+	            + " co.contract_code AS contractCode,\n"
+	            + " c.name AS communityName,\n"
+	            + " c.community_size AS communitySize,\n"
+	            + " c.active_status AS activeStatus\n"
+	            + "FROM\n"
+	            + " community c\n"
+	            + "JOIN\n"
+	            + " contract co ON c.contract_id = co.contract_id", nativeQuery = true)
+	    List<Map<String, Object>> getAll();
 
 	
 	

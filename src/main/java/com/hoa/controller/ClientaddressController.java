@@ -120,5 +120,13 @@ public class ClientaddressController {
         entityService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+    
+    @GetMapping("/getByClientId/{clientId}")
+    public ResponseEntity<ClientAddress> getOnClientaddressByClientId(@PathVariable(value = "clientId") Integer clienId) {
+        log.debug("REST request to get Clientaddress : {}", clienId);
+        ClientAddress e = entityService.getClientAddressByClientId(clienId);
+
+        return new ResponseEntity<>(e, HttpStatus.OK);
+    }
 
 }

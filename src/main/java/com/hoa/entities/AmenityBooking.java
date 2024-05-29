@@ -71,6 +71,8 @@ public class AmenityBooking implements Serializable {
     private Integer    paymentDetailId ;
 
 
+    @Column(name="bookingStatus", nullable=false, length=128)
+    private String     bookingStatus ;
     //--- ENTITY LINKS ( RELATIONSHIP )
     @ManyToOne
     @JoinColumn(name="modifiedByID", referencedColumnName="userId", insertable=false, updatable=false)

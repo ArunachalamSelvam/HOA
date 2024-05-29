@@ -140,4 +140,7 @@ public class ClientaddressServiceImpl implements ClientaddressService {
         return repository.findByClientClientId(clientId);
     }
 
+
+
+
 }

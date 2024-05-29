@@ -30,12 +30,17 @@ public interface UserRepository  extends JpaRepository<User, Integer> , JpaSpeci
 	
 	List<User> findUserByEmailId(String emailId);
 	
+	@Query(value = "SELECT * from \"user\" u where u.email_id = :emailId", nativeQuery = true)
+	User findUserByUserEmailId(@Param("emailId")String emailId);
+	
 	@Override
 	@Query("Select u From User u ORDER BY u.userId")
 	List<User> findAll();
 	
 	@Query(value ="SELECT\n"
 			+ "	c.client_id As clientId,\n"
+			+ "	ca.address_id As addressId,\n"
+			+ "	u.user_id As userId,\n"
 			+ "	u.first_name As firstName,\n"
 			+ "	u.mobile_number As mobileNumber,\n"
 			+ "	u.email_id As emailId,\n"
@@ -45,6 +50,8 @@ public interface UserRepository  extends JpaRepository<User, Integer> , JpaSpeci
 			+ "	client c\n"
 			+ "JOIN \n"
 			+ "	\"user\" u ON u.user_id = c.user_id\n"
+			+ "JOIN \n"
+			+ "	client_address ca ON c.client_id = ca.client_id\n"
 			+ "JOIN\n"
 			+ "	\"role\" r ON r.role_id = u.role_id\n"
 			+ "WHERE c.community_id = :communityId	",nativeQuery = true)
@@ -55,13 +62,27 @@ public interface UserRepository  extends JpaRepository<User, Integer> , JpaSpeci
 			+ "       u.role_id AS roleId,\n"
 			+ "       cl.client_id AS clientId,\n"
 			+ "       cl.community_id AS communityId,\n"
+			+ "       c.active_status AS communityActiveStatus,\n"
 			+ "       e.employee_id AS employeeId,\n"
 			+ "       e.manager_id AS managerId\n"
 			+ "FROM \"user\" u\n"
 			+ "LEFT JOIN client cl ON u.user_id = cl.user_id\n"
 			+ "LEFT JOIN employee e ON u.user_id = e.user_id\n"
+			+ "LEFT JOIN community c ON cl.community_id = c.communityid\n"
 			+ "WHERE u.email_id = :emailId AND u.password = :password", nativeQuery = true)
 	Map<String, Object> getUserResponseByEmailAndPassword(@Param("emailId") String emailId,@Param("password") String  password );
 
+	@Query(value = "SELECT \n"
+			+ "    (c.active_status AND u.active_status) AS is_active\n"
+			+ "FROM \n"
+			+ "    \"user\" u\n"
+			+ "LEFT JOIN \n"
+			+ "    client cl ON cl.user_id = u.user_id\n"
+			+ "LEFT JOIN \n"
+			+ "    community c ON c.communityid = cl.community_id\n"
+			+ "WHERE \n"
+			+ "    u.email_id = :emailId \n"
+			+ "    AND u.password = :password", nativeQuery = true)
+	Boolean isValidUser(@Param("emailId") String emailId,@Param("password") String  password );
 
 }

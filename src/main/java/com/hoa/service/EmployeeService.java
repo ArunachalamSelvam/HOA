@@ -8,6 +8,7 @@ import com.hoa.entities.Employee;
 import com.hoa.exception.EmployeeNotFoundException;
 import com.hoa.exception.UserNotFoundException;
 import com.hoa.requestEntities.EmployeeRequest;
+import com.hoa.responseEntities.EmployeeListResponse;
 import com.hoa.responseEntities.EmployeeResponseWithIdAndName;
 
 import org.springframework.data.domain.Page;
@@ -91,5 +92,7 @@ public interface EmployeeService  {
 	List<EmployeeResponseWithIdAndName> getEmployeeResponseWithIdAndName(Integer designationId);
 
 	List<EmployeeResponseWithIdAndName> getEmployeeResponseWithIdAndNameByManagerId(Integer managerId);
+
+	List<EmployeeListResponse> findEmployees(Integer managerId);
 
 }

@@ -7,6 +7,7 @@ package com.hoa.service;
 import com.hoa.entities.Community;
 import com.hoa.exception.CommunityNotFoundException;
 import com.hoa.exception.ContractNotFoundException;
+import com.hoa.responseEntities.CommunityListResponse;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -53,7 +54,7 @@ public interface CommunityService  {
      *
      * @return list of entities List<Community>
      */
-    List<Community> getAll();
+    List<CommunityListResponse> getAll();
 
     /**
      * Count item in entity

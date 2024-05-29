@@ -5,18 +5,22 @@
 */
 package com.hoa.service;
 import com.hoa.entities.Contract;
+import com.hoa.exception.AddressNotFoundException;
 import com.hoa.exception.ClientIdNotFoundException;
 import com.hoa.exception.CommunityNotFoundException;
 import com.hoa.exception.ContractNotFoundException;
 import com.hoa.exception.UserNotFoundException;
 import com.hoa.requestEntities.Contractrequest3;
 import com.hoa.responseEntities.ContractListResponse;
+import com.hoa.responseEntities.ContractUpdateResponse;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.List;
+
+import javax.mail.MessagingException;
 
 /**
  * Service Interface for managing {@link Contract}.
@@ -94,9 +98,14 @@ public interface ContractService  {
 	Contract createContract(Contractrequest3 contractRequest) throws ClientIdNotFoundException;
 
 	boolean updateActiveStatus(Integer clientId, Boolean activeStatus)
-			throws CommunityNotFoundException, ContractNotFoundException, UserNotFoundException;
+			throws CommunityNotFoundException, ContractNotFoundException, UserNotFoundException, MessagingException;
 
 	List<ContractListResponse> findEmployeeContractsBySalesPersonId(Integer salesManagerId, Integer salesPersonId);
+
+	Contract updateContract(Integer contractId,Contractrequest3 contractRequest) throws ClientIdNotFoundException,
+			CommunityNotFoundException, UserNotFoundException, AddressNotFoundException;
+
+	ContractUpdateResponse getContractUpdateResponse(Integer contractId);
 
 
 }

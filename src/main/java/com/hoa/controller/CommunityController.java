@@ -9,6 +9,7 @@ import com.hoa.dto.CommunityDTO;
 import com.hoa.entities.Community;
 import com.hoa.exception.CommunityNotFoundException;
 import com.hoa.exception.ContractNotFoundException;
+import com.hoa.responseEntities.CommunityListResponse;
 import com.hoa.service.CommunityService;
 import com.hoa.utils.EntityDTOMapper;
 
@@ -97,9 +98,9 @@ public class CommunityController {
      */
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Community>> getAllCommunity() {
+    public ResponseEntity<List<CommunityListResponse>> getAllCommunity() {
 	    log.debug("REST request to get all communitys");
-        List<Community> lst = entityService.getAll();
+        List<CommunityListResponse> lst = entityService.getAll();
 
         return new ResponseEntity<>(lst,HttpStatus.OK);
     }

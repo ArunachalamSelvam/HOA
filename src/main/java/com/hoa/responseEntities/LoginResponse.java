@@ -6,9 +6,11 @@ public class LoginResponse {
 	private Integer roleId;
 	private Integer clientId;
 	private Integer communityId;
+	private boolean communityActiveStatus;
 	private Integer employeeId;
 	private Integer managerId;
 	private String emailId;
+	private String token;
 	
 	public LoginResponse() {
 		// TODO Auto-generated constructor stub
@@ -54,6 +56,18 @@ public class LoginResponse {
 	}
 	public void setManagerId(Integer managerId) {
 		this.managerId = managerId;
+	}
+	public boolean isCommunityActiveStatus() {
+		return communityActiveStatus;
+	}
+	public void setCommunityActiveStatus(boolean communityActiveStatus) {
+		this.communityActiveStatus = communityActiveStatus;
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
 	}
 	
 	

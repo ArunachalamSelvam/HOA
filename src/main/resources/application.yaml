@@ -13,10 +13,19 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: Uye39%2wlrLp
-    url: jdbc:postgresql://vhoasdb.c1muummy818d.us-east-1.rds.amazonaws.com:5432/Initialvhoasdb
+    url: jdbc:postgresql://vhoasdb.c1muummy818d.us-east-1.rds.amazonaws.com:5432/Initialvhoasdb    
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 600000
+      connection-timeout: 30000
+      max-lifetime: 1800000  
   
   main:
     allow-circular-references: true 
+    allow-bean-definition-overriding: true
+    
+ 
     
   mail:
     host: smtp.gmail.com        # SMTP server host
@@ -36,6 +45,20 @@ server:
   port: 80 # Change this to your desired port number
   servlet : 
     context-path : /hoa
+    
+jwt:
+  secret: hoasvjtech
+  
+module-name : HOA
+api-version : 2.0  
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+
+    
     
     
   

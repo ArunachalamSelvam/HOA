@@ -22,6 +22,7 @@ import com.hoa.exception.AddressNotFoundException;
 import com.hoa.exception.ClientIdNotFoundException;
 import com.hoa.exception.CommunityNotFoundException;
 import com.hoa.exception.ContractNotFoundException;
+import com.hoa.exception.EmailSendingException;
 import com.hoa.exception.EmployeeNotFoundException;
 import com.hoa.exception.RolePageNotFoundException;
 import com.hoa.exception.UserNotFoundException;
@@ -197,6 +198,12 @@ public class ApplicationExceptionHandler {
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@ExceptionHandler({RolePageNotFoundException.class})
     public ResponseEntity<String> handleRolePageNotFoundException(RolePageNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+	
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	@ExceptionHandler({EmailSendingException.class})
+    public ResponseEntity<String> handleRolePageNotFoundException(EmailSendingException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 }

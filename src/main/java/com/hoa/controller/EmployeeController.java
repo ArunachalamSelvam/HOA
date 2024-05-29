@@ -12,6 +12,7 @@ import com.hoa.entities.User;
 import com.hoa.exception.EmployeeNotFoundException;
 import com.hoa.exception.UserNotFoundException;
 import com.hoa.requestEntities.EmployeeRequest;
+import com.hoa.responseEntities.EmployeeListResponse;
 import com.hoa.responseEntities.EmployeeResponseWithIdAndName;
 import com.hoa.service.EmployeeService;
 import com.hoa.service.UserService;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -216,5 +218,11 @@ public class EmployeeController {
 		entityService.delete(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
+	
+	@GetMapping("/getEmployeeList")
+    public ResponseEntity<List<EmployeeListResponse>> getEmployeesList(@RequestParam(required = false,defaultValue = "0") Integer managerId) {
+        List<EmployeeListResponse> employees = entityService.findEmployees(managerId);
+        return ResponseEntity.ok(employees);
+    }
 
 }
